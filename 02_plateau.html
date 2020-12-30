@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu-concours Hermes</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="node_modules/flickity/css/flickity.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+</head>
+<body>
+    <main>
+        <div class="screen row no-gutters">
+            <div class="flex_contain plateau_screen">
+                <div class="logo"><img src="img/logo_h24_thumb.png" alt=""></div>
+                <div class="carousel_plateau" data-flickity='{"fullscreen": true, "prevNextButtons": false, "pageDots": false, "adaptiveHeight": true, "dragThreshold": 30, "setGallerySize": false}'>
+                    <div class="carousel_cell expired">
+                        <img class="bg_cell" src="img/fond_plateau_expired.png" alt="">
+                        <div class="carousel_cell-content">
+                            <div class="carousel_cell-content-container">
+                                <span class="title">Challenge</span>
+                                <span class="jour">Jour 1</span>
+                                <span class="statut">Challenge terminé</span>
+                            </div>
+                            <div class="carousel_cell-content-resume">
+                                <div class="challenge_day">J1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel_cell available">
+                        <img class="bg_cell" src="img/fond_plateau_available.png" alt="">
+                        <div class="carousel_cell-content">
+                            <div class="carousel_cell-content-container">
+                                <span class="title">Challenge</span>
+                                <span class="jour">Jour 2</span>
+                                <span class="statut countdown">Il vous reste encore<br><strong>12 H 23 MIN 24 S</strong><br>pour trouver l'indice du jour</span>
+                            </div>
+                            <a href="" class="carousel_cell-content-linkgame"></a>
+                            <div class="carousel_cell-content-resume">
+                                <div class="challenge_day">J2</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel_cell unavailable">
+                        <img class="bg_cell" src="img/fond_plateau_unavailable.png" alt="">
+                        <div class="carousel_cell-content">
+                            <div class="carousel_cell-content-container">
+                                <span class="title">Challenge</span>
+                                <span class="jour">Jour 3</span>
+                                <img class="icon" src="img/icon_cadenas.png" alt="">
+                                <span class="statut">Disponible dans<br><strong>12 H 23 MIN 24 S</strong></span>
+                            </div>
+                            <div class="carousel_cell-content-resume">
+                                <img class="icon" src="img/icon_cadenas.png" alt="">
+                                <div class="challenge_day">J3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel_cell unavailable">
+                        <img class="bg_cell" src="img/fond_plateau_unavailable.png" alt="">
+                        <div class="carousel_cell-content">
+                            <div class="carousel_cell-content-container">
+                                <span class="title">Challenge</span>
+                                <span class="jour">Jour 4</span>
+                                <img class="icon" src="img/icon_cadenas.png" alt="">
+                                <span class="statut">Disponible<br><strong>Demain</strong></span>
+                            </div>
+                            <div class="carousel_cell-content-resume">
+                                <img class="icon" src="img/icon_cadenas.png" alt="">
+                                <div class="challenge_day">J4</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="" class="reglement" target="_blank">Voir le règlement</a>
+            </div>
+        </div>
+    </main>
+    <!-- TURN -->
+    <div id="turn">
+        <div class="plz">
+            <p>Bonjour,<br><br>le site consulté ne peut s'afficher correctement qu'à l'horizontale.<br><br>Merci de votre compréhension.</p>
+        </div>
+    </div>
+    <!-- / -->
+    <script src="js/function.js"></script>
+    <script src="js/game_slide.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu-concours Hermes</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <main>
+        <div class="screen row no-gutters">
+            <div class="flex_contain game_screen">
+                <div class="game_container flex_contain">
+                    <div class="game_space q4">
+                        <div class="question">H24 exprime une nouvelle facette de la masculinité Hermès.<br><strong>Saurez-vous retrouver en moins de 24 secondes de quel métier Christine Nagel s'est inspirée pour créer ce nouveau parfum masculin ?</strong></div>
+                        <div class="game_quizz flex_contain q4">
+                            <div class="answers">
+                                <form action="" id="question4">
+                                    <label>
+                                        <input type="radio" id="huey" name="drone" value="huey">
+                                        <div class="answer_button"><span>Le métier<br>de la soie<br>Hermès</span></div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="huey" name="drone" value="huey">
+                                        <div class="answer_button"><span>Le métier<br>de l'horlogerie<br>Hermès</span></div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="huey" name="drone" value="huey">
+                                        <div class="answer_button"><span>Le métier<br>du prêt-à-porter<br>homme<br>Hermès</span></div>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game_infos">
+                        <div id="timer"></div>
+                        <div class="try">
+                            <span class="title">Essais restants</span>
+                            <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
+                        </div>
+                        <div class="game_button" id="valide"><span>VALIDER</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- TURN -->
+    <div id="turn">
+        <div class="plz">
+            <p>Bonjour,<br><br>le site consulté ne peut s'afficher correctement qu'à l'horizontale.<br><br>Merci de votre compréhension.</p>
+        </div>
+    </div>
+    <!-- / -->
+    <script src="js/function.js"></script>
+    <script src="js/game_timer.js"></script>
+</body>
+</html>

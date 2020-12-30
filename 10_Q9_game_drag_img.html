@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu-concours Hermes</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <main>
+        <div class="screen row no-gutters">
+            <div class="flex_contain game_screen">
+                <div class="game_container flex_contain">
+                    <div class="game_space">
+                        <div class="question">Un client hésite entre Terre d'Hermès et H24. Que lui dites-vous ?<br><strong>Associez à chacun des deux parfums masculins Hermès les propositions qui lui correspondent le mieux.</strong></div>
+                        <div class="game_quizz flex_contain q9 dragdrop">
+                            <div class="grid_parfums">
+                                <img src="img/parfum1_q9.jpg" alt="">
+                                <img src="img/parfum2_q9.jpg" alt="">
+                            </div>
+                            <div class="dropzone">
+                                <div class="dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                                <div class="dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                                <div class="dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                                <div class="dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                            </div>
+                            <div class="answers">
+                                <div class="answer_button" id="answer1" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Un parfum aromatique, frais et végétal</div>
+                                <div class="answer_button" id="answer2" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Pour un homme universal</div>
+                                <div class="answer_button" id="answer3" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Un parfum vigoureux et minéral</div>
+                                <div class="answer_button" id="answer4" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Pour un homme urbain</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game_infos">
+                        <div id="timer"></div>
+                        <div class="try">
+                            <span class="title">Essais restants</span>
+                            <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
+                        </div>
+                        <div class="game_button" id="valide"><span>VALIDER</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- TURN -->
+    <div id="turn">
+        <div class="plz">
+            <p>Bonjour,<br><br>le site consulté ne peut s'afficher correctement qu'à l'horizontale.<br><br>Merci de votre compréhension.</p>
+        </div>
+    </div>
+    <!-- / -->
+    <script src="js/function.js"></script>
+    <script src="js/game_timer.js"></script>
+    <script src="js/drag_drop.js"></script>
+    <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/index.min.js"></script>
+    <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/scroll-behaviour.min.js"></script>
+    <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/hold-to-drag-issue/release/index.js"></script>
+    <script>
+        // options are optional ;)
+        MobileDragDrop.polyfill({
+          // use this to make use of the scroll behaviour
+          // dragStartConditionOverride: false,
+          // dragImageCenterOnTouch: true,
+          // iterationInterval: 1000,
+          forceApply: true,
+          holdToDrag: 500,
+          dragImageTranslateOverride: MobileDragDrop.scrollBehaviourDragImageTranslateOverride
+        });
+      </script>
+</body>
+</html>

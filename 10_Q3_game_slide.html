@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu-concours Hermes</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="node_modules/flickity/css/flickity.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+</head>
+<body>
+    <main>
+        <div class="screen row no-gutters">
+            <div class="flex_contain game_screen">
+                <div class="game_container flex_contain">
+                    <div class="game_space">
+                        <div class="tryagain">dommage, mauvaise réponse, il vous reste une tentative !</div>
+                        <div class="question">Christine Nagel a construit la nouvelle création masculine H24 autour de 4 matières premières.<br><strong>En faisant défiler les visuels, saurez-vous les retrouver en 24 secondes ?</strong></div>
+                        <div class="game_quizz flex_contain q3">
+                            <div class="game_carou_contain">
+                                <div class="game_carousel" data-flickity='{"pageDots": false}'>
+                                    <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_sauge.jpg" alt="">
+                                            <figcaption class="answer_button">Sauge sclarée</figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_fevetonka.jpg" alt="">
+                                            <figcaption class="answer_button">Fève Tonka</figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="game_carousel" data-flickity='{"pageDots": false}'>
+                                    <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_boisrose.jpg" alt="">
+                                            <figcaption class="answer_button">Bois de rose</figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_encens.jpg" alt="">
+                                            <figcaption class="answer_button">Encens</figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="game_carousel" data-flickity='{"pageDots": false}'>
+                                    <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_narcisse.jpg" alt="">
+                                            <figcaption class="answer_button">Narcisse</figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_thenoir.jpg" alt="">
+                                            <figcaption class="answer_button">Thé noir</figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="game_carousel" data-flickity='{"pageDots": false}'>
+                                    <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_sclarene.jpg" alt="">
+                                            <figcaption class="answer_button">Sclarene</figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_sauge.jpg" alt="">
+                                            <figcaption class="answer_button">Sauge sclarée</figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game_infos">
+                        <div id="timer"></div>
+                        <div class="try">
+                            <span class="title">Essais restants</span>
+                            <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
+                        </div>
+                        <div class="game_button" id="valide"><span>VALIDER</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- TURN -->
+    <div id="turn">
+        <div class="plz">
+            <p>Bonjour,<br><br>le site consulté ne peut s'afficher correctement qu'à l'horizontale.<br><br>Merci de votre compréhension.</p>
+        </div>
+    </div>
+    <!-- / -->
+    <script src="js/function.js"></script>
+    <script src="js/game_timer.js"></script>
+</body>
+</html>

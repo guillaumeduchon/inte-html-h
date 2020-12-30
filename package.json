@@ -1,0 +1,21 @@
+{
+  "name": "hermes_html",
+  "version": "1.0.0",
+  "description": "jeu-concours",
+  "main": "index.js",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "@popperjs/core": "^2.5.4",
+    "bootstrap": "^4.5.3",
+    "flickity": "^2.2.1",
+    "jquery": "^3.5.1",
+    "jquery-touchswipe": "^1.6.19",
+    "mobile-drag-drop": "^2.3.0-rc.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "sass": "sass --watch ./sass/styles2.scss:./css/style2.css --style compressed"
+  },
+  "author": "",
+  "license": "ISC"
+}

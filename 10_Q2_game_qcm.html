@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu-concours Hermes</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <main>
+        <div class="screen row no-gutters">
+            <div class="flex_contain game_screen">
+                <div class="game_container flex_contain">
+                    <div class="game_space">
+                        <div class="tryagain">dommage, mauvaise réponse, il vous reste une tentative !</div>
+                        <div class="question">H24 exprime une nouvelle facette de la masculinité Hermès.<br><strong>Comment se caractèrise l'homme 24 ?</strong></div>
+                        <div class="game_quizz flex_contain q2">
+                            <div class="answers">
+                                <form action="" id="question1">
+                                    <label for="choice1">
+                                        <input type="checkbox" name="" value="true">
+                                        <div class="answer_button">Un homme en mouvement</div>
+                                    </label>
+                                    <label for="choice2">
+                                        <input type="checkbox" name="" value="true">
+                                        <div class="answer_button">Un homme équestre</div>
+                                    </label>
+                                    <label for="choice3">
+                                        <input type="checkbox" name="" value="false">
+                                        <div class="answer_button">Un homme sportif</div>
+                                    </label>
+                                    <label for="choice4">
+                                        <input type="checkbox" name="" value="true">
+                                        <div class="answer_button">Un homme marqué par une forte conscience écologique</div>
+                                    </label>
+                                    <label for="choice5">
+                                        <input type="checkbox" name="" value="false">
+                                        <div class="answer_button">Un homme urbain</div>
+                                    </label>
+                                    <label for="choice6">
+                                        <input type="checkbox" name="" value="false">
+                                        <div class="answer_button">Un dandy</div>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game_infos">
+                        <div id="timer"></div>
+                        <div class="try">
+                            <span class="title">Essais restants</span>
+                            <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
+                        </div>
+                        <div class="game_button" id="valide"><span>VALIDER</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- TURN -->
+    <div id="turn">
+        <div class="plz">
+            <p>Bonjour,<br><br>le site consulté ne peut s'afficher correctement qu'à l'horizontale.<br><br>Merci de votre compréhension.</p>
+        </div>
+    </div>
+    <!-- / -->
+    <script src="js/function.js"></script>
+    <script src="js/game_timer.js"></script>
+</body>
+</html>
