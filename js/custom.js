@@ -1,6 +1,6 @@
 $(document).ready(function() {
   //
-  if(location.pathname === "/01_home_login.html") {
+  if(location.pathname === "/login.html") {
     fullfiled_magasin()
     $("#magasin").on('click', ()=>{
       hideError()
