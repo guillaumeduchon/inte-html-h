@@ -222,6 +222,7 @@ main {
             width: 65%;
             background: url('../img/fond_border_block.png') 95% 0% no-repeat;
             background-size: 12%;
+            @media screen and (orientation:landscape) and (min-width:1024px) {padding: 20% 0;}
             .logo {
                 img {
                     max-width: 150px;
@@ -291,6 +292,9 @@ main {
                         display: block; 
                         font-size: 16px;
                         color: $grey;
+                    }
+                    &.changed {
+                        &::after {color: $blue;}
                     }
                     &:valid {color: $blue; border-color: $blue;}
                 }
@@ -532,6 +536,10 @@ main {
                         &:first-of-type {margin-bottom: 10px;}
                         i, em {font-size: 13px; line-height: 17px;}
                     }
+                    @media screen and (orientation:landscape) and (min-width:1024px) {
+                        font-size: 17px;
+                        line-height: 21px;
+                    }
                 }
                 .explanation {
                     font-size: 15px;
@@ -542,6 +550,10 @@ main {
                         &::first-line {text-transform: uppercase;}
                         font-size: 14px;
                         line-height: 18px;
+                        @media screen and (orientation:landscape) and (min-width:1024px) {
+                            font-size: 17px;
+                            line-height: 21px;
+                        }
                     }
                 }
                 .cta_diamond {
@@ -553,6 +565,11 @@ main {
                         height: 110px;
                         width: 110px;
                         a, span {font-size: 16px;}
+                    }
+                    @media screen and (orientation:landscape) and (min-width:1024px) {
+                        height: 150px;
+                        width: 150px;
+                        a {font-size: 18px;}
                     }
                     &:after {
                         background-color: $green;
@@ -586,6 +603,11 @@ main {
                         line-height: 17px;
                     }
                     &:nth-child(2n) {margin-top: 15px;}
+                    @media screen and (orientation:landscape) and (min-width:1024px) {
+                        font-size: 17px;
+                        line-height: 21px;
+                        &:nth-child(2n) {margin-top: 25px;}
+                    }
                 }
                 .cta_diamond {
                     height: 130px;
@@ -595,6 +617,11 @@ main {
                         height: 110px;
                         width: 110px;
                         a, span {font-size: 13px;}
+                    }
+                    @media screen and (orientation:landscape) and (min-width:1024px) {
+                        height: 150px;
+                        width: 150px;
+                        a {font-size: 18px;}
                     }
                     &:after {
                         background-color: $green;
@@ -635,13 +662,22 @@ main {
                 font-size: 18px;
                 font-weight: normal;
                 text-transform: uppercase;
+                @media screen and (orientation:landscape) and (min-width:1024px) {
+                    font-size: 25px;
+                    margin-bottom: 15px;
+                }
             }
             p {
                 @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 12px; line-height: 15px; margin-bottom: 7px;}
                 @media screen and (orientation:landscape) and (min-width: 760px) {font-size: 14px; line-height: 18px;}
+                @media screen and (orientation:landscape) and (min-width:1024px) {
+                    font-size: 17px;
+                    line-height: 21px;
+                }
                 font-size: 13px;
                 line-height: 16px;
                 margin-bottom: 10px;
+                @media screen and (orientation:landscape) and (min-width:1024px) {margin-bottom: 15px;}
             }
             .rules_challenge {
                 margin: 30px 0;
@@ -651,6 +687,11 @@ main {
                 width: 110px;
                 margin-top: -13px;
                 a {font-size: 14px;}
+                @media screen and (orientation:landscape) and (min-width:1024px) {
+                    height: 150px;
+                    width: 150px;
+                    a {font-size: 18px;}
+                }
             }
             @media screen and (orientation:landscape) and (max-width: 660px) {
                 width: 95%;
@@ -1433,6 +1474,7 @@ main {
                 font-size: 22px;
                 text-transform: uppercase;
                 margin-bottom: 0;
+                @media screen and (orientation:landscape) and (min-width:1024px) {font-size: 26px;}
             }
             .cta_diamond {
                 height: 190px;
@@ -1457,6 +1499,7 @@ main {
                     margin-bottom: 10px;
                 }
                 &:last-of-type {margin-bottom: 0;}
+                @media screen and (orientation:landscape) and (min-width:1024px) {font-size: 17px; line-height: 21px;}
             }
         }
     }

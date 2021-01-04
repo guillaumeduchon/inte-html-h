@@ -5,6 +5,21 @@ window.addEventListener('resize', () => {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 })
 
+// CHANGE COLOR SELECT OPTION
+$(document).ready(function() {
+  $('#magasin').css('color','#b3b5b4');
+  $('#magasin').change(function() {
+     var current = $('#magasin').val();
+     if (current != 'null') {
+         $('#magasin').css('color','#305c67');
+         $('#magasin').css('border-bottom','2px solid #305c67');
+         $('.connect_form-select').toggleClass('changed');
+     } else {
+         $('#magasin').css('color','#b3b5b4');
+     }
+  }); 
+});
+
 // GAME
 // QCM 1
 function attachCheckboxHandlers () {
