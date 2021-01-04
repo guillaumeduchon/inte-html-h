@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  //
+  //PAGE LOGIN
   if(location.pathname === "/login.html") {
     fullfiled_magasin()
     $("#magasin").on('click', ()=>{
@@ -7,7 +7,30 @@ $(document).ready(function() {
     })
   }
 
+  //PAGE PLATEAU
+  if(location.pathname === "/02_plateau.html") {
+    updatePlateau()
+  }
+
 });
+
+const updatePlateau = () => {
+let date_tab = [
+  {'status':'','day_num': 1, 'day_date':'04/01/2021'},
+  {'status':'','day_num': 2, 'day_date':'05/01/2021'},
+  {'status':'','day_num': 3, 'day_date':'06/01/2021'}
+];
+const today = new Date();
+const today_date = `${today.getDate()} / ${(today.getMonth() + 1)} / ${today.getFullYear()}`
+
+date_tab.map((el) => {
+  if(el.day_date === today_date) el.status = 'available'
+  if(el.day_date > today_date) el.status = 'unavailable'
+  if(el.day_date < today_date) el.status = 'expired'
+})
+
+  console.log('DATA: ',date_tab)
+}
 
 const fullfiled_magasin = async() => {
   await axios('/server/magasin.php').then((res)=> {
