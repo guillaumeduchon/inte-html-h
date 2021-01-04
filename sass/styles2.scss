@@ -26,7 +26,7 @@ body {
     font-family: 'Century Gothic', sans-serif;
 }
 
-/*** MESSAGE PAYSAGE ***/
+/*** MESSAGE PAYSAGE + SPLASHSCREEN ***/
 #turn {
     @media screen and (orientation:landscape) {
         display: none;
@@ -75,6 +75,25 @@ body {
     }
     100% {
         opacity: 0;
+    }
+}
+/*** - ***/
+
+/*** ANIMATIONS ***/
+@keyframes displayblock {
+    from {
+        top: -35px;
+    }
+    to {
+        top: 0;
+    }
+}
+@keyframes hideblock {
+    from {
+        top: 0;
+    }
+    to {
+        top: -35px;
     }
 }
 /*** - ***/
@@ -238,6 +257,20 @@ main {
         &.cs--form {
             background: url('../img/fond_screen_connect.jpg') bottom left no-repeat;
             background-size: contain;
+        }
+        .wrongId {
+            animation: displayblock 0.5s linear, hideblock 0.5s linear forwards 5s;
+            position: absolute;
+            display: block;
+            width: 100vw;
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: $white;
+            background-color: $red;
+            top: 0;
+            padding: 5px 0;
         }
         .connect_block {
             width: 65%;
@@ -744,6 +777,7 @@ main {
                     .question {text-shadow: 2px 0 0 $grey-bg, -2px 0 0 $grey-bg, 0 2px 0 $grey-bg, 0 -2px 0 $grey-bg, 1px 1px $grey-bg, -1px -1px 0 $grey-bg, 1px -1px 0 $grey-bg, -1px 1px 0 $grey-bg;}
                 }
                 .tryagain {
+                    animation: displayblock 0.5s linear, hideblock 0.5s linear forwards 5s;
                     background: $green;
                     color: $white;
                     position: absolute;
@@ -755,7 +789,7 @@ main {
                     padding: 7px 0;
                     font-size: 14px;
                     font-weight: bold;
-                    display: none;
+                    display: block;
                     @media screen and (orientation:landscape) and (max-width: 660px) {font-size: 13px;}
                 }
                 .question {
