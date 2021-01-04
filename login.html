@@ -19,20 +19,13 @@
                     <div class="connect_form">
                         <form action="">
                             <div class="connect_form-select">
-                                <select name="magasin" id="magasin">
-                                    <option value="" disabled selected>Point de vente</option>
-                                    <option value="parischamps">Séphora Champs-Elysées Paris-Est Quartier de la République</option>
-                                    <option value="marseille">Séphora Marseille</option>
-                                    <option value="lyon">Séphora Lyon</option>
-                                    <option value="toulouse">Séphora Toulouse</option>
-                                    <option value="galeries">Galeries Lafayette</option>
-                                </select>
+                                <select name="magasin" id="magasin"></select>
                             </div>
                             <input type="text" name="text" id="code" class="code" placeholder="Code Magasin">
                         </form>
                     </div>
                     <div class="cta_diamond">
-                        <a href="http://">JOUER</a>
+                        <span onclick="fetchLogin()">JOUER</span>
                     </div>
                 </div>
             </div>
@@ -47,5 +40,6 @@
     <!-- / -->
     <script src="js/function.js"></script>
     <script src="js/form_input.js"></script>
+    <script src="js/custom.js"></script>
 </body>
 </html>
