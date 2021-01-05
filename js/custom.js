@@ -30,7 +30,7 @@ const updatePlateau = () => {
   let today_date = `${DAY}/${MONTH}/${today.getFullYear()}`;
 
   date_tab.map((el) => {
-    if(el.day_date === today_date) {el.status = 'available';}
+    if(el.day_date === today_date) {el.status = 'available is-initial-select';}
     if(el.day_date > today_date) el.status = 'unavailable';
     if(el.day_date < today_date) el.status = 'expired';
   })
