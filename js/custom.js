@@ -16,7 +16,7 @@ const DAY_NUM = tab_day[0];
 
 $(document).ready(function() {
   //PAGE LOGIN
-  if(location.pathname === "/Hermes_Jeu_2021/login.html") {
+  if(location.pathname === "/login.html") {
     fullfiled_magasin();
     $("#magasin").on('click', ()=>{
       hideError();
@@ -25,12 +25,12 @@ $(document).ready(function() {
 
   //PAGE PLATEAU
   console.log(location.pathname);
-  if(location.pathname === "/Hermes_Jeu_2021/02_plateau.html") {
+  if(location.pathname === "/02_plateau.html") {
     updatePlateau();
   }
 
   //JEU JOUR 1
-  if(location.pathname === "/Hermes_Jeu_2021/10_Q1_game_drag.html") {
+  if(location.pathname === "/10_Q1_game_drag.html") {
     //Si un tour a déja été passé
     let trial = localStorage.getItem('trial')
     if (trial) {
@@ -113,7 +113,7 @@ const updatePlateau = () => {
 
 //Remplir la liste des magasins (page login)
 const fullfiled_magasin = async() => {
-  await axios('/Hermes_Jeu_2021/server/magasin.php').then((res)=> {
+  await axios('/server/magasin.php').then((res)=> {
     response = res.data;
     let select = $("#magasin")
     response.forEach((item, index)=> {
@@ -134,7 +134,7 @@ const fetch_login = (e) => {
 }
 
 var tryLogin = async (login, pwd) => {
-  response =  await axios.post('/Hermes_Jeu_2021/server/login.php', {login:login, pwd:pwd}, {
+  response =  await axios.post('/server/login.php', {login:login, pwd:pwd}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
         if (res.data[0].id !== undefined) {
@@ -149,7 +149,7 @@ var tryLogin = async (login, pwd) => {
 
 const fetch_question=()=> {
   const get_question = async () => {
-    response =  await fetch('/Hermes_Jeu_2021/server/question.php').then((res)=> res.data );
+    response =  await fetch('/server/question.php').then((res)=> res.data );
     return response;
   }
 
@@ -160,7 +160,6 @@ const fetch_question=()=> {
 
 //------------------------------------------------REPONSE---------------------------------------
 const check_answer = () => {
-  console.log('DATA: ','zre')
   let answers_el = $('.dropzone').find('.answer_button')
   let answers_tab = []
   answers_el.each((index, el)=>{
@@ -170,13 +169,13 @@ const check_answer = () => {
   fetch_reponse_valid(answers_tab)
 }
 
-const fetch_reponse = async (day_num)=> {
-    await axios.post('/Hermes_Jeu_2021/server/reponse.php', {day_num: day_num}, {
+const fetch_reponse = async ()=> {
+    await axios.post('/server/reponse.php', {day_num: DAY_NUM}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}})
         .then((res)=>{
           if (res.data[0].id !== undefined) {
             res.data.map(el=>(
-              $('.answers').append(`<div class="answer_button" id="${el.id}" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">${el.name}</div>`)
+              $('.answers').append(`<div class="answer_button" id="answer_${el.id}" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">${el.name}</div>`)
             ))
           } else {
             showError();
@@ -185,21 +184,29 @@ const fetch_reponse = async (day_num)=> {
 }
 
 const fetch_reponse_valid = async (answers)=> {
-  await axios.post('/Hermes_Jeu_2021/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
+  await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
         if (res.data[0].id !== undefined) {
-          var error_answer = false;
+          var error_answer = [];
           res.data.map(el=>{
             if(!answers.includes(String(el.id))) {
-              error_answer = true;
+              error_answer.push(el.id);
             }
           });
           
           if(res.data.length !== answers.length) error_answer = true;
 
-          if(error_answer) {
-            console.log("ERROR !!!");
+          if(error_answer.length > 0) {
+
+            $('.answer_button').each((index, el)=>{
+              let id = $(el).id.replace('answer_','')
+              if(Object.values(error_answer).includes(id)) {
+                $(el).addClass('lose')
+              } else {
+                $(el).addClass('win')
+              }
+            })
             //Do sommething when response has error
           }
 
