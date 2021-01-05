@@ -1,4 +1,17 @@
 $(document).ready(function() {
+  const DATE_TAB = [
+    { 1: '04/01/2021' },
+    { 2: '05/01/2021' },
+    { 3: '06/01/2021' },
+    { 4: '07/01/2021' },
+    { 5: '08/01/2021' },
+    { 6: '09/01/2021' },
+    { 7: '10/01/2021' },
+    { 8: '11/01/2021' },
+    { 9: '12/01/2021' },
+    { 10: '13/01/2021' }
+  ];
+
   //PAGE LOGIN
   if(location.pathname === "/login.html") {
     fullfiled_magasin();
@@ -12,7 +25,14 @@ $(document).ready(function() {
     updatePlateau();
   }
 
+  //JEU JOUR 1
+  if(location.pathname === "/10_Q1_game_drag.html") {
+    var date_today = get_date_today(new Date())
+    var num_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
+    fetch_reponse(num_day[0]);
+  }
 });
+//------------------------------------------------PLATEAU---------------------------------------
 
 const updatePlateau = () => {
   let date_tab = [
@@ -25,12 +45,12 @@ const updatePlateau = () => {
   let today = new Date();
   let montRaw = String(today.getUTCMonth() + 1);
   let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
-  let dayRaw = String(today.getUTCDate());//+ 1;
+  let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
   let today_date = `${DAY}/${MONTH}/${today.getFullYear()}`;
 
   date_tab.map((el) => {
-    if(el.day_date === today_date) {el.status = 'available';}
+    if(el.day_date === today_date) el.status = 'available';
     if(el.day_date > today_date) el.status = 'unavailable';
     if(el.day_date < today_date) el.status = 'expired';
   })
@@ -45,6 +65,10 @@ const updatePlateau = () => {
   compte_a_rebours();
 }
 
+
+//------------------------------------------------MAGASIN---------------------------------------
+
+//Remplir la liste des magasins (page login)
 const fullfiled_magasin = async() => {
   await axios('/server/magasin.php').then((res)=> {
     response = res.data;
@@ -54,18 +78,19 @@ const fullfiled_magasin = async() => {
     })
   })
 }
+//------------------------------------------------LOGIN---------------------------------------
 
-const fetchLogin = (e) => {
+const fetch_login = (e) => {
   var code = document.getElementById("code").value;
   var magasin = document.getElementById("magasin").value;
   if(magasin !== '') {
-    tryLogin(magasin, code);
+    try_login(magasin, code);
   }else{
     showError();
   }
 }
 
-var tryLogin = async (login, pwd) => {
+var try_login = async (login, pwd) => {
   response =  await axios.post('/server/login.php', {login:login, pwd:pwd}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
@@ -77,19 +102,60 @@ var tryLogin = async (login, pwd) => {
       });
   return response
 }
+//------------------------------------------------QUESTION---------------------------------------
 
-const fetchQuestion=()=> {
-  let datas = [];
-
-  const getQuestion = async () => {
+const fetch_question=()=> {
+  const get_question = async () => {
     response =  await fetch('/server/question.php').then((res)=> res.data );
     return response;
   }
 
-  getQuestion().then((res)=>{
+  get_question().then((res)=>{
     //
   })
 }
+
+//------------------------------------------------REPONSE---------------------------------------
+const add_answer = () => {
+  let answer = $('#reponse').val()
+
+}
+
+const check_answer = (e) => {
+  // e.preventDefault()
+  let answer = $('#reponse').val()
+}
+
+const fetch_reponse = async (day_num)=> {
+    await axios.post('/server/reponse.php', {day_num: day_num}, {
+      headers: {'Content-Type': 'application/json','mode': 'cors'}})
+        .then((res)=>{
+          if (res.data[0].id !== undefined) {
+            res.data.map(el=>(
+              $('.answers').append(`<div class="answer_button" id="${el.id}" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">${el.name}</div>`)
+            ))
+          } else {
+            showError();
+          } 
+        });
+}
+
+//------------------------------------------------INDICE---------------------------------------
+// const fetchIndice = (e) => {
+//   var day_num = document.getElementById("day_num").value;
+  
+//   response =  await axios.post('/server/indice.php', {day_num:day_num}, {
+//     headers: {'Content-Type': 'application/json','mode': 'cors'}})
+//       .then((res)=>{
+//         if (res.data[0].id !== undefined) {
+//           console.log('DATA: ','tutu')
+//         } else {
+//           showError();
+//         } 
+//       });
+
+//   return response
+// }
 
 //---------------------------------------------Utils
 
@@ -116,4 +182,14 @@ function compte_a_rebours(){
   $('.unavailable:eq(0)').find('.statut').html(`Disponible dans<br><strong> ${heures} H ${minutes} MIN ${secondes} S</strong>`);
   
   var actualisation = setTimeout("compte_a_rebours();", 1000);
+}
+
+function get_date_today(d) {
+  let today = d;
+  let montRaw = String(today.getUTCMonth() + 1);
+  let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
+  let dayRaw = String(today.getUTCDate());
+  let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
+
+  return `${DAY}/${MONTH}/${today.getFullYear()}`; 
 }

@@ -1,6 +1,6 @@
 <?php
     require_once 'config.php';
-
+    $question = []; $reponse = [];
     $date = date('d/m/Y');
     $date_tab = ['04/01/2021'=>'1', '05/01/2021'=>'2', '06/01/2021'=>'2'];
 
