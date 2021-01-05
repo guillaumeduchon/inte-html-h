@@ -1,3 +1,19 @@
+const DATE_TAB = [
+  { 1: '05/01/2021' },
+  { 2: '06/01/2021' },
+  { 3: '07/01/2021' },
+  { 4: '07/01/2021' },
+  { 5: '08/01/2021' },
+  { 6: '09/01/2021' },
+  { 7: '10/01/2021' },
+  { 8: '11/01/2021' },
+  { 9: '12/01/2021' },
+  { 10: '13/01/2021' }
+];
+var date_today = get_date_today(new Date())
+var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
+const DAY_NUM = tab_day[0];
+
 $(document).ready(function() {
   //PAGE LOGIN
   if(location.pathname === "/Hermes_Jeu_2021/login.html") {
@@ -13,7 +29,24 @@ $(document).ready(function() {
     updatePlateau();
   }
 
+  //JEU JOUR 1
+  if(location.pathname === "/10_Q1_game_drag.html") {
+    //Si un tour a déja été passé
+    let trial = localStorage.getItem('trial')
+    if (trial) {
+      if ( trial < 1) {
+          $('.game_button').remove();
+          onTimesUp();
+          $('.trial').find('img').attr('src','img/essai_0.png')
+      }
+      if ( trial >= 1 ) {
+        $('.trial').find('img').attr('src','img/essai_'+trial+'.png')
+      }
+    }
+    fetch_reponse(DAY_NUM);
+  }
 });
+//------------------------------------------------PLATEAU---------------------------------------
 
 const updatePlateau = () => {
   let date_tab = [
@@ -27,7 +60,7 @@ const updatePlateau = () => {
   let today = new Date();
   let montRaw = String(today.getUTCMonth() + 1);
   let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
-  let dayRaw = String(today.getUTCDate());//+ 1;
+  let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
   let today_date = `${DAY}/${MONTH}/${today.getFullYear()}`;
 
@@ -75,6 +108,10 @@ const updatePlateau = () => {
   compte_a_rebours();
 }
 
+
+//------------------------------------------------MAGASIN---------------------------------------
+
+//Remplir la liste des magasins (page login)
 const fullfiled_magasin = async() => {
   await axios('/Hermes_Jeu_2021/server/magasin.php').then((res)=> {
     response = res.data;
@@ -84,12 +121,13 @@ const fullfiled_magasin = async() => {
     })
   })
 }
+//------------------------------------------------LOGIN---------------------------------------
 
-const fetchLogin = (e) => {
+const fetch_login = (e) => {
   var code = document.getElementById("code").value;
   var magasin = document.getElementById("magasin").value;
   if(magasin !== '') {
-    tryLogin(magasin, code);
+    try_login(magasin, code);
   }else{
     showError();
   }
@@ -107,19 +145,86 @@ var tryLogin = async (login, pwd) => {
       });
   return response
 }
+//------------------------------------------------QUESTION---------------------------------------
 
-const fetchQuestion=()=> {
-  let datas = [];
-
-  const getQuestion = async () => {
-    response =  await fetch('/Hermes_Jeu_2021/server/question.php').then((res)=> res.data );
+const fetch_question=()=> {
+  const get_question = async () => {
+    response =  await fetch('/server/question.php').then((res)=> res.data );
     return response;
   }
 
-  getQuestion().then((res)=>{
+  get_question().then((res)=>{
     //
   })
 }
+
+//------------------------------------------------REPONSE---------------------------------------
+const check_answer = () => {
+  console.log('DATA: ','zre')
+  let answers_el = $('.dropzone').find('.answer_button')
+  let answers_tab = []
+  answers_el.each((index, el)=>{
+    answers_tab.push(el.id)
+  })
+
+  fetch_reponse_valid(answers_tab)
+}
+
+const fetch_reponse = async (day_num)=> {
+    await axios.post('/server/reponse.php', {day_num: day_num}, {
+      headers: {'Content-Type': 'application/json','mode': 'cors'}})
+        .then((res)=>{
+          if (res.data[0].id !== undefined) {
+            res.data.map(el=>(
+              $('.answers').append(`<div class="answer_button" id="${el.id}" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">${el.name}</div>`)
+            ))
+          } else {
+            showError();
+          } 
+        });
+}
+
+const fetch_reponse_valid = async (answers)=> {
+  await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
+    headers: {'Content-Type': 'application/json','mode': 'cors'}})
+      .then((res)=>{
+        if (res.data[0].id !== undefined) {
+          var error_answer = false;
+          res.data.map(el=>{
+            if(!answers.includes(String(el.id))) {
+              error_answer = true;
+            }
+          });
+          
+          if(res.data.length !== answers.length) error_answer = true;
+
+          if(error_answer) {
+            
+            //Do sommething when response has error
+          }
+
+        } else {
+          showError();
+        } 
+      });
+}
+
+//------------------------------------------------INDICE---------------------------------------
+// const fetchIndice = (e) => {
+//   var day_num = document.getElementById("day_num").value;
+  
+//   response =  await axios.post('/server/indice.php', {day_num:day_num}, {
+//     headers: {'Content-Type': 'application/json','mode': 'cors'}})
+//       .then((res)=>{
+//         if (res.data[0].id !== undefined) {
+//           console.log('DATA: ','tutu')
+//         } else {
+//           showError();
+//         } 
+//       });
+
+//   return response
+// }
 
 //---------------------------------------------Utils
 
@@ -158,4 +263,14 @@ function compte_a_rebours(){
     }
   })
   var actualisation = setTimeout("compte_a_rebours();", 1000);
+}
+
+function get_date_today(d) {
+  let today = d;
+  let montRaw = String(today.getUTCMonth() + 1);
+  let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
+  let dayRaw = String(today.getUTCDate());
+  let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
+
+  return `${DAY}/${MONTH}/${today.getFullYear()}`; 
 }

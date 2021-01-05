@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <main>
@@ -14,6 +15,7 @@
             <div class="flex_contain game_screen">
                 <div class="game_container flex_contain">
                     <div class="game_space">
+                        <div class="tryagain">dommage, mauvaise réponse, il vous reste une tentative !</div>
                         <div class="question">Une lettre et un nombre se cachent derrière le nom du nouveau parfum masculin Hermès.<br><strong>Trouvez ce que cette lettre et ce nombre évoquent.</strong></div>
                         <div class="game_quizz flex_contain q1 dragdrop">
                             <div class="dropzone">
@@ -22,12 +24,6 @@
                                 </div>
                             </div>
                             <div class="answers">
-                                <div class="answer_button" id="answer1" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Homme</div>
-                                <div class="answer_button" id="answer2" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Hiris</div>
-                                <div class="answer_button" id="answer3" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Humour</div>
-                                <div class="answer_button" id="answer4" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Hermès</div>
-                                <div class="answer_button" id="answer5" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">24 Rue du Faubourg St Honoré</div>
-                                <div class="answer_button" id="answer6" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">24 heures</div>
                             </div>
                         </div>
                     </div>
@@ -37,7 +33,7 @@
                             <span class="title">Essais restants</span>
                             <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
                         </div>
-                        <div class="game_button" id="valide"><span>VALIDER</span></div>
+                        <div class="game_button" onclick="check_answer()" id="valide"><span>VALIDER</span></div>
                     </div>
                 </div>
             </div>
@@ -53,6 +49,7 @@
     <script src="js/function.js"></script>
     <script src="js/game_timer.js"></script>
     <script src="js/drag_drop.js"></script>
+    <script src="js/custom.js"></script>
     <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/index.min.js"></script>
     <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/scroll-behaviour.min.js"></script>
     <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/hold-to-drag-issue/release/index.js"></script>
