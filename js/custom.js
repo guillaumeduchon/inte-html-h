@@ -51,11 +51,11 @@ const updatePlateau = () => {
 }
 
 const fullfiled_magasin = async() => {
-  await axios('/server/magasin.php').then((res)=> {
+  await axios('/Hermes_Jeu_2021/server/magasin.php').then((res)=> {
     response = res.data;
     let select = $("#magasin")
     response.forEach((item, index)=> {
-      select.append('<option value="'+item.ident+'"'+(index < 1 ? 'selected  disabled ':'')+'>'+item.name+'</option>');
+      select.append('<option value="'+item.ident+'"'+(index < 1 ? 'selected ':'')+'>'+item.name+'</option>');
     })
   })
 }
@@ -71,7 +71,7 @@ const fetchLogin = (e) => {
 }
 
 var tryLogin = async (login, pwd) => {
-  response =  await axios.post('/server/login.php', {login:login, pwd:pwd}, {
+  response =  await axios.post('/Hermes_Jeu_2021/server/login.php', {login:login, pwd:pwd}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
         if (res.data[0].id !== undefined) {
@@ -87,7 +87,7 @@ const fetchQuestion=()=> {
   let datas = [];
 
   const getQuestion = async () => {
-    response =  await fetch('/server/question.php').then((res)=> res.data );
+    response =  await fetch('/Hermes_Jeu_2021/server/question.php').then((res)=> res.data );
     return response;
   }
 
@@ -99,11 +99,11 @@ const fetchQuestion=()=> {
 //---------------------------------------------Utils
 
 function hideError() {
-  $('.wrongId').attr('display','none');
+  $('.wrongId').attr('style','display:none');
 }
 
 function showError() {
-  $('.wrongId').attr('display','block');
+  $('.wrongId').attr('style','display:block');
 }
 
 function compte_a_rebours(){

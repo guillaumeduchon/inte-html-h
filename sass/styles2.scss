@@ -263,7 +263,7 @@ main {
         .wrongId {
             animation: displayblock 0.5s linear, hideblock 0.5s linear forwards 5s;
             position: absolute;
-            display: block;
+            display: none;
             width: 100vw;
             font-size: 14px;
             line-height: 18px;
