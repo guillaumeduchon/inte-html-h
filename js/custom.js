@@ -30,7 +30,7 @@ $(document).ready(function() {
   }
 
   //JEU JOUR 1
-  if(location.pathname === "/10_Q1_game_drag.html") {
+  if(location.pathname === "/Hermes_Jeu_2021/10_Q1_game_drag.html") {
     //Si un tour a déja été passé
     let trial = localStorage.getItem('trial')
     if (trial) {
@@ -66,7 +66,7 @@ const updatePlateau = () => {
 
   date_tab.map((el) => {
     if(el.day_date === today_date) {
-      el.highlight = '';
+      el.highlight = 'highlight';
       el.status = 'available';
       el.img = 'img/fond_plateau_available.png';
       el.iconDisplay = 'hide';
@@ -149,7 +149,7 @@ var tryLogin = async (login, pwd) => {
 
 const fetch_question=()=> {
   const get_question = async () => {
-    response =  await fetch('/server/question.php').then((res)=> res.data );
+    response =  await fetch('/Hermes_Jeu_2021/server/question.php').then((res)=> res.data );
     return response;
   }
 
@@ -171,7 +171,7 @@ const check_answer = () => {
 }
 
 const fetch_reponse = async (day_num)=> {
-    await axios.post('/server/reponse.php', {day_num: day_num}, {
+    await axios.post('/Hermes_Jeu_2021/server/reponse.php', {day_num: day_num}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}})
         .then((res)=>{
           if (res.data[0].id !== undefined) {
@@ -185,7 +185,7 @@ const fetch_reponse = async (day_num)=> {
 }
 
 const fetch_reponse_valid = async (answers)=> {
-  await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
+  await axios.post('/Hermes_Jeu_2021/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
         if (res.data[0].id !== undefined) {
@@ -199,7 +199,7 @@ const fetch_reponse_valid = async (answers)=> {
           if(res.data.length !== answers.length) error_answer = true;
 
           if(error_answer) {
-            
+            console.log("ERROR !!!");
             //Do sommething when response has error
           }
 
