@@ -146,11 +146,16 @@ function compte_a_rebours(){
   $('.countdown').find('strong').html(`${heures} H ${minutes} MIN ${secondes} S`);
   $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong>`);
 
-  // $('.expired').find('.statut').html('Challenge terminé');
-  // $('.available').find('.statut').addClass('countdown');
-  // $('.countdown').html(`Il vous reste encore<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
-  // $('.unavailable').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible<br><strong>${jours[date_evenement.getDay()]}</strong>`);
-  // $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${heures} H ${minutes} MIN ${secondes} S</strong>`);
-  
+  $('.expired').find('.statut').html('Challenge terminé');
+  $('.available').find('.statut').addClass('countdown');
+  $('.countdown').html(`Il vous reste encore<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
+  $('.unavailable').each((index, el)=>{
+    if(index === 0){
+      $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${heures} H ${minutes} MIN ${secondes} S</strong>`);
+    } else {
+      var joursWeekEnd = (jours[date_evenement.getDay()+index] === undefined) ? jours[1] : (jours[date_evenement.getDay()+index])
+      $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible<br><strong>${joursWeekEnd}</strong>`);
+    }
+  })
   var actualisation = setTimeout("compte_a_rebours();", 1000);
 }
