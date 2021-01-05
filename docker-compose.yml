@@ -1,0 +1,23 @@
+version: '3.6'
+
+services:
+    nginx:
+        image: 'nginx:1.13.6'
+        container_name: dentiio-nginx
+        ports:
+            - '80:80'
+        volumes:
+            - './:/usr/share/nginx/html:cached'
+
+    database:
+        image: 'mariadb'
+        container_name: hermes-database
+        restart: 'on-failure'
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+
+networks: 
+  default:
+    name: dentiio

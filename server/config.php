@@ -26,6 +26,7 @@
     try {
         $pdo = new \PDO($dsn, $user, $pass, $options);
     } catch (\PDOException $e) {
+        var_dump('rjrjrj');
             $u = $e->getMessage();
         throw new \PDOException($e->getMessage(), (int)$e->getCode());
     }
