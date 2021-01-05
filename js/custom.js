@@ -1,6 +1,6 @@
 $(document).ready(function() {
   //PAGE LOGIN
-  if(location.pathname === "/login.html") {
+  if(location.pathname === "/Hermes_Jeu_2021/login.html") {
     fullfiled_magasin();
     $("#magasin").on('click', ()=>{
       hideError();
@@ -8,7 +8,8 @@ $(document).ready(function() {
   }
 
   //PAGE PLATEAU
-  if(location.pathname === "/02_plateau.html") {
+  console.log(location.pathname);
+  if(location.pathname === "/Hermes_Jeu_2021/02_plateau.html") {
     updatePlateau();
   }
 
@@ -30,13 +31,17 @@ const updatePlateau = () => {
   let today_date = `${DAY}/${MONTH}/${today.getFullYear()}`;
 
   date_tab.map((el) => {
-    if(el.day_date === today_date) {el.status = 'available is-initial-select';}
-    if(el.day_date > today_date) el.status = 'unavailable';
-    if(el.day_date < today_date) el.status = 'expired';
+    if(el.day_date === today_date) {el.highlight = 'is-initial-select', el.status = 'available'; el.img = 'img/fond_plateau_available.png';}
+    if(el.day_date > today_date) {el.highlight = '', el.status = 'unavailable'; el.img = 'img/fond_plateau_unavailable.png';}
+    if(el.day_date < today_date) {el.highlight = '', el.status = 'expired'; el.img = 'img/fond_plateau_expired.png';}
   })
 
   $('.carousel_cell').each((index, el)=>{
+    $(el).addClass(date_tab[index].highlight);
     $(el).addClass(date_tab[index].status);
+  })
+  $('.bg_cell').each((index, el)=>{
+    $(el).attr("src", date_tab[index].img);
   })
 
   $('.carousel_cell available').find('.status').addClass('countdown');
