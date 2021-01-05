@@ -5,7 +5,7 @@ const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 3;
 
-const TIME_LIMIT = 24;
+const TIME_LIMIT = localStorage.getItem('timeLeft') ?  Number(localStorage.getItem('timeLeft')) : 24;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -41,19 +41,39 @@ startTimer();
 
 function onTimesUp() {
   clearInterval(timerInterval);
+  $('.tryagain').attr('style','display:block;')
+
+  if (localStorage.getItem('trial')){
+    if(localStorage.getItem('trial') === '1') {
+      $('.trial').find('img').attr('src','img/essai_0.png')
+      localStorage.setItem('trial',0)
+    } 
+  }else {
+    $('.trial').find('img').attr('src','img/essai_1.png')
+    localStorage.setItem('trial',1)
+  }
+  return localStorage.getItem('trial')
 }
 
 function startTimer() {
   timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
+    localStorage.setItem('timeLeft',timeLeft)
     document.getElementById("timer_new-label").innerHTML = formatTime(
-      timeLeft
+      localStorage.getItem('timeLeft')
     );
     setCircleDasharray();
 
-    if (timeLeft === 0) {
-      onTimesUp();
+    if (localStorage.getItem('timeLeft') === '0') {
+      trial = onTimesUp();
+      if(trial >= 1) {
+         localStorage.setItem('timeLeft', 24);
+         timePassed = 0;
+          startTimer();
+      }else{
+         $('.game_button').remove()
+      }
     }
   }, 1000);
 }
@@ -70,7 +90,7 @@ function formatTime(time) {
 }
 
 function calculateTimeFraction() {
-  const rawTimeFraction =  timeLeft / TIME_LIMIT;
+  const rawTimeFraction =  localStorage.getItem('timeLeft') / TIME_LIMIT;
   return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
 }
 

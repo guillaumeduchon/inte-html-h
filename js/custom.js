@@ -1,17 +1,20 @@
-$(document).ready(function() {
-  const DATE_TAB = [
-    { 1: '04/01/2021' },
-    { 2: '05/01/2021' },
-    { 3: '06/01/2021' },
-    { 4: '07/01/2021' },
-    { 5: '08/01/2021' },
-    { 6: '09/01/2021' },
-    { 7: '10/01/2021' },
-    { 8: '11/01/2021' },
-    { 9: '12/01/2021' },
-    { 10: '13/01/2021' }
-  ];
+const DATE_TAB = [
+  { 1: '05/01/2021' },
+  { 2: '06/01/2021' },
+  { 3: '07/01/2021' },
+  { 4: '07/01/2021' },
+  { 5: '08/01/2021' },
+  { 6: '09/01/2021' },
+  { 7: '10/01/2021' },
+  { 8: '11/01/2021' },
+  { 9: '12/01/2021' },
+  { 10: '13/01/2021' }
+];
+var date_today = get_date_today(new Date())
+var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
+const DAY_NUM = tab_day[0];
 
+$(document).ready(function() {
   //PAGE LOGIN
   if(location.pathname === "/login.html") {
     fullfiled_magasin();
@@ -27,19 +30,29 @@ $(document).ready(function() {
 
   //JEU JOUR 1
   if(location.pathname === "/10_Q1_game_drag.html") {
-    var date_today = get_date_today(new Date())
-    var num_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
-    fetch_reponse(num_day[0]);
+    //Si un tour a déja été passé
+    let trial = localStorage.getItem('trial')
+    if (trial) {
+      if ( trial < 1) {
+          $('.game_button').remove();
+          onTimesUp();
+          $('.trial').find('img').attr('src','img/essai_0.png')
+      }
+      if ( trial >= 1 ) {
+        $('.trial').find('img').attr('src','img/essai_'+trial+'.png')
+      }
+    }
+    fetch_reponse(DAY_NUM);
   }
 });
 //------------------------------------------------PLATEAU---------------------------------------
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'04/01/2021'},
-    {'status':'','day_num': 2, 'day_date':'05/01/2021'},
-    {'status':'','day_num': 3, 'day_date':'06/01/2021'},
-    {'status':'','day_num': 4, 'day_date':'07/01/2021'}
+    {'status':'','day_num': 1, 'day_date':'05/01/2021'},
+    {'status':'','day_num': 2, 'day_date':'06/01/2021'},
+    {'status':'','day_num': 3, 'day_date':'07/01/2021'},
+    {'status':'','day_num': 4, 'day_date':'08/01/2021'}
   ];
 
   let today = new Date();
@@ -116,14 +129,15 @@ const fetch_question=()=> {
 }
 
 //------------------------------------------------REPONSE---------------------------------------
-const add_answer = () => {
-  let answer = $('#reponse').val()
+const check_answer = () => {
+  console.log('DATA: ','zre')
+  let answers_el = $('.dropzone').find('.answer_button')
+  let answers_tab = []
+  answers_el.each((index, el)=>{
+    answers_tab.push(el.id)
+  })
 
-}
-
-const check_answer = (e) => {
-  // e.preventDefault()
-  let answer = $('#reponse').val()
+  fetch_reponse_valid(answers_tab)
 }
 
 const fetch_reponse = async (day_num)=> {
@@ -138,6 +152,31 @@ const fetch_reponse = async (day_num)=> {
             showError();
           } 
         });
+}
+
+const fetch_reponse_valid = async (answers)=> {
+  await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
+    headers: {'Content-Type': 'application/json','mode': 'cors'}})
+      .then((res)=>{
+        if (res.data[0].id !== undefined) {
+          var error_answer = false;
+          res.data.map(el=>{
+            if(!answers.includes(String(el.id))) {
+              error_answer = true;
+            }
+          });
+          
+          if(res.data.length !== answers.length) error_answer = true;
+
+          if(error_answer) {
+            
+            //Do sommething when response has error
+          }
+
+        } else {
+          showError();
+        } 
+      });
 }
 
 //------------------------------------------------INDICE---------------------------------------

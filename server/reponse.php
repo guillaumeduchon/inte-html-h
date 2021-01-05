@@ -17,17 +17,25 @@
             if (!isset($decoded['day_num'])) {
                 die('Missed action');
             }
-
+            
             $day_num = (int)$decoded['day_num'];
             $stmt = $pdo->prepare("SELECT id FROM question WHERE jour=:jour");
             $stmt->execute(['jour'=> $day_num]);
             $aQuestion = $stmt->fetch();
+           
             if($aQuestion) {
-                $stmt = $pdo->prepare("SELECT * FROM reponse
-                WHERE question_id=:id");
+                if (!isset($decoded['valid'])) {
+                    $stmt = $pdo->prepare("SELECT * FROM reponse
+                    WHERE question_id=:id");
+                } else {
+                    $stmt = $pdo->prepare("SELECT * FROM reponse
+                    WHERE question_id=:id AND is_valid=1");
+                }
+                
                 $stmt->execute(['id' => $aQuestion['id']]);
                 $aReponse = $stmt->fetchAll();
             }
+            
         }
     }
     return  print json_encode($aReponse);
