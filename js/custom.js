@@ -33,7 +33,7 @@ const updatePlateau = () => {
 
   date_tab.map((el) => {
     if(el.day_date === today_date) {
-      el.highlight = 'is-initial-select';
+      el.highlight = '';
       el.status = 'available';
       el.img = 'img/fond_plateau_available.png';
       el.iconDisplay = 'hide';

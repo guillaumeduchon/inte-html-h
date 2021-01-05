@@ -795,7 +795,7 @@ main {
                     padding: 7px 0;
                     font-size: 14px;
                     font-weight: bold;
-                    display: block;
+                    display: none;
                     @media screen and (orientation:landscape) and (max-width: 660px) {font-size: 13px;}
                 }
                 .question {
