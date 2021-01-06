@@ -49,8 +49,12 @@ function onTimesUp() {
     localStorage.setItem('timeLeft', 24);
     timePassed = 0;
     startTimer();
-    localStorage.setItem('trial', Number(localStorage.getItem('trial')) -1);
-    $('.trial').find('img').attr('src','img/essai_'+localStorage.getItem('trial')+'.png')
+    current_trial = localStorage.getItem('trial');
+    console.log('current_trial :', )
+    localStorage.setItem('trial', Number(current_trial) - 1);
+    new_trial = localStorage.getItem('trial');
+    console.log('new_trial :', new_trial)
+    $('.trial').find('img').attr('src','img/essai_'+new_trial+'.png')
   }
 }
 
