@@ -223,6 +223,7 @@ const check_answer = () => {
   })
 
   fetch_reponse_valid(answers_tab);
+  onTimesUp();
 }
 
 const fetch_reponse = async ()=> {
