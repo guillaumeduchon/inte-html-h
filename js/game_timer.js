@@ -50,6 +50,7 @@ function onTimesUp(enter=null) {
     } else{
       $('.trial').find('img').attr('src','img/essai_1.png')
       localStorage.setItem('trial',1)
+      startTimer();
     }
   }else {
     $('.trial').find('img').attr('src','img/essai_1.png')
