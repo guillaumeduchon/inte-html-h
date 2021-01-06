@@ -46,15 +46,15 @@ function onTimesUp() {
   if(localStorage.getItem('trial') < 0) {
     $('.game_button').remove()
   } else {
-    setTimeout(()=>{
-      startTimer();
-    }, 1000)
     let current_trial =  Number(localStorage.getItem('trial'));
     console.log('current_trial :', current_trial)
     localStorage.setItem('trial', (current_trial - 1));
     let new_trial = localStorage.getItem('trial');
     console.log('new_trial :', new_trial)
     $('.trial').find('img').attr('src','img/essai_'+new_trial+'.png')
+    setTimeout(()=>{
+      startTimer();
+    }, 1000)
   }
 }
 
