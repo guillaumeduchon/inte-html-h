@@ -4,9 +4,10 @@
      * Author: Agence Surf
      */
 
-    // $protocol = 'https';
+    $protocol = 'https';
 
     // $host= $protocol . '://' . $_SERVER['SERVER_NAME'];
+
 
     $host = '127.0.0.1';
     $db   = 'jeu_hermes';
