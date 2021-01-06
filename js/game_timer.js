@@ -64,7 +64,7 @@ function startTimer() {
     setCircleDasharray();
 
     if (localStorage.getItem('timeLeft') === '0') {
-      check_answer();
+      check_answer('auto');
       reset();
       onTimesUp();
     }
