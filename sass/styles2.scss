@@ -24,6 +24,9 @@ $grey-bg: #f0f2f1;
 /** GENERAL **/
 body {
     font-family: 'Century Gothic', sans-serif;
+    position: fixed;
+    overflow: hidden;
+    overscroll-behavior-y: none;
 }
 
 /*** MESSAGE PAYSAGE + SPLASHSCREEN ***/
@@ -37,7 +40,7 @@ body {
         top: 0;
         left: 0;
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         background: rgba($black, 0.9);
         display: flex;
         align-items: center;
@@ -103,9 +106,11 @@ body {
 main {
     position: relative;
     margin: 0 auto;
+    overflow: hidden;
     .screen {
-        height: 100vh;
+        width: 100vw;
         height: calc(var(--vh, 1vh) * 100);
+        min-height: -webkit-fill-available;
         overflow: hidden;
     }
     .flex_contain {
@@ -278,7 +283,7 @@ main {
             width: 65%;
             background: url('../img/fond_border_block.png') 95% 0% no-repeat;
             background-size: 12%;
-            @media screen and (orientation:landscape) and (min-width:1024px) {padding: 20% 0;}
+            @media screen and (orientation:landscape) and (min-width:1024px) {padding: 15% 0;}
             .logo {
                 img {
                     max-width: 150px;
@@ -401,6 +406,19 @@ main {
         .carousel_plateau {
             width: 100%;
             height: 100%;
+            .flickity-button {
+                background: transparent;
+            }
+            .flickity-prev-next-button {
+                width: 16vw;
+                height: 40%;
+                border-radius: 0;
+                &.previous {left: 0;}
+                &.next {right: 0;}
+                .flickity-button-icon {
+                    fill: transparent;
+                }
+            }
             .carousel_cell {
                 width: 60%;
                 // height: 65%;
@@ -500,7 +518,6 @@ main {
                     display: flex;
                     flex-wrap: nowrap;
                     align-items: center;
-                    column-gap: 5px;
                     position: absolute;
                     top: 50%; /* poussé de la moitié de hauteur du référent */
                     transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
@@ -524,6 +541,10 @@ main {
                         font-size: 21px;
                         padding: 0;
                         img {&.icon{width: 12px;}}
+                    }
+                    .challenge_day {
+                        padding: 0 5px;
+                        @media screen and (orientation:landscape) and (min-width: 1024px) {padding: 0 10px}
                     }
                 }
                 .carousel_cell-content-linkgame {
@@ -815,7 +836,7 @@ main {
                     height: 75%;
                     @media screen and (orientation:landscape) and (min-width:1024px) {height: 90%;}
                     &.q1 {
-                        gap: 10px;
+                        .dropzone {padding-right: 10px;}
                         .dz {
                             width: 20vw;
                             min-height: 50vh;
@@ -939,9 +960,9 @@ main {
                         }
                     }
                     &.q6 {
-                        gap: 10px;
+                        grid-gap: 10px;
                         @media screen and (orientation:landscape) and (min-width: 760px) {
-                            gap: 15px;
+                            grid-gap: 15px;
                         }
                         .grid_parfums {
                             img {
@@ -1057,8 +1078,8 @@ main {
                         }
                     }
                     &.q9 {
-                        gap: 10px;
                         .grid_parfums {
+                            padding-right: 10px;
                             img {
                                 height: 82px;
                                 @media screen and (orientation:landscape) and (min-width: 1024px) {height: 112px;}
@@ -1072,6 +1093,7 @@ main {
                             display: grid;
                             grid-template-columns: repeat(1, 1fr);
                             grid-gap: 10px;
+                            padding-right: 10px;
                             .dz {
                                 width: 25vw;
                                 height: 36px;
@@ -1305,14 +1327,15 @@ main {
                 width: 20vw;
                 @media screen and (orientation:landscape) and (min-width:1024px) {width: 17vw;}
                 @media screen and (orientation:landscape) and (min-width:1360px) {width: 14vw;}
-                height: 100vh;
+                // height: 100vh;
                 position: relative;
                 display: flex;
                 flex-wrap: wrap;
-                justify-content: space-between;
+                // justify-content: space-between;
                 align-items: center;
                 #timer {
-                    margin-top: -10px;
+                    // margin-top: -10px;
+                    padding-bottom: 30px;
                 }
                 .try {
                     text-align: center;
@@ -1342,8 +1365,7 @@ main {
                     margin: 0 auto;
                     font-weight: bold;
                     color: $white;
-                    margin-top: -32px;
-                    margin-bottom: -30px;
+                    margin-top: 12px;
                     @media screen and (orientation:landscape) and (min-width:1024px) {
                         width: 120px;
                         height: 120px;
@@ -1542,6 +1564,11 @@ main {
                 height: 190px;
                 width: 190px;
                 font-size: 50px;
+                @media screen and (orientation:landscape) and (max-width: 1024px) {
+                    height: 150px;
+                    width: 150px;
+                    font-size: 40px;
+                }
                 margin-top: -22px;
                 margin-bottom: -18px;
                 &:after {
