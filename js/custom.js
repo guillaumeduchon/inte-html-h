@@ -241,7 +241,6 @@ const fetch_reponse = async ()=> {
 }
 
 const fetch_reponse_valid = async (answers_tab)=> {
-  onTimesUp();
   await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((valid_resp)=>{
@@ -257,6 +256,7 @@ const fetch_reponse_valid = async (answers_tab)=> {
           //If has error
           if(error_answer.length > 0) {
             if(localStorage.getItem('trial') === '0' && answers_tab.length < 1) goLoose();
+
             var nbr_answer = 0;
             $('.answer_button').each((index, el)=>{
               let id_el = $(el).attr('id'); let id = getAnswerId(id_el);
@@ -266,6 +266,7 @@ const fetch_reponse_valid = async (answers_tab)=> {
                 nbr_answer+= 1;
                 $(el).addClass('win');
               }
+              onTimesUp();
             });
             //if error not in user answers
             if(valid_resp.data.length === nbr_answer && error_answer.length < 1) {
