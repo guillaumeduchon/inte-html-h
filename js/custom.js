@@ -250,7 +250,7 @@ const fetch_reponse_valid = async (answers_tab)=> {
           });
           
           //If has error
-          if(error_answer.length > 0) {r
+          if(error_answer.length > 0) {
             var nbr_good_answer = 0;
             $('.answer_button').each((index, el)=>{
               let id_el = $(el).attr('id');
