@@ -46,12 +46,7 @@ function onTimesUp() {
   if(localStorage.getItem('trial') < 0) {
     $('.game_button').remove()
   } else {
-    let current_trial =  Number(localStorage.getItem('trial'));
-    console.log('current_trial :', current_trial)
-    localStorage.setItem('trial', (current_trial - 1));
-    let new_trial = localStorage.getItem('trial');
-    console.log('new_trial :', new_trial)
-    $('.trial').find('img').attr('src','img/essai_'+new_trial+'.png')
+    set_new_trial()
     startTimer();
   }
 }
@@ -79,6 +74,20 @@ function startTimer() {
 function reset(){
   localStorage.setItem('timeLeft', 24);
   timePassed = 0;
+}
+
+function set_new_trial(){
+  let current_trial =  Number(localStorage.getItem('trial'));
+  console.log('current_trial :', current_trial)
+  localStorage.setItem('trial', (current_trial - 1));
+  let new_trial = localStorage.getItem('trial');
+  console.log('new_trial :', new_trial)
+  $('.trial').find('img').attr('src','img/essai_'+new_trial+'.png')
+}
+
+function valid_before_times_up(){
+  set_new_trial()
+  reset();
 }
 
 function formatTime(time) {

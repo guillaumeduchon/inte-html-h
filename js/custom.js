@@ -266,6 +266,8 @@ const fetch_reponse_valid = async (answers_tab)=> {
             if(valid_resp.data.length === nbr_good_answer && error_answer.length < 1) {
               goWin();
             }
+            
+            valid_before_times_up()
           } else {
             goWin();
           }
