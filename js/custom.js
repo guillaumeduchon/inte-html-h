@@ -241,7 +241,7 @@ const fetch_reponse = async ()=> {
 }
 
 const fetch_reponse_valid = async (answers_tab)=> {
-  onTimesUp();
+  startTimer();
   await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((valid_resp)=>{
