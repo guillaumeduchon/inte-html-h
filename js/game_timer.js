@@ -86,6 +86,7 @@ function set_new_trial(){
 }
 
 function valid_before_times_up(){
+  console.log('efef :', Number(localStorage.getItem('trial'))
   if(Number(localStorage.getItem('trial')) <= 0) {
     goLoose()
   } else {

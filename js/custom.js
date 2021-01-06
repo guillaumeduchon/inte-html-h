@@ -250,7 +250,7 @@ const fetch_reponse_valid = async (answers_tab)=> {
           });
           
           //If has error
-          if(error_answer.length > 0) {
+          if(error_answer.length > 0) {r
             var nbr_good_answer = 0;
             $('.answer_button').each((index, el)=>{
               let id_el = $(el).attr('id');
@@ -266,7 +266,7 @@ const fetch_reponse_valid = async (answers_tab)=> {
             if(valid_resp.data.length === nbr_good_answer && error_answer.length < 1) {
               goWin();
             }
-            
+
             valid_before_times_up()
           } else {
             goWin();
