@@ -52,9 +52,7 @@ function onTimesUp() {
     let new_trial = localStorage.getItem('trial');
     console.log('new_trial :', new_trial)
     $('.trial').find('img').attr('src','img/essai_'+new_trial+'.png')
-    setTimeout(()=>{
-      startTimer();
-    }, 1000)
+    startTimer();
   }
 }
 
@@ -72,11 +70,15 @@ function startTimer() {
 
     if (localStorage.getItem('timeLeft') === '0') {
       check_answer();
-      localStorage.setItem('timeLeft', 24);
-      timePassed = 0;
+      reset();
       onTimesUp();
     }
   }, 1000);
+}
+
+function reset(){
+  localStorage.setItem('timeLeft', 24);
+  timePassed = 0;
 }
 
 function formatTime(time) {
