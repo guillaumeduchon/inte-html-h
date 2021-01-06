@@ -47,7 +47,12 @@ function onTimesUp(enter=null) {
     if(localStorage.getItem('trial') === '1' && enter === null) {
       $('.trial').find('img').attr('src','img/essai_0.png')
       localStorage.setItem('trial',0)
-    } else{
+    } else if(localStorage.getItem('trial') === '1' && enter !== null){
+      $('.trial').find('img').attr('src','img/essai_1.png')
+      localStorage.setItem('trial',0)
+      console.log('toto')
+    }
+    else{
       $('.trial').find('img').attr('src','img/essai_1.png')
       localStorage.setItem('trial',1)
       localStorage.setItem('timeLeft', 24);
