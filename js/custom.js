@@ -216,7 +216,6 @@ const fetch_question=()=> {
 
 //------------------------------------------------REPONSE---------------------------------------
 const check_answer = () => {
-  localStorage.setItem('trial', Number(localStorage.getItem('trial')) -1);
   fetch_reponse_valid(get_user_answers());
 }
 

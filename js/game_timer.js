@@ -43,7 +43,12 @@ startTimer();
 function onTimesUp() {
   clearInterval(timerInterval);
   $('.tryagain').attr('style','display:block;')
-  $('.trial').find('img').attr('src','img/essai_'+localStorage.getItem('trial')+'.png')
+  if(localStorage.getItem('trial') < 0) {
+    $('.game_button').remove()
+  } else {
+    localStorage.setItem('trial', Number(localStorage.getItem('trial')) -1);
+    $('.trial').find('img').attr('src','img/essai_'+localStorage.getItem('trial')+'.png')
+  }
 }
 
 function startTimer() {
@@ -65,8 +70,6 @@ function startTimer() {
         localStorage.setItem('timeLeft', 24);
         timePassed = 0;
         startTimer();
-      }else{
-        $('.game_button').remove()
       }
     }
   }, 1000);
