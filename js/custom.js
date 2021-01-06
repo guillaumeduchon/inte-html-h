@@ -241,8 +241,8 @@ const fetch_reponse = async ()=> {
         });
 }
 
-const fetch_reponse_valid = async ()=> {
-  if(localStorage.getItem('trial') === '0') goLoose()
+const fetch_reponse_valid = async (answers_tab)=> {
+  if(localStorage.getItem('trial') === '0' && answers_tab.length < 1) goLoose();
 
   await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
