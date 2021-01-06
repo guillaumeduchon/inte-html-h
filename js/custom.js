@@ -11,6 +11,7 @@ const DATE_TAB = [
   { 10: '15/01/2021' }
 ];
 var date_today = get_date_today(new Date())
+console.log('TEST :', date_today)
 var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
 const DAY_NUM = tab_day[0];
 
