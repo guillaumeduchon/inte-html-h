@@ -1306,7 +1306,7 @@ main {
                 width: 20vw;
                 @media screen and (orientation:landscape) and (min-width:1024px) {width: 17vw;}
                 @media screen and (orientation:landscape) and (min-width:1360px) {width: 14vw;}
-                height: 100vh;
+                // height: 100vh;
                 position: relative;
                 display: flex;
                 flex-wrap: wrap;
@@ -1315,6 +1315,7 @@ main {
                 padding: 10px 0;
                 #timer {
                     margin-top: -10px;
+                    padding-bottom: 10vw;
                 }
                 .try {
                     text-align: center;
@@ -1351,8 +1352,8 @@ main {
                     margin: 0 auto;
                     font-weight: bold;
                     color: $white;
-                    margin-top: -32px;
-                    // margin-bottom: -22px;
+                    margin-top: 5vw;
+                    margin-bottom: -22px;
                     @media screen and (orientation:landscape) and (min-width:1024px) {
                         width: 120px;
                         height: 120px;
