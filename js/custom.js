@@ -389,7 +389,7 @@ function make_result(element) {
     }else{
       element.addClass('win')
       localStorage.setItem('timeLeft', 24);
-      localStorage.setItem('timePassed', 0);
+      localStorage.setItem('trial', 1)
     }
   }
 }
