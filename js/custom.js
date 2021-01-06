@@ -380,7 +380,9 @@ function goWin() {
   
 } 
 
-function goLoose() {window.location.href = "07_perdu.html";}
+function goLoose() { setTimeout(()=>{
+  window.location.href = "07_perdu.html";
+},2000)}
 
 function getAnswerId(answer) {return Number(answer.replace('answer_',''));}
 
