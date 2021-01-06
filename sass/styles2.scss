@@ -402,6 +402,19 @@ main {
         .carousel_plateau {
             width: 100%;
             height: 100%;
+            .flickity-button {
+                background: transparent;
+            }
+            .flickity-prev-next-button {
+                width: 16vw;
+                height: 100%;
+                border-radius: 0;
+                &.previous {left: 0;}
+                &.next {right: 0;}
+                .flickity-button-icon {
+                    fill: transparent;
+                }
+            }
             .carousel_cell {
                 width: 60%;
                 // height: 65%;
@@ -501,7 +514,6 @@ main {
                     display: flex;
                     flex-wrap: nowrap;
                     align-items: center;
-                    column-gap: 5px;
                     position: absolute;
                     top: 50%; /* poussé de la moitié de hauteur du référent */
                     transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
@@ -525,6 +537,9 @@ main {
                         font-size: 21px;
                         padding: 0;
                         img {&.icon{width: 12px;}}
+                    }
+                    .challenge_day {
+                        padding: 0 5px;
                     }
                 }
                 .carousel_cell-content-linkgame {
