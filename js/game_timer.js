@@ -57,8 +57,7 @@ function onTimesUp() {
 
 function startTimer() {
   timerInterval = setInterval(() => {
-    console.log('TEST :', Number(localStorage.getItem('timePassed'))+1)
-    timePassed = localStorage.getItem('timePassed') += 1;
+    timePassed = Number(localStorage.getItem('timePassed')) + 1;
     localStorage.setItem('timePassed', timePassed);
     timeLeft = TIME_LIMIT - timePassed;
     localStorage.setItem('timeLeft',timeLeft)
