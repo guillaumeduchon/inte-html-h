@@ -383,7 +383,7 @@ function make_result(element) {
     element.addClass('lose')
   } else {
     //Si on est au dernier essaie et qu'il y a une erreur
-    if(localStorage.getItem('trial') === '1'){
+    if(localStorage.getItem('trial') === '0'){
       element.addClass('lose')
       goLoose();
     }else{
