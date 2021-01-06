@@ -816,7 +816,7 @@ main {
                     height: 75%;
                     @media screen and (orientation:landscape) and (min-width:1024px) {height: 90%;}
                     &.q1 {
-                        gap: 10px;
+                        grid-gap: 10px;
                         .dz {
                             width: 20vw;
                             min-height: 50vh;
@@ -940,9 +940,9 @@ main {
                         }
                     }
                     &.q6 {
-                        gap: 10px;
+                        grid-gap: 10px;
                         @media screen and (orientation:landscape) and (min-width: 760px) {
-                            gap: 15px;
+                            grid-gap: 15px;
                         }
                         .grid_parfums {
                             img {
@@ -1058,7 +1058,7 @@ main {
                         }
                     }
                     &.q9 {
-                        gap: 10px;
+                        grid-gap: 10px;
                         .grid_parfums {
                             img {
                                 height: 82px;
@@ -1352,7 +1352,7 @@ main {
                     font-weight: bold;
                     color: $white;
                     margin-top: -32px;
-                    margin-bottom: -22px;
+                    // margin-bottom: -22px;
                     @media screen and (orientation:landscape) and (min-width:1024px) {
                         width: 120px;
                         height: 120px;
