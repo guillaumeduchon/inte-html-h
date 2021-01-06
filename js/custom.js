@@ -221,7 +221,7 @@ const check_answer = () => {
   answers_el.each((index, el)=>{
     answers_tab.push(el.id)
   })
-  onTimesUp();
+
   fetch_reponse_valid(answers_tab);
 }
 
@@ -241,8 +241,7 @@ const fetch_reponse = async ()=> {
 }
 
 const fetch_reponse_valid = async (answers_tab)=> {
-  if(localStorage.getItem('trial') === '1' && answers_tab.length < 1) goLoose();
-
+  onTimesUp();
   await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((valid_resp)=>{
@@ -257,6 +256,7 @@ const fetch_reponse_valid = async (answers_tab)=> {
           
           //If has error
           if(error_answer.length > 0) {
+            if(localStorage.getItem('trial') === '1' && answers_tab.length < 1) goLoose();
             var nbr_answer = 0;
             $('.answer_button').each((index, el)=>{
               let id_el = $(el).attr('id'); let id = getAnswerId(id_el);
