@@ -78,16 +78,21 @@ function reset(){
 
 function set_new_trial(){
   let current_trial =  Number(localStorage.getItem('trial'));
-  console.log('current_trial :', current_trial)
   localStorage.setItem('trial', (current_trial - 1));
   let new_trial = localStorage.getItem('trial');
-  console.log('new_trial :', new_trial)
   $('.trial').find('img').attr('src','img/essai_'+new_trial+'.png')
+
+  return new_trial
 }
 
 function valid_before_times_up(){
-  set_new_trial()
-  reset();
+  if(Number(localStorage.getItem('trial')) <= 0) {
+    goLoose()
+  } else {
+    set_new_trial()
+    reset();
+  }
+  
 }
 
 function formatTime(time) {
