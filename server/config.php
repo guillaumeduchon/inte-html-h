@@ -8,6 +8,13 @@
 
     // $host= $protocol . '://' . $_SERVER['SERVER_NAME'];
 
+    // $host = '127.0.0.1';
+    // $db   = 'jeu_hermes';
+    // $user = 'hermes_surf';
+    // $pass = 'Surf2020!';
+    // $port = "3306";
+    // $charset = 'utf8mb4';
+
     $host = '127.0.0.1';
     $db   = 'hermes';
     $user = 'root';
@@ -26,7 +33,6 @@
     try {
         $pdo = new \PDO($dsn, $user, $pass, $options);
     } catch (\PDOException $e) {
-        var_dump('rjrjrj');
             $u = $e->getMessage();
         throw new \PDOException($e->getMessage(), (int)$e->getCode());
     }

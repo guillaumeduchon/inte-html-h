@@ -15,6 +15,20 @@ var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_toda
 const DAY_NUM = tab_day[0];
 
 $(document).ready(function() {
+  /*
+  *------------------------------------------------------------
+  *------------ROUTEUR------------------
+  *------------------------------------------------------------
+  *------------------------------------------------------------
+  */
+
+ /*------------------------------------------------------------RESTRICTIONS || MIDDLEWARE */
+
+ hasLooseDay() ? goLoose() : null;
+ hasWinDay() ? goWin() : null;
+  
+ /*------------------------------------------------------------ END RESTRICTIONS || END MIDDLEWARE */
+
   //PAGE LOGIN
   if(location.pathname === "/login.html") {
     fullfiled_magasin();
@@ -25,6 +39,11 @@ $(document).ready(function() {
 
   //PAGE PLATEAU
   if(location.pathname === "/02_plateau.html") {
+    updatePlateau();
+  }
+
+  //SHOW INDICE
+  if(location.pathname === "/08_indice.html") {
     updatePlateau();
   }
 
@@ -44,7 +63,14 @@ $(document).ready(function() {
     }
     fetch_reponse(DAY_NUM);
   }
+  /*
+  *------------------------------------------------------------
+  *------------END ROUTEUR------------------
+  *------------------------------------------------------------
+  *------------------------------------------------------------
+  */
 });
+
 //------------------------------------------------PLATEAU---------------------------------------
 
 const updatePlateau = () => {
@@ -132,12 +158,13 @@ const fetch_login = (e) => {
   }
 }
 
-var tryLogin = async (login, pwd) => {
+const try_login = async (login, pwd) => {
   response =  await axios.post('/server/login.php', {login:login, pwd:pwd}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
         if (res.data[0].id !== undefined) {
-            window.location.href = "02_plateau.html";
+          logged()
+          window.location.href = "02_plateau.html";
         } else {
           showError();
         } 
@@ -164,7 +191,6 @@ const check_answer = () => {
   answers_el.each((index, el)=>{
     answers_tab.push(el.id)
   })
-  console.log('answers_tab: ',answers_tab)
   fetch_reponse_valid(answers_tab)
 }
 
@@ -185,28 +211,35 @@ const fetch_reponse = async ()=> {
 const fetch_reponse_valid = async (answers_tab)=> {
   await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
-      .then((res)=>{
-        if (res.data[0].id !== undefined) {
+      .then((valid_resp)=>{
+        //if there are at least one good answer return by api
+        if (valid_resp.data[0].id !== undefined) {
           var error_answer = [];
-          res.data.map(el=>{
-            if(!answers_tab.includes('answer_'+el.id)) {
-              error_answer.push(el.id);
-            }
+          $('.answer_button').each((index, el)=>{
+            let id_el = $(el).attr('id'); let id = getAnswerId(id_el); let find = false;
+            Object.values(valid_resp.data).map((rep)=>{ if(rep.id === id) find = true; })
+            if(!find) error_answer.push(id);
           });
+          
+          //If has error
           if(error_answer.length > 0) {
+            var nbr_answer = 0;
             $('.answer_button').each((index, el)=>{
-              let id_el = $(el).attr('id');
-              let id = Number(id_el.replace('answer_',''));
-              if(Object.values(error_answer).includes(id)) {
-                $(el).addClass('win')
-              } else {
+              let id_el = $(el).attr('id'); let id = getAnswerId(id_el);
+              if (error_answer.includes(id)) {
                 $(el).addClass('lose')
+              } else {
+                nbr_answer+= 1;
+                $(el).addClass('win');
               }
-            })
+            });
+            //if error not in user answers
+            if(valid_resp.data.length === nbr_answer) {
+              goWin();
+            }
           } else {
-            window.location.href = "07_gagne.html";
+            goWin();
           }
-
         } else {
           showError();
         } 
@@ -239,6 +272,72 @@ function hideError() {
 function showError() {
   $('.wrongId').attr('style','display:block');
 }
+
+function hasWinDay() {
+  let hasWin = false;
+  if(localStorage.getItem('win_day') !== null) {
+    let win_day = localStorage.getItem('win_day');
+    if(win_day !== null) {
+      let win_day_array = Object.values(JSON.parse(win_day));
+      if(win_day_array.includes(DAY_NUM))  hasWin = true;
+    }
+  } 
+
+  return hasWin;
+}
+
+function hasLooseDay() {
+  let hasLoose = false;
+  if(localStorage.getItem('trial') && Number(localStorage.getItem('trial')) < 1) {
+    let win_day = localStorage.getItem('win_day');
+    if(win_day !== null) {
+      let win_day_array = Object.values(JSON.parse(win_day));
+      if(win_day_array[DAY_NUM] === 'false')  hasLoose = true;
+    }
+  } 
+
+  return hasLoose;
+}
+
+function isLogged(){
+  let logged = localStorage.getItem('logged') === null ? false: true;
+  return logged
+}
+
+function logged(){
+  localStorage.setItem('logged','true');
+}
+
+function disconnect(){
+  localStorage.removeItem('logged');
+}
+
+function goWin() {
+  $('.game_button').remove()
+
+  let win_day = localStorage.getItem('win_day');
+  if(win_day !== null) {
+    let win_day_array = Object.values(JSON.parse(win_day));
+    if(win_day_array[DAY_NUM]!== undefined) {
+      setTimeout(()=>{window.location.href = "07_gagne.html"},1000);
+    } else {
+      win_day_array.push(DAY_NUM);
+      localStorage.setItem('win_day', JSON.stringify(win_day_array));
+    }
+    
+  } else{
+    localStorage.setItem('win_day', JSON.stringify([DAY_NUM]));
+    setTimeout(()=>{
+      window.location.href = "07_gagne.html"
+    },1000);
+  }
+  
+  
+} 
+
+function goLoose() {window.location.href = "07_perdu.html";}
+
+function getAnswerId(answer) {return Number(answer.replace('answer_',''));}
 
 function compte_a_rebours(){
   var date_actuelle = new Date();
