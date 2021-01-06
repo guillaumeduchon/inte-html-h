@@ -816,7 +816,7 @@ main {
                     height: 75%;
                     @media screen and (orientation:landscape) and (min-width:1024px) {height: 90%;}
                     &.q1 {
-                        column-gap: 10px;
+                        .dropzone {padding-right: 10px;}
                         .dz {
                             width: 20vw;
                             min-height: 50vh;
@@ -1058,8 +1058,8 @@ main {
                         }
                     }
                     &.q9 {
-                        column-gap: 10px;
                         .grid_parfums {
+                            padding-right: 10px;
                             img {
                                 height: 82px;
                                 @media screen and (orientation:landscape) and (min-width: 1024px) {height: 112px;}
@@ -1073,6 +1073,7 @@ main {
                             display: grid;
                             grid-template-columns: repeat(1, 1fr);
                             grid-gap: 10px;
+                            padding-right: 10px;
                             .dz {
                                 width: 25vw;
                                 height: 36px;
