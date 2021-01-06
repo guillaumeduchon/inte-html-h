@@ -5,7 +5,7 @@ const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 3;
 
-const TIME_LIMIT = localStorage.getItem('timeLeft') ?  Number(localStorage.getItem('timeLeft')) : 24;
+const TIME_LIMIT = localStorage.getItem('timeLeft') !== null ?  Number(localStorage.getItem('timeLeft')) : 24;
 localStorage.setItem('timePassed', 0);
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
