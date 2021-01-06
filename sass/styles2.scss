@@ -816,7 +816,7 @@ main {
                     height: 75%;
                     @media screen and (orientation:landscape) and (min-width:1024px) {height: 90%;}
                     &.q1 {
-                        grid-gap: 10px;
+                        column-gap: 10px;
                         .dz {
                             width: 20vw;
                             min-height: 50vh;
@@ -1058,7 +1058,7 @@ main {
                         }
                     }
                     &.q9 {
-                        grid-gap: 10px;
+                        column-gap: 10px;
                         .grid_parfums {
                             img {
                                 height: 82px;
