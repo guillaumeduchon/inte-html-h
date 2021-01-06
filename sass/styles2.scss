@@ -1337,6 +1337,13 @@ main {
                         }
                     }
                 }
+                .game_button_container {
+                    position: relative;
+                    width: 100%;
+                    height: 60px;
+                    margin: 0 auto;
+                    overflow: hidden;
+                }
                 .game_button {
                     position: relative;
                     height: 90px;
@@ -1345,7 +1352,7 @@ main {
                     font-weight: bold;
                     color: $white;
                     margin-top: -32px;
-                    // margin-bottom: -30px;
+                    margin-bottom: -22px;
                     @media screen and (orientation:landscape) and (min-width:1024px) {
                         width: 120px;
                         height: 120px;
