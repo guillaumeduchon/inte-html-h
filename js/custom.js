@@ -388,6 +388,7 @@ function make_result(element) {
       goLoose();
     }else{
       element.addClass('win')
+      onTimesUp()
     }
   }
 }
