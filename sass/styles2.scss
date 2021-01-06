@@ -112,6 +112,8 @@ main {
         height: calc(var(--vh, 1vh) * 100);
         min-height: -webkit-fill-available;
         overflow: hidden;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
     }
     .flex_contain {
         display: flex;

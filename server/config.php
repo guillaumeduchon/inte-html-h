@@ -6,7 +6,7 @@
 
     $protocol = 'https';
 
-    // $host= $protocol . '://' . $_SERVER['SERVER_NAME'];
+    $host= $protocol . '://' . $_SERVER['SERVER_NAME'];
 
 
     $host = '127.0.0.1';
