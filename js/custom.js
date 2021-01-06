@@ -221,9 +221,8 @@ const check_answer = () => {
   answers_el.each((index, el)=>{
     answers_tab.push(el.id)
   })
-
-  fetch_reponse_valid(answers_tab);
   onTimesUp();
+  fetch_reponse_valid(answers_tab);
 }
 
 const fetch_reponse = async ()=> {
