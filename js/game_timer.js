@@ -39,15 +39,18 @@ document.getElementById("timer").innerHTML = `
 
 startTimer();
 
-function onTimesUp() {
+function onTimesUp(enter=null) {
   clearInterval(timerInterval);
   $('.tryagain').attr('style','display:block;')
 
   if (localStorage.getItem('trial')){
-    if(localStorage.getItem('trial') === '1') {
+    if(localStorage.getItem('trial') === '1' && enter === null) {
       $('.trial').find('img').attr('src','img/essai_0.png')
       localStorage.setItem('trial',0)
-    } 
+    } else{
+      $('.trial').find('img').attr('src','img/essai_1.png')
+      localStorage.setItem('trial',1)
+    }
   }else {
     $('.trial').find('img').attr('src','img/essai_1.png')
     localStorage.setItem('trial',1)
