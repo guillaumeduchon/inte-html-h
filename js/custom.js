@@ -159,6 +159,7 @@ const fetch_login = (e) => {
 }
 
 const try_login = async (login, pwd) => {
+
   response =  await axios.post('/server/login.php', {login:login, pwd:pwd}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
@@ -196,6 +197,7 @@ const check_answer = () => {
 
 const fetch_reponse = async ()=> {
     await axios.post('/server/reponse.php', {day_num: DAY_NUM}, {
+
       headers: {'Content-Type': 'application/json','mode': 'cors'}})
         .then((res)=>{
           if (res.data[0].id !== undefined) {
@@ -207,6 +209,7 @@ const fetch_reponse = async ()=> {
           } 
         });
 }
+
 
 const fetch_reponse_valid = async (answers_tab)=> {
   await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
