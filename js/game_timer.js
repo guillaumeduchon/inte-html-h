@@ -51,6 +51,7 @@ function onTimesUp(enter=null) {
       $('.trial').find('img').attr('src','img/essai_1.png')
       localStorage.setItem('trial',1)
       startTimer();
+      localStorage.setItem('timeLeft', 24);
     }
   }else {
     $('.trial').find('img').attr('src','img/essai_1.png')
