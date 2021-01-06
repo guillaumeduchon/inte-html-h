@@ -74,7 +74,7 @@ function startTimer() {
       trial = onTimesUp();
       if(trial >= 1) {
          localStorage.setItem('timeLeft', 24);
-         timePassed = 0;
+         localStorage.setItem('timePassed', 0)
           startTimer();
       }else{
         $('.game_button').remove()
