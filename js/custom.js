@@ -265,7 +265,11 @@ const fetch_reponse_valid = async (answers_tab)=> {
                 if($(el).parent().parent().has('.dz').lenght > 0) {
                   $(el).addClass('lose')
                 } else {
-                  $(el).addClass('win')
+                  if(localStorage.getItem('trial') === '0'){
+                    $(el).addClass('lose')
+                  }else{
+                    $(el).addClass('win')
+                  }
                 }
               } else {
                 nbr_answer+= 1;
