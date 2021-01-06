@@ -266,7 +266,6 @@ const fetch_reponse_valid = async (answers_tab)=> {
                 nbr_answer+= 1;
                 $(el).addClass('win');
               }
-              onTimesUp();
             });
             //if error not in user answers
             if(valid_resp.data.length === nbr_answer && error_answer.length < 1) {
@@ -379,10 +378,12 @@ function getAnswerId(answer) {return Number(answer.replace('answer_',''));}
 
 //FOR GAME ONE ADD CLASS LOOSE OR WIN AND REDICTECT EVENTUAL
 function make_result(element) {
+  //Si une mauvaise reponse est dans les reponses données , la mettre en rouge sinon la mettre en win 
   if(element.parent().parent().has('.dz').lenght > 0) {
     element.addClass('lose')
   } else {
-    if(localStorage.getItem('trial') === '0'){
+    //Si on est au dernier essaie et qu'il y a une erreur
+    if(localStorage.getItem('trial') === '1'){
       element.addClass('lose')
       goLoose();
     }else{
