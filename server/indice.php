@@ -13,21 +13,22 @@
       if(! is_array($decoded)) {
             die('Missed action');
       } else {
-        if (!isset($decoded['num_day'])) {
+        if (!isset($decoded['day_num'])) {
             die('Missed action');
         }
 
-        $num_day = $decoded['num_day'];
+        $day_num = $decoded['day_num'];
         $stmt = $pdo->prepare("SELECT id FROM question WHERE jour=:jour");
-        $stmt->execute(['jour'=> $num_day]);
+        $stmt->execute(['jour'=> $day_num]);
         $aQuestion = $stmt->fetch();
 
         $stmt = $pdo->prepare("SELECT * FROM indice
         WHERE question_id=:id");
         $stmt->execute(['id' => $aQuestion['id']]);
         $aIndice = $stmt->fetch();
+        $oDatas = !$aIndice ? [] :$aIndice;
       }
     }
-    return  print json_encode($aIndice);
+    return  print json_encode($oDatas);
 
 ?>

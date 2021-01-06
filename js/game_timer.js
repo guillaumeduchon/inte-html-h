@@ -72,7 +72,18 @@ function startTimer() {
          timePassed = 0;
           startTimer();
       }else{
-         $('.game_button').remove()
+        $('.game_button').remove()
+
+        let answers_el = $('.dropzone').find('.answer_button')
+        let answers_tab = []
+        answers_el.each((index, el)=>{
+          answers_tab.push(el.id)
+        })
+
+        if(!answers_el.length > 0) {
+          window.location.href = "07_perdu.html";
+        }
+         
       }
     }
   }, 1000);

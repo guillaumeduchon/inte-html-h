@@ -24,9 +24,7 @@ $(document).ready(function() {
 
  /*------------------------------------------------------------RESTRICTIONS || MIDDLEWARE */
 
- hasLooseDay() ? goLoose() : null;
- hasWinDay() ? goWin() : null;
-  
+
  /*------------------------------------------------------------ END RESTRICTIONS || END MIDDLEWARE */
 
   //PAGE LOGIN
@@ -37,18 +35,37 @@ $(document).ready(function() {
     })
   }
 
-  //PAGE PLATEAU
+  //---------------------------------------------------------PAGE PLATEAU
+
   if(location.pathname === "/02_plateau.html") {
+    isLogged() ? null : window.location.href = "login.html";
     updatePlateau();
   }
 
-  //SHOW INDICE
+  //--------------------------------------------------------- PAGE INDICE
+
   if(location.pathname === "/08_indice.html") {
+    isLogged() ? null : window.location.href = "login.html";
     fetch_indice();
   }
 
-  //JEU JOUR 1
+  //---------------------------------------------------------PAGE GAGNé
+
+  if(location.pathname === "/07_gagne.html") {
+    isLogged() ? null : window.location.href = "login.html";
+    hasWinDay() ? $('.cta_diamond').remove() : null;;
+  }
+
+  //--------------------------------------------------------- JOUR 1
+
   if(location.pathname === "/10_Q1_game_drag.html") {
+    if(isLogged()){
+      hasLooseDay() ? goLoose() : null;
+      hasWinDay() ? goWin() : null;
+    }else {
+      window.location.href = "login.html";
+    } 
+    
     //Si un tour a déja été passé
     let trial = localStorage.getItem('trial')
     if (trial) {
@@ -63,6 +80,18 @@ $(document).ready(function() {
     }
     fetch_reponse(DAY_NUM);
   }
+
+  //--------------------------------------------------------- JOUR 2
+  //--------------------------------------------------------- JOUR 3
+  //--------------------------------------------------------- JOUR 4
+  //--------------------------------------------------------- JOUR 5
+  //--------------------------------------------------------- JOUR 6
+  //--------------------------------------------------------- JOUR 7
+  //--------------------------------------------------------- JOUR 8
+  //--------------------------------------------------------- JOUR 9
+  //--------------------------------------------------------- JOUR 10
+
+
   /*
   *------------------------------------------------------------
   *------------END ROUTEUR------------------
@@ -192,7 +221,8 @@ const check_answer = () => {
   answers_el.each((index, el)=>{
     answers_tab.push(el.id)
   })
-  fetch_reponse_valid(answers_tab)
+
+  answers_tab.length > 0 ? fetch_reponse_valid(answers_tab) : null;
 }
 
 const fetch_reponse = async ()=> {
@@ -210,8 +240,7 @@ const fetch_reponse = async ()=> {
         });
 }
 
-
-const fetch_reponse_valid = async (answers_tab)=> {
+const fetch_reponse_valid = async ()=> {
   await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((valid_resp)=>{
@@ -237,7 +266,7 @@ const fetch_reponse_valid = async (answers_tab)=> {
               }
             });
             //if error not in user answers
-            if(valid_resp.data.length === nbr_answer) {
+            if(valid_resp.data.length === nbr_answer && error_answer.length < 1) {
               goWin();
             }
           } else {
@@ -250,21 +279,18 @@ const fetch_reponse_valid = async (answers_tab)=> {
 }
 
 //------------------------------------------------INDICE---------------------------------------
-// const fetch_indice = (e) => {
-//   var day_num = document.getElementById("day_num").value;
-  
-//   response =  await axios.post('/server/indice.php', {day_num:day_num}, {
-//     headers: {'Content-Type': 'application/json','mode': 'cors'}})
-//       .then((res)=>{
-//         if (res.data[0].id !== undefined) {
-//           console.log('DATA: ','tutu')
-//         } else {
-//           showError();
-//         } 
-//       });
-
-//   return response
-// }
+const fetch_indice = async ()=> {
+  await axios.post('/server/indice.php', {day_num: DAY_NUM}, {
+    headers: {'Content-Type': 'application/json','mode': 'cors'}})
+      .then((res)=>{
+        if (res.data.id !== undefined) {
+          $('.cta_diamond').html(`<span>${res.data.letter.toUpperCase()}</span>`);
+          disconnect()
+        } else {
+          showError();
+        } 
+      });
+}
 
 //---------------------------------------------Utils
 
@@ -292,13 +318,16 @@ function hasWinDay() {
 function hasLooseDay() {
   let hasLoose = false;
   if(localStorage.getItem('trial') && Number(localStorage.getItem('trial')) < 1) {
+    if(localStorage.getItem('win_day') === null) {
+      goLoose();
+    }
     let win_day = localStorage.getItem('win_day');
     if(win_day !== null) {
       let win_day_array = Object.values(JSON.parse(win_day));
       if(win_day_array[DAY_NUM] === 'false')  hasLoose = true;
     }
-  } 
-
+  }
+  
   return hasLoose;
 }
 
@@ -322,7 +351,9 @@ function goWin() {
   if(win_day !== null) {
     let win_day_array = Object.values(JSON.parse(win_day));
     if(win_day_array[DAY_NUM]!== undefined) {
-      setTimeout(()=>{window.location.href = "07_gagne.html"},1000);
+      if(location.pathname !== "/08_indice.html") {
+        window.location.href = "07_gagne.html";
+      }
     } else {
       win_day_array.push(DAY_NUM);
       localStorage.setItem('win_day', JSON.stringify(win_day_array));
