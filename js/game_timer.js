@@ -43,10 +43,7 @@ startTimer();
 function onTimesUp() {
   clearInterval(timerInterval);
   $('.tryagain').attr('style','display:block;')
-
-  if (localStorage.getItem('trial')!== null){
-    $('.trial').find('img').attr('src','img/essai_'+localStorage.getItem('trial')+'.png')
-  }
+  $('.trial').find('img').attr('src','img/essai_'+localStorage.getItem('trial')+'.png')
 }
 
 function startTimer() {
@@ -62,9 +59,9 @@ function startTimer() {
     setCircleDasharray();
 
     if (localStorage.getItem('timeLeft') === '0') {
+      check_answer();
       onTimesUp();
       if(Number(localStorage.getItem('trial')) > 0) {
-        check_answer();
         localStorage.setItem('timeLeft', 24);
         timePassed = 0;
         startTimer();
