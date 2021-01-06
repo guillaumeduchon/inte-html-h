@@ -44,7 +44,7 @@ $(document).ready(function() {
 
   //SHOW INDICE
   if(location.pathname === "/08_indice.html") {
-    updatePlateau();
+    fetch_indice();
   }
 
   //JEU JOUR 1
@@ -247,7 +247,7 @@ const fetch_reponse_valid = async (answers_tab)=> {
 }
 
 //------------------------------------------------INDICE---------------------------------------
-// const fetchIndice = (e) => {
+// const fetch_indice = (e) => {
 //   var day_num = document.getElementById("day_num").value;
   
 //   response =  await axios.post('/server/indice.php', {day_num:day_num}, {
