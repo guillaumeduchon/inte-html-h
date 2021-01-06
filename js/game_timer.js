@@ -5,8 +5,8 @@ const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 3;
 
-const TIME_LIMIT = localStorage.getItem('timeLeft') !== null ?  Number(localStorage.getItem('timeLeft')) : 24;
-localStorage.setItem('timePassed', 0);
+const TIME_LIMIT = localStorage.getItem('timeLeft') ?  Number(localStorage.getItem('timeLeft')) : 24;
+let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 
@@ -57,8 +57,7 @@ function onTimesUp() {
 
 function startTimer() {
   timerInterval = setInterval(() => {
-    timePassed = Number(localStorage.getItem('timePassed')) + 1;
-    localStorage.setItem('timePassed', timePassed);
+    timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
     localStorage.setItem('timeLeft',timeLeft)
     document.getElementById("timer_new-label").innerHTML = formatTime(
@@ -70,7 +69,7 @@ function startTimer() {
       trial = onTimesUp();
       if(trial >= 1) {
          localStorage.setItem('timeLeft', 24);
-         localStorage.setItem('timePassed', 0);
+         timePassed = 0;
           startTimer();
       }else{
         $('.game_button').remove()
