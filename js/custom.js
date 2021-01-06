@@ -1,14 +1,14 @@
 const DATE_TAB = [
-  { 1: '05/01/2021' },
-  { 2: '06/01/2021' },
-  { 3: '07/01/2021' },
-  { 4: '07/01/2021' },
-  { 5: '08/01/2021' },
-  { 6: '09/01/2021' },
-  { 7: '10/01/2021' },
-  { 8: '11/01/2021' },
-  { 9: '12/01/2021' },
-  { 10: '13/01/2021' }
+  { 1: '06/01/2021' },
+  { 2: '07/01/2021' },
+  { 3: '08/01/2021' },
+  { 4: '09/01/2021' },
+  { 5: '10/01/2021' },
+  { 6: '11/01/2021' },
+  { 7: '12/01/2021' },
+  { 8: '13/01/2021' },
+  { 9: '14/01/2021' },
+  { 10: '15/01/2021' }
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
@@ -24,7 +24,6 @@ $(document).ready(function() {
   }
 
   //PAGE PLATEAU
-  console.log(location.pathname);
   if(location.pathname === "/02_plateau.html") {
     updatePlateau();
   }
@@ -50,11 +49,11 @@ $(document).ready(function() {
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'04/01/2021'},
-    {'status':'','day_num': 2, 'day_date':'05/01/2021'},
-    {'status':'','day_num': 3, 'day_date':'06/01/2021'},
-    {'status':'','day_num': 4, 'day_date':'07/01/2021'},
-    {'status':'','day_num': 5, 'day_date':'08/01/2021'}
+    {'status':'','day_num': 1, 'day_date':'06/01/2021'},
+    {'status':'','day_num': 2, 'day_date':'07/01/2021'},
+    {'status':'','day_num': 3, 'day_date':'08/01/2021'},
+    {'status':'','day_num': 4, 'day_date':'09/01/2021'},
+    {'status':'','day_num': 5, 'day_date':'10/01/2021'}
   ];
 
   let today = new Date();
@@ -165,7 +164,7 @@ const check_answer = () => {
   answers_el.each((index, el)=>{
     answers_tab.push(el.id)
   })
-
+  console.log('answers_tab: ',answers_tab)
   fetch_reponse_valid(answers_tab)
 }
 
@@ -183,31 +182,29 @@ const fetch_reponse = async ()=> {
         });
 }
 
-const fetch_reponse_valid = async (answers)=> {
+const fetch_reponse_valid = async (answers_tab)=> {
   await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
         if (res.data[0].id !== undefined) {
           var error_answer = [];
           res.data.map(el=>{
-            if(!answers.includes(String(el.id))) {
+            if(!answers_tab.includes('answer_'+el.id)) {
               error_answer.push(el.id);
             }
           });
-          
-          if(res.data.length !== answers.length) error_answer = true;
-
           if(error_answer.length > 0) {
-
             $('.answer_button').each((index, el)=>{
-              let id = $(el).id.replace('answer_','')
+              let id_el = $(el).attr('id');
+              let id = Number(id_el.replace('answer_',''));
               if(Object.values(error_answer).includes(id)) {
-                $(el).addClass('lose')
-              } else {
                 $(el).addClass('win')
+              } else {
+                $(el).addClass('lose')
               }
             })
-            //Do sommething when response has error
+          } else {
+            window.location.href = "07_gagne.html";
           }
 
         } else {
