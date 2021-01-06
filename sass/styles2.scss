@@ -37,7 +37,7 @@ body {
         top: 0;
         left: 0;
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         background: rgba($black, 0.9);
         display: flex;
         align-items: center;
@@ -103,8 +103,9 @@ body {
 main {
     position: relative;
     margin: 0 auto;
+    overflow: hidden;
     .screen {
-        height: 100vh;
+        height: 100vw;
         height: calc(var(--vh, 1vh) * 100);
         overflow: hidden;
     }
@@ -278,7 +279,7 @@ main {
             width: 65%;
             background: url('../img/fond_border_block.png') 95% 0% no-repeat;
             background-size: 12%;
-            @media screen and (orientation:landscape) and (min-width:1024px) {padding: 20% 0;}
+            @media screen and (orientation:landscape) and (min-width:1024px) {padding: 15% 0;}
             .logo {
                 img {
                     max-width: 150px;
