@@ -216,6 +216,7 @@ const fetch_question=()=> {
 
 //------------------------------------------------REPONSE---------------------------------------
 const check_answer = () => {
+  localStorage.setItem('trial', Number(localStorage.getItem('trial')) -1);
   fetch_reponse_valid(get_user_answers());
 }
 
@@ -241,34 +242,29 @@ const fetch_reponse_valid = async (answers_tab)=> {
         //if there are at least one good answer return by api
         if (valid_resp.data[0].id !== undefined) {
           var error_answer = [];
-          var e = $('.answer_button').each((index, el)=>{
+          $('.answer_button').each((index, el)=> {
             let id_el = $(el).attr('id');
             let id = getAnswerId(id_el);
             let find = false;
             Object.values(valid_resp.data).map((rep)=>{ if(rep.id === id) find = true; })
             if(!find) error_answer.push(id);
-            
-            return error_answer
           });
-
-          console.log('TEST :', e)
           
           //If has error
           if(error_answer.length > 0) {
-            if(localStorage.getItem('trial') === '0' && answers_tab.length < 1) goLoose();
-
-            var nbr_answer = 0;
+            var nbr_good_answer = 0;
             $('.answer_button').each((index, el)=>{
-              let id_el = $(el).attr('id'); let id = getAnswerId(id_el);
+              let id_el = $(el).attr('id');
+              let id = getAnswerId(id_el);
               if (error_answer.includes(id)) {
                 make_result($(el))
               } else {
-                nbr_answer+= 1;
+                nbr_good_answer+= 1;
                 $(el).addClass('win');
               }
             });
             //if error not in user answers
-            if(valid_resp.data.length === nbr_answer && error_answer.length < 1) {
+            if(valid_resp.data.length === nbr_good_answer && error_answer.length < 1) {
               goWin();
             }
           } else {
