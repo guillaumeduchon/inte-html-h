@@ -11,7 +11,6 @@ const DATE_TAB = [
   { 10: '15/01/2021' }
 ];
 var date_today = get_date_today(new Date())
-console.log('TEST :', date_today)
 var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
 const DAY_NUM = tab_day[0];
 
@@ -105,7 +104,7 @@ $(document).ready(function() {
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'06/01/2021'},
+    {'status':'','day_num': 1, 'day_date':'0/01/2021'},
     {'status':'','day_num': 2, 'day_date':'08/01/2021'},
     {'status':'','day_num': 3, 'day_date':'09/01/2021'},
     {'status':'','day_num': 4, 'day_date':'10/01/2021'},
@@ -394,9 +393,6 @@ function make_result(element) {
       goLoose();
     }else{
       element.addClass('win')
-      localStorage.setItem('timeLeft', 24);
-      localStorage.setItem('trial', Number(localStorage.getItem('trial'))-1)
-      onTimesUp(true)
     }
   }
 }
