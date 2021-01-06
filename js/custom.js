@@ -1,20 +1,34 @@
 const DATE_TAB = [
-  { 1: '05/01/2021' },
-  { 2: '06/01/2021' },
-  { 3: '07/01/2021' },
-  { 4: '07/01/2021' },
-  { 5: '08/01/2021' },
-  { 6: '09/01/2021' },
-  { 7: '10/01/2021' },
-  { 8: '11/01/2021' },
-  { 9: '12/01/2021' },
-  { 10: '13/01/2021' }
+  { 1: '06/01/2021' },
+  { 2: '07/01/2021' },
+  { 3: '08/01/2021' },
+  { 4: '09/01/2021' },
+  { 5: '10/01/2021' },
+  { 6: '11/01/2021' },
+  { 7: '12/01/2021' },
+  { 8: '13/01/2021' },
+  { 9: '14/01/2021' },
+  { 10: '15/01/2021' }
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
 const DAY_NUM = tab_day[0];
 
 $(document).ready(function() {
+  /*
+  *------------------------------------------------------------
+  *------------ROUTEUR------------------
+  *------------------------------------------------------------
+  *------------------------------------------------------------
+  */
+
+ /*------------------------------------------------------------RESTRICTIONS || MIDDLEWARE */
+
+ hasLooseDay() ? goLoose() : null;
+ hasWinDay() ? goWin() : null;
+  
+ /*------------------------------------------------------------ END RESTRICTIONS || END MIDDLEWARE */
+
   //PAGE LOGIN
   if(location.pathname === "/login.html") {
     fullfiled_magasin();
@@ -24,9 +38,13 @@ $(document).ready(function() {
   }
 
   //PAGE PLATEAU
-  console.log(location.pathname);
   if(location.pathname === "/02_plateau.html") {
     updatePlateau();
+  }
+
+  //SHOW INDICE
+  if(location.pathname === "/08_indice.html") {
+    fetch_indice();
   }
 
   //JEU JOUR 1
@@ -45,16 +63,23 @@ $(document).ready(function() {
     }
     fetch_reponse(DAY_NUM);
   }
+  /*
+  *------------------------------------------------------------
+  *------------END ROUTEUR------------------
+  *------------------------------------------------------------
+  *------------------------------------------------------------
+  */
 });
+
 //------------------------------------------------PLATEAU---------------------------------------
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'04/01/2021'},
-    {'status':'','day_num': 2, 'day_date':'05/01/2021'},
-    {'status':'','day_num': 3, 'day_date':'06/01/2021'},
-    {'status':'','day_num': 4, 'day_date':'07/01/2021'},
-    {'status':'','day_num': 5, 'day_date':'08/01/2021'}
+    {'status':'','day_num': 1, 'day_date':'06/01/2021'},
+    {'status':'','day_num': 2, 'day_date':'07/01/2021'},
+    {'status':'','day_num': 3, 'day_date':'08/01/2021'},
+    {'status':'','day_num': 4, 'day_date':'09/01/2021'},
+    {'status':'','day_num': 5, 'day_date':'10/01/2021'}
   ];
 
   let today = new Date();
@@ -133,12 +158,14 @@ const fetch_login = (e) => {
   }
 }
 
-var tryLogin = async (login, pwd) => {
+const try_login = async (login, pwd) => {
+
   response =  await axios.post('/server/login.php', {login:login, pwd:pwd}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
         if (res.data[0].id !== undefined) {
-            window.location.href = "02_plateau.html";
+          logged()
+          window.location.href = "02_plateau.html";
         } else {
           showError();
         } 
@@ -160,23 +187,22 @@ const fetch_question=()=> {
 
 //------------------------------------------------REPONSE---------------------------------------
 const check_answer = () => {
-  console.log('DATA: ','zre')
   let answers_el = $('.dropzone').find('.answer_button')
   let answers_tab = []
   answers_el.each((index, el)=>{
     answers_tab.push(el.id)
   })
-
   fetch_reponse_valid(answers_tab)
 }
 
-const fetch_reponse = async (day_num)=> {
-    await axios.post('/server/reponse.php', {day_num: day_num}, {
+const fetch_reponse = async ()=> {
+    await axios.post('/server/reponse.php', {day_num: DAY_NUM}, {
+
       headers: {'Content-Type': 'application/json','mode': 'cors'}})
         .then((res)=>{
           if (res.data[0].id !== undefined) {
             res.data.map(el=>(
-              $('.answers').append(`<div class="answer_button" id="${el.id}" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">${el.name}</div>`)
+              $('.answers').append(`<div class="answer_button" id="answer_${el.id}" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">${el.name}</div>`)
             ))
           } else {
             showError();
@@ -184,25 +210,39 @@ const fetch_reponse = async (day_num)=> {
         });
 }
 
-const fetch_reponse_valid = async (answers)=> {
+
+const fetch_reponse_valid = async (answers_tab)=> {
   await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
-      .then((res)=>{
-        if (res.data[0].id !== undefined) {
-          var error_answer = false;
-          res.data.map(el=>{
-            if(!answers.includes(String(el.id))) {
-              error_answer = true;
-            }
+      .then((valid_resp)=>{
+        //if there are at least one good answer return by api
+        if (valid_resp.data[0].id !== undefined) {
+          var error_answer = [];
+          $('.answer_button').each((index, el)=>{
+            let id_el = $(el).attr('id'); let id = getAnswerId(id_el); let find = false;
+            Object.values(valid_resp.data).map((rep)=>{ if(rep.id === id) find = true; })
+            if(!find) error_answer.push(id);
           });
           
-          if(res.data.length !== answers.length) error_answer = true;
-
-          if(error_answer) {
-            console.log("ERROR !!!");
-            //Do sommething when response has error
+          //If has error
+          if(error_answer.length > 0) {
+            var nbr_answer = 0;
+            $('.answer_button').each((index, el)=>{
+              let id_el = $(el).attr('id'); let id = getAnswerId(id_el);
+              if (error_answer.includes(id)) {
+                $(el).addClass('lose')
+              } else {
+                nbr_answer+= 1;
+                $(el).addClass('win');
+              }
+            });
+            //if error not in user answers
+            if(valid_resp.data.length === nbr_answer) {
+              goWin();
+            }
+          } else {
+            goWin();
           }
-
         } else {
           showError();
         } 
@@ -210,7 +250,7 @@ const fetch_reponse_valid = async (answers)=> {
 }
 
 //------------------------------------------------INDICE---------------------------------------
-// const fetchIndice = (e) => {
+// const fetch_indice = (e) => {
 //   var day_num = document.getElementById("day_num").value;
   
 //   response =  await axios.post('/server/indice.php', {day_num:day_num}, {
@@ -235,6 +275,72 @@ function hideError() {
 function showError() {
   $('.wrongId').attr('style','display:block');
 }
+
+function hasWinDay() {
+  let hasWin = false;
+  if(localStorage.getItem('win_day') !== null) {
+    let win_day = localStorage.getItem('win_day');
+    if(win_day !== null) {
+      let win_day_array = Object.values(JSON.parse(win_day));
+      if(win_day_array.includes(DAY_NUM))  hasWin = true;
+    }
+  } 
+
+  return hasWin;
+}
+
+function hasLooseDay() {
+  let hasLoose = false;
+  if(localStorage.getItem('trial') && Number(localStorage.getItem('trial')) < 1) {
+    let win_day = localStorage.getItem('win_day');
+    if(win_day !== null) {
+      let win_day_array = Object.values(JSON.parse(win_day));
+      if(win_day_array[DAY_NUM] === 'false')  hasLoose = true;
+    }
+  } 
+
+  return hasLoose;
+}
+
+function isLogged(){
+  let logged = localStorage.getItem('logged') === null ? false: true;
+  return logged
+}
+
+function logged(){
+  localStorage.setItem('logged','true');
+}
+
+function disconnect(){
+  localStorage.removeItem('logged');
+}
+
+function goWin() {
+  $('.game_button').remove()
+
+  let win_day = localStorage.getItem('win_day');
+  if(win_day !== null) {
+    let win_day_array = Object.values(JSON.parse(win_day));
+    if(win_day_array[DAY_NUM]!== undefined) {
+      setTimeout(()=>{window.location.href = "07_gagne.html"},1000);
+    } else {
+      win_day_array.push(DAY_NUM);
+      localStorage.setItem('win_day', JSON.stringify(win_day_array));
+    }
+    
+  } else{
+    localStorage.setItem('win_day', JSON.stringify([DAY_NUM]));
+    setTimeout(()=>{
+      window.location.href = "07_gagne.html"
+    },1000);
+  }
+  
+  
+} 
+
+function goLoose() {window.location.href = "07_perdu.html";}
+
+function getAnswerId(answer) {return Number(answer.replace('answer_',''));}
 
 function compte_a_rebours(){
   var date_actuelle = new Date();
