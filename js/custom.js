@@ -389,7 +389,7 @@ function make_result(element) {
     }else{
       element.addClass('win')
       localStorage.setItem('timeLeft', 24);
-      localStorage.setItem('trial', 1)
+      localStorage.setItem('trial', Number(localStorage.setItem('trial'))-1)
       onTimesUp(true)
     }
   }
