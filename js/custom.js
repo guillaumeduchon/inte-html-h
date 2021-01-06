@@ -222,7 +222,7 @@ const check_answer = () => {
     answers_tab.push(el.id)
   })
 
-  answers_tab.length > 0 ? fetch_reponse_valid(answers_tab) : null;
+  fetch_reponse_valid(answers_tab);
 }
 
 const fetch_reponse = async ()=> {
