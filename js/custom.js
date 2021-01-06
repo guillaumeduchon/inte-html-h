@@ -247,6 +247,8 @@ const fetch_reponse_valid = async (answers_tab)=> {
             let find = false;
             Object.values(valid_resp.data).map((rep)=>{ if(rep.id === id) find = true; })
             if(!find) error_answer.push(id);
+            
+            return error_answer
           });
 
           console.log('TEST :', e)
