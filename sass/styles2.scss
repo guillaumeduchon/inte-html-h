@@ -107,6 +107,7 @@ main {
     .screen {
         height: 100vw;
         height: calc(var(--vh, 1vh) * 100);
+        min-height: -webkit-fill-available;
         overflow: hidden;
     }
     .flex_contain {
@@ -1560,6 +1561,11 @@ main {
                 height: 190px;
                 width: 190px;
                 font-size: 50px;
+                @media screen and (orientation:landscape) and (max-width: 1024px) {
+                    height: 150px;
+                    width: 150px;
+                    font-size: 40px;
+                }
                 margin-top: -22px;
                 margin-bottom: -18px;
                 &:after {
