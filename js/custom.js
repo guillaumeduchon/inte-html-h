@@ -262,16 +262,7 @@ const fetch_reponse_valid = async (answers_tab)=> {
             $('.answer_button').each((index, el)=>{
               let id_el = $(el).attr('id'); let id = getAnswerId(id_el);
               if (error_answer.includes(id)) {
-                if($(el).parent().parent().has('.dz').lenght > 0) {
-                  $(el).addClass('lose')
-                } else {
-                  if(localStorage.getItem('trial') === '0'){
-                    $(el).addClass('lose')
-                    goLoose();
-                  }else{
-                    $(el).addClass('win')
-                  }
-                }
+                make_result($(el))
               } else {
                 nbr_answer+= 1;
                 $(el).addClass('win');
@@ -377,15 +368,28 @@ function goWin() {
       window.location.href = "07_gagne.html"
     },1000);
   }
-  
-  
 } 
 
 function goLoose() { setTimeout(()=>{
   window.location.href = "07_perdu.html";
 },2000)}
 
+
 function getAnswerId(answer) {return Number(answer.replace('answer_',''));}
+
+//FOR GAME ONE ADD CLASS LOOSE OR WIN AND REDICTECT EVENTUAL
+function make_result(element) {
+  if(element.parent().parent().has('.dz').lenght > 0) {
+    element.addClass('lose')
+  } else {
+    if(localStorage.getItem('trial') === '0'){
+      element.addClass('lose')
+      goLoose();
+    }else{
+      element.addClass('win')
+    }
+  }
+}
 
 function compte_a_rebours(){
   var date_actuelle = new Date();
