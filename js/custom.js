@@ -1,7 +1,7 @@
 const DATE_TAB = [
-  { 0: '06/01/2021' },
   { 1: '07/01/2021' },
-  { 3: '08/01/2021' },
+  { 2: '08/01/2021' },
+  { 3: '09/01/2021' },
   { 4: '09/01/2021' },
   { 5: '10/01/2021' },
   { 6: '11/01/2021' },
@@ -104,11 +104,11 @@ $(document).ready(function() {
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 0, 'day_date':'06/01/2021'},
     {'status':'','day_num': 1, 'day_date':'07/01/2021'},
-    {'status':'','day_num': 3, 'day_date':'08/01/2021'},
-    {'status':'','day_num': 4, 'day_date':'09/01/2021'},
-    {'status':'','day_num': 5, 'day_date':'10/01/2021'}
+    {'status':'','day_num': 2, 'day_date':'08/01/2021'},
+    {'status':'','day_num': 3, 'day_date':'09/01/2021'},
+    {'status':'','day_num': 4, 'day_date':'10/01/2021'},
+    {'status':'','day_num': 5, 'day_date':'11/01/2021'}
   ];
 
   let today = new Date();
