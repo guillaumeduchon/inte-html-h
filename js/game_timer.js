@@ -81,7 +81,7 @@ function startTimer() {
         })
 
         if(!answers_el.length > 0) {
-          window.location.href = "07_perdu.html";
+          goLoose();
         }
          
       }
