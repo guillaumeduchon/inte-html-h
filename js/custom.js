@@ -262,7 +262,11 @@ const fetch_reponse_valid = async (answers_tab)=> {
             $('.answer_button').each((index, el)=>{
               let id_el = $(el).attr('id'); let id = getAnswerId(id_el);
               if (error_answer.includes(id)) {
-                if($(el).parent().parent().has('.dz').lenght > 0) $(el).addClass('lose')
+                if($(el).parent().parent().has('.dz').lenght > 0) {
+                  $(el).addClass('lose')
+                } else {
+                  $(el).addClass('win')
+                }
               } else {
                 nbr_answer+= 1;
                 $(el).addClass('win');
