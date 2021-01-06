@@ -256,7 +256,7 @@ const fetch_reponse_valid = async (answers_tab)=> {
           
           //If has error
           if(error_answer.length > 0) {
-            if(localStorage.getItem('trial') === '1' && answers_tab.length < 1) goLoose();
+            if(localStorage.getItem('trial') === '0' && answers_tab.length < 1) goLoose();
             var nbr_answer = 0;
             $('.answer_button').each((index, el)=>{
               let id_el = $(el).attr('id'); let id = getAnswerId(id_el);
