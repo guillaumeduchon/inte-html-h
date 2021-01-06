@@ -62,7 +62,7 @@ function onTimesUp(enter=null) {
 function startTimer() {
   timerInterval = setInterval(() => {
     timePassed = Number(localStorage.getItem('timePassed')) + 1;
-    timeLeft = TIME_LIMIT - (Number(localStorage.setItem('timeLeft', timeLeft)) <= 23 ? timePassed : 0);
+    timeLeft = TIME_LIMIT - (Number(localStorage.setItem('timeLeft', timeLeft)) >= 23 ? timePassed : 0);
     localStorage.setItem('timeLeft',timeLeft)
     localStorage.setItem('timePassed',timePassed)
     document.getElementById("timer_new-label").innerHTML = formatTime(
