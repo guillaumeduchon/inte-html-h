@@ -267,6 +267,7 @@ const fetch_reponse_valid = async (answers_tab)=> {
                 } else {
                   if(localStorage.getItem('trial') === '0'){
                     $(el).addClass('lose')
+                    goLoose();
                   }else{
                     $(el).addClass('win')
                   }
