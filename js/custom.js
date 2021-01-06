@@ -216,13 +216,7 @@ const fetch_question=()=> {
 
 //------------------------------------------------REPONSE---------------------------------------
 const check_answer = () => {
-  let answers_el = $('.dropzone').find('.answer_button')
-  let answers_tab = []
-  answers_el.each((index, el)=>{
-    answers_tab.push(el.id)
-  })
-
-  fetch_reponse_valid(answers_tab);
+  fetch_reponse_valid(get_user_answers());
 }
 
 const fetch_reponse = async ()=> {
@@ -247,11 +241,15 @@ const fetch_reponse_valid = async (answers_tab)=> {
         //if there are at least one good answer return by api
         if (valid_resp.data[0].id !== undefined) {
           var error_answer = [];
-          $('.answer_button').each((index, el)=>{
-            let id_el = $(el).attr('id'); let id = getAnswerId(id_el); let find = false;
+          var e = $('.answer_button').each((index, el)=>{
+            let id_el = $(el).attr('id');
+            let id = getAnswerId(id_el);
+            let find = false;
             Object.values(valid_resp.data).map((rep)=>{ if(rep.id === id) find = true; })
             if(!find) error_answer.push(id);
           });
+
+          console.log('TEST :', e)
           
           //If has error
           if(error_answer.length > 0) {
@@ -375,6 +373,16 @@ function goLoose() { setTimeout(()=>{
 
 
 function getAnswerId(answer) {return Number(answer.replace('answer_',''));}
+
+function get_user_answers(){
+  let answers_el = $('.dropzone').find('.answer_button')
+  let answers_tab = []
+  answers_el.each((index, el)=>{
+    answers_tab.push(el.id)
+  })
+
+  return answers_tab;
+}
 
 //FOR GAME ONE ADD CLASS LOOSE OR WIN AND REDICTECT EVENTUAL
 function make_result(element) {
