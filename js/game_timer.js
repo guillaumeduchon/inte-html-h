@@ -46,8 +46,7 @@ function onTimesUp() {
   if(localStorage.getItem('trial') < 0) {
     $('.game_button').remove()
   } else {
-    localStorage.setItem('timeLeft', 24);
-    timePassed = 0;
+    
     setTimeout(()=>{
       startTimer();
     }, 1000)
@@ -74,6 +73,8 @@ function startTimer() {
 
     if (localStorage.getItem('timeLeft') === '0') {
       check_answer();
+      localStorage.setItem('timeLeft', 24);
+      timePassed = 0;
       onTimesUp();
     }
   }, 1000);
