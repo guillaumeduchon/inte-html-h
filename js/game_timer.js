@@ -7,7 +7,7 @@ const ALERT_THRESHOLD = 3;
 
 const TIME_LIMIT = localStorage.getItem('timeLeft') ?  Number(localStorage.getItem('timeLeft')) : 24;
 let timePassed = 0;
-localStorage.setItem('trial', 2);
+localStorage.setItem('trial', 3);
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 
@@ -47,6 +47,9 @@ function onTimesUp() {
 }
 
 function startTimer() {
+  localStorage.setItem('trial', Number(localStorage.getItem('trial')) - 1);
+  $('.trial').find('img').attr('src','img/essai_'+localStorage.getItem('trial')+'.png')
+
   timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;

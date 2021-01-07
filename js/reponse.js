@@ -45,7 +45,7 @@ const fetch_reponse_valid = async (type_validation) => {
           (!aFalse_answer.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null); 
         });
 
-        handle_user_responses(valid_resp.data.length, user_great_answer, user_wrong_answers, type_validation)
+        handle_user_responses(valid_resp.data.length, user_great_answer, type_validation)
         
       } else {
         console.warn('Aucune bonne reponse n\'a été trouvé')
@@ -54,7 +54,7 @@ const fetch_reponse_valid = async (type_validation) => {
 }
 
 //FOR GAME ONE ADD CLASS LOOSE OR WIN AND REDICTECT EVENTUAL
-function handle_user_responses(nb_valid_answers, user_great_answer, user_wrong_answers, type_validation) {
+function handle_user_responses(nb_valid_answers, user_great_answer, type_validation) {
   let trial_storage = Number(localStorage.getItem('trial'));
   let trial;
 
