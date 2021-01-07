@@ -63,7 +63,6 @@ function startTimer() {
 
     if (localStorage.getItem('timeLeft') === '0') {
       check_answer('auto');
-      onTimesUp();
     }
   }, 1000);
 }

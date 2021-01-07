@@ -47,7 +47,7 @@ const fetch_reponse_valid = async (type_validation) => {
 
         handle_user_responses(valid_resp, user_great_answer, type_validation)
         
-        type_validation === "manuel" ? onTimesUp() : null;
+        onTimesUp()
 
       } else {
         console.warn('Aucune bonne reponse n\'a été trouvé')
@@ -73,7 +73,7 @@ function handle_user_responses(valid_answers, user_great_answer, type_validation
     }
   } else {
     colors_button(valid_answers);
-    if (valid_answers.data.length === user_great_answer.length ? goWin() : clear_counter(),goLoose(),showWrongAnswer());
+    if (valid_answers.data.length === user_great_answer.length ? (goWin(),clear_counter()) : clear_counter(),goLoose(),showWrongAnswer());
   }
 }
 
