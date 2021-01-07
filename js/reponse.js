@@ -63,14 +63,14 @@ function handle_user_responses(valid_answers, user_great_answer, type_validation
   if (trial_storage > 1) {
     //Si le nombre de bonne reponse est egale au nombre de bonne reponse de l'utilisateur (GAGNÉ!!!)
     if (valid_answers.data.length === user_great_answer.length) {
-      colors_button(user_great_answer);
+      colors_button(valid_answers);
       goWin();
     } else {
       /*(CACHER MAUVAISE REPONSE POUR LE MOMENT!!!)*/
       all_button_win();
     }
   } else {
-    colors_button(user_great_answer);
+    colors_button(valid_answers);
     if (valid_answers.data.length === user_great_answer.length ? goWin() : goLoose());
   }
 }
@@ -84,7 +84,7 @@ function all_button_win() {
   })
 }
 
-function colors_button() {
+function colors_button(valid_answers) {
   console.log('valid_answers :', valid_answers)
   
   $('.answer_button').each((index, button) => {
