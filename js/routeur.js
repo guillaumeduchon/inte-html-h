@@ -39,7 +39,7 @@ $(document).ready(function() {
 
   if(location.pathname === "/game_win.html") {
     if (isLogged()){
-     hasWinDay() ? $('.cta_diamond').remove() : null;
+    //  hasWinDay() ? $('.cta_diamond').remove() : null;
     } else {
       goLogin();
     }
