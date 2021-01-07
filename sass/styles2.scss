@@ -1324,15 +1324,14 @@ main {
                 width: 20vw;
                 @media screen and (orientation:landscape) and (min-width:1024px) {width: 17vw;}
                 @media screen and (orientation:landscape) and (min-width:1360px) {width: 14vw;}
-                // height: 100vh;
+                height: 100vh;
                 position: relative;
                 display: flex;
                 flex-wrap: wrap;
-                // justify-content: space-between;
+                justify-content: space-between;
                 align-items: center;
                 #timer {
-                    // margin-top: -10px;
-                    padding-bottom: 30px;
+                    margin-top: -10px;
                 }
                 .try {
                     text-align: center;
@@ -1362,7 +1361,8 @@ main {
                     margin: 0 auto;
                     font-weight: bold;
                     color: $white;
-                    margin-top: 12px;
+                    margin-top: -32px;
+                    margin-bottom: -30px;
                     @media screen and (orientation:landscape) and (min-width:1024px) {
                         width: 120px;
                         height: 120px;
