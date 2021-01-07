@@ -228,7 +228,9 @@ function compte_a_rebours(){
       if(jours[date_evenement.getDay()+index] === undefined) {
         //Je creer un tableau contenant uniquement les jours de lundi à  samedi
         let jours_ouvre = jours.slice(1);
-        joursWeekEnd = jours_ouvre[(index -2)] 
+        joursWeekEnd = jours_ouvre[(index -2)]
+        joursWeekEnd = joursWeekEnd === "Dimanche" ?  joursWeekEnd = 'Lundi': joursWeekEnd;
+
       }else {
         joursWeekEnd= jours[date_evenement.getDay()+index]
       } 
