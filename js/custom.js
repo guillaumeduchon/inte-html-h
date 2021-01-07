@@ -39,21 +39,21 @@ const updatePlateau = () => {
   let today_date = `${DAY}/${MONTH}/${today.getFullYear()}`;
 
   date_tab.map((el) => {
-    if(el.day_date === today_date) {
+    if (el.day_date === today_date) {
       el.highlight = 'highlight';
       el.status = 'available';
       el.img = 'img/fond_plateau_available.png';
       el.iconDisplay = 'hide';
       el.linkDisplay = '';
     }
-    if(el.day_date > today_date) {
+    if (el.day_date > today_date) {
       el.highlight = '';
       el.status = 'unavailable';
       el.img = 'img/fond_plateau_unavailable.png';
       el.iconDisplay = '';
       el.linkDisplay = 'hide';
     }
-    if(el.day_date < today_date) {
+    if (el.day_date < today_date) {
       el.highlight = '';
       el.status = 'expired';
       el.img = 'img/fond_plateau_expired.png';
@@ -82,47 +82,6 @@ const updatePlateau = () => {
   compte_a_rebours();
 }
 
-
-//------------------------------------------------MAGASIN---------------------------------------
-
-//Remplir la liste des magasins (page login)
-const fullfiled_magasin = async() => {
-  await axios('/server/magasin.php').then((res)=> {
-    response = res.data;
-    let select = $("#magasin")
-    response.forEach((item, index)=> {
-      select.append('<option value="'+item.ident+'"'+(index < 1 ? 'selected ':'')+'>'+item.name+'</option>');
-    })
-  })
-}
-//------------------------------------------------LOGIN---------------------------------------
-
-const fetch_login = (e) => {
-  var code = document.getElementById("code").value;
-  var magasin = document.getElementById("magasin").value;
-  if(magasin !== '') {
-    try_login(magasin, code);
-  }else{
-    showError();
-  }
-}
-
-const try_login = async (login, pwd) => {
-
-  response =  await axios.post('/server/login.php', {login:login, pwd:pwd}, {
-    headers: {'Content-Type': 'application/json','mode': 'cors'}})
-      .then((res)=>{
-        if (res.data[0].id !== undefined) {
-          logged()
-          window.location.href = "/rules.html";
-        } else {
-          showError();
-        } 
-      });
-  return response
-}
-
-
 //---------------------------------------------Utils
 
 function hideError() {
@@ -135,11 +94,11 @@ function showError() {
 
 function hasWinDay() {
   let hasWin = false;
-  if(localStorage.getItem('win_day') !== null) {
+  if (localStorage.getItem('win_day') !== null) {
     let win_day = localStorage.getItem('win_day');
     let win_day_array = Object.values(JSON.parse(win_day));
     
-    if(win_day_array.includes(DAY_NUM))  
+    if (win_day_array.includes(DAY_NUM))  
       hasWin = true;
   } 
 
@@ -148,31 +107,21 @@ function hasWinDay() {
 
 function hasLooseDay() {
   let hasLoose = false;
-  if(localStorage.getItem('trial') && Number(localStorage.getItem('trial')) < 1) {
-    if(localStorage.getItem('win_day') === null) {
+  if (localStorage.getItem('trial') && Number(localStorage.getItem('trial')) < 1) {
+    if (localStorage.getItem('win_day') === null) {
       goLoose();
     }
     let win_day = localStorage.getItem('win_day');
-    if(win_day !== null) {
+    if (win_day !== null) {
       let win_day_array = Object.values(JSON.parse(win_day));
-      if(win_day_array[DAY_NUM] === 'false')  hasLoose = true;
+      if (win_day_array[DAY_NUM] === 'false')  hasLoose = true;
     }
   }
   
   return hasLoose;
 }
 
-function isLogged(){
- return localStorage.getItem('logged') === null ? false: true;
-}
 
-function logged(){
-  localStorage.setItem('logged','true');
-}
-
-function disconnect(){
-  localStorage.removeItem('logged');
-}
 
 function clear_counter(){
   localStorage.removeItem('timeLeft');
@@ -198,20 +147,21 @@ function compte_a_rebours(){
   $('.available').find('.statut').addClass('countdown');
   $('.countdown').html(`Il vous reste encore<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
   $('.unavailable').each((index, el)=>{
-    if(index === 0){
+    if (index === 0){
       $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${heures} H ${minutes} MIN ${secondes} S</strong>`);
     } else {
       //Si le prochain jours est Dimanche
       var joursWeekEnd ;
-      if(jours[date_evenement.getDay()+index] === undefined) {
+      if (jours[date_evenement.getDay()+index] === undefined) {
         //Je creer un tableau contenant uniquement les jours de lundi à  samedi
         let jours_ouvre = jours.slice(1);
         joursWeekEnd = jours_ouvre[(index -2)]
         joursWeekEnd = joursWeekEnd === "Dimanche" ?  joursWeekEnd = 'Lundi': joursWeekEnd;
 
-      }else {
+      } else {
         joursWeekEnd= jours[date_evenement.getDay()+index]
       } 
+
       $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible<br><strong>${joursWeekEnd}</strong>`);
     }
   })

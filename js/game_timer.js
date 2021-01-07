@@ -42,13 +42,8 @@ startTimer();
 
 function onTimesUp() {
   clearInterval(timerInterval);
-  $('.tryagain').attr('style','display:block;')
-  if(localStorage.getItem('trial') < 0) {
-    $('.game_button').remove()
-  } else {
-    set_new_trial()
-    startTimer();
-  }
+  reset_time();
+  startTimer();
 }
 
 function startTimer() {
@@ -65,37 +60,36 @@ function startTimer() {
 
     if (localStorage.getItem('timeLeft') === '0') {
       check_answer('auto');
-      reset();
       onTimesUp();
     }
   }, 1000);
 }
 
-function reset(){
+function reset_time(){
   localStorage.setItem('timeLeft', 24);
   timePassed = 0;
 }
 
-function set_new_trial(){
-  let current_trial =  Number(localStorage.getItem('trial'));
-  localStorage.setItem('trial', (current_trial - 1));
-  let new_trial = localStorage.getItem('trial');
-  $('.trial').find('img').attr('src','img/essai_'+new_trial+'.png')
+// function set_new_trial(){
+//   let current_trial =  Number(localStorage.getItem('trial'));
+//   localStorage.setItem('trial', (current_trial - 1));
+//   let new_trial = localStorage.getItem('trial');
+//   $('.trial').find('img').attr('src','img/essai_'+new_trial+'.png')
 
-  return new_trial
-}
+//   return new_trial
+// }
 
-function valid_before_times_up(){
-  if(Number(localStorage.getItem('trial')-1) < 1) {
-    $('.trial').find('img').attr('src','img/essai_'+0+'.png')
-    onTimesUp();
-    check_answer();
-  } else {
-    $('.tryagain').attr('style','display:block;')
-    set_new_trial()
-    reset();
-  }
-}
+// function valid_before_times_up(){
+//   if(Number(localStorage.getItem('trial')-1) < 1) {
+//     $('.trial').find('img').attr('src','img/essai_'+0+'.png')
+//     onTimesUp();
+//     check_answer();
+//   } else {
+//     $('.tryagain').attr('style','display:block;')
+//     set_new_trial()
+//     reset();
+//   }
+// }
 
 function formatTime(time) {
   const minutes = Math.floor(time / 60);
