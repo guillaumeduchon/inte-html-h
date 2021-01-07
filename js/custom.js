@@ -256,7 +256,7 @@ const fetch_reponse_valid = async (user_answers, send_type)=> {
               let id_el = $(el).attr('id');
               let id = getAnswerId(id_el);
               if (error_answer.includes(id)) {
-                make_result($(el), send_type)
+                make_result($(el))
               } else {
                 nbr_good_answer+= 1;
                 $(el).addClass('win');
@@ -266,6 +266,11 @@ const fetch_reponse_valid = async (user_answers, send_type)=> {
             if(valid_resp.data.length === nbr_good_answer && error_answer.length < 1) {
               goWin();
             }
+
+            if(send_type === "manuel") {
+              localStorage.setItem('trial', Number(localStorage.getItem('trial')) -1 )
+            }
+            
           } else {
             goWin();
           }
@@ -384,11 +389,6 @@ function get_user_answers(){
 //FOR GAME ONE ADD CLASS LOOSE OR WIN AND REDICTECT EVENTUAL
 function make_result(element, send_type) {
   //Si une mauvaise reponse est dans les reponses données , la mettre en rouge sinon la mettre en win 
-  if(send_type !== "manuel") {
-    console.log('TEST :')
-    localStorage.setItem('trial', Number(localStorage.getItem('trial')) -1 )
-  }
-
   if(element.parent().parent().has('.dz').lenght > 0) {
     element.addClass('lose')
   } else {
@@ -399,9 +399,7 @@ function make_result(element, send_type) {
     }else{
         element.addClass('win')
     }
-  }
-  console.log('TEST :', localStorage.getItem('trial'))
-    
+  } 
 }
 
 function compte_a_rebours(){
