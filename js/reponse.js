@@ -64,6 +64,7 @@ function handle_user_responses(valid_answers, user_great_answer, type_validation
     //Si le nombre de bonne reponse est egale au nombre de bonne reponse de l'utilisateur (GAGNÉ!!!)
     if (valid_answers.data.length === user_great_answer.length) {
       colors_button(valid_answers);
+      clear_counter()
       goWin();
     } else {
       /*(CACHER MAUVAISE REPONSE POUR LE MOMENT!!!)*/
@@ -72,7 +73,7 @@ function handle_user_responses(valid_answers, user_great_answer, type_validation
     }
   } else {
     colors_button(valid_answers);
-    if (valid_answers.data.length === user_great_answer.length ? goWin() : goLoose(),showWrongAnswer());
+    if (valid_answers.data.length === user_great_answer.length ? goWin() : clear_counter(),goLoose(),showWrongAnswer());
   }
 }
 
