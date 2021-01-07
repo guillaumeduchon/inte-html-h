@@ -78,7 +78,7 @@ function getId(answer) { return Number(answer.replace('answer_', '')); }
 
 function all_button_win() {
   $('.answer_button').each((index, button) => {
-    button.addClass('win')
+    $(button).addClass('win')
   })
 }
 
