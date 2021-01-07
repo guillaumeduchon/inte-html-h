@@ -42,7 +42,7 @@ const fetch_reponse_valid = async (type_validation) => {
         //Boucle sur chaque reponse donnée par l'utilisateur
         $('.dz > .answer_button').each((index, el) => {
           let user_answer_id = getId($(el).attr('id'));
-          (!aFalse_answer.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null); 
+          (!aFalse_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null); 
         });
 
         handle_user_responses(valid_resp, user_great_answer, type_validation)
