@@ -1,21 +1,48 @@
 <?php
     require_once 'config.php';
-    $question = []; $reponse = [];
-    $date = date('d/m/Y');
-    $date_tab = ['04/01/2021'=>'1', '05/01/2021'=>'2', '06/01/2021'=>'2'];
+    
+    $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
-    $jour = $date_tab[$date];
+    if ($contentType === "application/json") {
+        $aDatas = [];
+        //Receive the RAW post data.
+        $content = trim(file_get_contents("php://input"));
+        
+        $decoded = json_decode($content, true);
+        
+        //If json_decode failed, the JSON is invalid.
+        if(!is_array($decoded)) {
+            die('Missed action');
+        } else {
+            if (!isset($decoded['day_num'])) {
+                die('Missed action');
+            }
+            if (!isset($decoded['type'])) {
+                die('Missed action');
+            }
+            
+            $day_num = (int)$decoded['day_num'];
+            $type = htmlentities($decoded['type']);
 
-    $stmt = $pdo->prepare("SELECT * FROM question
-    WHERE jour=:jour");
-    $stmt->execute(['jour' => $jour]);
-    $question = $stmt->fetch();
-    if($question) {
-        $stmt = $pdo->prepare("SELECT * FROM reponse
-        WHERE question_id=:question_id");
-        $stmt->execute(['question_id' => $question['id']]);
-        $reponse = $stmt->fetch();
+            $stmt = $pdo->prepare("SELECT id FROM question WHERE jour=:jour");
+            $stmt->execute(['jour'=> $day_num]);
+            $aQuestion = $stmt->fetch();
+           
+            if($aQuestion) {
+                switch ($type) {
+                    case 'rules':
+                        $stmt = $pdo->prepare("SELECT rules FROM question WHERE id=:id");
+                        $stmt->execute(['id'=> $aQuestion['id']]);
+                        $aDatas = $stmt->fetch();
+                        break;
+                    case 'content':
+                        $stmt = $pdo->prepare("SELECT content FROM question WHERE id=:id");
+                        $stmt->execute(['id'=> $aQuestion['id']]);
+                        $aDatas = $stmt->fetch();
+                        break;
+                }
+            }
+        }
     }
-
-    return  print json_encode([$question, $reponse]);
+    return  print json_encode($aDatas);
 ?>

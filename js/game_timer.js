@@ -87,8 +87,9 @@ function set_new_trial(){
 
 function valid_before_times_up(){
   if(Number(localStorage.getItem('trial')-1) < 1) {
-    check_answer('auto');
-    goLoose()
+    $('.trial').find('img').attr('src','img/essai_'+0+'.png')
+    onTimesUp();
+    check_answer();
   } else {
     $('.tryagain').attr('style','display:block;')
     set_new_trial()
