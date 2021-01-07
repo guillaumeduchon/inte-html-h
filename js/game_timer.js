@@ -86,8 +86,7 @@ function set_new_trial(){
 }
 
 function valid_before_times_up(){
-  console.log('TEST :', localStorage.getItem('trial'))
-  if(Number(localStorage.getItem('trial')) < 1) {
+  if(Number(localStorage.getItem('trial')-1) <= 1) {
     goLoose()
   } else {
     set_new_trial()
