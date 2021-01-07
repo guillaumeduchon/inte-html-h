@@ -268,9 +268,9 @@ const fetch_reponse_valid = async (user_answers, send_type)=> {
             }
 
             if(send_type === "manuel") {
-              localStorage.setItem('trial', Number(localStorage.getItem('trial')) -1 )
+              valid_before_times_up()
             }
-            
+
           } else {
             goWin();
           }
