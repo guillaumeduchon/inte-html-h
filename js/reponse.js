@@ -68,10 +68,11 @@ function handle_user_responses(valid_answers, user_great_answer, type_validation
     } else {
       /*(CACHER MAUVAISE REPONSE POUR LE MOMENT!!!)*/
       all_button_win();
+      showWrongAnswer();
     }
   } else {
     colors_button(valid_answers);
-    if (valid_answers.data.length === user_great_answer.length ? goWin() : goLoose());
+    if (valid_answers.data.length === user_great_answer.length ? goWin() : goLoose(),showWrongAnswer());
   }
 }
 

@@ -92,6 +92,10 @@ function showError() {
   $('.wrongId').attr('style','display:block');
 }
 
+function showWrongAnswer() {
+  $('.tryagain').attr('style','display:block;');
+}
+
 function hasWinDay() {
   let hasWin = false;
   if (localStorage.getItem('win_day') !== null) {

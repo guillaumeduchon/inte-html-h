@@ -73,27 +73,6 @@ function reset_time(){
   timePassed = 0;
 }
 
-// function set_new_trial(){
-//   let current_trial =  Number(localStorage.getItem('trial'));
-//   localStorage.setItem('trial', (current_trial - 1));
-//   let new_trial = localStorage.getItem('trial');
-//   $('.trial').find('img').attr('src','img/essai_'+new_trial+'.png')
-
-//   return new_trial
-// }
-
-// function valid_before_times_up(){
-//   if(Number(localStorage.getItem('trial')-1) < 1) {
-//     $('.trial').find('img').attr('src','img/essai_'+0+'.png')
-//     onTimesUp();
-//     check_answer();
-//   } else {
-//     $('.tryagain').attr('style','display:block;')
-//     set_new_trial()
-//     reset();
-//   }
-// }
-
 function formatTime(time) {
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
