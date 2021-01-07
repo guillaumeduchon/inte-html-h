@@ -47,6 +47,8 @@ const fetch_reponse_valid = async (type_validation) => {
 
         handle_user_responses(valid_resp.data.length, user_great_answer, type_validation)
         
+        type_validation === "manuel" ? onTimesUp() : null;
+
       } else {
         console.warn('Aucune bonne reponse n\'a été trouvé')
       }
