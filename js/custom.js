@@ -133,10 +133,10 @@ function hasWinDay() {
   let hasWin = false;
   if(localStorage.getItem('win_day') !== null) {
     let win_day = localStorage.getItem('win_day');
-    if(win_day !== null) {
-      let win_day_array = Object.values(JSON.parse(win_day));
-      if(win_day_array.includes(DAY_NUM))  hasWin = true;
-    }
+    let win_day_array = Object.values(JSON.parse(win_day));
+    
+    if(win_day_array.includes(DAY_NUM))  
+      hasWin = true;
   } 
 
   return hasWin;
@@ -159,8 +159,7 @@ function hasLooseDay() {
 }
 
 function isLogged(){
-  let logged = localStorage.getItem('logged') === null ? false: true;
-  return logged
+ return localStorage.getItem('logged') === null ? false: true;
 }
 
 function logged(){
@@ -171,35 +170,10 @@ function disconnect(){
   localStorage.removeItem('logged');
 }
 
-function goWin() {
-  $('.game_button').remove()
-
-  let win_day = localStorage.getItem('win_day');
-  if(win_day !== null) {
-    let win_day_array = Object.values(JSON.parse(win_day));
-    if(win_day_array[DAY_NUM]!== undefined) {
-      if(location.pathname !== "/08_indice.html") {
-        window.location.href = "07_gagne.html";
-      }
-    } else {
-      win_day_array.push(DAY_NUM);
-      localStorage.setItem('win_day', JSON.stringify(win_day_array));
-    }
-    
-  } else{
-    localStorage.setItem('win_day', JSON.stringify([DAY_NUM]));
-    setTimeout(()=>{
-      window.location.href = "07_gagne.html"
-    },1000);
-  }
-} 
-
-function goLoose() { setTimeout(()=>{
-  window.location.href = "07_perdu.html";
-},2000)}
-
-
-
+function clear_counter(){
+  localStorage.removeItem('timeLeft');
+  localStorage.removeItem('trial');
+}
 
 function compte_a_rebours(){
   var date_actuelle = new Date();
