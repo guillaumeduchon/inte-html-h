@@ -385,6 +385,7 @@ function get_user_answers(){
 function make_result(element, send_type) {
   //Si une mauvaise reponse est dans les reponses données , la mettre en rouge sinon la mettre en win 
   if(send_type !== "manuel") {
+    console.log('TEST :')
     localStorage.setItem('trial', Number(localStorage.getItem('trial')) -1 )
   }
 
