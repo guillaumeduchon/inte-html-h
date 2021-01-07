@@ -223,7 +223,15 @@ function compte_a_rebours(){
     if(index === 0){
       $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${heures} H ${minutes} MIN ${secondes} S</strong>`);
     } else {
-      var joursWeekEnd = (jours[date_evenement.getDay()+index] === undefined) ? jours[1] : (jours[date_evenement.getDay()+index])
+      //Si le prochain jours est Dimanche
+      var joursWeekEnd ;
+      if(jours[date_evenement.getDay()+index] === undefined) {
+        //Je creer un tableau contenant uniquement les jours de lundi à  samedi
+        let jours_ouvre = jours.slice(1);
+        joursWeekEnd = jours_ouvre[(index -2)] 
+      }else {
+        joursWeekEnd= jours[date_evenement.getDay()+index]
+      } 
       $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible<br><strong>${joursWeekEnd}</strong>`);
     }
   })
