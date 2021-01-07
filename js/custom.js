@@ -384,21 +384,11 @@ function get_user_answers(){
 //FOR GAME ONE ADD CLASS LOOSE OR WIN AND REDICTECT EVENTUAL
 function make_result(element, send_type) {
   //Si une mauvaise reponse est dans les reponses données , la mettre en rouge sinon la mettre en win 
-  if(element.parent().parent().has('.dz').lenght > 0) {
-    element.addClass('lose')
-  } else {
-    if(send_type === "manuel") {
-      console.log('manuel :')
-      if(Number(localStorage.getItem('trial')) -1 <= 1){
-        element.addClass('lose')
-        goLoose();
-      }else{
-          element.addClass('win')
-      }
-      valid_before_times_up()
-
+  if(send_type !== "manuel") {
+    console.log('auto :')
+    if(element.parent().parent().has('.dz').lenght > 0) {
+      element.addClass('lose')
     } else {
-      console.log('auto :')
       //Si on est au dernier essaie et qu'il y a une erreur
       if(localStorage.getItem('trial') === '0'){
         element.addClass('lose')
@@ -407,6 +397,9 @@ function make_result(element, send_type) {
           element.addClass('win')
       }
     }
+    
+  } else {
+    console.log('manuel :')
   }
 }
 
