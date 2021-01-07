@@ -204,12 +204,12 @@ function goWin() {
     localStorage.setItem('win_day', JSON.stringify([DAY_NUM]));
     setTimeout(()=>{
       window.location.href = "game_win.html"
-    },4000);
+    },3000);
   }
 } 
 
 function goLoose() { setTimeout(()=>{
   window.location.href = "game_lose.html";
-},4000)}
+},5000)}
 
 function goLogin() { window.location.href = "login.html"}
