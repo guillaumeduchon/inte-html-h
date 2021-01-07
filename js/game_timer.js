@@ -90,6 +90,7 @@ function valid_before_times_up(){
     check_answer('auto');
     goLoose()
   } else {
+    $('.tryagain').attr('style','display:block;')
     set_new_trial()
     reset();
   }

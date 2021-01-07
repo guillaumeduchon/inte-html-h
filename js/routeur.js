@@ -1,19 +1,3 @@
-const DATE_TAB = [
-  { 1: '06/01/2021' },
-  { 2: '07/01/2021' },
-  { 3: '08/01/2021' },
-  { 4: '09/01/2021' },
-  { 5: '10/01/2021' },
-  { 6: '11/01/2021' },
-  { 7: '12/01/2021' },
-  { 8: '13/01/2021' },
-  { 9: '14/01/2021' },
-  { 10: '15/01/2021' }
-];
-var date_today = get_date_today(new Date())
-var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
-const DAY_NUM = tab_day[0];
-
 $(document).ready(function() {
   /*
   *------------------------------------------------------------

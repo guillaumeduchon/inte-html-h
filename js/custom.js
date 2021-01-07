@@ -14,92 +14,6 @@ var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
 const DAY_NUM = tab_day[0];
 
-$(document).ready(function() {
-  /*
-  *------------------------------------------------------------
-  *------------ROUTEUR------------------
-  *------------------------------------------------------------
-  *------------------------------------------------------------
-  */
-
- /*------------------------------------------------------------RESTRICTIONS || MIDDLEWARE */
-
-
- /*------------------------------------------------------------ END RESTRICTIONS || END MIDDLEWARE */
-
-  //PAGE LOGIN
-  if(location.pathname === "/login.html") {
-    fullfiled_magasin();
-    $("#magasin").on('click', ()=>{
-      hideError();
-    })
-  }
-
-  //---------------------------------------------------------PAGE PLATEAU
-
-  if(location.pathname === "/02_plateau.html") {
-    isLogged() ? null : window.location.href = "login.html";
-    updatePlateau();
-  }
-
-  //--------------------------------------------------------- PAGE INDICE
-
-  if(location.pathname === "/08_indice.html") {
-    isLogged() ? null : window.location.href = "login.html";
-    fetch_indice();
-  }
-
-  //---------------------------------------------------------PAGE GAGNé
-
-  if(location.pathname === "/07_gagne.html") {
-    isLogged() ? null : window.location.href = "login.html";
-    hasWinDay() ? $('.cta_diamond').remove() : null;;
-  }
-
-  //--------------------------------------------------------- JOUR 1
-
-  if(location.pathname === "/10_Q1_game_drag.html") {
-    if(isLogged()){
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
-    }else {
-      window.location.href = "login.html";
-    } 
-    
-    //Si un tour a déja été passé
-    let trial = localStorage.getItem('trial')
-    if (trial) {
-      if ( trial < 1) {
-          $('.game_button').remove();
-          onTimesUp();
-          $('.trial').find('img').attr('src','img/essai_0.png')
-      }
-      if ( trial >= 1 ) {
-        $('.trial').find('img').attr('src','img/essai_'+trial+'.png')
-      }
-    }
-    fetch_reponse(DAY_NUM);
-  }
-
-  //--------------------------------------------------------- JOUR 2
-  //--------------------------------------------------------- JOUR 3
-  //--------------------------------------------------------- JOUR 4
-  //--------------------------------------------------------- JOUR 5
-  //--------------------------------------------------------- JOUR 6
-  //--------------------------------------------------------- JOUR 7
-  //--------------------------------------------------------- JOUR 8
-  //--------------------------------------------------------- JOUR 9
-  //--------------------------------------------------------- JOUR 10
-
-
-  /*
-  *------------------------------------------------------------
-  *------------END ROUTEUR------------------
-  *------------------------------------------------------------
-  *------------------------------------------------------------
-  */
-});
-
 //------------------------------------------------PLATEAU---------------------------------------
 
 const updatePlateau = () => {
@@ -201,98 +115,7 @@ const try_login = async (login, pwd) => {
       });
   return response
 }
-//------------------------------------------------QUESTION---------------------------------------
 
-const fetch_question=()=> {
-  const get_question = async () => {
-    response =  await fetch('/server/question.php').then((res)=> res.data );
-    return response;
-  }
-
-  get_question().then((res)=>{
-    //
-  })
-}
-
-//------------------------------------------------REPONSE---------------------------------------
-const check_answer = (send_type = "manuel") => {
-  fetch_reponse_valid(get_user_answers(), send_type);
-}
-
-const fetch_reponse = async ()=> {
-    await axios.post('/server/reponse.php', {day_num: DAY_NUM}, {
-
-      headers: {'Content-Type': 'application/json','mode': 'cors'}})
-        .then((res)=>{
-          if (res.data[0].id !== undefined) {
-            res.data.map(el=>(
-              $('.answers').append(`<div class="answer_button" id="answer_${el.id}" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">${el.name}</div>`)
-            ))
-          } else {
-            showError();
-          } 
-        });
-}
-
-const fetch_reponse_valid = async (user_answers, send_type)=> {
-  await axios.post('/server/reponse.php', {day_num: DAY_NUM, valid: true}, {
-    headers: {'Content-Type': 'application/json','mode': 'cors'}})
-      .then((valid_resp)=>{
-        //if there are at least one good answer return by api
-        if (valid_resp.data[0].id !== undefined) {
-          var error_answer = [];
-          $('.answer_button').each((index, el)=> {
-            let id_el = $(el).attr('id');
-            let id = getAnswerId(id_el);
-            let find = false;
-            Object.values(valid_resp.data).map((rep)=>{ if(rep.id === id) find = true; })
-            if(!find) error_answer.push(id);
-          });
-          
-          //If has error
-          if(error_answer.length > 0) {
-            var nbr_good_answer = 0;
-            $('.answer_button').each((index, el)=>{
-              let id_el = $(el).attr('id');
-              let id = getAnswerId(id_el);
-              if (error_answer.includes(id)) {
-                make_result($(el))
-              } else {
-                nbr_good_answer+= 1;
-                $(el).addClass('win');
-              }
-            });
-            //if error not in user answers
-            if(valid_resp.data.length === nbr_good_answer && error_answer.length < 1) {
-              goWin();
-            }
-
-            if(send_type === "manuel") {
-              valid_before_times_up()
-            }
-
-          } else {
-            goWin();
-          }
-        } else {
-          showError();
-        } 
-      });
-}
-
-//------------------------------------------------INDICE---------------------------------------
-const fetch_indice = async ()=> {
-  await axios.post('/server/indice.php', {day_num: DAY_NUM}, {
-    headers: {'Content-Type': 'application/json','mode': 'cors'}})
-      .then((res)=>{
-        if (res.data.id !== undefined) {
-          $('.cta_diamond').html(`<span>${res.data.letter.toUpperCase()}</span>`);
-          disconnect()
-        } else {
-          showError();
-        } 
-      });
-}
 
 //---------------------------------------------Utils
 
@@ -374,33 +197,7 @@ function goLoose() { setTimeout(()=>{
 },2000)}
 
 
-function getAnswerId(answer) {return Number(answer.replace('answer_',''));}
 
-function get_user_answers(){
-  let answers_el = $('.dropzone').find('.answer_button')
-  let answers_tab = []
-  answers_el.each((index, el)=>{
-    answers_tab.push(el.id)
-  })
-
-  return answers_tab;
-}
-
-//FOR GAME ONE ADD CLASS LOOSE OR WIN AND REDICTECT EVENTUAL
-function make_result(element, send_type) {
-  //Si une mauvaise reponse est dans les reponses données , la mettre en rouge sinon la mettre en win 
-  if(element.parent().parent().has('.dz').lenght > 0) {
-    element.addClass('lose')
-  } else {
-    //Si on est au dernier essaie et qu'il y a une erreur
-    if(localStorage.getItem('trial') === '0'){
-      element.addClass('lose')
-      goLoose();
-    }else{
-        element.addClass('win')
-    }
-  } 
-}
 
 function compte_a_rebours(){
   var date_actuelle = new Date();
