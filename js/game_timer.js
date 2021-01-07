@@ -7,6 +7,7 @@ const ALERT_THRESHOLD = 3;
 
 const TIME_LIMIT = localStorage.getItem('timeLeft') ?  Number(localStorage.getItem('timeLeft')) : 24;
 let timePassed = 0;
+localStorage.setItem('trial', 2);
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 
@@ -42,17 +43,12 @@ startTimer();
 function onTimesUp() {
   clearInterval(timerInterval);
   $('.tryagain').attr('style','display:block;')
-
-  if (localStorage.getItem('trial')){
-    if(localStorage.getItem('trial') === '1') {
-      $('.trial').find('img').attr('src','img/essai_0.png')
-      localStorage.setItem('trial',0)
-    } 
-  }else {
-    $('.trial').find('img').attr('src','img/essai_1.png')
-    localStorage.setItem('trial',1)
+  if(localStorage.getItem('trial') < 0) {
+    $('.game_button').remove()
+  } else {
+    set_new_trial()
+    startTimer();
   }
-  return localStorage.getItem('trial')
 }
 
 function startTimer() {
@@ -60,33 +56,44 @@ function startTimer() {
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
     localStorage.setItem('timeLeft',timeLeft)
+    //label
     document.getElementById("timer_new-label").innerHTML = formatTime(
       localStorage.getItem('timeLeft')
     );
+
     setCircleDasharray();
 
     if (localStorage.getItem('timeLeft') === '0') {
-      trial = onTimesUp();
-      if(trial >= 1) {
-         localStorage.setItem('timeLeft', 24);
-         timePassed = 0;
-          startTimer();
-      }else{
-        $('.game_button').remove()
-
-        let answers_el = $('.dropzone').find('.answer_button')
-        let answers_tab = []
-        answers_el.each((index, el)=>{
-          answers_tab.push(el.id)
-        })
-
-        if(!answers_el.length > 0) {
-          window.location.href = "07_perdu.html";
-        }
-         
-      }
+      check_answer('auto');
+      reset();
+      onTimesUp();
     }
   }, 1000);
+}
+
+function reset(){
+  localStorage.setItem('timeLeft', 24);
+  timePassed = 0;
+}
+
+function set_new_trial(){
+  let current_trial =  Number(localStorage.getItem('trial'));
+  localStorage.setItem('trial', (current_trial - 1));
+  let new_trial = localStorage.getItem('trial');
+  $('.trial').find('img').attr('src','img/essai_'+new_trial+'.png')
+
+  return new_trial
+}
+
+function valid_before_times_up(){
+  if(Number(localStorage.getItem('trial')-1) < 1) {
+    check_answer('auto');
+    goLoose()
+  } else {
+    $('.tryagain').attr('style','display:block;')
+    set_new_trial()
+    reset();
+  }
 }
 
 function formatTime(time) {
