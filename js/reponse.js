@@ -10,7 +10,7 @@ const fetch_reponse = async ()=> {
         .then((res)=>{
           if (res.data[0].id !== undefined) {
             res.data.map(el=>(
-              $('.answers').append(`<div class="answer_button" id="answer_${el.id}" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">${el.name}</div>`)
+              $('.answers').append(`<div class="answer_button" id="answer_${el.id}" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">${el.content}</div>`)
             ))
           } else {
             showError();
