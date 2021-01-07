@@ -110,7 +110,7 @@ const try_login = async (login, pwd) => {
       .then((res)=>{
         if (res.data[0].id !== undefined) {
           logged()
-          window.location.href = "/plateau.html";
+          window.location.href = "/rules.html";
         } else {
           showError();
         } 

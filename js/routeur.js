@@ -8,6 +8,13 @@ $(document).ready(function() {
     })
   }
 
+  //---------------------------------------------------------PAGE REGLES GENERAL
+
+  if(location.pathname === "/rules.html") {
+    isLogged() ? updatePlateau() : window.location.href = "login.html";
+    
+  }
+
   //---------------------------------------------------------PAGE PLATEAU
 
   if(location.pathname === "/plateau.html") {
@@ -15,7 +22,7 @@ $(document).ready(function() {
     
   }
 
-  //--------------------------------------------------------- PAGE RULES
+  //--------------------------------------------------------- PAGE GAME RULE
 
   if(location.pathname === "/game_rule.html") {
     isLogged() ? fetch_rules() : window.location.href = "login.html";
