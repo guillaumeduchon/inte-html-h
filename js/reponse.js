@@ -86,6 +86,6 @@ function all_button_win() {
 
 function colors_button(user_great_answer) {
   $('.answer_button').each((index, button) => {
-    user_great_answer.includes(getId($(button).attr('id'))) ? button.addClass('win') : button.addClass('lose')
+    user_great_answer.includes(getId($(button).attr('id'))) ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
