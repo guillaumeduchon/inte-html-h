@@ -230,6 +230,7 @@ function compte_a_rebours(){
         let jours_ouvre = jours.slice(1);
         joursWeekEnd = jours_ouvre[(index -2)]
         joursWeekEnd = joursWeekEnd === "Dimanche" ?  joursWeekEnd = 'Lundi': joursWeekEnd;
+
       }else {
         joursWeekEnd= jours[date_evenement.getDay()+index]
       } 
