@@ -45,7 +45,7 @@ const fetch_reponse_valid = async (type_validation) => {
           (!aFalse_answer.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null); 
         });
 
-        handle_user_responses(valid_resp.data.length, user_great_answer, type_validation)
+        handle_user_responses(valid_resp, user_great_answer, type_validation)
         
         type_validation === "manuel" ? onTimesUp() : null;
 
@@ -56,13 +56,13 @@ const fetch_reponse_valid = async (type_validation) => {
 }
 
 //FOR GAME ONE ADD CLASS LOOSE OR WIN AND REDICTECT EVENTUAL
-function handle_user_responses(nb_valid_answers, user_great_answer, type_validation) {
+function handle_user_responses(valid_answers, user_great_answer, type_validation) {
   let trial_storage = Number(localStorage.getItem('trial'));
 
   //Si on est au premier essaie
   if (trial_storage > 1) {
     //Si le nombre de bonne reponse est egale au nombre de bonne reponse de l'utilisateur (GAGNÉ!!!)
-    if (nb_valid_answers === user_great_answer.length) {
+    if (valid_answers.data.length === user_great_answer.length) {
       colors_button(user_great_answer);
       goWin();
     } else {
@@ -71,7 +71,7 @@ function handle_user_responses(nb_valid_answers, user_great_answer, type_validat
     }
   } else {
     colors_button(user_great_answer);
-    if (nb_valid_answers === user_great_answer.length ? goWin() : goLoose());
+    if (valid_answers.data.length === user_great_answer.length ? goWin() : goLoose());
   }
 }
 
@@ -84,11 +84,11 @@ function all_button_win() {
   })
 }
 
-function colors_button(user_great_answer) {
-  console.log('TEST :', user_great_answer)
-  console.log('TEST :', getId($(button).attr('id')))
-
+function colors_button() {
+  console.log('valid_answers :', valid_answers)
+  
   $('.answer_button').each((index, button) => {
-    user_great_answer.includes(getId($(button).attr('id'))) ? $(button).addClass('win') : $(button).addClass('lose')
+    console.log('id :', getId($(button).attr('id')))
+    valid_answers.includes(getId($(button).attr('id'))) ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
