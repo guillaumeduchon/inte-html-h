@@ -31,7 +31,7 @@
             if($aQuestion) {
                 switch ($type) {
                     case 'rules':
-                        $stmt = $pdo->prepare("SELECT rules FROM question WHERE id=:id");
+                        $stmt = $pdo->prepare("SELECT rules, type_game, jour FROM question WHERE id=:id");
                         $stmt->execute(['id'=> $aQuestion['id']]);
                         $aDatas = $stmt->fetch();
                         break;

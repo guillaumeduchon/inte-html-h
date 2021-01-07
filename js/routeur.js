@@ -35,14 +35,16 @@ $(document).ready(function() {
     fetch_indice();
   }
 
-  //---------------------------------------------------------PAGE GAGNé
+  //--------------------------------------------------------- PAGE GAGNé
 
   if(location.pathname === "/game_win.html") {
-    if (isLogged()){
-    //  hasWinDay() ? $('.cta_diamond').remove() : null;
-    } else {
-      goLogin();
-    }
+    isLogged() ? fetch_content() : window.location.href = "login.html";
+  }
+
+  //--------------------------------------------------------- PAGE PERDU
+
+  if(location.pathname === "/game_lose.html") {
+    isLogged() ? fetch_content() : window.location.href = "login.html";
   }
 
   //--------------------------------------------------------- JOUR 1
