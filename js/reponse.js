@@ -85,10 +85,10 @@ function all_button_win() {
 }
 
 function colors_button(valid_answers) {
-  console.log('valid_answers :', valid_answers)
+  let valid_answers_id = [];
+  valid_answers.data.map(el=>(valid_answers_id.push(el.id)))
   
   $('.answer_button').each((index, button) => {
-    console.log('id :', getId($(button).attr('id')))
-    valid_answers.includes(getId($(button).attr('id'))) ? $(button).addClass('win') : $(button).addClass('lose')
+    valid_answers_id.includes(getId($(button).attr('id'))) ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
