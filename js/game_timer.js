@@ -43,7 +43,7 @@ startTimer();
 function onTimesUp() {
   clearInterval(timerInterval);
   reset_time();
-  Number(localStorage.setItem('trial')) >= 2  ? startTimer() : null;
+  Number(localStorage.getItem('trial')) >= 2  ? startTimer() : null;
 }
 
 function startTimer() {
