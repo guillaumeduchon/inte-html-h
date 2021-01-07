@@ -92,7 +92,6 @@ function valid_before_times_up(){
     set_new_trial()
     reset();
   }
-  
 }
 
 function formatTime(time) {

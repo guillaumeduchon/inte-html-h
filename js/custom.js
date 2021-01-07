@@ -385,22 +385,22 @@ function get_user_answers(){
 function make_result(element, send_type) {
   //Si une mauvaise reponse est dans les reponses données , la mettre en rouge sinon la mettre en win 
   if(send_type !== "manuel") {
-    console.log('auto :')
-    if(element.parent().parent().has('.dz').lenght > 0) {
-      element.addClass('lose')
-    } else {
-      //Si on est au dernier essaie et qu'il y a une erreur
-      if(localStorage.getItem('trial') === '0'){
-        element.addClass('lose')
-        goLoose();
-      }else{
-          element.addClass('win')
-      }
-    }
-    
-  } else {
-    console.log('manuel :')
+    localStorage.setItem('trial', Number(localStorage.getItem('trial')) -1 )
   }
+
+  if(element.parent().parent().has('.dz').lenght > 0) {
+    element.addClass('lose')
+  } else {
+    //Si on est au dernier essaie et qu'il y a une erreur
+    if(localStorage.getItem('trial') === '0'){
+      element.addClass('lose')
+      goLoose();
+    }else{
+        element.addClass('win')
+    }
+  }
+  console.log('TEST :', localStorage.getItem('trial'))
+    
 }
 
 function compte_a_rebours(){
