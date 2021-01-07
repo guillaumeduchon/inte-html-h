@@ -87,6 +87,7 @@ function set_new_trial(){
 
 function valid_before_times_up(){
   if(Number(localStorage.getItem('trial')-1) < 1) {
+    check_answer('auto');
     goLoose()
   } else {
     set_new_trial()
