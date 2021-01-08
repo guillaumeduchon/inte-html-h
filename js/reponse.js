@@ -139,7 +139,7 @@ const fetch_reponse4 = async () => {
     .then((res) => {
       if (res.data[0].id !== undefined) {
         res.data.map(el => (
-          $('form').append(`<label for="choice${el.id}"><input type="radio" id="answer_${el.id}" name="${el.name}"><div class="answer_button" id="answer_${el.id}"><span>${el.content}</span></div></label>`)
+          $('form').append(`<label for="choice${el.id}"><input type="radio" id="answer_${el.id}" name="${el.name}" value=""><div class="answer_button" id="answer_${el.id}"><span>${el.content}</span></div></label>`)
         ))
       } else {
         showError();
