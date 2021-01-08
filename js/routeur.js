@@ -191,7 +191,7 @@ function goWin() {
   let win_day = localStorage.getItem('win_day');
   if (win_day !== null) {
     let win_day_array = Object.values(JSON.parse(win_day));
-    if (win_day_array[DAY_NUM]!== undefined) {
+    if (win_day_array.includes(String(DAY_NUM))) {
       if (location.pathname !== "/game_indice.html") {
         window.location.href = "game_win.html";
       }
