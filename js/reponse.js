@@ -1,3 +1,4 @@
+/* ----------------------------------- REPONSE JEU 1 ----------------------------------- */
 const fetch_reponse = async () => {
   await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
@@ -42,6 +43,67 @@ const fetch_reponse_valid = async (type_validation) => {
 
         //Boucle sur chaque reponse donnée par l'utilisateur
         $('.dz > .answer_button').each((index, el) => {
+          nbr_user_answers+=1;
+          let user_answer_id = getId($(el).attr('id'));
+          (!aFalse_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null); 
+        });
+
+        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
+        
+        onTimesUp()
+
+      } else {
+        console.warn('Aucune bonne reponse n\'a été trouvé')
+      }
+    });
+}
+
+/* ----------------------------------- REPONSE JEU 2 ----------------------------------- */
+const fetch_reponse2 = async () => {
+  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((res) => {
+      if (res.data[0].id !== undefined) {
+        res.data.map(el => (
+          $('form').append(`<label><input type="checkbox" name="${el.name}"><div class="answer_button" id="answer_${el.id}">${el.content}</div></label>`)
+        ))
+      } else {
+        showError();
+      }
+    });
+}
+
+const check_answer2 = (type_validation = "manuel") => {
+  fetch_reponse_valid2(type_validation);
+}
+
+const fetch_reponse_valid2 = async (type_validation) => {
+  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: true }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((valid_resp) => {
+      console.log(valid_resp);
+      //if there are at least one good answer return by api
+      if (valid_resp.data[0].id !== undefined) {
+        var aFalse_answers = [];
+        //Boucle sur chaque reponse dans le document
+        $('.answer_button').each((index, el) => {
+          let id_answer = getId($(el).attr('id'));
+          let is_good_anwer = false;
+
+          Object.values(valid_resp.data).map((item) => {
+            if (item.id === id_answer) is_good_anwer = true;
+          })
+
+          if (!is_good_anwer) aFalse_answers.push(id_answer);
+        });
+
+        var user_great_answer = [];
+        var nbr_user_answers = 0;
+
+        //Boucle sur chaque reponse donnée par l'utilisateur
+        $('form > .answer_button').each((index, el) => {
           nbr_user_answers+=1;
           let user_answer_id = getId($(el).attr('id'));
           (!aFalse_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null); 

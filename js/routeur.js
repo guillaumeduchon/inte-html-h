@@ -68,7 +68,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse(DAY_NUM);
+      fetch_reponse2(DAY_NUM);
     } else {
       clear_counter();
       window.location.href = "login.html";

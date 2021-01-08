@@ -4,7 +4,7 @@
 - **login.html** : Ecran de connexion
 - **rules.html** : Ecran expliquant les règles générales du challenge
 - **plateau.html** : Ecran listant sous forme de slide les divers jeux accessibles
-- **game_rule.html** : Ecran présentant les règles du jeu de jour (dynamique ; y compris le jeu final)
+- **game_rule.html** : Ecran présentant les règles du jeu du jour (dynamique ; y compris le jeu final)
 - **game_dayX.html** : Ecran du jeu du jour (y compris le jeu final)
     - *day1* : Drag and drop
     - *day2* : QCM
@@ -16,7 +16,7 @@
     - *day8* : Yes/No
     - *day9* : Drag and drop
     - *day10* : Jeu final, mot à reconstituer
-- **game_win.html** : Ecran pour les gagnants du jeu (jours 1 > 9)
-- **game_indice.html** : Ecran d'indice pour les gagnants du jeu (jours 1 > 9)
-- **game_lose.html** : Ecran pour les perdants du jeu (jours 1 > 9)
-- **endgame.html** : Ecran final du jeu, à afficher à la fin du jeu du 10ème (dynamique si gagné ou perdu)
+- **game_win.html** : Ecran pour les gagnants du jeu du jour (jours 1 > 9)
+- **game_indice.html** : Ecran d'indice pour les gagnants du jeu du jour (jours 1 > 9)
+- **game_lose.html** : Ecran pour les perdants du jeu du jour (jours 1 > 9)
+- **endgame.html** : Ecran final du challenge, à afficher à la fin du dernier jeu (dynamique si gagné ou perdu)
