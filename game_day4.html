@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <main>
@@ -17,20 +18,7 @@
                         <div class="question">H24 exprime une nouvelle facette de la masculinité Hermès.<br><strong>Saurez-vous retrouver en moins de 24 secondes de quel métier Christine Nagel s'est inspirée pour créer ce nouveau parfum masculin ?</strong></div>
                         <div class="game_quizz flex_contain q4">
                             <div class="answers">
-                                <form action="" id="question4">
-                                    <label>
-                                        <input type="radio" id="huey" name="drone" value="huey">
-                                        <div class="answer_button"><span>Le métier<br>de la soie<br>Hermès</span></div>
-                                    </label>
-                                    <label>
-                                        <input type="radio" id="huey" name="drone" value="huey">
-                                        <div class="answer_button"><span>Le métier<br>de l'horlogerie<br>Hermès</span></div>
-                                    </label>
-                                    <label>
-                                        <input type="radio" id="huey" name="drone" value="huey">
-                                        <div class="answer_button"><span>Le métier<br>du prêt-à-porter<br>homme<br>Hermès</span></div>
-                                    </label>
-                                </form>
+                                <form></form>
                             </div>
                         </div>
                     </div>
@@ -40,7 +28,7 @@
                             <span class="title">Essais restants</span>
                             <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
                         </div>
-                        <div class="game_button" onclick="check_answer()" id="valide"><span>VALIDER</span></div>
+                        <div class="game_button" onclick="check_answer4()" id="valide"><span>VALIDER</span></div>
                     </div>
                 </div>
             </div>
@@ -57,5 +45,8 @@
     <script src="js/game_timer.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/user.js"></script>
+    <script src="js/routeur.js"></script>
+    <script src="js/question.js"></script>
+    <script src="js/reponse.js"></script>
 </body>
 </html>

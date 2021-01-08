@@ -1,8 +1,8 @@
 const DATE_TAB = [
-  { 1: '07/01/2021' },
-  { 2: '08/01/2021' },
-  { 3: '11/01/2021' },
-  { 4: '12/01/2021' },
+  { 1: '05/01/2021' },
+  { 2: '06/01/2021' },
+  { 3: '07/01/2021' },
+  { 4: '08/01/2021' },
   { 5: '13/01/2021' },
   { 6: '14/01/2021' },
   { 7: '15/01/2021' },
@@ -18,10 +18,10 @@ const DAY_NUM = tab_day[0];
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'07/01/2021'},
-    {'status':'','day_num': 2, 'day_date':'08/01/2021'},
-    {'status':'','day_num': 3, 'day_date':'09/01/2021'},
-    {'status':'','day_num': 4, 'day_date':'11/01/2021'},
+    {'status':'','day_num': 1, 'day_date':'05/01/2021'},
+    {'status':'','day_num': 2, 'day_date':'06/01/2021'},
+    {'status':'','day_num': 3, 'day_date':'07/01/2021'},
+    {'status':'','day_num': 4, 'day_date':'08/01/2021'},
     {'status':'','day_num': 5, 'day_date':'12/01/2021'},
     {'status':'','day_num': 4, 'day_date':'13/01/2021'},
     {'status':'','day_num': 6, 'day_date':'14/01/2021'},

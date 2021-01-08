@@ -60,13 +60,19 @@ const fetch_reponse_valid = async (type_validation) => {
 
 /* ----------------------------------- REPONSE JEU 2 ----------------------------------- */
 const fetch_reponse2 = async () => {
+  $(document).on('click',(el)=>{
+    console.log(el.target);
+    if (el.target.type === 'checkbox') {
+      $(el.target).toggleClass('checkedAnswer');
+    }
+  });
   await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
       if (res.data[0].id !== undefined) {
         res.data.map(el => (
-          $('form').append(`<label><input type="checkbox" name="${el.name}"><div class="answer_button" id="answer_${el.id}">${el.content}</div></label>`)
+          $('form').append(`<label for="choice${el.id}"><input type="checkbox" name="${el.name}" id="answer_${el.id}"><div class="answer_button" id="answer_${el.id}">${el.content}</div></label>`)
         ))
       } else {
         showError();
@@ -83,30 +89,30 @@ const fetch_reponse_valid2 = async (type_validation) => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      console.log(valid_resp);
+      // console.log('0: ',valid_resp);
       //if there are at least one good answer return by api
       if (valid_resp.data[0].id !== undefined) {
-        var aFalse_answers = [];
+        var aGood_answers = [];
         //Boucle sur chaque reponse dans le document
         $('.answer_button').each((index, el) => {
           let id_answer = getId($(el).attr('id'));
-          let is_good_anwer = false;
 
           Object.values(valid_resp.data).map((item) => {
-            if (item.id === id_answer) is_good_anwer = true;
+            if (item.id === id_answer) aGood_answers.push(id_answer);
           })
-
-          if (!is_good_anwer) aFalse_answers.push(id_answer);
         });
 
         var user_great_answer = [];
         var nbr_user_answers = 0;
 
         //Boucle sur chaque reponse donnée par l'utilisateur
-        $('form > .answer_button').each((index, el) => {
+        $('.checkedAnswer').each((index, el) => {
+          // console.log(el);
           nbr_user_answers+=1;
-          let user_answer_id = getId($(el).attr('id'));
-          (!aFalse_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null); 
+          let user_answer_id = getId(el.id);
+          // console.log('1: ', user_answer_id);
+          (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
+          // console.log('2: ', aGood_answers); 
         });
 
         handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
@@ -119,6 +125,33 @@ const fetch_reponse_valid2 = async (type_validation) => {
     });
 }
 
+/* ----------------------------------- REPONSE JEU 4 ----------------------------------- */
+const fetch_reponse4 = async () => {
+  $(document).on('click',(el)=>{
+    console.log(el.target);
+    if (el.target.type === 'radio') {
+      $(el.target).toggleClass('checkedAnswer');
+    }
+  });
+  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((res) => {
+      if (res.data[0].id !== undefined) {
+        res.data.map(el => (
+          $('form').append(`<label for="choice${el.id}"><input type="radio" id="answer_${el.id}" name="${el.name}"><div class="answer_button" id="answer_${el.id}"><span>${el.content}</span></div></label>`)
+        ))
+      } else {
+        showError();
+      }
+    });
+}
+
+const check_answer4 = (type_validation = "manuel") => {
+  fetch_reponse_valid2(type_validation);
+}
+
+/* ----------------------------------- GENERIQUE --------------------------------------- */
 //FOR GAME ONE ADD CLASS LOOSE OR WIN AND REDICTECT EVENTUAL
 function handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation) {
   let trial_storage = Number(localStorage.getItem('trial'));
