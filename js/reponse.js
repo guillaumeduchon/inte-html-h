@@ -63,11 +63,11 @@ function handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, 
 
   //Si on est au premier essaie
   if (trial_storage > 1) {
-    console.log('valid_resp :', valid_resp.data)
-    console.log('user_great_answer :', user_great_answer)
-    console.log('USER NBR :', nbr_user_answers)
     //Si le nombre de bonne reponse est egale au nombre de bonne reponse de l'utilisateur (GAGNÉ!!!)
-    if (valid_resp.data.length === user_great_answer.length === nbr_user_answers) {
+    if (valid_resp.data.length 
+      === user_great_answer.length 
+      && nbr_user_answers === valid_resp.data.length
+    ) {
       colors_button(valid_resp);
       clear_counter()
       goWin();
@@ -78,12 +78,13 @@ function handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, 
     }
   } else {
     colors_button(valid_resp);
-    console.log('valid_resp :', valid_resp.data.length)
-    console.log('user_great_answer :', user_great_answer.length)
-    console.log('USER NBR :', nbr_user_answers)
-
-    console.log('valid_resp :', valid_resp.data.length === user_great_answer.length === nbr_user_answers)
-    if (valid_resp.data.length === user_great_answer.length === nbr_user_answers ? (goWin(),clear_counter()) : clear_counter(),goLoose(),showWrongAnswer());
+    if (valid_resp.data.length === user_great_answer.length 
+      && nbr_user_answers === valid_resp.data.length
+    ) {
+      goWin(),clear_counter()
+    } else {
+      clear_counter(),goLoose(),showWrongAnswer()
+    }
   }
 }
 
