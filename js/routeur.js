@@ -57,7 +57,6 @@ $(document).ready(function() {
       fetch_reponse(DAY_NUM);
     } else {
       clear_counter();
-      // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
     } 
   }
@@ -72,7 +71,6 @@ $(document).ready(function() {
       fetch_reponse(DAY_NUM);
     } else {
       clear_counter();
-      // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
     } 
   }
@@ -147,7 +145,6 @@ $(document).ready(function() {
       fetch_reponse(DAY_NUM);
     } else {
       clear_counter();
-      // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
     } 
   }
@@ -162,7 +159,6 @@ $(document).ready(function() {
       fetch_reponse(DAY_NUM);
     } else {
       clear_counter();
-      // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
     } 
   }
@@ -177,7 +173,6 @@ $(document).ready(function() {
       fetch_reponse(DAY_NUM);
     } else {
       clear_counter();
-      // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
     } 
   }
@@ -191,7 +186,7 @@ function goWin() {
   let win_day = localStorage.getItem('win_day');
   if (win_day !== null) {
     let win_day_array = Object.values(JSON.parse(win_day));
-    if (win_day_array[DAY_NUM]!== undefined) {
+    if (win_day_array.includes(String(DAY_NUM))) {
       if (location.pathname !== "/game_indice.html") {
         window.location.href = "game_win.html";
       }
