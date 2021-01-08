@@ -38,14 +38,16 @@ const fetch_reponse_valid = async (type_validation) => {
         });
 
         var user_great_answer = [];
+        var nbr_user_answers = 0;
 
         //Boucle sur chaque reponse donnée par l'utilisateur
         $('.dz > .answer_button').each((index, el) => {
+          nbr_user_answers+=1;
           let user_answer_id = getId($(el).attr('id'));
           (!aFalse_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null); 
         });
 
-        handle_user_responses(valid_resp, user_great_answer, type_validation)
+        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
         
         onTimesUp()
 
@@ -56,7 +58,7 @@ const fetch_reponse_valid = async (type_validation) => {
 }
 
 //FOR GAME ONE ADD CLASS LOOSE OR WIN AND REDICTECT EVENTUAL
-function handle_user_responses(valid_resp, user_great_answer, type_validation) {
+function handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation) {
   let trial_storage = Number(localStorage.getItem('trial'));
 
   //Si on est au premier essaie
@@ -64,7 +66,7 @@ function handle_user_responses(valid_resp, user_great_answer, type_validation) {
     console.log('valid_resp :', valid_resp.data)
     console.log('user_great_answer :', user_great_answer)
     //Si le nombre de bonne reponse est egale au nombre de bonne reponse de l'utilisateur (GAGNÉ!!!)
-    if (valid_resp.data.length === user_great_answer.length) {
+    if (valid_resp.data.length === user_great_answer.length === nbr_user_answers) {
       colors_button(valid_resp);
       clear_counter()
       goWin();
@@ -75,7 +77,7 @@ function handle_user_responses(valid_resp, user_great_answer, type_validation) {
     }
   } else {
     colors_button(valid_resp);
-    if (valid_resp.data.length === user_great_answer.length ? (goWin(),clear_counter()) : clear_counter(),goLoose(),showWrongAnswer());
+    if (valid_resp.data.length === user_great_answer.length === nbr_user_answers ? (goWin(),clear_counter()) : clear_counter(),goLoose(),showWrongAnswer());
   }
 }
 
