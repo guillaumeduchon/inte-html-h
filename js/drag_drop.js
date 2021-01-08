@@ -10,23 +10,23 @@ function dragStart( event, chosenClass ) {
     // console.log( 'DRAG OVER' );
     event.preventDefault();
     event.dataTransfer.effectAllowed = 'move';
-    event.target.closest( ".dz" ).classList.add( "dz--active" );
+    event.target.closest( ".dropdiv" ).classList.add( "dropdiv--active" );
   }
   
   function dragLeave( event ) {
     // console.log( "DRAG LEAVE" );
-    event.target.classList.remove( "dz--active" );
+    event.target.classList.remove( "dropdiv--active" );
   }
   
   function dragDrop( event ) {
     // console.log( 'DROP' );
   
-    event.target.closest( ".dz" ).append( document.getElementById( event.dataTransfer.getData( 'text' ) ) )
+    event.target.closest( ".dropdiv" ).append( document.getElementById( event.dataTransfer.getData( 'text' ) ) )
   
     document.getElementsByClassName( "answer_button--active" )[0].classList.remove( "answer_button--active" );
   
-    if ( document.getElementsByClassName( "dz--active" )[0] ) {
-      document.getElementsByClassName( "dz--active" )[0].classList.remove("dz--active" );
+    if ( document.getElementsByClassName( "dropdiv--active" )[0] ) {
+      document.getElementsByClassName( "dropdiv--active" )[0].classList.remove("dropdiv--active" );
     }
   
     event.preventDefault();
@@ -43,8 +43,8 @@ function dragStart( event, chosenClass ) {
     if ( document.getElementsByClassName( "answer_button--active" )[0] ) {
       document.getElementsByClassName( "answer_button--active" )[0].classList.remove( "answer_button--active" );
     }
-    if ( document.getElementsByClassName( "dz--active" )[0] ) {
-      document.getElementsByClassName( "dz--active" )[0].classList.remove( "dz--active" );
+    if ( document.getElementsByClassName( "dropdiv--active" )[0] ) {
+      document.getElementsByClassName( "dropdiv--active" )[0].classList.remove( "dropdiv--active" );
     }
   
   }

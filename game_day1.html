@@ -19,11 +19,11 @@
                         <div class="question">Une lettre et un nombre se cachent derrière le nom du nouveau parfum masculin Hermès. <strong>En 24 secondes, sélectionnez ce que cette lettre et ce nombre évoquent.</strong><br><i class="rule">(4 bonnes réponses à trouver)</i></div>
                         <div class="game_quizz flex_contain q1 dragdrop">
                             <div class="dropzone">
-                                <div class="dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )">
+                                <div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )">
                                     <div class="rule">Glissez &amp; déposez les bonnes réponses ici</div>
                                 </div>
                             </div>
-                            <div class="answers">
+                            <div class="dropdiv answers" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )">
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
           // dragImageCenterOnTouch: true,
           // iterationInterval: 1000,
           forceApply: true,
-          holdToDrag: 500,
+          holdToDrag: 100,
           dragImageTranslateOverride: MobileDragDrop.scrollBehaviourDragImageTranslateOverride
         });
       </script>

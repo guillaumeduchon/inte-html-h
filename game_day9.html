@@ -21,12 +21,12 @@
                                 <img src="img/parfum2_q9.jpg" alt="">
                             </div>
                             <div class="dropzone">
-                                <div class="dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
-                                <div class="dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
-                                <div class="dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
-                                <div class="dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                                <div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                                <div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                                <div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                                <div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
                             </div>
-                            <div class="answers">
+                            <div class="dropdiv answers" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )">
                                 <div class="answer_button" id="answer1" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Un parfum aromatique, frais et végétal</div>
                                 <div class="answer_button" id="answer2" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Pour un homme universal</div>
                                 <div class="answer_button" id="answer3" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Un parfum vigoureux et minéral</div>
@@ -69,7 +69,7 @@
           // dragImageCenterOnTouch: true,
           // iterationInterval: 1000,
           forceApply: true,
-          holdToDrag: 500,
+          holdToDrag: 100,
           dragImageTranslateOverride: MobileDragDrop.scrollBehaviourDragImageTranslateOverride
         });
       </script>

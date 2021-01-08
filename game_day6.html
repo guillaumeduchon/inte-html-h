@@ -16,17 +16,17 @@
                     <div class="game_space">
                         <div class="question">H24, une nouvelle empreinte pour la maison Hermès, un nouvel objet.<br><strong>Saurez-vous associer le parfum à la bonne description, en moins de 24 secondes ?</strong></div>
                         <div class="game_quizz flex_contain q6 dragdrop">
-                            <div class="grid_parfums">
+                            <div class="dropdiv grid_parfums" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )">
                                 <img src="img/parfum1_q6.jpg" alt="" id="answer1" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">
                                 <img src="img/parfum2_q6.jpg" alt="" id="answer2" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">
                                 <img src="img/parfum3_q6.jpg" alt="" id="answer3" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">
                             </div>
                             <div class="dropzone">
-                                <div class="dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
-                                <div class="dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
-                                <div class="dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
-                                <div class="dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
-                                <div class="dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                                <div class="dropdiv dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                                <div class="dropdiv dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                                <div class="dropdiv dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                                <div class="dropdiv dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
+                                <div class="dropdiv dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
                             </div>
                             <div class="answers">
                                 <div class="answer_button">Son étui se pare de teintes chaudes associées, à l’emblématique couleur orange de la maison</div>
@@ -69,10 +69,10 @@
         MobileDragDrop.polyfill({
           // use this to make use of the scroll behaviour
           // dragStartConditionOverride: false,
-          // dragImageCenterOnTouch: true,
+          dragImageCenterOnTouch: true,
           // iterationInterval: 1000,
           forceApply: true,
-          holdToDrag: 500,
+          holdToDrag: 100,
           dragImageTranslateOverride: MobileDragDrop.scrollBehaviourDragImageTranslateOverride
         });
       </script>

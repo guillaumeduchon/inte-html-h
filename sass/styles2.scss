@@ -844,7 +844,11 @@ main {
                                 left: 0;
                             }
                         }
-                        .answers {width: 80vw;}
+                        .answers {
+                            width: 80vw;
+                            height: 158px;
+                        }
+                        .answer_button {align-self: center;}
                     }
                     &.q2 {
                         @media screen and (orientation:landscape) and (min-width:680px) {height: 85%;}
@@ -963,7 +967,7 @@ main {
                         }
                         .grid_parfums {
                             img {
-                                height: 65px; border: 2px solid $green;
+                                height: 65px; border: 2px solid $green; align-self: center;
                                 @media screen and (orientation:landscape) and (min-width: 760px) {
                                     height: 75px;
                                 }
@@ -974,6 +978,11 @@ main {
                                     height: 160px;
                                 }
                             }
+                            width: 65px;
+                            height: 210px;
+                            @media screen and (orientation:landscape) and (min-width: 760px) {width: 75px; height: 238px;}
+                            @media screen and (orientation:landscape) and (min-width: 1024px) {width: 115px; height: 359px;}
+                            @media screen and (orientation:landscape) and (min-width: 1366px) {width: 160px; height: 494px;}
                             grid-gap: 7px;
                         }
                         .answers {
@@ -1085,6 +1094,10 @@ main {
                         }
                         .answers {
                             grid-template-columns: repeat(1, 1fr);
+                            height: 174px;
+                            @media screen and (orientation:landscape) and (min-width: 1024px) {height: 234px;}
+                            @media screen and (orientation:landscape) and (min-width: 1366px) {height: 286px;}
+                            .answer_button {align-self: center;}
                         }
                         .dropzone {
                             display: grid;
