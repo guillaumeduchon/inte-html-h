@@ -78,6 +78,10 @@ function handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, 
     }
   } else {
     colors_button(valid_resp);
+    console.log('valid_resp :', valid_resp.data.length)
+    console.log('user_great_answer :', user_great_answer.length)
+    console.log('USER NBR :', nbr_user_answers)
+
     console.log('valid_resp :', valid_resp.data.length === user_great_answer.length === nbr_user_answers)
     if (valid_resp.data.length === user_great_answer.length === nbr_user_answers ? (goWin(),clear_counter()) : clear_counter(),goLoose(),showWrongAnswer());
   }
