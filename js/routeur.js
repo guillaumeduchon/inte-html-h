@@ -57,7 +57,6 @@ $(document).ready(function() {
       fetch_reponse(DAY_NUM);
     } else {
       clear_counter();
-      // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
     } 
   }
@@ -72,7 +71,6 @@ $(document).ready(function() {
       fetch_reponse(DAY_NUM);
     } else {
       clear_counter();
-      // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
     } 
   }
@@ -147,7 +145,6 @@ $(document).ready(function() {
       fetch_reponse(DAY_NUM);
     } else {
       clear_counter();
-      // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
     } 
   }
@@ -162,7 +159,6 @@ $(document).ready(function() {
       fetch_reponse(DAY_NUM);
     } else {
       clear_counter();
-      // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
     } 
   }
@@ -177,7 +173,6 @@ $(document).ready(function() {
       fetch_reponse(DAY_NUM);
     } else {
       clear_counter();
-      // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
     } 
   }
