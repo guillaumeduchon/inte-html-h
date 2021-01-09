@@ -172,7 +172,7 @@ const fetch_reponse3 = async () => {
 
 
 const check_answer3 = (type_validation = "manuel") => {
-  fetch_reponse_valid3(type_validation);
+  fetch_reponse3(type_validation);
 }
 
 const fetch_reponse_valid3 = async (type_validation) => {
