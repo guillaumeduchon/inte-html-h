@@ -35,8 +35,13 @@ if ($contentType === "application/json") {
                     WHERE reponse.question_id =:id"
                 );
             } else {
-                $stmt = $pdo->prepare("SELECT * FROM reponse
-                    WHERE question_id=:id AND is_valid=1");
+                if($decoded['valid'] === 'true') {
+                    $stmt = $pdo->prepare("SELECT * FROM reponse
+                     WHERE question_id=:id AND is_valid=1");
+                } else {
+                    $stmt = $pdo->prepare("SELECT * FROM reponse
+                    WHERE question_id=:id AND is_valid=0");
+                }
             }
 
             $stmt->execute(['id' => $aQuestion['id']]);
