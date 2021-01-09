@@ -54,7 +54,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse(DAY_NUM);
+      fetch_reponse();
     } else {
       clear_counter();
       window.location.href = "login.html";
@@ -68,7 +68,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse2(DAY_NUM);
+      fetch_reponse2();
     } else {
       clear_counter();
       window.location.href = "login.html";
@@ -82,7 +82,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse3(DAY_NUM);
+      fetch_reponse3();
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -97,7 +97,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse4(DAY_NUM);
+      fetch_reponse4();
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -112,7 +112,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse(DAY_NUM);
+      fetch_reponse();
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -127,7 +127,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse(DAY_NUM);
+      fetch_reponse();
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -170,7 +170,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse(DAY_NUM);
+      fetch_reponse();
     } else {
       clear_counter();
       window.location.href = "login.html";
