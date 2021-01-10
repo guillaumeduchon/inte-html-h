@@ -1,4 +1,4 @@
-$(document).ready(function() {
+// $(document).ready(function() {
   //---------------------------------------------------------PAGE LOGIN 
 
   if (location.pathname === "/login.html") {
@@ -178,7 +178,7 @@ $(document).ready(function() {
   }
 
   //--------------------------------------------------------- JOUR 10
-});
+// });
 
 function goWin() {
   $('.game_button').remove()
