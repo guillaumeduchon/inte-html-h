@@ -11,7 +11,7 @@
   //---------------------------------------------------------PAGE REGLES GENERAL
 
   if (location.pathname === "/rules.html") {
-    isLogged() ? updatePlateau() : window.location.href = "login.html";
+    //lateau() : window.location.href = "login.html";
     
   }
 
