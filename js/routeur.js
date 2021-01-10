@@ -1,4 +1,6 @@
-// $(document).ready(function() {
+var updatePlateau = updatePlateau(); 
+$(document).ready(function() {
+
   //---------------------------------------------------------PAGE LOGIN 
 
   if (location.pathname === "/login.html") {
@@ -178,7 +180,7 @@
   }
 
   //--------------------------------------------------------- JOUR 10
-// });
+});
 
 function goWin() {
   $('.game_button').remove()
