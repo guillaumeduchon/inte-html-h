@@ -126,7 +126,6 @@ const fetch_reponse_valid2 = async (type_validation) => {
 
 /* ----------------------------------- REPONSE JEU 3 ----------------------------------- */
 const fetch_reponse3 = async () => {
-  clearGoodAnswer3();
   //RECUPERE LES BONNES REPONSES UNIQUEMENT
   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
@@ -152,8 +151,8 @@ const fetch_reponse3 = async () => {
     });
 
   //Nbr tableau désiré
-  const n = 3;
-  const result = [[], [], []]; //we create it, then we'll fill it
+  const n = 4;
+  const answers_array = [[], [], [], []]; //we create it, then we'll fill it
 
   const answerPerLine = Math.ceil(MAUVAISE_REPONSES.length / n);
   
@@ -162,24 +161,19 @@ const fetch_reponse3 = async () => {
     for (let i = 0; i < answerPerLine; i++) {
       const value = MAUVAISE_REPONSES[i + line * answerPerLine];
       if (!value) continue //avoid adding "undefined" values
-      result[line].push(value);
+        answers_array[line].push(value);
     }
   }
 
-  console.log('resultBefore fgpoodanwserr :', result);
-  
-  var good_answer_by_line = [];
+  console.log('answers_arrayBefore fgpoodanwserr :', answers_array);
   
   //AJOUTE UNE BONNE REPONSE PAR TABLEAU DU TABLEAU RESULT
-  for (let line = 0; line < result.length; line++) {
+  for (let line = 0; line < answers_array.length; line++) {
     //CREER UN TABLEAU AVEC LE ID DE LA BONNE REPONSE LIÉ A UNE LIGNE (SELON L'INDEX)
-    good_answer_by_line.push(BONNE_REPONSES[line].id)
-    result[line].push(BONNE_REPONSES[line]);
+    answers_array[line].push(BONNE_REPONSES[line]);
   }
   
-  console.log('good_answer_by_line:', good_answer_by_line);
-
-  result.each(tab_line, index => {
+  answers_array.each(tab_line, index => {
     tab_line.each(response, i => {
       $('.game_carousel:type(' + index + ')').html(`
         <div class="carousel_cell id=${response.id}">
@@ -191,15 +185,10 @@ const fetch_reponse3 = async () => {
       `);
     })
   })
-
-
-// AJOUTER UN TABLEAU DANS LE LOCAL STORAGE AVEC LE TABLEAU QUI A LA BONNE REPONSE SUR LA LIGNE
-localStorage.setItem('good_answer_by_line', JSON.stringify(good_answer_by_line))
-
 }
 
 const check_answer3 = (type_validation = "manuel") => {
-  fetch_reponse3(type_validation);
+  fetch_reponse_valid3(type_validation);
 }
 
 const fetch_reponse_valid3 = async (type_validation) => {
@@ -317,8 +306,4 @@ function colors_button(valid_answers) {
   $('.answer_button').each((index, button) => {
     valid_answers_id.includes(getId($(button).attr('id'))) ? $(button).addClass('win') : $(button).addClass('lose')
   })
-}
-
-function clearGoodAnswer3() {
-  localStorage.removeItem('good_answer_by_line');
 }
