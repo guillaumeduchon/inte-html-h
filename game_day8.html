@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <main>
@@ -14,22 +15,11 @@
             <div class="flex_contain game_screen">
                 <div class="game_container flex_contain">
                     <div class="game_space">
+                        <div class="tryagain">dommage, mauvaise réponse, il vous reste une tentative !</div>
                         <div class="question"><strong>Êtes-vous prêts à relever en équipe le défi de présenter la nouvelle création masculine H24 à 24 clients aujourd’hui ?</strong></div>
                         <div class="game_quizz flex_contain q8">
                             <div class="answers">
-                                <form action="" id="question8">
-                                    <label>
-                                        <input type="radio" id="huey" name="drone" value="huey">
-                                        <div class="answer_button"><span>OUI !</span></div>
-                                    </label>
-                                    <label>
-                                        <img src="img/q8_h24.png" alt="">
-                                    </label>
-                                    <label>
-                                        <input type="radio" id="huey" name="drone" value="huey">
-                                        <div class="answer_button"><span>NON</span></div>
-                                    </label>
-                                </form>
+                                <form></form>
                             </div>
                         </div>
                     </div>
@@ -39,7 +29,7 @@
                             <span class="title">Essais restants</span>
                             <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
                         </div>
-                        <div class="game_button" onclick="check_answer()" id="valide"><span>VALIDER</span></div>
+                        <div class="game_button" onclick="check_answer8()" id="valide"><span>VALIDER</span></div>
                     </div>
                 </div>
             </div>
@@ -53,7 +43,11 @@
     </div>
     <!-- / -->
     <script src="js/function.js"></script>
+    <script src="js/game_timer.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/user.js"></script>
+    <script src="js/routeur.js"></script>
+    <script src="js/question.js"></script>
+    <script src="js/reponse.js"></script>
 </body>
 </html>

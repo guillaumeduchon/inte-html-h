@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <main>
@@ -14,27 +15,16 @@
             <div class="flex_contain game_screen">
                 <div class="game_container flex_contain">
                     <div class="game_space">
+                        <div class="tryagain">dommage, mauvaise réponse, il vous reste une tentative !</div>
                         <div class="question">H24, une nouvelle empreinte pour la maison Hermès, un nouvel objet.<br><strong>Saurez-vous associer le parfum à la bonne description, en moins de 24 secondes ?</strong></div>
                         <div class="game_quizz flex_contain q6 dragdrop">
                             <div class="dropdiv grid_parfums" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )">
-                                <img src="img/parfum1_q6.jpg" alt="" id="answer1" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">
-                                <img src="img/parfum2_q6.jpg" alt="" id="answer2" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">
-                                <img src="img/parfum3_q6.jpg" alt="" id="answer3" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">
+                                <img src="img/parfum1_q6.jpg" alt="" id="answer_25" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">
+                                <img src="img/parfum2_q6.jpg" alt="" id="answer_28" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">
+                                <img src="img/parfum3_q6.jpg" alt="" id="answer_27" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">
                             </div>
-                            <div class="dropzone">
-                                <div class="dropdiv dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
-                                <div class="dropdiv dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
-                                <div class="dropdiv dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
-                                <div class="dropdiv dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
-                                <div class="dropdiv dz" id="divBorderQ6" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
-                            </div>
-                            <div class="answers">
-                                <div class="answer_button">Son étui se pare de teintes chaudes associées, à l’emblématique couleur orange de la maison</div>
-                                <div class="answer_button">Un flacon en forme d’étrier</div>
-                                <div class="answer_button">Son étui est en papier recyclé et recyclable</div>
-                                <div class="answer_button">Un flacon architectural à base losange</div>
-                                <div class="answer_button">Un flacon vertical aux épaules métalliques</div>
-                            </div>
+                            <div class="dropzone"></div>
+                            <div class="answers"></div>
                         </div>
                     </div>
                     <div class="game_infos">
@@ -43,7 +33,7 @@
                             <span class="title">Essais restants</span>
                             <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
                         </div>
-                        <div class="game_button" onclick="check_answer()" id="valide"><span>VALIDER</span></div>
+                        <div class="game_button" onclick="check_answer6()" id="valide"><span>VALIDER</span></div>
                     </div>
                 </div>
             </div>
@@ -61,6 +51,9 @@
     <script src="js/drag_drop.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/user.js"></script>
+    <script src="js/routeur.js"></script>
+    <script src="js/question.js"></script>
+    <script src="js/reponse.js"></script>
     <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/index.min.js"></script>
     <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/scroll-behaviour.min.js"></script>
     <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/hold-to-drag-issue/release/index.js"></script>
