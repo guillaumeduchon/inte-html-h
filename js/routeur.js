@@ -1,6 +1,4 @@
-var updatePlateau = updatePlateau(); 
 $(document).ready(function() {
-
   //---------------------------------------------------------PAGE LOGIN 
 
   if (location.pathname === "/login.html") {
