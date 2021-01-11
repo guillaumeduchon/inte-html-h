@@ -112,7 +112,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse(DAY_NUM);
+      fetch_reponse2(DAY_NUM);
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)

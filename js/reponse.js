@@ -153,6 +153,50 @@ const check_answer4 = (type_validation = "manuel") => {
 }
 
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
+const check_answer5 = (type_validation = "manuel") => {
+  fetch_reponse_valid5(type_validation);
+}
+
+const fetch_reponse_valid5 = async (type_validation) => {
+  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: true }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((valid_resp) => {
+      console.log('0: ',valid_resp);
+      //if there are at least one good answer return by api
+      if (valid_resp.data[0].id !== undefined) {
+        var aGood_answers = [];
+        //Boucle sur chaque reponse dans le document
+        $('.answer_button').each((index, el) => {
+          let id_answer = getId($(el).attr('id'));
+
+          Object.values(valid_resp.data).map((item) => {
+            if (item.id === id_answer) aGood_answers.push(id_answer);
+          })
+        });
+
+        var user_great_answer = [];
+        var nbr_user_answers = 0;
+
+        //Boucle sur chaque reponse donnée par l'utilisateur
+        $('.checkedAnswer').each((index, el) => {
+          console.log(el);
+          nbr_user_answers+=1;
+          let user_answer_id = getId(el.id);
+          console.log('1: ', user_answer_id);
+          (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
+          console.log('2: ', aGood_answers); 
+        });
+
+        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
+        
+        onTimesUp()
+
+      } else {
+        console.warn('Aucune bonne reponse n\'a été trouvé')
+      }
+    });
+}
 
 /* ----------------------------------- REPONSE JEU 6 ----------------------------------- */
 
@@ -169,7 +213,7 @@ const fetch_reponse7 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
-      console.log('0: ', res);
+      // console.log('0: ', res);
       if (res.data[0].id !== undefined) {
         res.data.map(el => (
           $('form').append(`<label for="choice${el.id}"><input type="radio" id="answer_${el.id}" name="radio" value=""><div class="answer_block" id="answer_${el.id}"><img src="${el.reponse_url}" alt="${el.content}"><div class="answer_button" id="answer_${el.id}">${el.content}</div></div></label>`)
