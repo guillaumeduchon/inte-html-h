@@ -162,7 +162,6 @@ const fetch_reponse_valid5 = async (type_validation) => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      console.log('0: ',valid_resp);
       //if there are at least one good answer return by api
       if (valid_resp.data[0].id !== undefined) {
         var aGood_answers = [];
@@ -180,15 +179,12 @@ const fetch_reponse_valid5 = async (type_validation) => {
 
         //Boucle sur chaque reponse donnée par l'utilisateur
         $('.checkedAnswer').each((index, el) => {
-          console.log(el);
           nbr_user_answers+=1;
           let user_answer_id = getId(el.id);
-          console.log('1: ', user_answer_id);
           (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
-          console.log('2: ', aGood_answers); 
         });
 
-        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
+        handle_user_responses2(valid_resp, user_great_answer, nbr_user_answers, type_validation)
         
         onTimesUp()
 
@@ -289,6 +285,12 @@ function handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, 
       clear_counter(),goLoose(),showWrongAnswer()
     }
   }
+}
+
+function handle_user_responses2(valid_resp, type_validation) {
+  colors_button(valid_resp);
+  goWin();
+  clear_counter();
 }
 
 //---------------------------------------------Utils
