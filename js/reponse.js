@@ -128,7 +128,7 @@ const fetch_reponse_valid2 = async (type_validation) => {
 /* ----------------------------------- REPONSE JEU 4 ----------------------------------- */
 const fetch_reponse4 = async () => {
   $(document).on('click',(el)=>{
-    console.log(el.target);
+    // console.log(el.target);
     if (el.target.type === 'radio') {
       $('input:radio[name='+$(el.target).attr('name')+']').removeClass('checkedAnswer');
       $(el.target).addClass('checkedAnswer');
@@ -151,6 +151,69 @@ const fetch_reponse4 = async () => {
 const check_answer4 = (type_validation = "manuel") => {
   fetch_reponse_valid2(type_validation);
 }
+
+/* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
+
+/* ----------------------------------- REPONSE JEU 6 ----------------------------------- */
+
+/* ----------------------------------- REPONSE JEU 7 ----------------------------------- */
+const fetch_reponse7 = async () => {
+  $(document).on('click',(el)=>{
+    // console.log(el.target);
+    if (el.target.type === 'radio') {
+      $('input:radio[name='+$(el.target).attr('name')+']').removeClass('checkedAnswer');
+      $(el.target).addClass('checkedAnswer');
+    }
+  });
+  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((res) => {
+      console.log('0: ', res);
+      if (res.data[0].id !== undefined) {
+        res.data.map(el => (
+          $('form').append(`<label for="choice${el.id}"><input type="radio" id="answer_${el.id}" name="radio" value=""><div class="answer_block" id="answer_${el.id}"><img src="${el.reponse_url}" alt="${el.content}"><div class="answer_button" id="answer_${el.id}">${el.content}</div></div></label>`)
+        ))
+      } else {
+        showError();
+      }
+    });
+}
+
+const check_answer7 = (type_validation = "manuel") => {
+  fetch_reponse_valid2(type_validation);
+}
+
+/* ----------------------------------- REPONSE JEU 8 ----------------------------------- */
+const fetch_reponse8 = async () => {
+  $(document).on('click',(el)=>{
+    // console.log(el.target);
+    if (el.target.type === 'radio') {
+      $('input:radio[name='+$(el.target).attr('name')+']').removeClass('checkedAnswer');
+      $(el.target).addClass('checkedAnswer');
+    }
+  });
+  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((res) => {
+      if (res.data[0].id !== undefined) {
+        res.data.map(el => (
+          $('form').append(`<label for="choice${el.id}"><input type="radio" id="answer_${el.id}" name="radio" value=""><div class="answer_button" id="answer_${el.id}"><span>${el.content}</span></div></label>`)
+        ))
+      } else {
+        showError();
+      }
+    });
+}
+
+const check_answer8 = (type_validation = "manuel") => {
+  fetch_reponse_valid2(type_validation);
+}
+
+/* ----------------------------------- REPONSE JEU 9 ----------------------------------- */
+
+/* ----------------------------------- REPONSE JEU 10 ----------------------------------- */
 
 /* ----------------------------------- GENERIQUE --------------------------------------- */
 //FOR GAME ONE ADD CLASS LOOSE OR WIN AND REDICTECT EVENTUAL

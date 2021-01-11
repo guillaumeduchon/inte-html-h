@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <main>
@@ -14,32 +15,11 @@
             <div class="flex_contain game_screen">
                 <div class="game_container flex_contain">
                     <div class="game_space">
+                        <div class="tryagain">dommage, mauvaise réponse, il vous reste une tentative !</div>
                         <div class="question"><strong>Combien de fois un flacon 50ml H24 peut-il être rechargé avec le format de la recharge 125ml ?</strong><i class="rule">(1 seule bonne réponse)</i></div>
                         <div class="game_quizz flex_contain q7">
                             <div class="answers">
-                                <form action="" id="question7">
-                                    <label>
-                                        <input type="radio" id="huey" name="drone" value="huey">
-                                        <div class="answer_block">
-                                            <img src="img/img1_q7.jpg" alt="">
-                                            <div class="answer_button">24 fois</div>
-                                        </div>
-                                    </label>
-                                    <label>
-                                        <input type="radio" id="huey" name="drone" value="huey">
-                                        <div class="answer_block">
-                                            <img src="img/img2_q7.jpg" alt="">
-                                            <div class="answer_button">2,5 fois</div>
-                                        </div>
-                                    </label>
-                                    <label>
-                                        <input type="radio" id="huey" name="drone" value="huey">
-                                        <div class="answer_block">
-                                            <img src="img/img3_q7.png" alt="">
-                                            <div class="answer_button">1 fois</div>
-                                        </div>
-                                    </label>
-                                </form>
+                                <form></form>
                             </div>
                         </div>
                     </div>
@@ -49,7 +29,7 @@
                             <span class="title">Essais restants</span>
                             <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
                         </div>
-                        <div class="game_button" onclick="check_answer()" id="valide"><span>VALIDER</span></div>
+                        <div class="game_button" onclick="check_answer7()" id="valide"><span>VALIDER</span></div>
                     </div>
                 </div>
             </div>
@@ -66,5 +46,8 @@
     <script src="js/game_timer.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/user.js"></script>
+    <script src="js/routeur.js"></script>
+    <script src="js/question.js"></script>
+    <script src="js/reponse.js"></script>
 </body>
 </html>

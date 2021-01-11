@@ -12,8 +12,8 @@
     - *day4* : Reponse ✅
     - *day5* : Liste de mots ❌
     - *day6* : Drag and drop image ❌
-    - *day7* : Réponse unique w/Img ❌
-    - *day8* : Yes/No ❌
+    - *day7* : Réponse unique w/Img ✅
+    - *day8* : Yes/No 💬
     - *day9* : Drag and drop ❌
     - *day10* : Jeu final, mot à reconstituer ❌
 - **game_win.html** : Ecran pour les gagnants du jeu du jour (jours 1 > 9) ✅
