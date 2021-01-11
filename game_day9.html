@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <main>
@@ -26,12 +27,7 @@
                                 <div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
                                 <div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
                             </div>
-                            <div class="dropdiv answers" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )">
-                                <div class="answer_button" id="answer1" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Un parfum aromatique, frais et végétal</div>
-                                <div class="answer_button" id="answer2" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Pour un homme universal</div>
-                                <div class="answer_button" id="answer3" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Un parfum vigoureux et minéral</div>
-                                <div class="answer_button" id="answer4" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">Pour un homme urbain</div>
-                            </div>
+                            <div class="dropdiv answers" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>
                         </div>
                     </div>
                     <div class="game_infos">
@@ -40,7 +36,7 @@
                             <span class="title">Essais restants</span>
                             <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
                         </div>
-                        <div class="game_button" onclick="check_answer()" id="valide"><span>VALIDER</span></div>
+                        <div class="game_button" onclick="check_answer9()" id="valide"><span>VALIDER</span></div>
                     </div>
                 </div>
             </div>
@@ -58,6 +54,9 @@
     <script src="js/drag_drop.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/user.js"></script>
+    <script src="js/routeur.js"></script>
+    <script src="js/question.js"></script>
+    <script src="js/reponse.js"></script>
     <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/index.min.js"></script>
     <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/scroll-behaviour.min.js"></script>
     <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/hold-to-drag-issue/release/index.js"></script>

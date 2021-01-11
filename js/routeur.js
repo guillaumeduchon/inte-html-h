@@ -127,7 +127,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse(DAY_NUM);
+      fetch_reponse6(DAY_NUM);
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -170,7 +170,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse(DAY_NUM);
+      fetch_reponse9(DAY_NUM);
     } else {
       clear_counter();
       window.location.href = "login.html";
