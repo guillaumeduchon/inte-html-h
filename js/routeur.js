@@ -1,4 +1,6 @@
+var updatePlateau = updatePlateau(); 
 $(document).ready(function() {
+
   //---------------------------------------------------------PAGE LOGIN 
 
   if (location.pathname === "/login.html") {
@@ -11,7 +13,7 @@ $(document).ready(function() {
   //---------------------------------------------------------PAGE REGLES GENERAL
 
   if (location.pathname === "/rules.html") {
-    isLogged() ? updatePlateau() : window.location.href = "login.html";
+    //lateau() : window.location.href = "login.html";
     
   }
 
@@ -54,7 +56,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse(DAY_NUM);
+      fetch_reponse();
     } else {
       clear_counter();
       window.location.href = "login.html";
@@ -68,7 +70,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse2(DAY_NUM);
+      fetch_reponse2();
     } else {
       clear_counter();
       window.location.href = "login.html";
@@ -82,7 +84,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse(DAY_NUM);
+      fetch_reponse3();
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -97,7 +99,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse4(DAY_NUM);
+      fetch_reponse4();
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -112,7 +114,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse2(DAY_NUM);
+      fetch_reponse();
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -127,7 +129,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse6(DAY_NUM);
+      fetch_reponse();
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -142,7 +144,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse7(DAY_NUM);
+      fetch_reponse();
     } else {
       clear_counter();
       window.location.href = "login.html";
@@ -170,7 +172,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse9(DAY_NUM);
+      fetch_reponse();
     } else {
       clear_counter();
       window.location.href = "login.html";

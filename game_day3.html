@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="node_modules/flickity/css/flickity.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <main>
@@ -21,7 +22,7 @@
                         <div class="game_quizz flex_contain q3">
                             <div class="game_carou_contain">
                                 <div class="game_carousel" data-flickity='{"pageDots": false, "initialIndex": ".is-initial-select"}'>
-                                    <div class="carousel_cell">
+                                    <!-- <div class="carousel_cell">
                                         <figure class="item">
                                             <img src="img/slide_q3_sauge.jpg" alt="">
                                             <figcaption class="answer_button">Sauge sclarée</figcaption>
@@ -32,10 +33,10 @@
                                             <img src="img/slide_q3_fevetonka.jpg" alt="">
                                             <figcaption class="answer_button">Fève Tonka</figcaption>
                                         </figure>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="game_carousel" data-flickity='{"pageDots": false, "initialIndex": ".is-initial-select"}'>
-                                    <div class="carousel_cell">
+                                    <!-- <div class="carousel_cell">
                                         <figure class="item">
                                             <img src="img/slide_q3_boisrose.jpg" alt="">
                                             <figcaption class="answer_button">Bois de rose</figcaption>
@@ -46,10 +47,10 @@
                                             <img src="img/slide_q3_encens.jpg" alt="">
                                             <figcaption class="answer_button">Encens</figcaption>
                                         </figure>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="game_carousel" data-flickity='{"pageDots": false, "initialIndex": ".is-initial-select"}'>
-                                    <div class="carousel_cell">
+                                    <!-- <div class="carousel_cell">
                                         <figure class="item">
                                             <img src="img/slide_q3_narcisse.jpg" alt="">
                                             <figcaption class="answer_button">Narcisse</figcaption>
@@ -60,10 +61,10 @@
                                             <img src="img/slide_q3_thenoir.jpg" alt="">
                                             <figcaption class="answer_button">Thé noir</figcaption>
                                         </figure>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="game_carousel" data-flickity='{"pageDots": false, "initialIndex": ".is-initial-select"}'>
-                                    <div class="carousel_cell">
+                                    <!-- <div class="carousel_cell">
                                         <figure class="item">
                                             <img src="img/slide_q3_sclarene.jpg" alt="">
                                             <figcaption class="answer_button">Sclarene</figcaption>
@@ -74,7 +75,7 @@
                                             <img src="img/slide_q3_sauge.jpg" alt="">
                                             <figcaption class="answer_button">Sauge sclarée</figcaption>
                                         </figure>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -85,7 +86,7 @@
                             <span class="title">Essais restants</span>
                             <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
                         </div>
-                        <div class="game_button" onclick="check_answer()" id="valide"><span>VALIDER</span></div>
+                        <div class="game_button" onclick="check_answer3()" id="valide"><span>VALIDER</span></div>
                     </div>
                 </div>
             </div>
@@ -102,5 +103,8 @@
     <script src="js/game_timer.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/user.js"></script>
+    <script src="js/routeur.js"></script>
+    <script src="js/question.js"></script>
+    <script src="js/reponse.js"></script>
 </body>
 </html>
