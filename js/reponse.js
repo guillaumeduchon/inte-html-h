@@ -237,10 +237,18 @@ const fetch_reponse8 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
+      // console.log(res);
       if (res.data[0].id !== undefined) {
-        res.data.map(el => (
-          $('form').append(`<label for="choice${el.id}"><input type="radio" id="answer_${el.id}" name="radio" value=""><div class="answer_button" id="answer_${el.id}"><span>${el.content}</span></div></label>`)
-        ))
+        console.log(res.data);
+        var imgArrayMiddle = {id: 100, content: '<label><img src="img/q8_h24.png" alt=""></label>'};
+        res.data.splice(1, 0, imgArrayMiddle);
+        res.data.map(el => {
+          if (el.id === 100) {
+            $('form').append(`<label><img src="img/q8_h24.png" alt=""></label>`)
+          } else {
+            $('form').append(`<label for="choice${el.id}"><input type="radio" id="answer_${el.id}" name="radio" value=""><div class="answer_button" id="answer_${el.id}"><span>${el.content}</span></div></label>`)
+          }
+        })
       } else {
         showError();
       }
