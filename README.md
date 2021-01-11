@@ -8,8 +8,8 @@
 - **game_dayX.html** : Ecran du jeu du jour (y compris le jeu final) 💬
     - *day1* : Drag and drop ✅
     - *day2* : QCM ✅
-    - *day3* : Slide ❌
-    - *day4* : Reponse 💬
+    - *day3* : Slide 💬
+    - *day4* : Reponse ✅
     - *day5* : Liste de mots ❌
     - *day6* : Drag and drop image ❌
     - *day7* : Réponse unique w/Img ❌
