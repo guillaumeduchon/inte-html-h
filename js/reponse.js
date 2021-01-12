@@ -125,111 +125,111 @@ const fetch_reponse_valid2 = async (type_validation) => {
 }
 
 /* ----------------------------------- REPONSE JEU 3 ----------------------------------- */
-// const fetch_reponse3 = async () => {
-//   //RECUPERE LES BONNES REPONSES UNIQUEMENT
-//   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
-//     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-//   })
-//     .then((res) => {
-//       if (res.data[0].id !== undefined) {
-//         var BONNE_REPONSES = res.data;
-//       } else {
-//         showError();
-//       }
-//     });
+const fetch_reponse3 = async () => {
+  //RECUPERE LES BONNES REPONSES UNIQUEMENT
+  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((res) => {
+      if (res.data[0].id !== undefined) {
+        var BONNE_REPONSES = res.data;
+      } else {
+        showError();
+      }
+    });
 
-//   //RECUPERE LES MAUVAISES REPONSES UNIQUEMENT
-//   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'false' }, {
-//     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-//   })
-//     .then((res) => {
-//       if (res.data[0].id !== undefined) {
-//         var MAUVAISE_REPONSES = res.data;
-//       } else {
-//         showError();
-//       }
-//     });
+  //RECUPERE LES MAUVAISES REPONSES UNIQUEMENT
+  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'false' }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((res) => {
+      if (res.data[0].id !== undefined) {
+        var MAUVAISE_REPONSES = res.data;
+      } else {
+        showError();
+      }
+    });
 
-//   //Nbr tableau désiré
-//   const n = 4;
-//   const answers_array = [[], [], [], []]; //we create it, then we'll fill it
+  //Nbr tableau désiré
+  const n = 4;
+  const answers_array = [[], [], [], []]; //we create it, then we'll fill it
 
-//   const answerPerLine = Math.ceil(MAUVAISE_REPONSES.length / n);
+  const answerPerLine = Math.ceil(MAUVAISE_REPONSES.length / n);
   
-//   //REMPLI LE TABLEAU EN RESULT EN 3 TABLEAU DE MAUVAISE REPONSE
-//   for (let line = 0; line < n; line++) {
-//     for (let i = 0; i < answerPerLine; i++) {
-//       const value = MAUVAISE_REPONSES[i + line * answerPerLine];
-//       if (!value) continue //avoid adding "undefined" values
-//         answers_array[line].push(value);
-//     }
-//   }
+  //REMPLI LE TABLEAU EN RESULT EN 3 TABLEAU DE MAUVAISE REPONSE
+  for (let line = 0; line < n; line++) {
+    for (let i = 0; i < answerPerLine; i++) {
+      const value = MAUVAISE_REPONSES[i + line * answerPerLine];
+      if (!value) continue //avoid adding "undefined" values
+        answers_array[line].push(value);
+    }
+  }
 
-//   console.log('answers_arrayBefore fgpoodanwserr :', answers_array);
+  console.log('answers_arrayBefore fgpoodanwserr :', answers_array);
   
-//   //AJOUTE UNE BONNE REPONSE PAR TABLEAU DU TABLEAU RESULT
-//   for (let line = 0; line < answers_array.length; line++) {
-//     //CREER UN TABLEAU AVEC LE ID DE LA BONNE REPONSE LIÉ A UNE LIGNE (SELON L'INDEX)
-//     answers_array[line].push(BONNE_REPONSES[line]);
-//   }
+  //AJOUTE UNE BONNE REPONSE PAR TABLEAU DU TABLEAU RESULT
+  for (let line = 0; line < answers_array.length; line++) {
+    //CREER UN TABLEAU AVEC LE ID DE LA BONNE REPONSE LIÉ A UNE LIGNE (SELON L'INDEX)
+    answers_array[line].push(BONNE_REPONSES[line]);
+  }
   
-//   answers_array.each(tab_line, index => {
-//     tab_line.each(response, i => {
-//       $('.game_carousel:type(' + index + ')').html(`
-//         <div class="carousel_cell id=${response.id}">
-//           <figure class="item">
-//             <img src="${response.reponse_url}" alt="">
-//               <figcaption class="answer_button">${response.name}</figcaption>
-//           </figure>
-//         </div>
-//       `);
-//     })
-//   })
-// }
+  answers_array.each(tab_line, index => {
+    tab_line.each(response, i => {
+      $('.game_carousel:type(' + index + ')').html(`
+        <div class="carousel_cell id=${response.id}">
+          <figure class="item">
+            <img src="${response.reponse_url}" alt="">
+              <figcaption class="answer_button">${response.name}</figcaption>
+          </figure>
+        </div>
+      `);
+    })
+  })
+}
 
-// const check_answer3 = (type_validation = "manuel") => {
-//   fetch_reponse_valid3(type_validation);
-// }
+const check_answer3 = (type_validation = "manuel") => {
+  fetch_reponse_valid3(type_validation);
+}
 
-// const fetch_reponse_valid3 = async (type_validation) => {
-//   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
-//     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-//   })
-//     .then((valid_resp) => {
-//       //if there are at least one good answer return by api
-//       if (valid_resp.data[0].id !== undefined) {
-//         var aGood_answers = [];
-//         //Boucle sur chaque reponse dans le document
-//         $('.answer_button').each((index, el) => {
-//           let id_answer = getId($(el).attr('id'));
+const fetch_reponse_valid3 = async (type_validation) => {
+  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((valid_resp) => {
+      //if there are at least one good answer return by api
+      if (valid_resp.data[0].id !== undefined) {
+        var aGood_answers = [];
+        //Boucle sur chaque reponse dans le document
+        $('.answer_button').each((index, el) => {
+          let id_answer = getId($(el).attr('id'));
 
-//           Object.values(valid_resp.data).map((item) => {
-//             if (item.id === id_answer) aGood_answers.push(id_answer);
-//           });
-//         });
+          Object.values(valid_resp.data).map((item) => {
+            if (item.id === id_answer) aGood_answers.push(id_answer);
+          });
+        });
 
-//         var user_great_answer = [];
-//         var nbr_user_answers = 0;
+        var user_great_answer = [];
+        var nbr_user_answers = 0;
 
-//         //Boucle sur chaque reponse donnée par l'utilisateur
-//         $('."carousel_cell.is-selected"').each((index, el) => {
-//           // console.log(el);
-//           nbr_user_answers += 1;
-//           let user_answer_id = getId(el.id);
-//           // console.log('1: ', user_answer_id);
-//           (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
-//           // console.log('2: ', aGood_answers); 
-//         });
+        //Boucle sur chaque reponse donnée par l'utilisateur
+        $('."carousel_cell.is-selected"').each((index, el) => {
+          // console.log(el);
+          nbr_user_answers += 1;
+          let user_answer_id = getId(el.id);
+          // console.log('1: ', user_answer_id);
+          (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
+          // console.log('2: ', aGood_answers); 
+        });
 
-//         handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
+        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
 
-//         onTimesUp()
+        onTimesUp()
 
-//       } else {
-//         console.warn('Aucune bonne reponse n\'a été trouvé')
-//       }
-//     });
-// }
+      } else {
+        console.warn('Aucune bonne reponse n\'a été trouvé')
+      }
+    });
+}
 
 /* ----------------------------------- REPONSE JEU 4 ----------------------------------- */
 const fetch_reponse4 = async () => {
@@ -499,7 +499,7 @@ const fetch_reponse_valid9 = async (type_validation) => {
         });
         console.log(falseAnswer);
 
-        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
+        handle_user_responses3(falseAnswer, valid_resp, type_validation)
         
         onTimesUp()
 
@@ -548,14 +548,14 @@ function handle_user_responses2(valid_resp, type_validation) {
   clear_counter();
 }
 
-function handle_user_responses3(valid_resp, user_great_answer, nbr_user_answers, answer_zone_id, type_validation) {
+function handle_user_responses3(falseAnswer, valid_resp, type_validation) {
   let trial_storage = Number(localStorage.getItem('trial'));
 
   //Si on est au premier essaie
   if (trial_storage > 1) {
     //Si le nombre de bonne reponse est egale au nombre de bonne reponse de l'utilisateur (GAGNÉ!!!)
-    if (user_answer_id === answer_zone_id) {
-      colors_button(valid_resp);
+    if (!falseAnswer) {
+      colors_button2(valid_resp);
       clear_counter()
       goWin();
     } else {
@@ -564,8 +564,8 @@ function handle_user_responses3(valid_resp, user_great_answer, nbr_user_answers,
       showWrongAnswer();
     }
   } else {
-    colors_button(valid_resp);
-    if (user_answer_id === answer_zone_id) {
+    colors_button2(valid_resp);
+    if (!falseAnswer) {
       goWin(), clear_counter()
     } else {
       clear_counter(), goLoose(), showWrongAnswer()
@@ -588,5 +588,11 @@ function colors_button(valid_answers) {
 
   $('.answer_button').each((index, button) => {
     valid_answers_id.includes(getId($(button).attr('id'))) ? $(button).addClass('win') : $(button).addClass('lose')
+  })
+}
+
+function colors_button2(falseAnswer) {
+  $('.answer_button').each((index, button) => {
+    falseAnswer.id ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
