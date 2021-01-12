@@ -337,8 +337,8 @@ const fetch_reponse_valid6 = async () => {
 
         var existFalseAnswer = false;
         $('.dropzone > .dropdiv.dz').each((index, el) => {
-          let rowImgId = 000;
-          if ($(el).hasClass('.answer_img')) {
+          let rowImgId = 100;
+          if ($(el).children().hasClass('.answer_img')) {
             rowImgId = getId($(el).attr('id'));
           }
           console.log('TEST :', rowImgId ,tableauTriJ6[index].id)
