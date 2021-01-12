@@ -337,7 +337,7 @@ const fetch_reponse_valid6 = async () => {
 
         var existFalseAnswer = false;
         $('.dropzone > .dropdiv.dz').each((index, el) => {
-          let rowImgId = 100;
+          let rowImgId = undefined;
           if ($(el).find('.answer_img').length > 0) {
             rowImgId = getId($(el).find('.answer_img').attr('id'));
           }
