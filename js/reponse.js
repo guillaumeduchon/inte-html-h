@@ -317,6 +317,7 @@ const fetch_reponse6 = async () => {
 }
 
 const check_answer6 = () => {
+  console.log('yy :', 'rr')
   fetch_reponse_valid6();
 }
 
