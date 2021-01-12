@@ -336,7 +336,7 @@ const fetch_reponse_valid6 = async () => {
         })
 
         var existFalseAnswer = false;
-        $('.dropzone > .dropdiv.dz').each((index, el) => {
+        $('.dropzone > .dropdiv.dz > .answer_img').each((index, el) => {
           console.log('TEST :', getId($(el).attr('id')),tableauTriJ6[index].id)
           if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
             existFalseAnswer = true;
