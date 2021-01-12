@@ -336,9 +336,13 @@ const fetch_reponse_valid6 = async () => {
         })
 
         var existFalseAnswer = false;
-        $('.dropzone > .dropdiv.dz > .answer_img').each((index, el) => {
-          console.log('TEST :', getId($(el).attr('id')),tableauTriJ6[index].id)
-          if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
+        $('.dropzone > .dropdiv.dz').each((index, el) => {
+          let rowImgId = 000;
+          if ($(el).hasClass('.answer_img')) {
+            rowImgId = getId($(el).attr('id'));
+          }
+          console.log('TEST :', rowImgId ,tableauTriJ6[index].id)
+          if (rowImgId !== tableauTriJ6[index].id) {
             existFalseAnswer = true;
           }
         });
