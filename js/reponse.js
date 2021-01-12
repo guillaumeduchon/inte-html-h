@@ -24,7 +24,6 @@ const fetch_reponse_valid = async (type_validation) => {
   })
     .then((valid_resp) => {
       //if there are at least one good answer return by api
-      console.log(valid_resp.data);
       if (valid_resp.data[0].id !== undefined) {
         var aFalse_answers = [];
         //Boucle sur chaque reponse dans le document
@@ -338,10 +337,10 @@ const fetch_reponse_valid6 = async () => {
         var existFalseAnswer = false;
         $('.dropzone > .dropdiv.dz').each((index, el) => {
           let rowImgId = undefined;
+          
           if ($(el).find('.answer_img').length > 0) {
             rowImgId = getId($(el).find('.answer_img').attr('id'));
           }
-          console.log('OOOOOOP :', rowImgId ,tableauTriJ6[index].id)
           if (rowImgId !== tableauTriJ6[index].id) {
             existFalseAnswer = true;
           }
