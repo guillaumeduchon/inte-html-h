@@ -14,7 +14,7 @@ const fetch_reponse = async () => {
     });
 }
 
-const check_answer = () => {
+const check_answer1 = () => {
   fetch_reponse_valid();
 }
 

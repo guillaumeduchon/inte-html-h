@@ -62,7 +62,7 @@ function startTimer() {
     setCircleDasharray();
 
     if (localStorage.getItem('timeLeft') === '0') {
-      context["check_answer6"].apply();
+      context["check_answer"+NUM_].apply();
     }
   }, 1000);
 }
