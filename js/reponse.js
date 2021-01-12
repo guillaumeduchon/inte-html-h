@@ -24,6 +24,7 @@ const fetch_reponse_valid = async (type_validation) => {
   })
     .then((valid_resp) => {
       //if there are at least one good answer return by api
+      console.log(valid_resp.data);
       if (valid_resp.data[0].id !== undefined) {
         var aFalse_answers = [];
         //Boucle sur chaque reponse dans le document
@@ -307,11 +308,13 @@ const fetch_reponse6 = async () => {
   })
     .then((res) => {
       if (res.data[0].id !== undefined) {
-        res.data.map(el => (
-          $('.dropzone').append(`<div class="dropdiv dz" id="answer_${el.id}" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>`),
-          $('.answers').append(`<div class="answer_button" id="answer_${el.id}">${el.content}</div>`)
-          // $('.grid_parfums').append(`<img src="${el.reponse_url}" alt="${el.content}" id="answer_${el.id}" draggable="true" class="draggable" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">`)
-        ))
+        res.data.map(el => {
+          $('.dropzone').append(`<div class="dropdiv dz" id="answer_${el.id}" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>`);
+          $('.answers').append(`<div class="answer_button" id="answer_${el.id}">${el.content}</div>`);
+          if (el.id !== 24 && el.id !== 26) {
+            $('.grid_parfums').append(`<img src="${el.reponse_url}" alt="" id="answer_${el.id}" draggable="true" class="draggable answer_img" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">`)
+          }
+        })
       } else {
         showError();
       }
@@ -327,33 +330,26 @@ const fetch_reponse_valid6 = async (type_validation) => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      //if there are at least one good answer return by api
       if (valid_resp.data[0].id !== undefined) {
-        var aFalse_answers = [];
-        //Boucle sur chaque reponse dans le document
-        $('img').each((index, el) => {
-          let id_answer = getId($(el).attr('id'));
-          let is_good_anwer = false;
+        var tableauTriJ6 = [{},{},{},{},{}]
+        valid_resp.data.map(el => {
+          if (el.id === 25) {
+            tableauTriJ6.splice(1, 1, el);
+          }
+          if (el.id === 27) {
+            tableauTriJ6.splice(3, 1, el);
+          }
+          if (el.id === 28) {
+            tableauTriJ6.splice(4, 1, el);
+          }
+        })
 
-          Object.values(valid_resp.data).map((item) => {
-            if (item.id === id_answer) is_good_anwer = true;
-          })
-
-          if (!is_good_anwer) aFalse_answers.push(id_answer);
+        var falseAnswer = false;
+        $('.dropdiv.dz').each((index, el) => {
+            falseAnswer = getId($(el).attr('id')) !== tableauTriJ6[index].id ? true : falseAnswer; 
         });
+        handle_user_responses3(falseAnswer, tableauTriJ6, true, type_validation)
 
-        var user_great_answer = [];
-        var nbr_user_answers = 0;
-
-        //Boucle sur chaque reponse donnée par l'utilisateur
-        $('.dz > img').each((index, el) => {
-          nbr_user_answers+=1;
-          let user_answer_id = getId($(el).attr('id'));
-          (!aFalse_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null); 
-        });
-
-        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
-        
         onTimesUp()
 
       } else {
@@ -499,7 +495,7 @@ const fetch_reponse_valid9 = async (type_validation) => {
         });
         console.log(falseAnswer);
 
-        handle_user_responses3(falseAnswer, valid_resp, type_validation)
+        handle_user_responses3(falseAnswer, valid_resp, false, type_validation)
         
         onTimesUp()
 
@@ -548,26 +544,42 @@ function handle_user_responses2(valid_resp, type_validation) {
   clear_counter();
 }
 
-function handle_user_responses3(falseAnswer, valid_resp, type_validation) {
+function handle_user_responses3(falseAnswer, tableauTri, game6, type_validation) {
   let trial_storage = Number(localStorage.getItem('trial'));
-
   //Si on est au premier essaie
+  console.log('fff',falseAnswer )
   if (trial_storage > 1) {
     //Si le nombre de bonne reponse est egale au nombre de bonne reponse de l'utilisateur (GAGNÉ!!!)
     if (!falseAnswer) {
-      colors_button2(valid_resp);
+      if (game6) {
+        colors_button3(tableauTri);
+      } else {
+        colors_button2(tableauTri);
+      }
       clear_counter()
       goWin();
     } else {
-      /*(CACHER MAUVAISE REPONSE POUR LE MOMENT!!!)*/
-      all_button_win();
+      if (game6) {
+        colors_button3(tableauTri);
+      } else {
+        colors_button2(tableauTri);
+      }
       showWrongAnswer();
     }
   } else {
-    colors_button2(valid_resp);
     if (!falseAnswer) {
-      goWin(), clear_counter()
+      if (game6) {
+        colors_button3(tableauTri);
+      } else {
+        colors_button2(tableauTri);
+      }
+     goWin(), clear_counter()
     } else {
+      if (game6) {
+        colors_button3(tableauTri);
+      } else {
+        colors_button2(tableauTri);
+      }
       clear_counter(), goLoose(), showWrongAnswer()
     }
   }
@@ -591,8 +603,14 @@ function colors_button(valid_answers) {
   })
 }
 
-function colors_button2(falseAnswer) {
+function colors_button2(tableauTri) {
   $('.answer_button').each((index, button) => {
-    falseAnswer.id ? $(button).addClass('win') : $(button).addClass('lose')
+    tableauTri.id ? $(button).addClass('win') : $(button).addClass('lose')
+  })
+}
+
+function colors_button3(tableauTri) {
+  $('.dropdiv.dz').each((index, button) => {
+    String(tableauTri[index].id) === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
