@@ -2,8 +2,10 @@ function isLogged() {
   return localStorage.getItem('logged') === null ? false : true;
 }
 
-function logged() {
+function logged(magasin_id) {
   localStorage.setItem('logged', 'true');
+  localStorage.setItem('magasin', magasin_id);
+
 }
 
 function disconnect() {
@@ -27,7 +29,7 @@ const try_login = async (login, pwd) => {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
         if (res.data[0].id !== undefined) {
-          logged()
+          logged(res.data[0].id)
           window.location.href = "/rules.html";
         } else {
           showError();
