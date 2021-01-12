@@ -1,10 +1,3 @@
-// create context object
-var context = {};
-
-// assign functions to the object
-context["check_answer6"] = check_answer6;
-context["fnLogout"] = fnLogout;
-
 /* ----------------------------------- REPONSE JEU 1 ----------------------------------- */
 const fetch_reponse = async () => {
   await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
