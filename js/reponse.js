@@ -156,24 +156,24 @@ const fetch_reponse3 = async () => {
   const answers_array = [[], [], [], []]; //we create it, then we'll fill it
 
   const answerPerLine = Math.ceil(MAUVAISE_REPONSES.length / n);
-  
+
   //REMPLI LE TABLEAU EN RESULT EN 3 TABLEAU DE MAUVAISE REPONSE
   for (let line = 0; line < n; line++) {
     for (let i = 0; i < answerPerLine; i++) {
       const value = MAUVAISE_REPONSES[i + line * answerPerLine];
       if (!value) continue //avoid adding "undefined" values
-        answers_array[line].push(value);
+      answers_array[line].push(value);
     }
   }
 
   console.log('answers_arrayBefore fgpoodanwserr :', answers_array);
-  
+
   //AJOUTE UNE BONNE REPONSE PAR TABLEAU DU TABLEAU RESULT
   for (let line = 0; line < answers_array.length; line++) {
     //CREER UN TABLEAU AVEC LE ID DE LA BONNE REPONSE LIÉ A UNE LIGNE (SELON L'INDEX)
     answers_array[line].push(BONNE_REPONSES[line]);
   }
-  
+
   answers_array.each(tab_line, index => {
     tab_line.each(response, i => {
       $('.game_carousel:type(' + index + ')').html(`
@@ -236,7 +236,7 @@ const fetch_reponse_valid3 = async (type_validation) => {
 const fetch_reponse4 = async () => {
   $(document).on('click', (el) => {
     if (el.target.type === 'radio') {
-      $('input:radio[name='+$(el.target).attr('name')+']').removeClass('checkedAnswer');
+      $('input:radio[name=' + $(el.target).attr('name') + ']').removeClass('checkedAnswer');
       $(el.target).addClass('checkedAnswer');
     }
   });
@@ -259,20 +259,18 @@ const check_answer4 = (type_validation = "manuel") => {
 }
 
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
-const check_answer5 = (type_validation = "manuel") => {
-  fetch_reponse_valid5(type_validation);
+const check_answer5 = () => {
+  fetch_reponse_valid5();
 }
 
-const fetch_reponse_valid5 = async (type_validation) => {
+const fetch_reponse_valid5 = async () => {
   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      // console.log(valid_resp);
-      //if there are at least one good answer return by api
       if (valid_resp.data[0].id !== undefined) {
         var aGood_answers = [];
-        //Boucle sur chaque reponse dans le document
+
         $('.answer_button').each((index, el) => {
           let id_answer = getId($(el).attr('id'));
 
@@ -284,15 +282,13 @@ const fetch_reponse_valid5 = async (type_validation) => {
         var user_great_answer = [];
         var nbr_user_answers = 0;
 
-        //Boucle sur chaque reponse donnée par l'utilisateur
         $('.checkedAnswer').each((index, el) => {
-          nbr_user_answers+=1;
-          let user_answer_id = getId(el.id);
-          (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
+          nbr_user_answers += 1;
+          (aGood_answers.includes(getId(el.id)) ? user_great_answer.push(getId(el.id)) : null);
         });
 
-        handle_user_responses2(valid_resp, user_great_answer, nbr_user_answers, type_validation)
-        
+        handle_user_responses2(valid_resp)
+
         onTimesUp()
 
       } else {
@@ -331,24 +327,23 @@ const fetch_reponse_valid6 = async (type_validation) => {
   })
     .then((valid_resp) => {
       if (valid_resp.data[0].id !== undefined) {
-        var tableauTriJ6 = [{},{},{},{},{}]
+        var tableauTriJ6 = [{}, {}, {}, {}, {}];
+
         valid_resp.data.map(el => {
-          if (el.id === 25) {
-            tableauTriJ6.splice(1, 1, el);
-          }
-          if (el.id === 27) {
-            tableauTriJ6.splice(3, 1, el);
-          }
-          if (el.id === 28) {
-            tableauTriJ6.splice(4, 1, el);
-          }
+          (el.id === 25 ? tableauTriJ6.splice(1, 1, el) : null);
+          (el.id === 27 ? tableauTriJ6.splice(3, 1, el) : null);
+          (el.id === 28 ? tableauTriJ6.splice(4, 1, el) : null);
         })
 
-        var falseAnswer = false;
+        var existFalseAnswer = false;
         $('.dropdiv.dz').each((index, el) => {
-            falseAnswer = getId($(el).attr('id')) !== tableauTriJ6[index].id ? true : falseAnswer; 
+          console.log('TEST :', getId($(el).attr('id')) !== tableauTriJ6[index].id)
+          if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
+            existFalseAnswer = true;
+          }
         });
-        handle_user_responses3(falseAnswer, tableauTriJ6, true, type_validation)
+
+        handle_user_responses3(existFalseAnswer, tableauTriJ6, true, type_validation)
 
         onTimesUp()
 
@@ -360,10 +355,10 @@ const fetch_reponse_valid6 = async (type_validation) => {
 
 /* ----------------------------------- REPONSE JEU 7 ----------------------------------- */
 const fetch_reponse7 = async () => {
-  $(document).on('click',(el)=>{
+  $(document).on('click', (el) => {
     // console.log(el.target);
     if (el.target.type === 'radio') {
-      $('input:radio[name='+$(el.target).attr('name')+']').removeClass('checkedAnswer');
+      $('input:radio[name=' + $(el.target).attr('name') + ']').removeClass('checkedAnswer');
       $(el.target).addClass('checkedAnswer');
     }
   });
@@ -371,7 +366,6 @@ const fetch_reponse7 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
-      // console.log('0: ', res);
       if (res.data[0].id !== undefined) {
         res.data.map(el => (
           $('form').append(`<label for="choice${el.id}"><input type="radio" id="answer_${el.id}" name="radio" value=""><div class="answer_block" id="answer_${el.id}"><img src="${el.reponse_url}" alt="${el.content}"><div class="answer_button" id="answer_${el.id}">${el.content}</div></div></label>`)
@@ -388,10 +382,9 @@ const check_answer7 = (type_validation = "manuel") => {
 
 /* ----------------------------------- REPONSE JEU 8 ----------------------------------- */
 const fetch_reponse8 = async () => {
-  $(document).on('click',(el)=>{
-    // console.log(el.target);
+  $(document).on('click', (el) => {
     if (el.target.type === 'radio') {
-      $('input:radio[name='+$(el.target).attr('name')+']').removeClass('checkedAnswer');
+      $('input:radio[name=' + $(el.target).attr('name') + ']').removeClass('checkedAnswer');
       $(el.target).addClass('checkedAnswer');
     }
   });
@@ -399,10 +392,9 @@ const fetch_reponse8 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
-      // console.log(res);
       if (res.data[0].id !== undefined) {
         console.log(res.data);
-        var imgArrayMiddle = {id: 100, content: '<label><img src="img/q8_h24.png" alt=""></label>'};
+        var imgArrayMiddle = { id: 100, content: '<label><img src="img/q8_h24.png" alt=""></label>' };
         res.data.splice(1, 0, imgArrayMiddle);
         res.data.map(el => {
           if (el.id === 100) {
@@ -446,61 +438,31 @@ const fetch_reponse_valid9 = async (type_validation) => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      //if there are at least one good answer return by api
-      // console.log(valid_resp);
       if (valid_resp.data[0].id !== undefined) {
-        // var reponsesJ9 = valid_resp.data;
-        var tableauTriJ9 = [{},{},{},{}]
+        var tableauTriJ9 = [{}, {}, {}, {}];
+
         valid_resp.data.map(el => {
-          console.log(el.id, '34');
-          if (el.id === 34) {
-            tableauTriJ9.splice(0, 1, el);
-            // tableauTriJ9[0] = el;
-          }
-          if (el.id === 37) {
-            tableauTriJ9.splice(1, 1, el);
-          }
-          if (el.id === 36) {
-            tableauTriJ9.splice(2, 1, el);
-          }
-          if (el.id === 35) {
-            tableauTriJ9.splice(3, 1, el);
-          }
+          (el.id === 34 ? tableauTriJ9.splice(0, 1, el) : null);
+          (el.id === 37 ? tableauTriJ9.splice(1, 1, el) : null);
+          (el.id === 36 ? tableauTriJ9.splice(2, 1, el) : null);
+          (el.id === 35 ? tableauTriJ9.splice(3, 1, el) : null);
         })
-        console.log(tableauTriJ9);
 
-        // var aFalse_answers = [];
-        // //Boucle sur chaque reponse dans le document
-        // $('.answer_button').each((index, el) => {
-        //   let id_answer = getId($(el).attr('id'));
-        //   let is_good_anwer = false;
-
-        //   Object.values(valid_resp.data).map((item) => {
-        //     if (item.id === id_answer) is_good_anwer = true;
-        //   })
-
-        //   if (!is_good_anwer) aFalse_answers.push(id_answer);
-        // });
-
-        // var user_great_answer = [];
-        // var nbr_user_answers = 0;
-
-        //Boucle sur chaque reponse donnée par l'utilisateur
-        var falseAnswer = false;
+        var existFalseAnswer = false;
         $('.dz > .answer_button').each((index, el) => {
-          // nbr_user_answers+=1;
-          console.log('0: ', getId($(el).attr('id')), ' /1: ', tableauTriJ9[index].id);
-          falseAnswer = getId($(el).attr('id')) !== tableauTriJ9[index].id ? true : falseAnswer;
-          // (!aFalse_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null); 
+          if (getId($(el).attr('id')) !== tableauTriJ9[index].id) {
+            existFalseAnswer = true;
+          }
         });
-        console.log(falseAnswer);
 
-        handle_user_responses3(falseAnswer, valid_resp, false, type_validation)
-        
+        console.log("existFalseAnswer", existFalseAnswer);
+
+        handle_user_responses3(existFalseAnswer, valid_resp, false, type_validation);
+
         onTimesUp()
 
       } else {
-        console.warn('Aucune bonne reponse n\'a été trouvé')
+        console.warn('Aucune bonne reponse n\'a été trouvé');
       }
     });
 }
@@ -522,7 +484,6 @@ function handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, 
       clear_counter()
       goWin();
     } else {
-      /*(CACHER MAUVAISE REPONSE POUR LE MOMENT!!!)*/
       all_button_win();
       showWrongAnswer();
     }
@@ -538,48 +499,31 @@ function handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, 
   }
 }
 
-function handle_user_responses2(valid_resp, type_validation) {
+function handle_user_responses2(valid_resp) {
   colors_button(valid_resp);
   goWin();
   clear_counter();
 }
 
-function handle_user_responses3(falseAnswer, tableauTri, game6, type_validation) {
+function handle_user_responses3(existFalseAnswer, tableauTri, game6, type_validation) {
   let trial_storage = Number(localStorage.getItem('trial'));
   //Si on est au premier essaie
-  console.log('fff',falseAnswer )
   if (trial_storage > 1) {
-    //Si le nombre de bonne reponse est egale au nombre de bonne reponse de l'utilisateur (GAGNÉ!!!)
-    if (!falseAnswer) {
-      if (game6) {
-        colors_button3(tableauTri);
-      } else {
-        colors_button2(tableauTri);
-      }
+
+    if (!existFalseAnswer) {
+      colors(tableauTri, game6)
       clear_counter()
       goWin();
     } else {
-      if (game6) {
-        colors_button3(tableauTri);
-      } else {
-        colors_button2(tableauTri);
-      }
+      colors(tableauTri, game6)
       showWrongAnswer();
     }
   } else {
-    if (!falseAnswer) {
-      if (game6) {
-        colors_button3(tableauTri);
-      } else {
-        colors_button2(tableauTri);
-      }
-     goWin(), clear_counter()
+    if (!existFalseAnswer) {
+      colors(tableauTri, game6)
+      goWin(), clear_counter()
     } else {
-      if (game6) {
-        colors_button3(tableauTri);
-      } else {
-        colors_button2(tableauTri);
-      }
+      colors(tableauTri, game6)
       clear_counter(), goLoose(), showWrongAnswer()
     }
   }
@@ -613,4 +557,12 @@ function colors_button3(tableauTri) {
   $('.dropdiv.dz').each((index, button) => {
     String(tableauTri[index].id) === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
   })
+}
+
+function colors(tableauTri, game6) {
+  if (game6) {
+    colors_button3(tableauTri);
+  } else {
+    colors_button2(tableauTri);
+  }
 }
