@@ -19,7 +19,7 @@ function dragStart( event, chosenClass ) {
   }
   
   function dragDrop( event ) {
-    // console.log( 'DROP' );
+    console.log( 'DROP' );
   
     event.target.closest( ".dropdiv" ).append( document.getElementById( event.dataTransfer.getData( 'text' ) ) )
   
@@ -35,9 +35,9 @@ function dragStart( event, chosenClass ) {
   
   function dragEnd( event ) {
   
-    // event.preventDefault();
+    event.preventDefault();
   
-    console.log( 'DRAG END' );
+    // console.log( 'DRAG END' );
     
     // remove applied active classes, regardless of where released.
     if ( document.getElementsByClassName( "answer_button--active" )[0] ) {

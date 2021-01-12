@@ -451,30 +451,53 @@ const fetch_reponse_valid9 = async (type_validation) => {
   })
     .then((valid_resp) => {
       //if there are at least one good answer return by api
-      console.log(valid_resp);
+      // console.log(valid_resp);
       if (valid_resp.data[0].id !== undefined) {
-        var aFalse_answers = [];
-        //Boucle sur chaque reponse dans le document
-        $('.answer_button').each((index, el) => {
-          let id_answer = getId($(el).attr('id'));
-          let is_good_anwer = false;
+        // var reponsesJ9 = valid_resp.data;
+        var tableauTriJ9 = [{},{},{},{}]
+        valid_resp.data.map(el => {
+          console.log(el.id, '34');
+          if (el.id === 34) {
+            tableauTriJ9.splice(0, 1, el);
+            // tableauTriJ9[0] = el;
+          }
+          if (el.id === 37) {
+            tableauTriJ9.splice(1, 1, el);
+          }
+          if (el.id === 36) {
+            tableauTriJ9.splice(2, 1, el);
+          }
+          if (el.id === 35) {
+            tableauTriJ9.splice(3, 1, el);
+          }
+        })
+        console.log(tableauTriJ9);
 
-          Object.values(valid_resp.data).map((item) => {
-            if (item.id === id_answer) is_good_anwer = true;
-          })
+        // var aFalse_answers = [];
+        // //Boucle sur chaque reponse dans le document
+        // $('.answer_button').each((index, el) => {
+        //   let id_answer = getId($(el).attr('id'));
+        //   let is_good_anwer = false;
 
-          if (!is_good_anwer) aFalse_answers.push(id_answer);
-        });
+        //   Object.values(valid_resp.data).map((item) => {
+        //     if (item.id === id_answer) is_good_anwer = true;
+        //   })
 
-        var user_great_answer = [];
-        var nbr_user_answers = 0;
+        //   if (!is_good_anwer) aFalse_answers.push(id_answer);
+        // });
+
+        // var user_great_answer = [];
+        // var nbr_user_answers = 0;
 
         //Boucle sur chaque reponse donnée par l'utilisateur
+        var falseAnswer = false;
         $('.dz > .answer_button').each((index, el) => {
-          nbr_user_answers+=1;
-          let user_answer_id = getId($(el).attr('id'));
-          (!aFalse_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null); 
+          // nbr_user_answers+=1;
+          console.log('0: ', getId($(el).attr('id')), ' /1: ', tableauTriJ9[index].id);
+          falseAnswer = getId($(el).attr('id')) !== tableauTriJ9[index].id ? true : falseAnswer;
+          // (!aFalse_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null); 
         });
+        console.log(falseAnswer);
 
         handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
         
@@ -498,8 +521,7 @@ function handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, 
     //Si le nombre de bonne reponse est egale au nombre de bonne reponse de l'utilisateur (GAGNÉ!!!)
     if (valid_resp.data.length
       === user_great_answer.length
-      && nbr_user_answers === valid_resp.data.length
-    ) {
+      && nbr_user_answers === valid_resp.data.length) {
       colors_button(valid_resp);
       clear_counter()
       goWin();
@@ -524,6 +546,31 @@ function handle_user_responses2(valid_resp, type_validation) {
   colors_button(valid_resp);
   goWin();
   clear_counter();
+}
+
+function handle_user_responses3(valid_resp, user_great_answer, nbr_user_answers, answer_zone_id, type_validation) {
+  let trial_storage = Number(localStorage.getItem('trial'));
+
+  //Si on est au premier essaie
+  if (trial_storage > 1) {
+    //Si le nombre de bonne reponse est egale au nombre de bonne reponse de l'utilisateur (GAGNÉ!!!)
+    if (user_answer_id === answer_zone_id) {
+      colors_button(valid_resp);
+      clear_counter()
+      goWin();
+    } else {
+      /*(CACHER MAUVAISE REPONSE POUR LE MOMENT!!!)*/
+      all_button_win();
+      showWrongAnswer();
+    }
+  } else {
+    colors_button(valid_resp);
+    if (user_answer_id === answer_zone_id) {
+      goWin(), clear_counter()
+    } else {
+      clear_counter(), goLoose(), showWrongAnswer()
+    }
+  }
 }
 
 //---------------------------------------------Utils

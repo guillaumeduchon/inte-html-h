@@ -1,13 +1,13 @@
 const DATE_TAB = [
-  { 1: '06/01/2021' },
-  { 2: '07/01/2021' },
-  { 3: '08/01/2021' },
-  { 4: '09/01/2021' },
-  { 5: '10/01/2021' },
-  { 6: '11/01/2021' },
-  { 7: '12/01/2021' },
-  { 8: '19/01/2021' },
-  { 9: '20/01/2021' },
+  { 1: '04/01/2021' },
+  { 2: '05/01/2021' },
+  { 3: '06/01/2021' },
+  { 4: '07/01/2021' },
+  { 5: '08/01/2021' },
+  { 6: '09/01/2021' },
+  { 7: '10/01/2021' },
+  { 8: '11/01/2021' },
+  { 9: '12/01/2021' },
   { 10: '21/01/2021' }
 ];
 var date_today = get_date_today(new Date())
@@ -18,15 +18,15 @@ const DAY_NUM = tab_day[0];
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'06/01/2021'},
-    {'status':'','day_num': 2, 'day_date':'07/01/2021'},
-    {'status':'','day_num': 3, 'day_date':'08/01/2021'},
-    {'status':'','day_num': 4, 'day_date':'09/01/2021'},
-    {'status':'','day_num': 5, 'day_date':'10/01/2021'},
-    {'status':'','day_num': 6, 'day_date':'11/01/2021'},
-    {'status':'','day_num': 7, 'day_date':'12/01/2021'},
-    {'status':'','day_num': 8, 'day_date':'20/01/2021'},
-    {'status':'','day_num': 9, 'day_date':'21/01/2021'},
+    {'status':'','day_num': 1, 'day_date':'04/01/2021'},
+    {'status':'','day_num': 2, 'day_date':'05/01/2021'},
+    {'status':'','day_num': 3, 'day_date':'06/01/2021'},
+    {'status':'','day_num': 4, 'day_date':'07/01/2021'},
+    {'status':'','day_num': 5, 'day_date':'08/01/2021'},
+    {'status':'','day_num': 6, 'day_date':'09/01/2021'},
+    {'status':'','day_num': 7, 'day_date':'10/01/2021'},
+    {'status':'','day_num': 8, 'day_date':'11/01/2021'},
+    {'status':'','day_num': 9, 'day_date':'12/01/2021'},
     {'status':'','day_num': 10, 'day_date':'22/01/2021'},
   ];
 
