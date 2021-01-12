@@ -14,17 +14,16 @@ const fetch_reponse = async () => {
     });
 }
 
-const check_answer = (type_validation = "manuel") => {
-  fetch_reponse_valid(type_validation);
+const check_answer1 = () => {
+  fetch_reponse_valid();
 }
 
-const fetch_reponse_valid = async (type_validation) => {
+const fetch_reponse_valid = async () => {
   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
       //if there are at least one good answer return by api
-      console.log(valid_resp.data);
       if (valid_resp.data[0].id !== undefined) {
         var aFalse_answers = [];
         //Boucle sur chaque reponse dans le document
@@ -49,7 +48,7 @@ const fetch_reponse_valid = async (type_validation) => {
           (!aFalse_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
         });
 
-        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
+        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
 
         onTimesUp()
 
@@ -81,11 +80,11 @@ const fetch_reponse2 = async () => {
     });
 }
 
-const check_answer2 = (type_validation = "manuel") => {
-  fetch_reponse_valid2(type_validation);
+const check_answer2 = () => {
+  fetch_reponse_valid2();
 }
 
-const fetch_reponse_valid2 = async (type_validation) => {
+const fetch_reponse_valid2 = async () => {
   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
@@ -115,7 +114,7 @@ const fetch_reponse_valid2 = async (type_validation) => {
           // console.log('2: ', aGood_answers); 
         });
 
-        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
+        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
 
         onTimesUp()
 
@@ -188,11 +187,11 @@ const fetch_reponse3 = async () => {
   })
 }
 
-const check_answer3 = (type_validation = "manuel") => {
-  fetch_reponse_valid3(type_validation);
+const check_answer3 = () => {
+  fetch_reponse_valid3();
 }
 
-const fetch_reponse_valid3 = async (type_validation) => {
+const fetch_reponse_valid3 = async () => {
   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
@@ -222,7 +221,7 @@ const fetch_reponse_valid3 = async (type_validation) => {
           // console.log('2: ', aGood_answers); 
         });
 
-        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation)
+        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
 
         onTimesUp()
 
@@ -254,8 +253,8 @@ const fetch_reponse4 = async () => {
     });
 }
 
-const check_answer4 = (type_validation = "manuel") => {
-  fetch_reponse_valid2(type_validation);
+const check_answer4 = () => {
+  fetch_reponse_valid2();
 }
 
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
@@ -318,6 +317,7 @@ const fetch_reponse6 = async () => {
 }
 
 const check_answer6 = () => {
+  console.log('yy :', 'rr')
   fetch_reponse_valid6();
 }
 
@@ -337,11 +337,11 @@ const fetch_reponse_valid6 = async () => {
 
         var existFalseAnswer = false;
         $('.dropzone > .dropdiv.dz').each((index, el) => {
-          let rowImgId = 000;
-          if ($(el).hasClass('.answer_img')) {
-            rowImgId = getId($(el).attr('id'));
+          let rowImgId = undefined;
+          
+          if ($(el).find('.answer_img').length > 0) {
+            rowImgId = getId($(el).find('.answer_img').attr('id'));
           }
-          console.log('TEST :', rowImgId ,tableauTriJ6[index].id)
           if (rowImgId !== tableauTriJ6[index].id) {
             existFalseAnswer = true;
           }
@@ -380,8 +380,8 @@ const fetch_reponse7 = async () => {
     });
 }
 
-const check_answer7 = (type_validation = "manuel") => {
-  fetch_reponse_valid2(type_validation);
+const check_answer7 = () => {
+  fetch_reponse_valid2();
 }
 
 /* ----------------------------------- REPONSE JEU 8 ----------------------------------- */
@@ -413,8 +413,8 @@ const fetch_reponse8 = async () => {
     });
 }
 
-const check_answer8 = (type_validation = "manuel") => {
-  fetch_reponse_valid2(type_validation);
+const check_answer8 = () => {
+  fetch_reponse_valid2();
 }
 
 /* ----------------------------------- REPONSE JEU 9 ----------------------------------- */
@@ -433,11 +433,11 @@ const fetch_reponse9 = async () => {
     });
 }
 
-const check_answer9 = (type_validation = "manuel") => {
-  fetch_reponse_valid9(type_validation);
+const check_answer9 = () => {
+  fetch_reponse_valid9();
 }
 
-const fetch_reponse_valid9 = async (type_validation) => {
+const fetch_reponse_valid9 = async () => {
   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
@@ -461,7 +461,7 @@ const fetch_reponse_valid9 = async (type_validation) => {
 
         console.log("existFalseAnswer", existFalseAnswer);
 
-        handle_user_responses3(existFalseAnswer, valid_resp, false, type_validation);
+        handle_user_responses3(existFalseAnswer, valid_resp, false);
 
         onTimesUp()
 
@@ -475,7 +475,7 @@ const fetch_reponse_valid9 = async (type_validation) => {
 
 /* ----------------------------------- GENERIQUE --------------------------------------- */
 //FOR GAME ONE ADD CLASS LOOSE OR WIN AND REDICTECT EVENTUAL
-function handle_user_responses(valid_resp, user_great_answer, nbr_user_answers, type_validation) {
+function handle_user_responses(valid_resp, user_great_answer, nbr_user_answers) {
   let trial_storage = Number(localStorage.getItem('trial'));
 
   //Si on est au premier essaie
@@ -569,4 +569,23 @@ function colors(tableauTri, game6) {
   } else {
     colors_button2(tableauTri);
   }
+}
+
+// create context object
+var context = {};
+
+// assign functions to the object
+context["check_answer1"] = check_answer1;
+context["check_answer2"] = check_answer2;
+context["check_answer3"] = check_answer3;
+context["check_answer4"] = check_answer4;
+context["check_answer5"] = check_answer5;
+context["check_answer6"] = check_answer6;
+context["check_answer7"] = check_answer7;
+context["check_answer8"] = check_answer8;
+context["check_answer9"] = check_answer9;
+context["check_answer10"] = check_answer10;
+
+const check_answer = () => {
+  context["check_answer"+DAY_NUM].apply()
 }
