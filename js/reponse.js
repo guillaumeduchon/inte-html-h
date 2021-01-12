@@ -338,11 +338,10 @@ const fetch_reponse_valid6 = async () => {
         var existFalseAnswer = false;
         $('.dropzone > .dropdiv.dz').each((index, el) => {
           let rowImgId = 100;
-          console.log('TEST :', $(el).find('.answer_img'), 'LLL', $(el).find('.answer_img').length)
-          if ($(el).find('.answer_img') > 0) {
+          if ($(el).find('.answer_img').length > 0) {
             rowImgId = getId($(el).find('.answer_img').attr('id'));
           }
-          console.log('TEST :', rowImgId ,tableauTriJ6[index].id)
+          console.log('OOOOOOP :', rowImgId ,tableauTriJ6[index].id)
           if (rowImgId !== tableauTriJ6[index].id) {
             existFalseAnswer = true;
           }
