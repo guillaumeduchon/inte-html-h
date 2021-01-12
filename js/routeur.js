@@ -112,7 +112,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse();
+      fetch_reponse2();
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -127,7 +127,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse();
+      fetch_reponse6();
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -142,7 +142,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse();
+      fetch_reponse7();
     } else {
       clear_counter();
       window.location.href = "login.html";
@@ -170,7 +170,7 @@ $(document).ready(function() {
       hasLooseDay() ? goLoose() : null;
       hasWinDay() ? goWin() : null;
 
-      fetch_reponse();
+      fetch_reponse9();
     } else {
       clear_counter();
       window.location.href = "login.html";
