@@ -317,11 +317,11 @@ const fetch_reponse6 = async () => {
     });
 }
 
-const check_answer6 = (type_validation = "manuel") => {
-  fetch_reponse_valid6(type_validation);
+const check_answer6 = () => {
+  fetch_reponse_valid6();
 }
 
-const fetch_reponse_valid6 = async (type_validation) => {
+const fetch_reponse_valid6 = async () => {
   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
@@ -336,14 +336,14 @@ const fetch_reponse_valid6 = async (type_validation) => {
         })
 
         var existFalseAnswer = false;
-        $('.dropzone').each((index, el) => {
+        $('.dropzone > .dropdiv.dz').each((index, el) => {
           console.log('TEST :', getId($(el).attr('id')),tableauTriJ6[index].id)
           if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
             existFalseAnswer = true;
           }
         });
 
-        handle_user_responses3(existFalseAnswer, tableauTriJ6, true, type_validation)
+        handle_user_responses3(existFalseAnswer, tableauTriJ6, true)
 
         onTimesUp()
 
@@ -505,7 +505,7 @@ function handle_user_responses2(valid_resp) {
   clear_counter();
 }
 
-function handle_user_responses3(existFalseAnswer, tableauTri, game6, type_validation) {
+function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
   let trial_storage = Number(localStorage.getItem('trial'));
   //Si on est au premier essaie
   if (trial_storage > 1) {
