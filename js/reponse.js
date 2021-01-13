@@ -458,6 +458,7 @@ const check_answer9 = async () => {
 /* ----------------------------------- REPONSE JEU 10 ----------------------------------- */
 const check_answer10 = async (evt) => {
   evt.preventDefault();
+  console.log('TEST :', 'ee')
   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
