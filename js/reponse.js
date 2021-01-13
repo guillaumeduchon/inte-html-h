@@ -472,8 +472,10 @@ const check_answer10 = async () => {
 
         if (!existFalseAnswer) {
           setTimeout(() => {
-            //window.location.href = "/endgame.html";
+            window.location.href = "/endgame.html";
           }, 2000)
+        } else {
+          showError();
         }
 
       } else {
