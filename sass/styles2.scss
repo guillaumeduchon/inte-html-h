@@ -101,12 +101,12 @@ body {
 main {
     position: relative;
     margin: 0 auto;
-    overflow: hidden;
+    // overflow: hidden;
     .screen {
         width: 100vw;
         height: calc(var(--vh, 1vh) * 100);
         min-height: -webkit-fill-available;
-        overflow: hidden;
+        // overflow: hidden;
     }
     .flex_contain {
         display: flex;
@@ -339,17 +339,21 @@ main {
                         }
                     }
                     &::after {
-                        content: 'R';
+                        content: url(../img/angle-down.svg);
                         position: absolute;
                         top: 35%; 
-                        margin-top: -3px;
+                        margin-top: -6px;
                         right: 0;  
                         display: block; 
-                        font-size: 16px;
-                        color: $grey;
+                        height: 15px;
+                        width: 15px;
+                        // background-size: 18px 23px;
+                        // background-image: url(../img/angle-down.svg);
+                        // background-repeat: no-repeat;
+                        fill: $grey;
                     }
                     &.changed {
-                        &::after {color: $blue;}
+                        &::after {content: url(../img/angle-down_blue.svg); fill: $blue;}
                     }
                     &:valid {color: $blue; border-color: $blue;}
                 }
@@ -358,6 +362,7 @@ main {
                     padding: 2px 0;
                     border: 0;
                     border-bottom: 2px solid $grey;
+                    border-radius: 0;
                     text-transform: uppercase;
                     color: $blue;
                     &::placeholder {
@@ -636,6 +641,9 @@ main {
                     width: 130px;
                     margin-top: -32px;
                     a, span {font-size: 18px;}
+                    @media screen and (orientation:landscape) and (min-width: 590px) {
+                        margin-bottom: -17px;
+                    }
                     @media screen and (orientation:landscape) and (max-width: 640px) {
                         height: 110px;
                         width: 110px;
