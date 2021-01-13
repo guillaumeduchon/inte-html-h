@@ -462,6 +462,7 @@ const check_answer10 = async () => {
   })
     .then((valid_resp) => {
       if (valid_resp.data[0].id !== undefined) {
+        console.log('TEST :', "sfqffd")
         let existFalseAnswer = false;
         $('.finalgame_answer').find('span').each((index, el) => {
           if (String($(el).val().strtoupper()) !== valid_resp.data[0].content.charAt(index + 1).strtoupper()) {
