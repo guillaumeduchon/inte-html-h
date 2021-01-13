@@ -463,7 +463,8 @@ const check_answer10 = async () => {
     .then((valid_resp) => {
       if (valid_resp.data[0].id !== undefined) {
         let existFalseAnswer = false;
-        $('.finalgame_answer').find('span').each((index, el) => {
+
+        $('.finalgame_answer').find('input').each((index, el) => {
             console.log('TEST :', String($(el).val().strtoupper()) , 'UUYU :',valid_resp.data[0].content.charAt(index + 1).strtoupper())
           if (String($(el).val().strtoupper()) !== valid_resp.data[0].content.charAt(index + 1).strtoupper()) {
             existFalseAnswer = true;
