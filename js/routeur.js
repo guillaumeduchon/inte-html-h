@@ -180,7 +180,6 @@ $(document).ready(function() {
   //--------------------------------------------------------- JOUR 10
   if (location.pathname === "/game_day10.html") {
     if (isLogged()) {
-      console.log('TEST :', 'ruru')
       fetch_indices();
     } else {
       clear_counter();
