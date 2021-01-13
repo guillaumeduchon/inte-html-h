@@ -28,15 +28,20 @@ const fetch_indice = async ()=> {
       headers: {'Content-Type': 'application/json','mode': 'cors'}})
         .then((res) => {
           if (res.data[0].id !== undefined) {
-            let indices_array= [{}, {}, {}, {}, {}, {}, {}, {}, {}];
+            let indices_array= [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
             res.data.map((el) => {
-              indices_array.splice((el.id + 1), 1, el)
+              console.log('el.id, :', el.id,)
+              indices_array.splice(el.id, 1, el)
             })
-
+            
+            console.log('indices_array :', indices_array)
+            
             indices_array.map((indice, index) => {
-              let letter = indice.letter !== undefined ? indice.letter : '__'
-              $('.finalgame_indice').append(`<span class="j${(index+1)}">${letter}</span>`)
+              if (index !== 0 ) {
+                let letter = indice.letter !== undefined ? indice.letter : '__'
+                $('.finalgame_indice').append(`<span class="j${(index+1)}">${letter}</span>`)
+              }
             })
             
           } else {
