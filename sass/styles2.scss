@@ -101,12 +101,12 @@ body {
 main {
     position: relative;
     margin: 0 auto;
-    // overflow: hidden;
+    overflow: hidden;
     .screen {
         width: 100vw;
         height: calc(var(--vh, 1vh) * 100);
         min-height: -webkit-fill-available;
-        overflow: hidden;
+        // overflow: hidden;
     }
     .flex_contain {
         display: flex;
@@ -332,7 +332,7 @@ main {
                         text-transform: uppercase;
                         color: $grey;
                         border-bottom: 2px solid $grey;
-                        background: $white;
+                        background: transparent;
                         .option {
                             &:disabled {color: $grey;}
                             &:checked {color: $blue;}
@@ -365,6 +365,7 @@ main {
                     border-radius: 0;
                     text-transform: uppercase;
                     color: $blue;
+                    background: transparent;
                     &::placeholder {
                         color: $grey;
                         opacity: 1;
