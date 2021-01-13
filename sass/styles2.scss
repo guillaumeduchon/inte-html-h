@@ -106,7 +106,7 @@ main {
         width: 100vw;
         height: calc(var(--vh, 1vh) * 100);
         min-height: -webkit-fill-available;
-        // overflow: hidden;
+        overflow: hidden;
     }
     .flex_contain {
         display: flex;
@@ -799,7 +799,7 @@ main {
                 padding: 20px;
                 @media screen and (orientation:landscape) and (min-width:1024px) {padding: 40px;}
                 position: relative;
-                overflow: hidden;
+                // overflow: hidden;
                 &.q4 {
                     background: url('../img/fond_q4.jpg') no-repeat right;
                     background-size: cover;
