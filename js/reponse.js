@@ -466,7 +466,7 @@ const check_answer10 = async () => {
 
         $('.finalgame_answer').find('input').each((index, el) => {
             console.log('TEST :', String(el.target.value))
-          if (String($(el).val().toUpperCase()) !== valid_resp.data[0].content.charAt(index + 1).toUpperCase() {
+          if (String($(el).val().toUpperCase()) !== valid_resp.data[0].content.charAt(index + 1).toUpperCase()) {
             existFalseAnswer = true;
           }
         });
