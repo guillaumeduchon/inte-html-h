@@ -54,7 +54,7 @@ function startTimer() {
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
     localStorage.setItem('timeLeft',timeLeft)
-    //label
+    //label 
     document.getElementById("timer_new-label").innerHTML = formatTime(
       localStorage.getItem('timeLeft')
     );
@@ -62,7 +62,7 @@ function startTimer() {
     setCircleDasharray();
 
     if (localStorage.getItem('timeLeft') === '0') {
-      check_answer('auto');
+      check_answer();
     }
   }, 1000);
 }
