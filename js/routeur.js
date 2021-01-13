@@ -191,6 +191,12 @@ $(document).ready(function() {
   }
 });
 
+  //--------------------------------------------------------- PAGE PERDU FINAL
+
+  if (location.pathname === "/endgame_lose.html") {
+    isLogged() ? getMagasin() : window.location.href = "login.html";
+  }
+
 //----------------------------------------------------------- UTILS
 function goWin() {
   $('.game_button').remove()

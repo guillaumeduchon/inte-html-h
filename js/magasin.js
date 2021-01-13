@@ -1,7 +1,9 @@
 
 //Remplir la liste des magasins (page login)
 const fullfiled_magasin = async () => {
-  await axios('/server/magasin.php').then((res) => {
+  await axios.post('/server/magasin.php', {}, {
+    headers: {'Content-Type': 'application/json','mode': 'cors'}
+  }).then((res) => {
     response = res.data;
     let select = $("#magasin")
     response.forEach((item, index) => {
@@ -10,12 +12,12 @@ const fullfiled_magasin = async () => {
   })
 }
 
-function getMagasin() {
+const getMagasin = async () => {
   await axios.post('/server/magasin.php', {magasin: localStorage.getItem('magasin')}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}
   }).then((res) => {
     if (res.data.id !== undefined) {
-      $('.finalgame_finalscreen_contain > p').html(`Contactez votre chef de secteur pour connaître la réponse.<br>Merci d’avoir participé au challenge et bravo à toute équipe ${res.data.name}!`);
+      $('p.persomag').html(`Contactez votre chef de secteur pour connaître la réponse.<br>Merci d’avoir participé au challenge et bravo à toute l'équipe du magasin ${res.data.name} !`);
     }
   });
 }
