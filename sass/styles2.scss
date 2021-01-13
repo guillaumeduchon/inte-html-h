@@ -5,8 +5,6 @@
 @import "../node_modules/bootstrap/scss/mixins";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/grid";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/solid";
 
 /** VARIABLES **/
 $blue: #305c67;
@@ -341,9 +339,7 @@ main {
                         }
                     }
                     &::after {
-                        @extend %fa-icon;
-                        @extend .fas;
-                        content: '\f078';
+                        content: 'R';
                         position: absolute;
                         top: 35%; 
                         margin-top: -3px;
