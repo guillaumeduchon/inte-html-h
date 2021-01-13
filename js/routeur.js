@@ -178,6 +178,14 @@ $(document).ready(function() {
   }
 
   //--------------------------------------------------------- JOUR 10
+  if (location.pathname === "/game_day10.html") {
+    if (isLogged()) {
+      fetch_indices();
+    } else {
+      clear_counter();
+      window.location.href = "login.html";
+    } 
+  }
 });
 
 function goWin() {
