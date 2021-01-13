@@ -460,7 +460,24 @@ const check_answer5 = async () => {
 }
 /* ----------------------------------- REPONSE JEU 10 ----------------------------------- */
 const check_answer10 = async () => {
+  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((valid_resp) => {
+      if (valid_resp.data[0].id !== undefined) {
+        let existFalseAnswer = false;
+        $('.finalgame_answer').find('span').each((index, el) => {
+          if (String($(el).val().strtoupper()) !== valid_resp.data[0].content.charAt(index+1).strtoupper()) {
+            existFalseAnswer = true;
+          }
+        });
 
+        if(!existFalseAnswer) { window.location.href = "/endgame.html";}
+
+      } else {
+        console.warn('recuperation bdd error ')
+      }
+    });
 }
 
 /* ----------------------------------- GENERIQUE --------------------------------------- */
