@@ -470,13 +470,17 @@ const check_answer10 = async () => {
           }
         });
 
-        if (!existFalseAnswer) {
-          setTimeout(() => {
-            window.location.href = "/endgame.html";
-          }, 2000)
-        } else {
-          showError();
-        }
+        console.log("existFalseAnswer", existFalseAnswer);
+
+        handle_user_responsesFinal(existFalseAnswer, valid_resp, false);
+
+        // if (!existFalseAnswer) {
+        //   setTimeout(() => {
+        //     window.location.href = "/endgame.html";
+        //   }, 2000)
+        // } else {
+        //   showError();
+        // }
 
       } else {
         console.warn('recuperation bdd error ')
@@ -524,7 +528,6 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
   let trial_storage = Number(localStorage.getItem('trial'));
   //Si on est au premier essaie
   if (trial_storage > 1) {
-
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
       clear_counter()
@@ -534,12 +537,37 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
       showWrongAnswer();
     }
   } else {
+    $('p').html(`Tentez votre chance une seconde fois.`);
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
       goWin(), clear_counter()
     } else {
       colors(tableauTri, game6)
       clear_counter(), goLoose(), showWrongAnswer()
+    }
+  }
+}
+
+function handle_user_responsesFinal(existFalseAnswer, tableauTri, game6) {
+  let trial_storage = Number(localStorage.getItem('trial'));
+  //Si on est au premier essaie
+  if (trial_storage > 1) {
+    if (!existFalseAnswer) {
+      colors(tableauTri, game6)
+      clear_counter()
+      goFinalWin();
+    } else {
+      colors(tableauTri, game6)
+      showWrongAnswer();
+    }
+  } else {
+    $('p').html(`Tentez votre chance une seconde fois.`);
+    if (!existFalseAnswer) {
+      colors(tableauTri, game6)
+      goFinalWin(), clear_counter()
+    } else {
+      colors(tableauTri, game6)
+      clear_counter(), goFinalLoose(), showWrongAnswer()
     }
   }
 }

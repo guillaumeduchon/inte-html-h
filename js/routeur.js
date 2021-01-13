@@ -180,6 +180,9 @@ $(document).ready(function() {
   //--------------------------------------------------------- JOUR 10
   if (location.pathname === "/game_day10.html") {
     if (isLogged()) {
+      hasLooseDay() ? goFinalLoose() : null;
+      hasWinDay() ? goFinalWin() : null;
+
       fetch_indices();
     } else {
       clear_counter();
@@ -188,6 +191,7 @@ $(document).ready(function() {
   }
 });
 
+//----------------------------------------------------------- UTILS
 function goWin() {
   $('.game_button').remove()
 
@@ -214,5 +218,32 @@ function goWin() {
 function goLoose() { setTimeout(()=>{
   window.location.href = "game_lose.html";
 },5000)}
+
+function goFinalWin() {
+  $('.cta_button').remove()
+
+  let win_day = localStorage.getItem('win_day');
+  if (win_day !== null) {
+    let win_day_array = Object.values(JSON.parse(win_day));
+    if (win_day_array.includes(String(DAY_NUM))) {
+      if (location.pathname !== "/game_indice.html") {
+        window.location.href = "endgame_win.html";
+      }
+    } else {
+      win_day_array.push(DAY_NUM);
+      localStorage.setItem('win_day', JSON.stringify(win_day_array));
+    }
+    
+  } else{
+    localStorage.setItem('win_day', JSON.stringify([DAY_NUM]));
+    setTimeout(()=>{
+      window.location.href = "endgame_win.html"
+    },3000);
+  }
+}
+
+function goFinalLoose() { setTimeout(()=>{
+  window.location.href = "endgame_lose.html";
+},3000)}
 
 function goLogin() { window.location.href = "login.html"}
