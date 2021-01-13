@@ -474,6 +474,8 @@ const check_answer10 = async () => {
 
         handle_user_responsesFinal(existFalseAnswer, valid_resp, false);
 
+        onTimesUp()
+
         // if (!existFalseAnswer) {
         //   setTimeout(() => {
         //     window.location.href = "/endgame.html";
@@ -537,7 +539,6 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
       showWrongAnswer();
     }
   } else {
-    $('p').html(`Tentez votre chance une seconde fois.`);
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
       goWin(), clear_counter()
@@ -558,16 +559,15 @@ function handle_user_responsesFinal(existFalseAnswer, tableauTri, game6) {
       goFinalWin();
     } else {
       colors(tableauTri, game6)
-      showWrongAnswer();
+      showWrongFinalAnswer();
     }
   } else {
-    $('p').html(`Tentez votre chance une seconde fois.`);
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
       goFinalWin(), clear_counter()
     } else {
       colors(tableauTri, game6)
-      clear_counter(), goFinalLoose(), showWrongAnswer()
+      clear_counter(), goFinalLoose(), showWrongFinalAnswer()
     }
   }
 }

@@ -12,6 +12,10 @@ function disconnect() {
   localStorage.removeItem('logged');
 }
 
+function displayMagasin() {
+  $('.finalgame_finalscreen_contain > p').html(`Contactez votre chef de secteur pour connaître la réponse.<br>Merci d’avoir participé au challenge et bravo à toute équipe ${el.magasin_name}!`);
+}
+
 //------------------------------------------------LOGIN---------------------------------------
 
 const fetch_login = (e) => {

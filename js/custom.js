@@ -95,6 +95,10 @@ function showWrongAnswer() {
   $('.tryagain').attr('style','display:block;');
 }
 
+function showWrongFinalAnswer() {
+  $('p').html(`Tentez votre chance une seconde fois.`);
+}
+
 function hasWinDay() {
   let hasWin = false;
   if (localStorage.getItem('win_day') !== null) {

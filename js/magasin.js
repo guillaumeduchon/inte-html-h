@@ -9,3 +9,13 @@ const fullfiled_magasin = async () => {
     })
   })
 }
+
+function getMagasin() {
+  await axios.post('/server/magasin.php', {magasin: localStorage.getItem('magasin')}, {
+    headers: {'Content-Type': 'application/json','mode': 'cors'}
+  }).then((res) => {
+    if (res.data.id !== undefined) {
+      $('.finalgame_finalscreen_contain > p').html(`Contactez votre chef de secteur pour connaître la réponse.<br>Merci d’avoir participé au challenge et bravo à toute équipe ${res.data.name}!`);
+    }
+  });
+}

@@ -29,6 +29,7 @@ const fetch_indice = async ()=> {
         .then((res) => {
           if (res.data[0].id !== undefined) {
             $('p').html(`Grâce aux lettres rassemblées depuis le 24 février, saurez-vous reconstituer le mot qui qualifie l’univers du nouveau parfum masculin H24 ?`);
+            
             let indices_array= [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
             res.data.map((el) => {
