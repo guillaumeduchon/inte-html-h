@@ -465,8 +465,8 @@ const check_answer10 = async () => {
         let existFalseAnswer = false;
 
         $('.finalgame_answer').find('input').each((index, el) => {
-          console.log('TEST :',String($(el).val().toUpperCase()),  ' MMMMMM ',valid_resp.data[0].content.charAt(index + 1).toUpperCase() )
-          if (String($(el).val().toUpperCase()) !== valid_resp.data[0].content.charAt(index + 1).toUpperCase()) {
+          console.log('TEST :',String($(el).val().toUpperCase()),  ' MMMMMM ',valid_resp.data[0].content.charAt(index).toUpperCase() )
+          if ($(el).val().toUpperCase() !== valid_resp.data[0].content.charAt(index).toUpperCase()) {
             existFalseAnswer = true;
           }
         });
