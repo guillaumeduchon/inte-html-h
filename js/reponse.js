@@ -465,7 +465,7 @@ const check_answer10 = async () => {
         let existFalseAnswer = false;
 
         $('.finalgame_answer').find('input').each((index, el) => {
-            console.log('TEST :', String($(el).val().strtoupper()) , 'UUYU :',valid_resp.data[0].content.charAt(index + 1).strtoupper())
+            console.log('TEST :', String($(el).val()) , 'UUYU :',valid_resp.data[0].content.charAt(index + 1))
           if (String($(el).val().strtoupper()) !== valid_resp.data[0].content.charAt(index + 1).strtoupper()) {
             existFalseAnswer = true;
           }
