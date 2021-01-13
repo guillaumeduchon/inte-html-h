@@ -469,7 +469,11 @@ const check_answer10 = async () => {
           }
         });
 
-        if (!existFalseAnswer) { window.location.href = "/endgame.html"; }
+        if (!existFalseAnswer) {
+          setTimeout(() => {
+            window.location.href = "/endgame.html";
+          }, 2000)
+        }
 
       } else {
         console.warn('recuperation bdd error ')
