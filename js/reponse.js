@@ -123,110 +123,112 @@ const fetch_reponse_valid2 = async () => {
     });
 }
 /* ----------------------------------- REPONSE JEU 3 ----------------------------------- */
-const fetch_reponse3 = async () => {
-  //RECUPERE LES BONNES REPONSES UNIQUEMENT
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
-    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-  })
-    .then((res) => {
-      if (res.data[0].id !== undefined) {
-        var BONNE_REPONSES = res.data;
-      } else {
-        showError();
-      }
-    });
+// const fetch_reponse3 = async () => {
+//   //RECUPERE LES BONNES REPONSES UNIQUEMENT
+//   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+//     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+//   })
+//     .then((res) => {
+//       if (res.data[0].id !== undefined) {
+//         BONNE_REPONSES = res.data;
+//       } else {
+//         showError();
+//       }
+//     });
 
-  //RECUPERE LES MAUVAISES REPONSES UNIQUEMENT
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'false' }, {
-    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-  })
-    .then((res) => {
-      if (res.data[0].id !== undefined) {
-        var MAUVAISE_REPONSES = res.data;
-      } else {
-        showError();
-      }
-    });
+//   //RECUPERE LES MAUVAISES REPONSES UNIQUEMENT
+//   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'false' }, {
+//     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+//   })
+//     .then((res) => {
+//       if (res.data[0].id !== undefined) {
+//         MAUVAISE_REPONSES = res.data;
+//       } else {
+//         showError();
+//       }
+//     });
 
-  //Nbr tableau désiré
-  const n = 4;
-  const answers_array = [[], [], [], []]; //we create it, then we'll fill it
+//   //Nbr tableau désiré
+//   const n = 4;
+//   const answers_array = [[], [], [], []]; //we create it, then we'll fill it
 
-  const answerPerLine = Math.ceil(MAUVAISE_REPONSES.length / n);
+//   const answerPerLine = Math.ceil(MAUVAISE_REPONSES.length / n);
 
-  //REMPLI LE TABLEAU EN RESULT EN 3 TABLEAU DE MAUVAISE REPONSE
-  for (let line = 0; line < n; line++) {
-    for (let i = 0; i < answerPerLine; i++) {
-      const value = MAUVAISE_REPONSES[i + line * answerPerLine];
-      if (!value) continue //avoid adding "undefined" values
-      answers_array[line].push(value);
-    }
-  }
+//   //REMPLI LE TABLEAU EN RESULT EN 3 TABLEAU DE MAUVAISE REPONSE
+//   for (let line = 0; line < n; line++) {
+//     for (let i = 0; i < answerPerLine; i++) {
+//       const value = MAUVAISE_REPONSES[i + line * answerPerLine];
+//       if (!value) continue //avoid adding "undefined" values
+//       answers_array[line].push(value);
+//     }
+//   }
 
-  console.log('answers_arrayBefore fgpoodanwserr :', answers_array);
+//   console.log('answers_arrayBefore fgpoodanwserr :', answers_array);
 
-  //AJOUTE UNE BONNE REPONSE PAR TABLEAU DU TABLEAU RESULT
-  for (let line = 0; line < answers_array.length; line++) {
-    //CREER UN TABLEAU AVEC LE ID DE LA BONNE REPONSE LIÉ A UNE LIGNE (SELON L'INDEX)
-    answers_array[line].push(BONNE_REPONSES[line]);
-  }
+//   //AJOUTE UNE BONNE REPONSE PAR TABLEAU DU TABLEAU RESULT
+//   for (let line = 0; line < answers_array.length; line++) {
+//     //CREER UN TABLEAU AVEC LE ID DE LA BONNE REPONSE LIÉ A UNE LIGNE (SELON L'INDEX)
+//     answers_array[line].push(BONNE_REPONSES[line]);
+//   }
 
-  answers_array.each(tab_line, index => {
-    tab_line.each(response, i => {
-      $('.game_carousel:type(' + index + ')').html(`
-        <div class="carousel_cell id=${response.id}">
-          <figure class="item">
-            <img src="${response.reponse_url}" alt="">
-              <figcaption class="answer_button">${response.name}</figcaption>
-          </figure>
-        </div>
-      `);
-    })
-  })
-}
-const check_answer3 = () => {
-  fetch_reponse_valid3();
-}
+//   // var tab_line;
 
-const fetch_reponse_valid3 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
-    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-  })
-    .then((valid_resp) => {
-      //if there are at least one good answer return by api
-      if (valid_resp.data[0].id !== undefined) {
-        var aGood_answers = [];
-        //Boucle sur chaque reponse dans le document
-        $('.answer_button').each((index, el) => {
-          let id_answer = getId($(el).attr('id'));
+//   answers_array.each(tab_line, index => {
+//     tab_line.each(response, i => {
+//       $('.game_carousel:type(' + index + ')').html(`
+//         <div class="carousel_cell id=${response.id}">
+//           <figure class="item">
+//             <img src="${response.reponse_url}" alt="">
+//               <figcaption class="answer_button">${response.name}</figcaption>
+//           </figure>
+//         </div>
+//       `);
+//     })
+//   })
+// }
+// const check_answer3 = () => {
+//   fetch_reponse_valid3();
+// }
 
-          Object.values(valid_resp.data).map((item) => {
-            if (item.id === id_answer) aGood_answers.push(id_answer);
-          });
-        });
+// const fetch_reponse_valid3 = async () => {
+//   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+//     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+//   })
+//     .then((valid_resp) => {
+//       //if there are at least one good answer return by api
+//       if (valid_resp.data[0].id !== undefined) {
+//         var aGood_answers = [];
+//         //Boucle sur chaque reponse dans le document
+//         $('.answer_button').each((index, el) => {
+//           let id_answer = getId($(el).attr('id'));
 
-        var user_great_answer = [];
-        var nbr_user_answers = 0;
+//           Object.values(valid_resp.data).map((item) => {
+//             if (item.id === id_answer) aGood_answers.push(id_answer);
+//           });
+//         });
 
-        //Boucle sur chaque reponse donnée par l'utilisateur
-        $('."carousel_cell.is-selected"').each((index, el) => {
-          // console.log(el);
-          nbr_user_answers += 1;
-          let user_answer_id = getId(el.id);
-          // console.log('1: ', user_answer_id);
-          (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
-          // console.log('2: ', aGood_answers); 
-        });
+//         var user_great_answer = [];
+//         var nbr_user_answers = 0;
 
-        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
+//         //Boucle sur chaque reponse donnée par l'utilisateur
+//         $('."carousel_cell.is-selected"').each((index, el) => {
+//           // console.log(el);
+//           nbr_user_answers += 1;
+//           let user_answer_id = getId(el.id);
+//           // console.log('1: ', user_answer_id);
+//           (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
+//           // console.log('2: ', aGood_answers); 
+//         });
 
-        onTimesUp()
+//         handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
 
-      } else {
-        console.warn('Aucune bonne reponse n\'a été trouvé')
-      }
-    });
-}
+//         onTimesUp()
+
+//       } else {
+//         console.warn('Aucune bonne reponse n\'a été trouvé')
+//       }
+//     });
+// }
 
 /* ----------------------------------- REPONSE JEU 4 ----------------------------------- */
 
