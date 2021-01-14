@@ -1,8 +1,8 @@
 const DATE_TAB = [
-  { 1: '12/01/2021' },
-  { 2: '13/01/2021' },
-  { 3: '14/01/2021' },
-  { 4: '15/01/2021' },
+  { 1: '11/01/2021' },
+  { 2: '12/01/2021' },
+  { 3: '13/01/2021' },
+  { 4: '14/01/2021' },
   { 5: '16/01/2021' },
   { 6: '17/01/2021' },
   { 7: '18/01/2021' },
@@ -18,10 +18,10 @@ const DAY_NUM = tab_day[0];
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'12/01/2021'},
-    {'status':'','day_num': 2, 'day_date':'13/01/2021'},
-    {'status':'','day_num': 3, 'day_date':'14/01/2021'},
-    {'status':'','day_num': 4, 'day_date':'15/01/2021'},
+    {'status':'','day_num': 1, 'day_date':'11/01/2021'},
+    {'status':'','day_num': 2, 'day_date':'12/01/2021'},
+    {'status':'','day_num': 3, 'day_date':'13/01/2021'},
+    {'status':'','day_num': 4, 'day_date':'14/01/2021'},
     {'status':'','day_num': 5, 'day_date':'16/01/2021'},
     {'status':'','day_num': 6, 'day_date':'17/01/2021'},
     {'status':'','day_num': 7, 'day_date':'18/01/2021'},
@@ -37,13 +37,18 @@ const updatePlateau = () => {
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
   let today_date = `${DAY}/${MONTH}/${today.getFullYear()}`;
 
+  var $carousel = $('.carousel_plateau').flickity();
+  // console.log($carousel);
+
   date_tab.map((el) => {
     if (el.day_date === today_date) {
-      el.highlight = 'highlight';
+      el.highlight = '';
       el.status = 'available';
       el.img = 'img/fond_plateau_available.png';
       el.iconDisplay = 'hide';
       el.linkDisplay = '';
+      var indexSlide = tab_day-1;
+      $carousel.flickity('select', indexSlide);
     }
     if (el.day_date > today_date) {
       el.highlight = '';
@@ -64,6 +69,7 @@ const updatePlateau = () => {
   $('.carousel_cell').each((index, el)=>{
     $(el).addClass(date_tab[index].highlight);
     $(el).addClass(date_tab[index].status);
+    // var index = $(date_tab[index]).index();
     $('.icon').each((index, el)=>{
       $(el).addClass(date_tab[index].iconDisplay);
     })
