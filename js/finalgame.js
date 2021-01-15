@@ -15,4 +15,16 @@ container.onkeyup = function (e) {
       }
     }
   }
+  if (e.keyCode === 8) {
+    var previous = target;
+    while (previous = previous.previousElementSibling) {
+      if (previous == null)
+        break;
+      if (previous.tagName.toLowerCase() == "input") {
+        previous.focus();
+        previous.value = '';
+        break;
+      }
+    }
+  }
 }

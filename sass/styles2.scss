@@ -1766,6 +1766,15 @@ main {
                             line-height: 65px;
                             margin: 0 3px;
                         }
+                        &.win {
+                            border: 2px solid $green;
+                            color: $green;
+                            background-color: $green-light;
+                        }
+                        &.lose {
+                            border: 2px solid $red;
+                            color: $red;
+                        }
                     }
                     margin-bottom: 30px;
                     @media screen and (orientation:landscape) and (min-width: 1024px) {margin-bottom: 45px;}
