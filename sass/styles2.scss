@@ -1759,6 +1759,8 @@ main {
                         text-align: center;
                         text-transform: uppercase;
                         position: relative;
+                        box-shadow: 0;
+                        border-radius: 0;
                         @media screen and (orientation:landscape) and (min-width: 1024px) {
                             width: 65px;
                             height: 65px;

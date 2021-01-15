@@ -5,6 +5,12 @@ window.addEventListener('resize', () => {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 })
 
+window.addEventListener("load", function() {
+  setTimeout(function() {
+    window.scrollTo(0,1);
+  }, 0);
+});
+
 // CHANGE COLOR SELECT OPTION
 $(document).ready(function() {
   $('#magasin').css('color','#b3b5b4');
