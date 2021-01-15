@@ -248,6 +248,7 @@ main {
         color: $green;
         font-weight: bold;
         text-decoration: underline;
+        &.nomaj {text-transform: none;}
     }
     .connect_screen {
         width: 100vw;
@@ -642,9 +643,9 @@ main {
                     width: 130px;
                     margin-top: -32px;
                     a, span {font-size: 18px;}
-                    @media screen and (orientation:landscape) and (min-width: 590px) {
-                        margin-bottom: -17px;
-                    }
+                    // @media screen and (orientation:landscape) and (min-width: 590px) {
+                    //     margin-bottom: -17px;
+                    // }
                     @media screen and (orientation:landscape) and (max-width: 640px) {
                         height: 110px;
                         width: 110px;
@@ -686,7 +687,7 @@ main {
                         font-size: 13px;
                         line-height: 17px;
                     }
-                    &:nth-child(2n) {margin-top: 15px;}
+                    &:nth-child(2n+1) {margin-top: 15px;}
                     @media screen and (orientation:landscape) and (min-width:1024px) {
                         font-size: 17px;
                         line-height: 21px;
@@ -863,17 +864,25 @@ main {
                     }
                     &.q3 {
                         flex-wrap: wrap;
-                        @media screen and (orientation:landscape) and (min-width:680px) {height: 80%;}
+                        @media screen and (orientation:landscape) and (min-width:320px) {height: 70%;}
+                        @media screen and (orientation:landscape) and (min-width:720px) {height: 80%;}
+                        @media screen and (orientation:landscape) and (min-width:1024px) {height: 90%;}
                         .game_carousel {
                             margin: 0 30px 1px;
                             height: 100%;
-                            @media screen and (orientation:landscape) and (max-width: 640px) {height: 40px;}
+                            @media screen and (orientation:landscape) and (max-width: 640px) {height: 35px;}
                         }
                         .game_carou_contain {
                             width: 100%;
+                            height: auto;
                         }
                         .carousel_cell {
                             width: 100%;
+                            @media screen and (orientation:landscape) and (max-width: 640px) {height: 35px;}
+                            @media screen and (orientation:landscape) and (min-width: 641px) {height: 50px;}
+                            @media screen and (orientation:landscape) and (min-width: 800px) {height: 55px;}
+                            @media screen and (orientation:landscape) and (min-width: 1024px) {height: 71px;}
+                            @media screen and (orientation:landscape) and (min-width: 1366px) {height: 104px;}
                             margin-right: 1px;
                             img {width: 100%;}
                             display: block;
@@ -900,9 +909,10 @@ main {
                                         font-weight: normal;
                                         background: transparent;
                                         border: 0;
-                                        height: auto;
+                                        height: 100%;
                                         width: 150px;
                                         justify-content: flex-end;
+                                        align-items: start;
                                         text-shadow: 1px 0 0 $white, -1px 0 0 $white, 0 1px 0 $white, 0 -1px 0 $white, 1px 1px $white, -1px -1px 0 $white, 1px -1px 0 $white, -1px 1px 0 $white;
                                     }
                                 }
