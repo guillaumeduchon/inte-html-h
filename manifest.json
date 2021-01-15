@@ -1,0 +1,7 @@
+{
+    "short_name": "Jeu HERMÈS",
+    "name": "Jeu HERMÈS - 2021",
+    "start_url": "/index.html",
+    "display": "fullscreen",
+    "orientation": "landscape"
+  }
