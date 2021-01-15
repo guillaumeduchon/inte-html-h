@@ -1,7 +1,14 @@
 {
-    "short_name": "Jeu HERMÈS",
-    "name": "Jeu HERMÈS - 2021",
-    "start_url": "/index.html",
-    "display": "fullscreen",
-    "orientation": "landscape"
-  }
+  "name": "Jeu HERMES - 2021",
+  "short_name": "HERMES",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "start_url": "/",
+  "icons": [{
+    "src": "img/icon_manifest.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }]
+}
