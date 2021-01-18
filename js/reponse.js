@@ -591,7 +591,7 @@ function colors_button3(tableauTri) {
 
 function colors_buttonFinal(valid_resp) {
   $('input').each((index, button) => {
-    valid_resp.id === getId($(button).attr('id')).id ? $(button).addClass('win') : $(button).addClass('lose')
+    $(button).val().toUpperCase() === valid_resp.data[0].content.charAt(index).toUpperCase() ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
 
