@@ -1,7 +1,7 @@
 const DATE_TAB = [
-  { 1: '18/01/2021' },
+  { 1: '17/01/2021' },
   { 2: '19/01/2021' },
-  { 3: '20/01/2021' },
+  { 3: '18/01/2021' },
   { 4: '21/01/2021' },
   { 5: '22/01/2021' },
   { 6: '23/01/2021' },
@@ -18,9 +18,9 @@ const DAY_NUM = tab_day[0];
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'18/01/2021'},
-    {'status':'','day_num': 2, 'day_date':'19/01/2021'},
-    {'status':'','day_num': 3, 'day_date':'20/01/2021'},
+    {'status':'','day_num': 1, 'day_date':'17/01/2021'},
+    {'status':'','day_num': 2, 'day_date':'20/01/2021'},
+    {'status':'','day_num': 3, 'day_date':'18/01/2021'},
     {'status':'','day_num': 4, 'day_date':'21/01/2021'},
     {'status':'','day_num': 5, 'day_date':'22/01/2021'},
     {'status':'','day_num': 6, 'day_date':'23/01/2021'},
@@ -38,7 +38,6 @@ const updatePlateau = () => {
   let today_date = `${DAY}/${MONTH}/${today.getFullYear()}`;
 
   var $carousel = $('.carousel_plateau').flickity();
-  // console.log($carousel);
 
   date_tab.map((el) => {
     if (el.day_date === today_date) {

@@ -5,7 +5,6 @@ const fetch_rules = async () => {
   })
     .then((resp) => {
       //if there are at least one good answer return by api
-      // console.log(resp);
       if (resp.data.jour !== undefined && resp.data.rules !== undefined && resp.data.type_game !== undefined) {
         $('.quizz').find('strong').html(`Jour ${resp.data.jour}`)
         $('.rulegame').html(`<p>${resp.data.rules}</p>`)
@@ -27,7 +26,6 @@ const fetch_content = async () => {
   })
     .then((resp) => {
       //if there are at least one good answer return by api
-      // console.log(resp);
       if (resp.data.content !== undefined) {
         $('.explicgame').html(`<p>${resp.data.content}</p>`)
       }
