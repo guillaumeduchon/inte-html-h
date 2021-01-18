@@ -458,9 +458,7 @@ const check_answer10 = async () => {
           }
         });
 
-        console.log("existFalseAnswer", existFalseAnswer);
-
-        handle_user_responsesFinal(existFalseAnswer, valid_resp, false);
+        handle_user_responsesFinal(existFalseAnswer, valid_resp);
 
         onTimesUp()
 
@@ -513,7 +511,7 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
       clear_counter()
-      //goWin();
+      goWin();
     } else {
       colors(tableauTri, game6)
       showWrongAnswer();
@@ -529,24 +527,24 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
   }
 }
 
-function handle_user_responsesFinal(existFalseAnswer, tableauTri) {
+function handle_user_responsesFinal(existFalseAnswer, valid_resp) {
   let trial_storage = Number(localStorage.getItem('trial'));
   //Si on est au premier essaie
   if (trial_storage > 1) {
     if (!existFalseAnswer) {
-      colors_buttonFinal(tableauTri)
+      colors_buttonFinal(valid_resp)
       clear_counter()
       goFinalWin();
     } else {
-      colors_buttonFinal(tableauTri)
+      colors_buttonFinal(valid_resp)
       showWrongFinalAnswer();
     }
   } else {
     if (!existFalseAnswer) {
-      colors_buttonFinal(tableauTri)
+      colors_buttonFinal(valid_resp)
       goFinalWin(), clear_counter()
     } else {
-      colors_buttonFinal(tableauTri)
+      colors_buttonFinal(valid_resp)
       clear_counter(), goFinalLoose(), showWrongFinalAnswer()
     }
   }
@@ -591,9 +589,9 @@ function colors_button3(tableauTri) {
   })
 }
 
-function colors_buttonFinal(tableauTri) {
+function colors_buttonFinal(valid_resp) {
   $('input').each((index, button) => {
-    tableauTri[index].id === getId($(button).attr('id')).id ? $(button).addClass('win') : $(button).addClass('lose')
+    valid_resp.id === getId($(button).attr('id')).id ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
 
