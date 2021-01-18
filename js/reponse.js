@@ -173,24 +173,21 @@ const fetch_reponse3 = async () => {
 
   // var tab_line;
 
-  answers_array.each(tab_line, index => {
-    tab_line.each(response, i => {
-      $('.game_carousel:type(' + index + ')').html(`
-        <div class="carousel_cell id=${response.id}">
+  answers_array.forEach((tab_line, index) => {
+    tab_line.forEach(response => {
+      $('.game_carousel:eq(' + index + ')').append(`
+        <div class="carousel_cell">
           <figure class="item">
             <img src="${response.reponse_url}" alt="">
-              <figcaption class="answer_button">${response.name}</figcaption>
+              <figcaption id="answer_${response.id}" class="answer_button">${response.name}</figcaption>
           </figure>
         </div>
       `);
     })
   })
 }
-const check_answer3 = () => {
-  fetch_reponse_valid3();
-}
 
-const fetch_reponse_valid3 = async () => {
+const check_answer3 = async () => {
   await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
