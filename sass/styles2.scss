@@ -101,13 +101,13 @@ body {
 main {
     position: relative;
     margin: 0 auto;
-    // overflow: hidden;
-    height: -webkit-fill-available;
+    overflow: hidden;
+    // height: -webkit-fill-available;
     .screen {
         width: 100vw;
-        // overflow: hidden;
-        // min-height: calc(var(--vh, 1vh) * 100);
-        min-height: 100vh;
+        overflow: hidden;
+        height: calc(var(--vh, 1vh) * 100);
+        // min-height: 100vh;
         min-height: -webkit-fill-available;
     }
     .flex_contain {
