@@ -513,7 +513,7 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
       clear_counter()
-      goWin();
+      //goWin();
     } else {
       colors(tableauTri, game6)
       showWrongAnswer();
@@ -571,6 +571,14 @@ function colors_button(valid_answers) {
   })
 }
 
+function colors(tableauTri, game6) {
+  if (game6) {
+    colors_button3(tableauTri);
+  } else {
+    colors_button2(tableauTri);
+  }
+}
+
 function colors_button2(tableauTri) {
   $('.answer_button').each((index, button) => {
     tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
@@ -585,16 +593,8 @@ function colors_button3(tableauTri) {
 
 function colors_buttonFinal(tableauTri) {
   $('input').each((index, button) => {
-    tableauTri.id ? $(button).addClass('win') : $(button).addClass('lose')
+    tableauTri[index].id === getId($(button).attr('id')).id ? $(button).addClass('win') : $(button).addClass('lose')
   })
-}
-
-function colors(tableauTri, game6) {
-  if (game6) {
-    colors_button3(tableauTri);
-  } else {
-    colors_button2(tableauTri);
-  }
 }
 
 // assign functions to the object
