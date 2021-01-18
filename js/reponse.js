@@ -168,14 +168,13 @@ const fetch_reponse3 = async () => {
   }
 
   // var tab_line;
-
-  answers_array.each(tab_line, index => {
-    tab_line.each(response, i => {
-      $('.game_carousel:type(' + index + ')').html(`
-        <div class="carousel_cell id=${response.id}">
+  answers_array.forEach((tab_line, index) => {
+    tab_line.forEach((response) => {
+      $('.game_carousel:eq(' + index + ')').append(`
+        <div class="carousel_cell">
           <figure class="item">
             <img src="${response.reponse_url}" alt="">
-              <figcaption class="answer_button">${response.name}</figcaption>
+              <figcaption id=${response.id} class="answer_button">${response.name}</figcaption>
           </figure>
         </div>
       `);
@@ -199,7 +198,7 @@ const check_answer3 = async () => {
             if (item.id === id_answer) aGood_answers.push(id_answer);
           });
         });
-
+        console.log('aGood_answers: ',aGood_answers)
         var user_great_answer = [];
         var nbr_user_answers = 0;
 
@@ -209,6 +208,7 @@ const check_answer3 = async () => {
           let user_answer_id = getId(el.id);
           (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
         });
+        console.log('user_great_answer: ',user_great_answer)
 
         handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
 
