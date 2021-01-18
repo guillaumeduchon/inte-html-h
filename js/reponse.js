@@ -615,7 +615,7 @@ function colors_button3(tableauTri) {
 
 function colors_buttonFinal(tableauTri) {
   $('input').each((index, button) => {
-    tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
+    tableauTri.data[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
 
