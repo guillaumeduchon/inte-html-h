@@ -101,11 +101,11 @@ body {
 main {
     position: relative;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: scroll;
     // height: -webkit-fill-available;
     .screen {
         width: 100vw;
-        overflow: hidden;
+        overflow: scroll;
         height: calc(var(--vh, 1vh) * 100);
         // min-height: 100vh;
         min-height: -webkit-fill-available;
