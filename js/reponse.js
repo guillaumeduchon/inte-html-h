@@ -535,7 +535,7 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
       clear_counter()
-      //goWin();
+      goWin();
     } else {
       colors(tableauTri, game6)
       showWrongAnswer();
