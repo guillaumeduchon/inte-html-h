@@ -17,7 +17,7 @@
                 <div class="connect_block">
                     <div class="logo"><img src="img/logo_h24.png" alt="H24 Challenge"></div>
                     <div class="connect_form">
-                        <form action="">
+                        <form id="formLogin">
                             <div class="connect_form-select">
                                 <select name="magasin" id="magasin"></select>
                             </div>
@@ -25,7 +25,7 @@
                         </form>
                     </div>
                     <div class="cta_diamond">
-                        <span onclick="fetch_login()">JOUER</span>
+                        <span id="ctaLogin" onsubmit="fetch_login()" onclick="fetch_login()">JOUER</span>
                     </div>
                 </div>
             </div>
