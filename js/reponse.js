@@ -61,7 +61,6 @@ const check_answer1 = async () => {
 /* ----------------------------------- REPONSE JEU 2 ----------------------------------- */
 const fetch_reponse2 = async () => {
   $(document).on('click', (el) => {
-    console.log(el.target);
     if (el.target.type === 'checkbox') {
       $(el.target).toggleClass('checkedAnswer');
     }
@@ -105,12 +104,9 @@ const fetch_reponse_valid2 = async () => {
 
         //Boucle sur chaque reponse donnée par l'utilisateur
         $('.checkedAnswer').each((index, el) => {
-          // console.log(el);
           nbr_user_answers += 1;
           let user_answer_id = getId(el.id);
-          // console.log('1: ', user_answer_id);
           (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
-          // console.log('2: ', aGood_answers); 
         });
 
         handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
@@ -172,9 +168,8 @@ const fetch_reponse3 = async () => {
   }
 
   // var tab_line;
-
   answers_array.forEach((tab_line, index) => {
-    tab_line.forEach(response => {
+    tab_line.forEach((response) => {
       $('.game_carousel:eq(' + index + ')').append(`
         <div class="carousel_cell">
           <figure class="item">
@@ -203,19 +198,17 @@ const check_answer3 = async () => {
             if (item.id === id_answer) aGood_answers.push(id_answer);
           });
         });
-
+        console.log('aGood_answers: ',aGood_answers)
         var user_great_answer = [];
         var nbr_user_answers = 0;
 
         //Boucle sur chaque reponse donnée par l'utilisateur
         $('."carousel_cell.is-selected"').each((index, el) => {
-          // console.log(el);
           nbr_user_answers += 1;
           let user_answer_id = getId(el.id);
-          // console.log('1: ', user_answer_id);
           (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
-          // console.log('2: ', aGood_answers); 
         });
+        console.log('user_great_answer: ',user_great_answer)
 
         handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
 
@@ -348,7 +341,6 @@ const check_answer6 = async () => {
 
 const fetch_reponse7 = async () => {
   $(document).on('click', (el) => {
-    // console.log(el.target);
     if (el.target.type === 'radio') {
       $('input:radio[name=' + $(el.target).attr('name') + ']').removeClass('checkedAnswer');
       $(el.target).addClass('checkedAnswer');
@@ -385,7 +377,6 @@ const fetch_reponse8 = async () => {
   })
     .then((res) => {
       if (res.data[0].id !== undefined) {
-        console.log(res.data);
         var imgArrayMiddle = { id: 100, content: '<label><img src="img/q8_h24.png" alt=""></label>' };
         res.data.splice(1, 0, imgArrayMiddle);
         res.data.map(el => {
@@ -442,9 +433,7 @@ const check_answer9 = async () => {
           }
         });
 
-        console.log("existFalseAnswer", existFalseAnswer);
-
-        handle_user_responses3(existFalseAnswer, valid_resp, false);
+        handle_user_responses3(existFalseAnswer, tableauTriJ9, false);
 
         onTimesUp()
 
@@ -474,14 +463,6 @@ const check_answer10 = async () => {
         handle_user_responsesFinal(existFalseAnswer, valid_resp, false);
 
         onTimesUp()
-
-        // if (!existFalseAnswer) {
-        //   setTimeout(() => {
-        //     window.location.href = "/endgame.html";
-        //   }, 2000)
-        // } else {
-        //   showError();
-        // }
 
       } else {
         console.warn('recuperation bdd error ')
@@ -548,7 +529,7 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
   }
 }
 
-function handle_user_responsesFinal(existFalseAnswer, tableauTri, game6) {
+function handle_user_responsesFinal(existFalseAnswer, tableauTri) {
   let trial_storage = Number(localStorage.getItem('trial'));
   //Si on est au premier essaie
   if (trial_storage > 1) {
@@ -592,7 +573,7 @@ function colors_button(valid_answers) {
 
 function colors_button2(tableauTri) {
   $('.answer_button').each((index, button) => {
-    tableauTri.id ? $(button).addClass('win') : $(button).addClass('lose')
+    tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
 

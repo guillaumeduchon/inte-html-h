@@ -101,12 +101,17 @@ body {
 main {
     position: relative;
     margin: 0 auto;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
     .screen {
         width: 100vw;
+        overflow-y: scroll;
+        overflow-x: hidden;
         height: calc(var(--vh, 1vh) * 100);
+        @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
+        // min-height: 100vh;
         min-height: -webkit-fill-available;
-        overflow: hidden;
     }
     .flex_contain {
         display: flex;

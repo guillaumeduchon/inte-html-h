@@ -38,7 +38,6 @@ const updatePlateau = () => {
   let today_date = `${DAY}/${MONTH}/${today.getFullYear()}`;
 
   var $carousel = $('.carousel_plateau').flickity();
-  // console.log($carousel);
 
   date_tab.map((el) => {
     if (el.day_date === today_date) {
