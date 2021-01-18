@@ -606,9 +606,8 @@ function colors_button3(tableauTri) {
 }
 
 function colors_buttonFinal(tableauTri) {
-  console.log('TEST :', tableauTri)
   $('input').each((index, button) => {
-    $(button).val().toUpperCase() !== tableauTri.data[0].content.charAt(index).toUpperCase() ? $(button).addClass('win') : $(button).addClass('lose')
+    $(button).val().toUpperCase() === tableauTri.data[0].content.charAt(index).toUpperCase() ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
 
