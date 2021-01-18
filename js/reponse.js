@@ -474,7 +474,7 @@ const check_answer10 = async () => {
 
         console.log("existFalseAnswer", existFalseAnswer);
 
-        handle_user_responsesFinal(existFalseAnswer, valid_resp, false);
+        handle_user_responsesFinal(existFalseAnswer, valid_resp);
 
         onTimesUp()
 
@@ -615,7 +615,7 @@ function colors_button3(tableauTri) {
 
 function colors_buttonFinal(tableauTri) {
   $('input').each((index, button) => {
-    tableauTri.id ? $(button).addClass('win') : $(button).addClass('lose')
+    tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
 
