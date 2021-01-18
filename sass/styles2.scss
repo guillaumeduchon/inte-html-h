@@ -102,16 +102,19 @@ main {
     position: relative;
     margin: 0 auto;
     overflow: hidden;
+    height: -webkit-fill-available;
     .screen {
         width: 100vw;
-        min-height: calc(var(--vh, 1vh) * 100);
-        min-height: -webkit-fill-available;
         overflow: hidden;
+        // min-height: calc(var(--vh, 1vh) * 100);
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
     }
     .flex_contain {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        
     }
     .cta_diamond {
         position: relative;
