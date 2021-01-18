@@ -35,11 +35,21 @@ if ($contentType === "application/json") {
                     WHERE reponse.question_id =:id"
                 );
             } else {
-                if($decoded['valid'] === 'true') {
-                    $stmt = $pdo->prepare("SELECT * FROM reponse
+                if ($decoded['valid'] === 'true') {
+                    $stmt = $pdo->prepare("SELECT reponse.*,
+                    media_reponse.id as reponse_id,
+                    media_reponse.name as reponse_name,
+                    media_reponse.url as reponse_url
+                    FROM reponse LEFT JOIN media_reponse
+                    ON reponse.id = media_reponse.reponse_id
                      WHERE question_id=:id AND is_valid=1");
                 } else {
-                    $stmt = $pdo->prepare("SELECT * FROM reponse
+                    $stmt = $pdo->prepare("SELECT reponse.*,
+                    media_reponse.id as reponse_id,
+                    media_reponse.name as reponse_name,
+                    media_reponse.url as reponse_url
+                    FROM reponse LEFT JOIN media_reponse
+                    ON reponse.id = media_reponse.reponse_id
                     WHERE question_id=:id AND is_valid=0");
                 }
             }

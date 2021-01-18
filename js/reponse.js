@@ -173,7 +173,7 @@ const fetch_reponse3 = async () => {
 
   answers_array.forEach((tab_line, index) => {
     tab_line.forEach((response, i) => {
-      $('.game_carousel:type(' + index + ')').html(`
+      $('.game_carousel:type(' + index + ')').append(`
         <div class="carousel_cell">
           <figure class="item">
             <img src="${response.reponse_url}" alt="">
