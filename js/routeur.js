@@ -25,36 +25,35 @@ $(document).ready(function() {
   //--------------------------------------------------------- PAGE GAME RULE
 
   if (location.pathname === "/game_rule.html") {
-    isLogged() ? fetch_rules() : window.location.href = "login.html";
+    isLogged() ? fetch_rules(Number(localStorage.getItem('jour'))) : window.location.href = "login.html";
   }
 
   //--------------------------------------------------------- PAGE INDICE
 
   if (location.pathname === "/game_indice.html") {
    
-    fetch_indice();
+    fetch_indice(Number(localStorage.getItem('jour')));
   }
 
   //--------------------------------------------------------- PAGE GAGNé
 
   if (location.pathname === "/game_win.html") {
-    isLogged() ? fetch_content() : window.location.href = "login.html";
+    isLogged() ? fetch_content(Number(localStorage.getItem('jour'))) : window.location.href = "login.html";
   }
 
   //--------------------------------------------------------- PAGE PERDU
 
   if (location.pathname === "/game_lose.html") {
-    isLogged() ? fetch_content() : window.location.href = "login.html";
+    isLogged() ? fetch_content(Number(localStorage.getItem('jour'))) : window.location.href = "login.html";
   }
 
   //--------------------------------------------------------- JOUR 1
 
   if (location.pathname === "/game_day1.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+     
 
-      fetch_reponse();
+      fetch_reponse(1);
     } else {
       clear_counter();
       window.location.href = "login.html";
@@ -65,10 +64,9 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day2.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+    
 
-      fetch_reponse2();
+      fetch_reponse(2);
     } else {
       clear_counter();
       window.location.href = "login.html";
@@ -79,10 +77,9 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day3.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+     
 
-      fetch_reponse3();
+      fetch_reponse(3);
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -94,10 +91,9 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day4.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+     
 
-      fetch_reponse4();
+      fetch_reponse(4);
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -109,10 +105,9 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day5.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+     
 
-      fetch_reponse2();
+      fetch_reponse(5);
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -124,10 +119,9 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day6.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+     
 
-      fetch_reponse6();
+      fetch_reponse(6);
     } else {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
@@ -139,10 +133,9 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day7.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+     
 
-      fetch_reponse7();
+      fetch_reponse(7);
     } else {
       clear_counter();
       window.location.href = "login.html";
@@ -153,10 +146,9 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day8.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+     
 
-      fetch_reponse8(DAY_NUM);
+      fetch_reponse(8);
     } else {
       clear_counter();
       window.location.href = "login.html";
@@ -167,10 +159,9 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day9.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+     
 
-      fetch_reponse9();
+      fetch_reponse(9);
     } else {
       clear_counter();
       window.location.href = "login.html";
@@ -180,10 +171,8 @@ $(document).ready(function() {
   //--------------------------------------------------------- JOUR 10
   if (location.pathname === "/game_day10.html") {
     if (isLogged()) {
-      hasLooseDay() ? goFinalLoose() : null;
-      hasWinDay() ? goFinalWin() : null;
-
-      fetch_indices();
+    
+      fetch_indices(Number(localStorage.getItem('jour')));
     } else {
       clear_counter();
       window.location.href = "login.html";

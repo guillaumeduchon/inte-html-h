@@ -1,14 +1,20 @@
+$(document).on('click', '.carousel_cell-content-linkgame', (el) => {
+  let jour = $(el.target).prev().find('.jour').html().replace('Jour ','');
+  localStorage.setItem('jour', jour)
+})
+
+
 const DATE_TAB = [
   { 1: '18/01/2021' },
-  { 2: '19/01/2021' },
-  { 3: '20/01/2021' },
-  { 4: '21/01/2021' },
-  { 5: '22/01/2021' },
-  { 6: '23/01/2021' },
-  { 7: '24/01/2021' },
-  { 8: '25/01/2021' },
-  { 9: '26/01/2021' },
-  { 10: '27/01/2021' }
+  { 2: '18/01/2021' },
+  { 3: '18/01/2021' },
+  { 4: '18/01/2021' },
+  { 5: '18/01/2021' },
+  { 6: '18/01/2021' },
+  { 7: '18/01/2021' },
+  { 8: '18/01/2021' },
+  { 9: '18/01/2021' },
+  { 10: '18/01/2021' }
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
@@ -19,15 +25,15 @@ const DAY_NUM = tab_day[0];
 const updatePlateau = () => {
   let date_tab = [
     {'status':'','day_num': 1, 'day_date':'18/01/2021'},
-    {'status':'','day_num': 2, 'day_date':'19/01/2021'},
-    {'status':'','day_num': 3, 'day_date':'20/01/2021'},
-    {'status':'','day_num': 4, 'day_date':'21/01/2021'},
-    {'status':'','day_num': 5, 'day_date':'22/01/2021'},
-    {'status':'','day_num': 6, 'day_date':'23/01/2021'},
-    {'status':'','day_num': 7, 'day_date':'24/01/2021'},
-    {'status':'','day_num': 8, 'day_date':'25/01/2021'},
-    {'status':'','day_num': 9, 'day_date':'26/01/2021'},
-    {'status':'','day_num': 10, 'day_date':'27/01/2021'},
+    {'status':'','day_num': 2, 'day_date':'18/01/2021'},
+    {'status':'','day_num': 3, 'day_date':'18/01/2021'},
+    {'status':'','day_num': 4, 'day_date':'18/01/2021'},
+    {'status':'','day_num': 5, 'day_date':'18/01/2021'},
+    {'status':'','day_num': 6, 'day_date':'18/01/2021'},
+    {'status':'','day_num': 7, 'day_date':'18/01/2021'},
+    {'status':'','day_num': 8, 'day_date':'18/01/2021'},
+    {'status':'','day_num': 9, 'day_date':'18/01/2021'},
+    {'status':'','day_num': 10, 'day_date':'18/01/2021'},
   ];
 
   let today = new Date();

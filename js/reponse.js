@@ -3,8 +3,8 @@ var context = {};
 
 /* ----------------------------------- REPONSE JEU 1 ----------------------------------- */
 
-const fetch_reponse = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+const fetch_reponse1 = async () => {
+  await axios.post('/server/reponse.php', { day_num: 1 }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -19,7 +19,7 @@ const fetch_reponse = async () => {
 }
 
 const check_answer1 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: 1, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -66,7 +66,7 @@ const fetch_reponse2 = async () => {
       $(el.target).toggleClass('checkedAnswer');
     }
   });
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num:  Number(localStorage.getItem('jour')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -84,7 +84,7 @@ const check_answer2 = () => {
   fetch_reponse_valid2();
 }
 const fetch_reponse_valid2 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('jour')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -125,7 +125,7 @@ const fetch_reponse_valid2 = async () => {
 /* ----------------------------------- REPONSE JEU 3 ----------------------------------- */
 const fetch_reponse3 = async () => {
   //RECUPERE LES BONNES REPONSES UNIQUEMENT
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: 3, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -137,7 +137,7 @@ const fetch_reponse3 = async () => {
     });
 
   //RECUPERE LES MAUVAISES REPONSES UNIQUEMENT
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'false' }, {
+  await axios.post('/server/reponse.php', { day_num: 3, valid: 'false' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -191,7 +191,7 @@ const check_answer3 = () => {
 }
 
 const fetch_reponse_valid3 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: 3, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -239,7 +239,7 @@ const fetch_reponse4 = async () => {
       $(el.target).addClass('checkedAnswer');
     }
   });
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num: 4 }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -258,7 +258,7 @@ const check_answer4 = () => {
 
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
 const check_answer5 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: 5, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -294,7 +294,7 @@ const check_answer5 = async () => {
 /* ----------------------------------- REPONSE JEU 6 ----------------------------------- */
 
 const fetch_reponse6 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num: 6 }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -312,7 +312,7 @@ const fetch_reponse6 = async () => {
     });
 }
 const check_answer6 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: 6, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -357,7 +357,7 @@ const fetch_reponse7 = async () => {
       $(el.target).addClass('checkedAnswer');
     }
   });
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num: 7 }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -383,7 +383,7 @@ const fetch_reponse8 = async () => {
       $(el.target).addClass('checkedAnswer');
     }
   });
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num: 8 }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -410,7 +410,7 @@ const check_answer8 = () => {
 /* ----------------------------------- REPONSE JEU 9 ----------------------------------- */
 
 const fetch_reponse9 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num: 9 }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -424,7 +424,7 @@ const fetch_reponse9 = async () => {
     });
 }
 const check_answer9 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: 9, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -437,7 +437,7 @@ const check_answer9 = async () => {
           (el.id === 36 ? tableauTriJ9.splice(2, 1, el) : null);
           (el.id === 35 ? tableauTriJ9.splice(3, 1, el) : null);
         })
-
+  
         var existFalseAnswer = false;
         $('.dz > .answer_button').each((index, el) => {
           if (getId($(el).attr('id')) !== tableauTriJ9[index].id) {
@@ -447,7 +447,7 @@ const check_answer9 = async () => {
 
         console.log("existFalseAnswer", existFalseAnswer);
 
-        handle_user_responses3(existFalseAnswer, valid_resp, false);
+        handle_user_responses3(existFalseAnswer, tableauTriJ9, false);
 
         onTimesUp()
 
@@ -459,7 +459,7 @@ const check_answer9 = async () => {
 
 /* ----------------------------------- REPONSE JEU 10 ----------------------------------- */
 const check_answer10 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: 10, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -535,7 +535,7 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
       clear_counter()
-      goWin();
+      //goWin();
     } else {
       colors(tableauTri, game6)
       showWrongAnswer();
@@ -551,7 +551,7 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
   }
 }
 
-function handle_user_responsesFinal(existFalseAnswer, tableauTri, game6) {
+function handle_user_responsesFinal(existFalseAnswer, tableauTri) {
   let trial_storage = Number(localStorage.getItem('trial'));
   //Si on est au premier essaie
   if (trial_storage > 1) {
@@ -593,9 +593,17 @@ function colors_button(valid_answers) {
   })
 }
 
+function colors(tableauTri, game6) {
+  if (game6) {
+    colors_button3(tableauTri);
+  } else {
+    colors_button2(tableauTri);
+  }
+}
+
 function colors_button2(tableauTri) {
   $('.answer_button').each((index, button) => {
-    tableauTri.id ? $(button).addClass('win') : $(button).addClass('lose')
+    tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
 
@@ -611,13 +619,7 @@ function colors_buttonFinal(tableauTri) {
   })
 }
 
-function colors(tableauTri, game6) {
-  if (game6) {
-    colors_button3(tableauTri);
-  } else {
-    colors_button2(tableauTri);
-  }
-}
+
 
 // assign functions to the object
 context["check_answer1"] = check_answer1;
@@ -631,7 +633,22 @@ context["check_answer8"] = check_answer8;
 context["check_answer9"] = check_answer9;
 context["check_answer10"] = check_answer10;
 
+context["fetch_reponse1"] = fetch_reponse1;
+context["fetch_reponse2"] = fetch_reponse2;
+context["fetch_reponse3"] = fetch_reponse3;
+context["fetch_reponse4"] = fetch_reponse4;
+context["fetch_reponse5"] = fetch_reponse2;
+context["fetch_reponse6"] = fetch_reponse6;
+context["fetch_reponse7"] = fetch_reponse7;
+context["fetch_reponse8"] = fetch_reponse8;
+context["fetch_reponse9"] = fetch_reponse9;
+context["fetch_reponse10"] = check_answer10;
+
+const fetch_reponse = (jour) => {
+  context["fetch_reponse" + jour].apply()
+}
+
 
 const check_answer = () => {
-  context["check_answer" + DAY_NUM].apply()
+  context["check_answer" + Number(localStorage.getItem('jour'))].apply()
 }

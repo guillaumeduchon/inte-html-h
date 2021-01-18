@@ -1,13 +1,13 @@
 
 //------------------------------------------------INDICE---------------------------------------
  //GET L'INDICES GAGNÉS PAR LE MAGASIN
-const fetch_indice = async ()=> {
-    await axios.post('/server/indice.php', {day_num: DAY_NUM}, {
+const fetch_indice = async (jour)=> {
+    await axios.post('/server/indice.php', {day_num: jour}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}})
         .then((res)=>{
           if (res.data.id !== undefined) {
             $('.cta_diamond').html(`<span>${res.data.letter.toUpperCase()}</span>`);
-            set_indice(res.data.id)
+            set_indice(res.data.id, jour)
             disconnect()
           } else {
             showError();
@@ -16,8 +16,8 @@ const fetch_indice = async ()=> {
   }
 
  //SAVE L'INDICES GAGNÉS PAR LE MAGASIN
-  const set_indice = async (indice_id)=> {
-    await axios.post('/server/indice.php', {day_num: DAY_NUM, indice: indice_id, magasin: localStorage.getItem('magasin')}, {
+  const set_indice = async (indice_id, jour)=> {
+    await axios.post('/server/indice.php', {day_num: jour, indice: indice_id, magasin: localStorage.getItem('magasin')}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}
     }).then((res) => { });
   }

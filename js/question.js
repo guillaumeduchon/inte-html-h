@@ -1,6 +1,6 @@
 //------------------------------------------------QUESTION---------------------------------------
-const fetch_rules = async () => {
-  await axios.post('/server/question.php', { day_num: DAY_NUM, type: 'rules' }, {
+const fetch_rules = async (jour) => {
+  await axios.post('/server/question.php', { day_num: jour, type: 'rules' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => {
@@ -21,8 +21,8 @@ const fetch_rules = async () => {
     })
 }
 
-const fetch_content = async () => {
-  await axios.post('/server/question.php', { day_num: DAY_NUM, type: 'content' }, {
+const fetch_content = async (jour) => {
+  await axios.post('/server/question.php', { day_num: jour, type: 'content' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => {
