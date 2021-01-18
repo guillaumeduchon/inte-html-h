@@ -163,8 +163,6 @@ const fetch_reponse3 = async () => {
     }
   }
 
-  console.log('answers_arrayBefore fgpoodanwserr :', answers_array);
-
   //AJOUTE UNE BONNE REPONSE PAR TABLEAU DU TABLEAU RESULT
   for (let line = 0; line < answers_array.length; line++) {
     //CREER UN TABLEAU AVEC LE ID DE LA BONNE REPONSE LIÉ A UNE LIGNE (SELON L'INDEX)
@@ -173,10 +171,10 @@ const fetch_reponse3 = async () => {
 
   // var tab_line;
 
-  answers_array.each(tab_line, index => {
-    tab_line.each(response, i => {
+  answers_array.forEach((tab_line, index) => {
+    tab_line.forEach((response, i) => {
       $('.game_carousel:type(' + index + ')').html(`
-        <div class="carousel_cell id=${response.id}">
+        <div class="carousel_cell">
           <figure class="item">
             <img src="${response.reponse_url}" alt="">
               <figcaption class="answer_button">${response.name}</figcaption>
