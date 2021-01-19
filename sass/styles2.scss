@@ -363,7 +363,7 @@ main {
                     }
                     &:valid {color: $blue; border-color: $blue;}
                 }
-                input[type=text] {
+                input[type=text], input[type=password] {
                     width: 100%;
                     padding: 2px 0;
                     border: 0;
