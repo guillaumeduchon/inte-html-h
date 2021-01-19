@@ -218,11 +218,11 @@ const fetch_reponse_valid3 = async () => {
 
         //Boucle sur chaque reponse donnée par l'utilisateur
         $('.carousel_cell.is-selected').each((index, el) => {
-          // console.log(el);
+          let user_answer_id = Number($(el).find('.answer_button').attr('id'))
           nbr_user_answers += 1;
-          let user_answer_id = getId(el.id);
+          console.log('user_answer_id: ',user_answer_id)
           // console.log('1: ', user_answer_id);
-          (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
+          aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null;
           // console.log('2: ', aGood_answers); 
         });
 
