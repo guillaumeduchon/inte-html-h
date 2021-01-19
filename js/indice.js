@@ -8,7 +8,6 @@ const fetch_indice = async (jour)=> {
           if (res.data.id !== undefined) {
             $('.cta_diamond').html(`<span>${res.data.letter.toUpperCase()}</span>`);
             set_indice(res.data.id, jour)
-            goPlateau()
           } else {
             showError();
           } 
