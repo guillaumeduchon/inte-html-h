@@ -204,11 +204,13 @@ const check_answer3 = async () => {
 
         //Boucle sur chaque reponse donnée par l'utilisateur
         $('.carousel_cell.is-selected').each((index, el) => {
+          let user_answer_id = Number($(el).find('.answer_button').attr('id'))
           nbr_user_answers += 1;
-          let user_answer_id = getId(el.id);
-          (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
+          console.log('user_answer_id: ',user_answer_id)
+          // console.log('1: ', user_answer_id);
+          aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null;
+          // console.log('2: ', aGood_answers); 
         });
-        console.log('user_great_answer: ',user_great_answer)
 
         handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
 
