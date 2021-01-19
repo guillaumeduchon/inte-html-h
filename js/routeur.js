@@ -212,7 +212,7 @@ function goWin() {
 
 function goLoose() { setTimeout(()=>{
   window.location.href = "game_lose.html";
-},5000)}
+},3500)}
 
 function goFinalWin() {
   $('.cta_button').remove()
@@ -242,3 +242,4 @@ function goFinalLoose() { setTimeout(()=>{
 },3000)}
 
 function goLogin() { window.location.href = "login.html"}
+function goPlateau() { window.location.href = "plateau.html"}
