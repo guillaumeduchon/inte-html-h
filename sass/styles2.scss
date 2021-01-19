@@ -778,7 +778,7 @@ main {
                 height: 110px;
                 width: 110px;
                 margin-top: -13px;
-                a {font-size: 14px; line-height: 70px;}
+                a {font-size: 14px; line-height: 60px;}
                 @media screen and (orientation:landscape) and (min-width:1024px) {
                     height: 150px;
                     width: 150px;
@@ -1605,6 +1605,7 @@ main {
                 height: 190px;
                 width: 190px;
                 font-size: 50px;
+                line-height: 100%;
                 @media screen and (orientation:landscape) and (max-width: 1024px) {
                     height: 150px;
                     width: 150px;
@@ -1767,8 +1768,9 @@ main {
                         text-align: center;
                         text-transform: uppercase;
                         position: relative;
-                        box-shadow: 0;
+                        box-shadow: 0 0 0 0;
                         border-radius: 0;
+                        border-style: initial;
                         @media screen and (orientation:landscape) and (min-width: 1024px) {
                             width: 65px;
                             height: 65px;
