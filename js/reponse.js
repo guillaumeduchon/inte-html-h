@@ -217,7 +217,7 @@ const fetch_reponse_valid3 = async () => {
         var nbr_user_answers = 0;
 
         //Boucle sur chaque reponse donnée par l'utilisateur
-        $('."carousel_cell.is-selected"').each((index, el) => {
+        $('.carousel_cell.is-selected').each((index, el) => {
           // console.log(el);
           nbr_user_answers += 1;
           let user_answer_id = getId(el.id);
