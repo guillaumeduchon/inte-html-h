@@ -173,14 +173,21 @@ const fetch_reponse3 = async () => {
 
   answers_array.forEach((tab_line, index) => {
     tab_line.forEach((response, i) => {
-      $('.flickity-slider:eq(' + index + ')').append(`
-        <div class="carousel_cell">
-          <figure class="item">
-            <img src="${response.reponse_url}" alt="">
-              <figcaption class="answer_button">${response.name}</figcaption>
-          </figure>
-        </div>
-      `);
+      var $slideGame = $(`<div class="carousel_cell">
+      <figure class="item">
+        <img src="${response.reponse_url}" alt="">
+          <figcaption class="answer_button">${response.name}</figcaption>
+      </figure>
+    </div>`);
+    $carousel.flickity('append', $slideGame);
+      // $('.flickity-slider:eq(' + index + ')').append(`
+      //   <div class="carousel_cell">
+      //     <figure class="item">
+      //       <img src="${response.reponse_url}" alt="">
+      //         <figcaption class="answer_button">${response.name}</figcaption>
+      //     </figure>
+      //   </div>
+      // `);
     })
   })
 }
