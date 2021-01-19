@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Jeu-concours Hermes</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="node_modules/flickity/css/flickity.css">
+    <!-- <link rel="manifest" href="manifest.json"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <main>
+        <div class="screen row no-gutters">
+            <div class="flex_contain game_screen">
+                <div class="game_container flex_contain">
+                    <div class="game_space">
+                        <div class="tryagain">dommage, mauvaise réponse, il vous reste une tentative !</div>
+                        <div class="question">Christine Nagel a construit la nouvelle création masculine H24 autour de 4 matières premières.<br><strong>En faisant défiler les visuels, saurez-vous les retrouver en 24 secondes ?</strong></div>
+                        <div class="game_quizz flex_contain q3">
+                            <div class="game_carou_contain">
+                                <div class="game_carousel" data-flickity='{"pageDots": false}'>
+                                    <!-- <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_sauge.jpg" alt="">
+                                            <figcaption class="answer_button">Sauge sclarée</figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_fevetonka.jpg" alt="">
+                                            <figcaption class="answer_button">Fève Tonka</figcaption>
+                                        </figure>
+                                    </div> -->
+                                </div>
+                                <div class="game_carousel" data-flickity='{"pageDots": false}'>
+                                    <!-- <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_boisrose.jpg" alt="">
+                                            <figcaption class="answer_button">Bois de rose</figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_encens.jpg" alt="">
+                                            <figcaption class="answer_button">Encens</figcaption>
+                                        </figure>
+                                    </div> -->
+                                </div>
+                                <div class="game_carousel" data-flickity='{"pageDots": false}'>
+                                    <!-- <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_narcisse.jpg" alt="">
+                                            <figcaption class="answer_button">Narcisse</figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_thenoir.jpg" alt="">
+                                            <figcaption class="answer_button">Thé noir</figcaption>
+                                        </figure>
+                                    </div> -->
+                                </div>
+                                <div class="game_carousel" data-flickity='{"pageDots": false}'>
+                                    <!-- <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_sclarene.jpg" alt="">
+                                            <figcaption class="answer_button">Sclarene</figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="carousel_cell">
+                                        <figure class="item">
+                                            <img src="img/slide_q3_sauge.jpg" alt="">
+                                            <figcaption class="answer_button">Sauge sclarée</figcaption>
+                                        </figure>
+                                    </div> -->
+                                </div>
+                                <!-- <div class="game_carousel" data-flickity='{"pageDots": false, "initialIndex": ".is-initial-select"}'></div>
+                                <div class="game_carousel" data-flickity='{"pageDots": false, "initialIndex": ".is-initial-select"}'></div>
+                                <div class="game_carousel" data-flickity='{"pageDots": false, "initialIndex": ".is-initial-select"}'></div>
+                                <div class="game_carousel" data-flickity='{"pageDots": false, "initialIndex": ".is-initial-select"}'></div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game_infos">
+                        <div id="timer"></div>
+                        <div class="try">
+                            <span class="title">Essais restants</span>
+                            <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
+                        </div>
+                        <div class="game_button" onclick="check_answer3()" id="valide"><span>VALIDER</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- TURN -->
+    <div id="turn">
+        <div class="plz">
+            <img src="img/icon_turn.png" alt="Tourner votre écran">
+            <p>Pour une meilleure expérience du site nous vous invitons à tourner votre écran à l’horizontale.</p>
+        </div>
+    </div>
+    <!-- / -->
+    <script src="js/function.js"></script>
+    <script src="js/game_timer.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/routeur.js"></script>
+    <script src="js/question.js"></script>
+    <script src="js/reponse.js"></script>
+</body>
+</html>
