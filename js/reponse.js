@@ -169,15 +169,15 @@ const fetch_reponse3 = async () => {
 
   // var tab_line;
   answers_array.forEach((tab_line, index) => {
-    tab_line.forEach((response) => {
-      $('.game_carousel:eq(' + index + ')').append(`
-        <div class="carousel_cell">
-          <figure class="item">
-            <img src="${response.reponse_url}" alt="">
-              <figcaption id=${response.id} class="answer_button">${response.name}</figcaption>
-          </figure>
-        </div>
-      `);
+    tab_line.forEach((response, i) => {
+      var $carousel = $('.game_carousel:eq(' + index + ')').flickity();
+      var $slideGame = $(`<div class="carousel_cell">
+      <figure class="item">
+        <img src="${response.reponse_url}" alt="">
+          <figcaption class="answer_button" id="${response.id}">${response.content}</figcaption>
+      </figure>
+    </div>`);
+    $carousel.flickity('append', $slideGame);
     })
   })
 }
@@ -203,7 +203,7 @@ const check_answer3 = async () => {
         var nbr_user_answers = 0;
 
         //Boucle sur chaque reponse donnée par l'utilisateur
-        $('."carousel_cell.is-selected"').each((index, el) => {
+        $('.carousel_cell.is-selected').each((index, el) => {
           nbr_user_answers += 1;
           let user_answer_id = getId(el.id);
           (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
