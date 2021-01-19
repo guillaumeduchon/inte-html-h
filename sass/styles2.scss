@@ -142,6 +142,8 @@ main {
             top: 50%;
             transform: translate(-50%, -50%);
             text-decoration: none;
+            line-height: 100px;
+            @media screen and (orientation:landscape) and (max-width: 580px) {line-height: 80px;}
         }
         &:before {
             position: absolute;
@@ -647,19 +649,19 @@ main {
                     height: 130px;
                     width: 130px;
                     margin-top: -32px;
-                    a, span {font-size: 18px;}
+                    a, span {font-size: 18px; line-height: 80px;}
                     // @media screen and (orientation:landscape) and (min-width: 590px) {
                     //     margin-bottom: -17px;
                     // }
                     @media screen and (orientation:landscape) and (max-width: 640px) {
                         height: 110px;
                         width: 110px;
-                        a, span {font-size: 16px;}
+                        a, span {font-size: 16px; line-height: 60px;}
                     }
                     @media screen and (orientation:landscape) and (min-width:1024px) {
                         height: 150px;
                         width: 150px;
-                        a {font-size: 18px;}
+                        a {font-size: 18px; line-height: 100px;}
                     }
                     &:after {
                         background-color: $green;
@@ -702,16 +704,16 @@ main {
                 .cta_diamond {
                     height: 130px;
                     width: 130px;
-                    a, span {font-size: 16px;}
+                    a, span {font-size: 16px; line-height: 80px;}
                     @media screen and (orientation:landscape) and (max-width: 640px) {
                         height: 110px;
                         width: 110px;
-                        a, span {font-size: 13px;}
+                        a, span {font-size: 13px; line-height: 60px;}
                     }
                     @media screen and (orientation:landscape) and (min-width:1024px) {
                         height: 150px;
                         width: 150px;
-                        a {font-size: 18px;}
+                        a {font-size: 18px; line-height: 100px;}
                     }
                     &:after {
                         background-color: $green;
@@ -776,11 +778,11 @@ main {
                 height: 110px;
                 width: 110px;
                 margin-top: -13px;
-                a {font-size: 14px;}
+                a {font-size: 14px; line-height: 70px;}
                 @media screen and (orientation:landscape) and (min-width:1024px) {
                     height: 150px;
                     width: 150px;
-                    a {font-size: 18px;}
+                    a {font-size: 18px; line-height: 100px;}
                 }
             }
             @media screen and (orientation:landscape) and (max-width: 660px) {
@@ -1635,6 +1637,7 @@ main {
                     transform: translate(-50%, -50%);
                     text-decoration: none;
                     font-size: 15px;
+                    line-height: 18px;
                 }
                 @media screen and (orientation:landscape) and (min-width: 590px) {
                     margin-bottom: -17px;
@@ -1790,7 +1793,7 @@ main {
                     @media screen and (orientation:landscape) and (max-width: 640px) {
                         height: 110px;
                         width: 110px;
-                        a, span {font-size: 14px;}
+                        a, span {font-size: 14px; line-height: 60px;}
                     }
                     &:after {
                         background-color: $green;

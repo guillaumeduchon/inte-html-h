@@ -3,6 +3,19 @@ $(document).ready(function() {
 
   if (location.pathname === "/login.html") {
     fullfiled_magasin();
+    let formEmploiModal = $('#formLogin')
+    formEmploiModal.submit(evt => {
+        evt.preventDefault();
+        var enterLogin = document.getElementById("code");
+        enterLogin.onkeyup = function (e) {
+          e.preventDefault();
+          if (e.keyCode === 13) {
+            if (location.pathname === "/login.html") {
+              fetch_login()
+            }
+          }
+        }
+      });
     $("#magasin").on('click', ()=>{
       hideError();
     })
