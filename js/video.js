@@ -84,14 +84,15 @@
 
  })();
 
- const fetch_movie = async(jour) => {
-    await axios.post('/server/question.php', { day_num: jour, type:'jour' }, {
-        headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+ const fetch_movie = async (jour) => {
+    await axios.post('/server/question.php', { day_num: jour}, {
+      headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
     })
-    .then((resp) => {
-        console.log(resp);
+      .then((resp) => {
+        //if there are at least one good answer return by api
+        // console.log(resp);
         if (resp.data.jour !== undefined) {
-            $('#video').html(`<source src="video/video_game_${resp.data.jour}.mp4" type="video/mp4">`)
+          $('#video').html(`<source src="video/video_game_${resp.data.jour}.mp4" type="video/mp4">`)
         }
-    });
+      });
   }
