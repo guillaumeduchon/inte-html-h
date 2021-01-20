@@ -105,9 +105,13 @@ body {
 /*** - ***/
 
 main {
-    position: relative;
-    margin: 0 auto;
-    overflow: hidden;
+    // position: relative;
+    // margin: 0 auto;
+    // overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: table;
     @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
     .screen {
         width: 100vw;
@@ -728,7 +732,7 @@ main {
         }
         .rules_container {
             width: 100vw;
-            height: 100vh;
+            height: 100%;
             margin:0 auto;
             display: flex;
             align-items: center;
