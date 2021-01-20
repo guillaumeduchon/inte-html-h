@@ -57,7 +57,7 @@ $(document).ready(function() {
   //--------------------------------------------------------- PAGE PERDU
 
   if (location.pathname === "/game_lose.html") {
-    isLogged() ? fetch_content(Number(localStorage.getItem('jour'))) : window.location.href = "login.html";
+    isLogged() ? (fetch_content(Number(localStorage.getItem('jour'))),  set_indice(0, Number(localStorage.getItem('jour')))) : window.location.href = "login.html";
   }
 
   //--------------------------------------------------------- JOUR 1
@@ -196,7 +196,7 @@ $(document).ready(function() {
   //--------------------------------------------------------- PAGE PERDU FINAL
 
   if (location.pathname === "/endgame_lose.html") {
-    isLogged() ? (getMagasin(), set_indice(0, Number(localStorage.getItem('jour')))) : window.location.href = "login.html";
+    isLogged() ? getMagasin() : window.location.href = "login.html";
   }
 
 //----------------------------------------------------------- UTILS
