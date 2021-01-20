@@ -64,7 +64,7 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day1.html") {
     if (isLogged()) {
-      result_day(Number(localStorage.getItem('jour')))
+      //result_day(Number(localStorage.getItem('jour')))
 
       fetch_reponse(1);
     } else {

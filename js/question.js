@@ -39,8 +39,12 @@ const result_day = async (jour) => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => {
-      if (resp.data.indice_id !== undefined && resp.data.indice_id !== 0) {
-        window.location.href = '/game_win.html'
+      if (resp.data.indice_id !== undefined) {
+        if(resp.data.indice_id !== 0) {
+          window.location.href = '/game_win.html'
+        } else {
+          window.location.href = '/game_lose.html'
+        }
       }
     });
 }
