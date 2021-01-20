@@ -196,7 +196,7 @@ $(document).ready(function() {
   //--------------------------------------------------------- PAGE PERDU FINAL
 
   if (location.pathname === "/endgame_lose.html") {
-    isLogged() ? (getMagasin(), set_indice(0,Number(localStorage.getItem('jour')))) : window.location.href = "login.html";
+    isLogged() ? (getMagasin(), set_indice(0, Number(localStorage.getItem('jour')))) : window.location.href = "login.html";
   }
 
 //----------------------------------------------------------- UTILS
