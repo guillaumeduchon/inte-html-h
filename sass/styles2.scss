@@ -502,7 +502,7 @@ main {
                             font-size: 14px;
                             line-height: 18px;
                         }
-                        @media screen and (orientation:landscape) and (max-width: 760px) {
+                        @media screen and (orientation:landscape) and (max-width: 920px) {
                             font-size: 15px;
                             line-height: 19px;
                             &.countdown {
@@ -633,8 +633,8 @@ main {
                     i, em {font-size: 14px; line-height: 18px;}
                     &:first-of-type {margin-bottom: 15px;}
                     @media screen and (orientation:landscape) and (max-width: 920px) {
-                        font-size: 13px;
-                        line-height: 17px;
+                        font-size: 14px;
+                        line-height: 18px;
                         &:first-of-type {margin-bottom: 10px;}
                         i, em {font-size: 12px; line-height: 16px;}
                     }
@@ -669,10 +669,10 @@ main {
                     // @media screen and (orientation:landscape) and (min-width: 590px) {
                     //     margin-bottom: -17px;
                     // }
-                    @media screen and (orientation:landscape) and (max-width: 640px) {
+                    @media screen and (orientation:landscape) and (max-width: 920px) {
                         height: 110px;
                         width: 110px;
-                        a, span {font-size: 16px; line-height: 60px;}
+                        a, span {font-size: 14px; line-height: 60px;}
                     }
                     @media screen and (orientation:landscape) and (min-width:1024px) {
                         height: 150px;
@@ -697,18 +697,20 @@ main {
                     font-weight: bold;
                     text-transform: uppercase;
                     font-size: 25px;
+                    @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 23px;}
                 }
                 h4 {
                     font-size: 21px;
                     text-transform: uppercase;
                     margin-bottom: 13px;
+                    @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 20px;}
                 }
                 p, .explicgame {
                     font-size: 15px;
                     line-height: 19px;
                     @media screen and (orientation:landscape) and (max-width: 920px) {
-                        font-size: 13px;
-                        line-height: 17px;
+                        font-size: 14px;
+                        line-height: 18px;
                     }
                     &:nth-child(2n+1) {margin-top: 15px;}
                     @media screen and (orientation:landscape) and (min-width:1024px) {
@@ -721,7 +723,7 @@ main {
                     height: 130px;
                     width: 130px;
                     a, span {font-size: 16px; line-height: 80px;}
-                    @media screen and (orientation:landscape) and (max-width: 640px) {
+                    @media screen and (orientation:landscape) and (max-width: 920px) {
                         height: 110px;
                         width: 110px;
                         a, span {font-size: 13px; line-height: 60px;}
@@ -1708,9 +1710,9 @@ main {
                 font-size: 16px;
                 line-height: 20px;
                 margin-bottom: 15px;
-                @media screen and (orientation:landscape) and (max-width: 885px) {
-                    font-size: 12px;
-                    line-height: 16px;
+                @media screen and (orientation:landscape) and (max-width: 920px) {
+                    font-size: 13px;
+                    line-height: 17px;
                     margin-bottom: 10px;
                 }
                 &:last-of-type {margin-bottom: 0;}
@@ -1861,10 +1863,6 @@ main {
                 font-size: 15px;
                 line-height: 19px;
                 padding: 20px 0;
-                @media screen and (orientation:landscape) and (max-width: 920px) {
-                    font-size: 13px;
-                    line-height: 17px;
-                }
                 @media screen and (orientation:landscape) and (min-width: 1024px) {font-size: 19px; line-height: 23px;}
                 &:nth-child(2n) {margin-top: 15px; padding: 0;}
             }
