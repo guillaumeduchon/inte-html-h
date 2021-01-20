@@ -1,10 +1,10 @@
 const fetch_movie = async (jour) => {
-    await axios.post('/server/indice.php', { day_num: jour}, {
+    await axios.post('/server/question.php', { day_num: jour}, {
       headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
     })
       .then((resp) => {
-        console.log(resp.data.jour);
-        if (resp.data.jour !== undefined) {
+        console.log(resp.data[0].jour);
+        if (resp.data[0].jour !== undefined) {
           $('.videoreplace').html(`<source src="video/video_game_${resp.data.jour}.mp4" type="video/mp4">`)
         }
       });
