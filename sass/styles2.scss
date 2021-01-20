@@ -584,7 +584,7 @@ main {
                 }
                 // &.unavailable {background-color: $blue;}
                 &.is-selected {
-                    filter: drop-shadow(0 0 7px rgba($black, 0.4));
+                    filter: drop-shadow(0 0 7px rgba($black, 0.6));
                     // box-shadow: 0 0 9px rgba($black, 0.6);
                     .carousel_cell-content-container {display: flex;}
                     .carousel_cell-content-resume {display: none;}
@@ -703,10 +703,10 @@ main {
                     text-transform: uppercase;
                     margin-bottom: 13px;
                 }
-                p {
+                p, .explicgame {
                     font-size: 15px;
                     line-height: 19px;
-                    @media screen and (orientation:landscape) and (max-width: 640px) {
+                    @media screen and (orientation:landscape) and (max-width: 920px) {
                         font-size: 13px;
                         line-height: 17px;
                     }
@@ -1623,6 +1623,7 @@ main {
                 font-size: 22px;
                 text-transform: uppercase;
                 margin-bottom: 0;
+                @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 21px;}
                 @media screen and (orientation:landscape) and (min-width:1024px) {font-size: 26px;}
             }
             .cta_diamond {
