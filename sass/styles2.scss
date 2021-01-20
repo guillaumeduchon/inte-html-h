@@ -871,6 +871,8 @@ main {
                             .rule {
                                 bottom: 0;
                                 left: 0;
+                                display: block;
+                                &.hide {display: none;}
                             }
                             @media screen and (orientation:landscape) and (max-width: 920px) {
                                 .answer_button {
