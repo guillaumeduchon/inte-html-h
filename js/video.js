@@ -72,7 +72,13 @@
 				//var pos = (e.pageX  - this.offsetLeft) / this.offsetWidth; // Also need to take the parent into account here as .controls now has position:relative
 				var pos = (e.pageX  - (this.offsetLeft + this.offsetParent.offsetLeft)) / this.offsetWidth;
 				video.currentTime = pos * video.duration;
-			});
+            });
+            
+            // Switched to Page Indice
+            video.addEventListener('ended', switchIndice, false);
+            function switchIndice(e) {
+                window.location.href = "game_indice.html";
+            }
 		}
 	 }
 
