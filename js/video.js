@@ -1,9 +1,8 @@
 const fetch_movie = async (jour) => {
-    await axios.post('/server/question.php', { day_num: jour}, {
+    await axios.post('/server/indice.php', { day_num: jour}, {
       headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
     })
       .then((resp) => {
-        //if there are at least one good answer return by api
         console.log(resp.data.jour);
         if (resp.data.jour !== undefined) {
           $('.videoreplace').html(`<source src="video/video_game_${resp.data.jour}.mp4" type="video/mp4">`)
