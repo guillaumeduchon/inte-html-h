@@ -91,7 +91,7 @@
     .then((res) => {
         console.log(res);
         if (res.data.jour !== undefined) {
-            $('video').append(`<source src="video/video_game_${res.data.jour}.mp4" type="video/mp4">`)
+            $('#video').html(`<source src="video/video_game_${res.data.jour}.mp4" type="video/mp4">`)
         }
     });
  }
