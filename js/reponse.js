@@ -183,14 +183,6 @@ const fetch_reponse3 = async () => {
       </figure>
     </div>`);
     $carousel.flickity('append', $slideGame);
-      // $('.flickity-slider:eq(' + index + ')').append(`
-      //   <div class="carousel_cell">
-      //     <figure class="item">
-      //       <img src="${response.reponse_url}" alt="">
-      //         <figcaption class="answer_button">${response.name}</figcaption>
-      //     </figure>
-      //   </div>
-      // `);
     })
   })
 }
@@ -222,7 +214,6 @@ const fetch_reponse_valid3 = async () => {
         $('.carousel_cell.is-selected').each((index, el) => {
           let user_answer_id = Number($(el).find('.answer_button').attr('id'))
           nbr_user_answers += 1;
-          console.log('user_answer_id: ',user_answer_id)
           // console.log('1: ', user_answer_id);
           aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null;
           // console.log('2: ', aGood_answers); 

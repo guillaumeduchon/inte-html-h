@@ -16,7 +16,6 @@ const fetch_indice = async (jour)=> {
 
  //SAVE L'INDICES GAGNÉS PAR LE MAGASIN
   const set_indice = async (indice_id, jour)=> {
-    console.log('INDICE: ', indice_id, ' / JOUR: ', jour, ' / MAGASIN: ', localStorage.getItem('magasin'));
     await axios.post('/server/indice.php', {day_num: jour, indice: indice_id, magasin: Number(localStorage.getItem('magasin'))}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}
     }).then((res) => { });
