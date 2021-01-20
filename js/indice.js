@@ -26,7 +26,7 @@ const fetch_indice = async (jour)=> {
     await axios.post('/server/indice_magasin.php', {magasin: localStorage.getItem('magasin')}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}})
         .then((res) => {
-          if (res.data[0].id !== undefined) {
+          
             $('p').html(`Grâce aux lettres rassemblées depuis le 24 février, saurez-vous reconstituer le mot qui qualifie l’univers du nouveau parfum masculin H24 ?`);
             
             let indices_array= [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
@@ -42,8 +42,6 @@ const fetch_indice = async (jour)=> {
               }
             })
             
-          } else {
-            showError();
-          } 
+          
         });
   }
