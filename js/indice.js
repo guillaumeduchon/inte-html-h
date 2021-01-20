@@ -42,3 +42,8 @@ const fetch_indice = async ()=> {
             }) 
         });
   }
+
+// DISPLAY VIDEO
+const fetch_movie = async (jour) => {
+  $('.videoreplace').html(`<source src="video/video_game_${jour}.mp4" type="video/mp4">`)
+}
