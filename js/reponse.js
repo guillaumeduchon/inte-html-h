@@ -167,6 +167,8 @@ const fetch_reponse3 = async () => {
   for (let line = 0; line < answers_array.length; line++) {
     //CREER UN TABLEAU AVEC LE ID DE LA BONNE REPONSE LIÉ A UNE LIGNE (SELON L'INDEX)
     answers_array[line].push(BONNE_REPONSES[line]);
+    if(line === Math.floor(Math.random() * Math.floor(answers_array.length))) 
+      answers_array[line].reverse()
   }
 
   // var tab_line;
