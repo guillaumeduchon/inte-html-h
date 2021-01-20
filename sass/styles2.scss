@@ -633,8 +633,8 @@ main {
                     i, em {font-size: 14px; line-height: 18px;}
                     &:first-of-type {margin-bottom: 15px;}
                     @media screen and (orientation:landscape) and (max-width: 920px) {
-                        font-size: 14px;
-                        line-height: 18px;
+                        font-size: 15px;
+                        line-height: 19px;
                         &:first-of-type {margin-bottom: 10px;}
                         i, em {font-size: 12px; line-height: 16px;}
                     }
@@ -708,10 +708,10 @@ main {
                 p, .explicgame {
                     font-size: 15px;
                     line-height: 19px;
-                    @media screen and (orientation:landscape) and (max-width: 920px) {
-                        font-size: 14px;
-                        line-height: 18px;
-                    }
+                    // @media screen and (orientation:landscape) and (max-width: 920px) {
+                    //     font-size: 14px;
+                    //     line-height: 18px;
+                    // }
                     &:nth-child(2n+1) {margin-top: 15px;}
                     @media screen and (orientation:landscape) and (min-width:1024px) {
                         font-size: 17px;
@@ -1711,8 +1711,8 @@ main {
                 line-height: 20px;
                 margin-bottom: 15px;
                 @media screen and (orientation:landscape) and (max-width: 920px) {
-                    font-size: 13px;
-                    line-height: 17px;
+                    font-size: 14px;
+                    line-height: 18px;
                     margin-bottom: 10px;
                 }
                 &:last-of-type {margin-bottom: 0;}
