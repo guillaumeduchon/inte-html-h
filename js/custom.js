@@ -111,10 +111,10 @@ function showWrongFinalAnswer() {
   $('p').html(`Tentez votre chance une seconde fois.`);
 }
 
-function hasWinDay() {
-  let hasWin = result_day(Number(localStorage.getItem('jour')));
-  return hasWin;
-}
+// function hasWinDay() {
+//   let hasWin = ;
+//   return hasWin;
+// }
 
 function hasLooseDay() {
   let hasLoose = false;

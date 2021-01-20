@@ -64,7 +64,7 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day1.html") {
     if (isLogged()) {
-      hasWinDay() ? window.location.href = '/game_win.html' : console.log('TEST :', "nowin")
+      result_day(Number(localStorage.getItem('jour'))) ? /*window.location.href = '/game_win.html'*/ console.log('TEST :', "wiiiiiin") : console.log('TEST :', "nowin")
 
       fetch_reponse(1);
     } else {
