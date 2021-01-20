@@ -104,37 +104,6 @@ function showWrongFinalAnswer() {
   $('p').html(`Tentez votre chance une seconde fois.`);
 }
 
-function hasWinDay() {
-  let hasWin = false;
-  if (localStorage.getItem('win_day') !== null) {
-    let win_day = localStorage.getItem('win_day');
-    let win_day_array = Object.values(JSON.parse(win_day));
-    
-    if (win_day_array.includes(DAY_NUM))  
-      hasWin = true;
-  } 
-
-  return hasWin;
-}
-
-function hasLooseDay() {
-  let hasLoose = false;
-  if (localStorage.getItem('trial') && Number(localStorage.getItem('trial')) < 1) {
-    if (localStorage.getItem('win_day') === null) {
-      goLoose();
-    }
-    let win_day = localStorage.getItem('win_day');
-    if (win_day !== null) {
-      let win_day_array = Object.values(JSON.parse(win_day));
-      if (win_day_array[DAY_NUM] === 'false')  hasLoose = true;
-    }
-  }
-  
-  return hasLoose;
-}
-
-
-
 function clear_counter(){
   localStorage.removeItem('timeLeft');
   localStorage.removeItem('trial');

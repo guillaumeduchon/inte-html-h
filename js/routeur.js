@@ -1,22 +1,22 @@
-$(document).ready(function() {
+$(document).ready(function () {
   //---------------------------------------------------------PAGE LOGIN 
 
   if (location.pathname === "/login.html") {
     fullfiled_magasin();
     let formEmploiModal = $('#formLogin')
     formEmploiModal.submit(evt => {
-        evt.preventDefault();
-        var enterLogin = document.getElementById("code");
-        enterLogin.onkeyup = function (e) {
-          e.preventDefault();
-          if (e.keyCode === 13) {
-            if (location.pathname === "/login.html") {
-              fetch_login()
-            }
+      evt.preventDefault();
+      var enterLogin = document.getElementById("code");
+      enterLogin.onkeyup = function (e) {
+        e.preventDefault();
+        if (e.keyCode === 13) {
+          if (location.pathname === "/login.html") {
+            fetch_login()
           }
         }
-      });
-    $("#magasin").on('click', ()=>{
+      }
+    });
+    $("#magasin").on('click', () => {
       hideError();
     })
   }
@@ -25,14 +25,14 @@ $(document).ready(function() {
 
   if (location.pathname === "/rules.html") {
     //lateau() : window.location.href = "login.html";
-    
+
   }
 
   //---------------------------------------------------------PAGE PLATEAU
 
   if (location.pathname === "/plateau.html") {
     isLogged() ? updatePlateau() : window.location.href = "login.html";
-    
+
   }
 
   //--------------------------------------------------------- PAGE GAME RULE
@@ -50,7 +50,7 @@ $(document).ready(function() {
   //--------------------------------------------------------- PAGE INDICE
 
   if (location.pathname === "/game_indice.html") {
-   
+
     fetch_indice();
   }
 
@@ -63,7 +63,7 @@ $(document).ready(function() {
   //--------------------------------------------------------- PAGE PERDU
 
   if (location.pathname === "/game_lose.html") {
-    isLogged() ? (fetch_content(),  set_indice(0)) : window.location.href = "login.html";
+    isLogged() ? (fetch_content(), set_indice(0)) : window.location.href = "login.html";
   }
 
   //--------------------------------------------------------- JOUR 1
@@ -76,7 +76,7 @@ $(document).ready(function() {
     } else {
       clear_counter();
       window.location.href = "login.html";
-    } 
+    }
   }
 
   //--------------------------------------------------------- JOUR 2
@@ -89,7 +89,7 @@ $(document).ready(function() {
     } else {
       clear_counter();
       window.location.href = "login.html";
-    } 
+    }
   }
 
   //--------------------------------------------------------- JOUR 3
@@ -103,7 +103,7 @@ $(document).ready(function() {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
-    } 
+    }
   }
 
   //--------------------------------------------------------- JOUR 4
@@ -117,7 +117,7 @@ $(document).ready(function() {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
-    } 
+    }
   }
 
   //--------------------------------------------------------- JOUR 5
@@ -131,7 +131,7 @@ $(document).ready(function() {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
-    } 
+    }
   }
 
   //--------------------------------------------------------- JOUR 6
@@ -145,7 +145,7 @@ $(document).ready(function() {
       clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
       window.location.href = "login.html";
-    } 
+    }
   }
 
   //--------------------------------------------------------- JOUR 7
@@ -158,7 +158,7 @@ $(document).ready(function() {
     } else {
       clear_counter();
       window.location.href = "login.html";
-    } 
+    }
   }
 
   //--------------------------------------------------------- JOUR 8
@@ -171,7 +171,7 @@ $(document).ready(function() {
     } else {
       clear_counter();
       window.location.href = "login.html";
-    } 
+    }
   }
 
   //--------------------------------------------------------- JOUR 9
@@ -184,7 +184,7 @@ $(document).ready(function() {
     } else {
       clear_counter();
       window.location.href = "login.html";
-    } 
+    }
   }
 
   //--------------------------------------------------------- JOUR 10
@@ -196,70 +196,49 @@ $(document).ready(function() {
     } else {
       clear_counter();
       window.location.href = "login.html";
-    } 
+    }
   }
 });
 
-  //--------------------------------------------------------- PAGE PERDU FINAL
+//--------------------------------------------------------- PAGE PERDU FINAL
 
-  if (location.pathname === "/endgame_lose.html") {
-    isLogged() ? getMagasin() : window.location.href = "login.html";
-  }
+if (location.pathname === "/endgame_lose.html") {
+  isLogged() ? getMagasin() : window.location.href = "login.html";
+}
 
-//----------------------------------------------------------- UTILS
+//----------------------------------------------------------- GO
 function goWin() {
   $('.game_button').remove()
+  localStorage.setItem('day_played', 'true');
+  setTimeout(() => {
+    window.location.href = "game_win.html"
+  }, 3000);
+}
 
-  let win_day = localStorage.getItem('win_day');
-  if (win_day !== null) {
-    let win_day_array = Object.values(JSON.parse(win_day));
-    if (win_day_array.includes(String(DAY_NUM))) {
-      if (location.pathname !== "/game_indice.html") {
-        window.location.href = "game_win.html";
-      }
-    } else {
-      win_day_array.push(DAY_NUM);
-      localStorage.setItem('win_day', JSON.stringify(win_day_array));
-    }
-    
-  } else{
-    localStorage.setItem('win_day', JSON.stringify([DAY_NUM]));
-    setTimeout(()=>{
-      window.location.href = "game_win.html"
-    },3000);
-  }
-} 
+function goLoose() {
+  setTimeout(() => {
+    $('.game_button').remove()
+    localStorage.setItem('day_played', 'true');
+    window.location.href = "game_lose.html";
+  }, 3000)
+}
 
-function goLoose() { setTimeout(()=>{
-  window.location.href = "game_lose.html";
-},3000)}
+//--------------------------------------------------------- GO FINAL
 
 function goFinalWin() {
   $('.cta_button').remove()
-
-  let win_day = localStorage.getItem('win_day');
-  if (win_day !== null) {
-    let win_day_array = Object.values(JSON.parse(win_day));
-    if (win_day_array.includes(String(DAY_NUM))) {
-      if (location.pathname !== "/game_indice.html") {
-        window.location.href = "endgame_win.html";
-      }
-    } else {
-      win_day_array.push(DAY_NUM);
-      localStorage.setItem('win_day', JSON.stringify(win_day_array));
-    }
-    
-  } else{
-    localStorage.setItem('win_day', JSON.stringify([DAY_NUM]));
-    setTimeout(()=>{
-      window.location.href = "endgame_win.html"
-    },3000);
-  }
+  localStorage.setItem('day_played', 'true');
+  setTimeout(() => {
+    window.location.href = "endgame_win.html"
+  }, 3000);
 }
 
-function goFinalLoose() { setTimeout(()=>{
-  window.location.href = "endgame_lose.html";
-},3000)}
+function goFinalLoose() {
+  localStorage.setItem('day_played', 'true');
+  setTimeout(() => {
+    window.location.href = "endgame_lose.html";
+  }, 3000)
+}
 
-function goLogin() { window.location.href = "login.html"}
+function goLogin() { window.location.href = "login.html" }
 function goPlateau() { window.location.href = "plateau.html" }
