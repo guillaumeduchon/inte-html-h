@@ -91,9 +91,7 @@
     .then((res) => {
         console.log(res);
         if (res.data[0].id !== undefined) {
-            res.data.map(el => (
-                $('video').append(`<source src="video/video_game_${res.data.day_num}.mp4" type="video/mp4">`)
-            ))
+            $('video').append(`<source src="video/video_game_${res.data.jour}.mp4" type="video/mp4">`)
         }
     });
  }
