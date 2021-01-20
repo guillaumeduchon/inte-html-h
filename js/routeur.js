@@ -57,7 +57,7 @@ $(document).ready(function() {
   //--------------------------------------------------------- PAGE PERDU
 
   if (location.pathname === "/game_lose.html") {
-    isLogged() ? fetch_content() : window.location.href = "login.html";
+    isLogged() ? (fetch_content(),  set_indice(0, Number(localStorage.getItem('jour')))) : window.location.href = "login.html";
   }
 
   //--------------------------------------------------------- JOUR 1
