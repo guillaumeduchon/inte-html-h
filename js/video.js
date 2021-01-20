@@ -90,7 +90,7 @@
     })
       .then((resp) => {
         //if there are at least one good answer return by api
-        // console.log(resp);
+        console.log(resp);
         if (resp.data.jour !== undefined) {
           $('.videoreplace').html(`<source src="video/video_game_${resp.data.jour}.mp4" type="video/mp4">`)
         }
