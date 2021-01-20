@@ -85,7 +85,7 @@
  })();
 
  const fetch_movie = async(jour) => {
-    await axios.post('/server/question.php', { day_num: jour }, {
+    await axios.post('/server/question.php', { day_num: jour, type:'jour' }, {
         headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
     })
     .then((resp) => {
@@ -94,4 +94,4 @@
             $('#video').html(`<source src="video/video_game_${resp.data.jour}.mp4" type="video/mp4">`)
         }
     });
- }
+  }
