@@ -89,7 +89,7 @@
         headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
     })
     .then((res) => {
-        console.log(res);
+        console.log(res.data.jour);
         if (res.data.jour !== undefined) {
             $('#video').html(`<source src="video/video_game_${res.data.jour}.mp4" type="video/mp4">`)
         }
