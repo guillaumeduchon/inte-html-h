@@ -159,12 +159,12 @@ const fetch_reponse3 = async () => {
     }
   }
 
-  console.log('answers_arrayBefore fgpoodanwserr :', answers_array);
-
   //AJOUTE UNE BONNE REPONSE PAR TABLEAU DU TABLEAU RESULT
   for (let line = 0; line < answers_array.length; line++) {
     //CREER UN TABLEAU AVEC LE ID DE LA BONNE REPONSE LIÉ A UNE LIGNE (SELON L'INDEX)
     answers_array[line].push(BONNE_REPONSES[line]);
+    if(line === Math.floor(Math.random() * Math.floor(answers_array.length))) 
+      answers_array[line].reverse()
   }
 
   // var tab_line;
@@ -198,7 +198,7 @@ const check_answer3 = async () => {
             if (item.id === id_answer) aGood_answers.push(id_answer);
           });
         });
-        console.log('aGood_answers: ',aGood_answers)
+
         var user_great_answer = [];
         var nbr_user_answers = 0;
 
@@ -206,10 +206,7 @@ const check_answer3 = async () => {
         $('.carousel_cell.is-selected').each((index, el) => {
           let user_answer_id = Number($(el).find('.answer_button').attr('id'))
           nbr_user_answers += 1;
-          console.log('user_answer_id: ',user_answer_id)
-          // console.log('1: ', user_answer_id);
           aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null;
-          // console.log('2: ', aGood_answers); 
         });
 
         handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
