@@ -13,7 +13,7 @@ if ($contentType === "application/json") {
     if (!is_array($decoded)) {
         die('Missed action');
     } else {
-        if (!isset($decoded['magasin'])) {
+        if (!isset($decoded['magasin']) && !isset($decoded['day_num']) ) {
             die('Missed action');
         }
 
