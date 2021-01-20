@@ -431,10 +431,10 @@ const check_answer9 = async () => {
         var tableauTriJ9 = [{}, {}, {}, {}];
 
         valid_resp.data.map(el => {
-          (el.id === 34 ? tableauTriJ9.splice(0, 1, el) : null);
-          (el.id === 37 ? tableauTriJ9.splice(1, 1, el) : null);
-          (el.id === 36 ? tableauTriJ9.splice(2, 1, el) : null);
-          (el.id === 35 ? tableauTriJ9.splice(3, 1, el) : null);
+          (el.id === 35 ? tableauTriJ9.splice(0, 1, el) : null);
+          (el.id === 36 ? tableauTriJ9.splice(1, 1, el) : null);
+          (el.id === 37 ? tableauTriJ9.splice(2, 1, el) : null);
+          (el.id === 34 ? tableauTriJ9.splice(3, 1, el) : null);
         })
   
         var existFalseAnswer = false;
