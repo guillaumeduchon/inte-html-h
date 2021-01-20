@@ -271,7 +271,7 @@ const check_answer5 = async () => {
             if (item.id === id_answer) aGood_answers.push(id_answer);
           })
         });
-
+     
         var user_great_answer = [];
         var nbr_user_answers = 0;
 
@@ -280,7 +280,7 @@ const check_answer5 = async () => {
           (aGood_answers.includes(getId(el.id)) ? user_great_answer.push(getId(el.id)) : null);
         });
 
-        handle_user_responses2(valid_resp)
+        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
 
         onTimesUp()
 
