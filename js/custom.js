@@ -112,15 +112,7 @@ function showWrongFinalAnswer() {
 }
 
 function hasWinDay() {
-  let hasWin = false;
-  if (localStorage.getItem('win_day') !== null) {
-    let win_day = localStorage.getItem('win_day');
-    let win_day_array = Object.values(JSON.parse(win_day));
-    
-    if (win_day_array.includes(DAY_NUM))  
-      hasWin = true;
-  } 
-
+  let hasWin = result_day(Number(localStorage.getItem('jour')));
   return hasWin;
 }
 

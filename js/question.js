@@ -33,3 +33,18 @@ const fetch_content = async (jour) => {
       }
     });
 }
+
+const result_day = async (jour) => {
+  await axios.post('/server/indice_magasin.php', { day_num: jour}, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((resp) => {
+      //if there are at least one good answer return by api
+      // console.log(resp);
+      if (resp.data.indice_id !== undefined && resp.data.indice_id !== 0) {
+        return true
+      } else {
+        return false
+      }
+    });
+}

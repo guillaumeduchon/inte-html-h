@@ -17,16 +17,28 @@ if ($contentType === "application/json") {
             die('Missed action');
         }
 
-        $magasin = htmlentities($decoded['magasin']);
-        $stmt = $pdo->prepare("
-        SELECT indice.id, indice.letter
-        FROM indice LEFT JOIN indice_magasin
-        ON indice.id = indice_magasin.indice_id
-        WHERE indice_magasin.magasin_id = :magasin
-        ORDER BY indice.id ASC");
-        $stmt->execute(['magasin' => $magasin]);
-        $aIndices = $stmt->fetchAll();
-        $oDatas = !$aIndices ? [] : $aIndices;
+        $magasin = htmlentities($dvecoded['magasin']);
+
+        if (!isset($decoded['day_num'])) {
+            $stmt = $pdo->prepare("
+            SELECT indice.id, indice.letter
+            FROM indice LEFT JOIN indice_magasin
+            ON indice.id = indice_magasin.indice_id
+            WHERE indice_magasin.magasin_id = :magasin
+            ORDER BY indice.id ASC");
+            $stmt->execute(['magasin' => $magasin]);
+            $aIndices = $stmt->fetchAll();
+            $oDatas = !$aIndices ? [] : $aIndices;
+        } else {
+            $day_num = (int)$decoded['day_num'];
+            $stmt = $pdo->prepare("
+            SELECT *
+            FROM indice_magasin
+            WHERE indice_magasin.id = :jour");
+            $stmt->execute(['jour' => $day_num]);
+            $aIndices = $stmt->fetch();
+            $oDatas = !$aIndices ? [] : $aIndices;
+        }
     }
 }
 

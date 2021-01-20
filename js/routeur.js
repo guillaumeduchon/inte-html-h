@@ -64,7 +64,7 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day1.html") {
     if (isLogged()) {
-     
+      hasWinDay() ? window.location.href = '/game_win.html' : console.log('TEST :', "nowin")
 
       fetch_reponse(1);
     } else {
