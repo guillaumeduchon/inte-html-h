@@ -106,15 +106,15 @@ body {
 main {
     position: relative;
     margin: 0 auto;
-    // overflow-y: scroll;
-    overflow: hidden;
-    // @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
+    overflow-y: scroll;
+    overflow-x: hidden;
+    @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
     .screen {
         width: 100vw;
-        // overflow-y: scroll;
-        overflow: hidden;
-        height: 100%;
-        @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden; height: calc(var(--vh, 1vh) * 100);}
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: calc(var(--vh, 1vh) * 100);
+        @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
         // @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {height: 315px;}
         // @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {height: 354px;}
         // @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {height: 315px;}
@@ -865,8 +865,10 @@ main {
                                 left: 0;
                             }
                             @media screen and (orientation:landscape) and (max-width: 920px) {
-                                height: auto;
-                                font-size: 11px;
+                                .answer_button {
+                                    height: auto;
+                                    font-size: 11px;
+                                }
                             }
                         }
                         .answers {
