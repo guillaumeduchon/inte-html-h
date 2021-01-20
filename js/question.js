@@ -42,9 +42,9 @@ const result_day = async (jour) => {
       //if there are at least one good answer return by api
       // console.log(resp);
       if (resp.data.indice_id !== undefined && resp.data.indice_id !== 0) {
-        return true
+         console.log('TEST :', "nowin")
       } else {
-        return false
+        /*window.location.href = '/game_win.html'*/ console.log('TEST :', "wiiiiiin")
       }
     });
 }
