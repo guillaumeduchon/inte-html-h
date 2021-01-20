@@ -1763,7 +1763,7 @@ main {
                 }
                 h2 {
                     text-transform: uppercase;
-                    @media screen and (orientation:landscape) and (max-width: 600px) {font-size: 21px;}
+                    @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 21px;}
                     @media screen and (orientation:landscape) and (min-width: 1024px) {font-size: 30px; margin-bottom: 12px;}
                 }
                 p {
@@ -1771,7 +1771,7 @@ main {
                     text-transform: uppercase;
                     font-size: 15px;
                     line-height: 19px;
-                    @media screen and (orientation:landscape) and (max-width: 600px) {font-size: 13px; line-height: 17px;}
+                    @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 13px; line-height: 17px;}
                     @media screen and (orientation:landscape) and (min-width: 1024px) {font-size: 19px; line-height: 23px;}
                 }
                 .finalgame_indice {
@@ -1780,7 +1780,7 @@ main {
                     color: $green;
                     font-size: 21px;
                     padding-bottom: 10px;
-                    @media screen and (orientation:landscape) and (max-width: 600px) {font-size: 18px;}
+                    @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 16px;}
                     @media screen and (orientation:landscape) and (min-width: 1024px) {font-size: 27px;}
                 }
                 form {
@@ -1817,7 +1817,7 @@ main {
                     @media screen and (orientation:landscape) and (min-width: 1024px) {margin-bottom: 45px;}
                 }
                 .cta_diamond {
-                    @media screen and (orientation:landscape) and (max-width: 640px) {
+                    @media screen and (orientation:landscape) and (max-width: 920px) {
                         height: 110px;
                         width: 110px;
                         a, span {font-size: 14px; line-height: 60px;}
@@ -1859,7 +1859,7 @@ main {
                 font-size: 15px;
                 line-height: 19px;
                 padding: 20px 0;
-                @media screen and (orientation:landscape) and (max-width: 640px) {
+                @media screen and (orientation:landscape) and (max-width: 920px) {
                     font-size: 13px;
                     line-height: 17px;
                 }
