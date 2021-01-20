@@ -38,13 +38,13 @@ $(document).ready(function() {
   //--------------------------------------------------------- PAGE GAME RULE
 
   if (location.pathname === "/game_rule.html") {
-    isLogged() ? fetch_rules() : window.location.href = "login.html";
+    isLogged() ? (result_day(), fetch_rules()) : window.location.href = "login.html";
   }
 
   //--------------------------------------------------------- PAGE INDICE VIDEO
 
   if (location.pathname === "/game_indice_video.html") {
-    isLogged() ? fetch_movie(Number(localStorage.getItem('jour'))) : window.location.href = "login.html";
+    isLogged() ? fetch_movie(DAY_NUM) : window.location.href = "login.html";
   }
 
   //--------------------------------------------------------- PAGE INDICE
@@ -63,15 +63,14 @@ $(document).ready(function() {
   //--------------------------------------------------------- PAGE PERDU
 
   if (location.pathname === "/game_lose.html") {
-    isLogged() ? (fetch_content(),  set_indice(0, Number(localStorage.getItem('jour')))) : window.location.href = "login.html";
+    isLogged() ? (fetch_content(),  set_indice(0)) : window.location.href = "login.html";
   }
 
   //--------------------------------------------------------- JOUR 1
 
   if (location.pathname === "/game_day1.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+      result_day()
 
       fetch_reponse();
     } else {
@@ -84,8 +83,7 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day2.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+      result_day()
 
       fetch_reponse2();
     } else {
@@ -98,8 +96,7 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day3.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+      result_day()
 
       fetch_reponse3();
     } else {
@@ -113,8 +110,7 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day4.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+      result_day()
 
       fetch_reponse4();
     } else {
@@ -128,8 +124,7 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day5.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+      result_day()
 
       fetch_reponse2();
     } else {
@@ -143,8 +138,7 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day6.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+      result_day()
 
       fetch_reponse6();
     } else {
@@ -158,8 +152,7 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day7.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+      result_day()
 
       fetch_reponse7();
     } else {
@@ -172,8 +165,7 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day8.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+      result_day()
 
       fetch_reponse8(DAY_NUM);
     } else {
@@ -186,8 +178,7 @@ $(document).ready(function() {
 
   if (location.pathname === "/game_day9.html") {
     if (isLogged()) {
-      hasLooseDay() ? goLoose() : null;
-      hasWinDay() ? goWin() : null;
+      result_day()
 
       fetch_reponse9();
     } else {
@@ -199,8 +190,7 @@ $(document).ready(function() {
   //--------------------------------------------------------- JOUR 10
   if (location.pathname === "/game_day10.html") {
     if (isLogged()) {
-      hasLooseDay() ? goFinalLoose() : null;
-      hasWinDay() ? goFinalWin() : null;
+      result_day()
 
       fetch_indices();
     } else {
