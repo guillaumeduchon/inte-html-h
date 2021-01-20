@@ -11,8 +11,12 @@ const fetch_rules = async (jour) => {
         $('.rulegame').html(`<p>${resp.data.rules}</p>`)
         if (resp.data.type_game === 'drag') {
           $('.explanation').html(`<img src="img/icon_drag_drop.png" alt="Drag and drop"><p>Glisser &amp; déposer<br>Glissez dans la zone dédiée</p>`)
-        } else if (resp.data.type_game === 'quiz') {
+        } else if (resp.data.type_game === 'quiz1') {
           $('.explanation').html(`<img src="img/icon_quiz.png" alt="Quiz"><p>Quiz<br>Sélectionnez les bonnes réponses</p>`)
+        } else if (resp.data.type_game === 'quiz2') {
+          $('.explanation').html(`<img src="img/icon_quiz.png" alt="Quiz"><p>Quiz<br>Sélectionnez la bonne réponse</p>`)
+        } else if (resp.data.type_game === 'quiz3') {
+          $('.explanation').html(`<img src="img/icon_quiz.png" alt="Quiz"><p>Quiz<br>Trouvez la bonne réponse</p>`)
         } else if (resp.data.type_game === 'swipe') {
           $('.explanation').html(`<img src="img/icon_swipe.png" alt="Swipe"><p>Swipe<br>Choisissez en faisant défiler les images</p>`)
         }
