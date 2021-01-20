@@ -832,7 +832,7 @@ main {
                     text-align: center;
                     text-transform: uppercase;
                     padding: 7px 0;
-                    font-size: 14px;
+                    font-size: 13px;
                     font-weight: bold;
                     display: none;
                     @media screen and (orientation:landscape) and (max-width: 660px) {font-size: 13px;}
@@ -840,8 +840,8 @@ main {
                 .question {
                     color: $blue;
                     text-transform: uppercase;
-                    font-size: 14px;
-                    line-height: 19px;
+                    font-size: 13px;
+                    line-height: 18px;
                     margin-bottom: 10px;
                     .rule {text-transform: none;}
                     @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 12px; line-height: 16px;}
@@ -864,12 +864,18 @@ main {
                                 bottom: 0;
                                 left: 0;
                             }
+                            @media screen and (orientation:landscape) and (max-width: 920px) {
+                                height: auto;
+                                font-size: 11px;
+                            }
                         }
                         .answers {
                             width: 80vw;
                             height: 158px;
                         }
-                        .answer_button {align-self: center;}
+                        .answer_button {
+                            align-self: center;
+                        }
                     }
                     &.q2 {
                         @media screen and (orientation:landscape) and (min-width:680px) {height: 85%;}
