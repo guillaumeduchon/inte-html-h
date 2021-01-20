@@ -41,6 +41,12 @@ $(document).ready(function() {
     isLogged() ? fetch_rules() : window.location.href = "login.html";
   }
 
+  //--------------------------------------------------------- PAGE INDICE VIDEO
+
+  if (location.pathname === "/game_indice_video.html") {
+    isLogged() ? fetch_movie(Number(localStorage.getItem('jour'))) : window.location.href = "login.html";
+  }
+
   //--------------------------------------------------------- PAGE INDICE
 
   if (location.pathname === "/game_indice.html") {
@@ -57,7 +63,7 @@ $(document).ready(function() {
   //--------------------------------------------------------- PAGE PERDU
 
   if (location.pathname === "/game_lose.html") {
-    isLogged() ? fetch_content() : window.location.href = "login.html";
+    isLogged() ? (fetch_content(),  set_indice(0, Number(localStorage.getItem('jour')))) : window.location.href = "login.html";
   }
 
   //--------------------------------------------------------- JOUR 1
@@ -236,7 +242,7 @@ function goWin() {
 
 function goLoose() { setTimeout(()=>{
   window.location.href = "game_lose.html";
-},5000)}
+},3000)}
 
 function goFinalWin() {
   $('.cta_button').remove()
@@ -266,3 +272,4 @@ function goFinalLoose() { setTimeout(()=>{
 },3000)}
 
 function goLogin() { window.location.href = "login.html"}
+function goPlateau() { window.location.href = "plateau.html" }

@@ -159,25 +159,25 @@ const fetch_reponse3 = async () => {
     }
   }
 
-  console.log('answers_arrayBefore fgpoodanwserr :', answers_array);
-
   //AJOUTE UNE BONNE REPONSE PAR TABLEAU DU TABLEAU RESULT
   for (let line = 0; line < answers_array.length; line++) {
     //CREER UN TABLEAU AVEC LE ID DE LA BONNE REPONSE LIÉ A UNE LIGNE (SELON L'INDEX)
     answers_array[line].push(BONNE_REPONSES[line]);
+    if(line === Math.floor(Math.random() * Math.floor(answers_array.length))) 
+      answers_array[line].reverse()
   }
 
   // var tab_line;
   answers_array.forEach((tab_line, index) => {
-    tab_line.forEach((response) => {
-      $('.game_carousel:eq(' + index + ')').append(`
-        <div class="carousel_cell">
-          <figure class="item">
-            <img src="${response.reponse_url}" alt="">
-              <figcaption id=${response.id} class="answer_button">${response.name}</figcaption>
-          </figure>
-        </div>
-      `);
+    tab_line.forEach((response, i) => {
+      var $carousel = $('.game_carousel:eq(' + index + ')').flickity();
+      var $slideGame = $(`<div class="carousel_cell">
+      <figure class="item">
+        <img src="${response.reponse_url}" alt="">
+          <figcaption class="answer_button" id="${response.id}">${response.content}</figcaption>
+      </figure>
+    </div>`);
+    $carousel.flickity('append', $slideGame);
     })
   })
 }
@@ -198,17 +198,16 @@ const check_answer3 = async () => {
             if (item.id === id_answer) aGood_answers.push(id_answer);
           });
         });
-        console.log('aGood_answers: ',aGood_answers)
+
         var user_great_answer = [];
         var nbr_user_answers = 0;
 
         //Boucle sur chaque reponse donnée par l'utilisateur
-        $('."carousel_cell.is-selected"').each((index, el) => {
+        $('.carousel_cell.is-selected').each((index, el) => {
+          let user_answer_id = Number($(el).find('.answer_button').attr('id'))
           nbr_user_answers += 1;
-          let user_answer_id = getId(el.id);
-          (aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null);
+          aGood_answers.includes(user_answer_id) ? user_great_answer.push(user_answer_id) : null;
         });
-        console.log('user_great_answer: ',user_great_answer)
 
         handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
 

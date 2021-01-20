@@ -4,7 +4,6 @@
   "description": "jeu-concours",
   "main": "index.js",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.1",
     "@popperjs/core": "^2.5.4",
     "bootstrap": "^4.5.3",
     "flickity": "^2.2.1",
