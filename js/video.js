@@ -83,3 +83,16 @@
 	 }
 
  })();
+
+ const fetch_movie = async(jour) => {
+    await axios.post('/server/question.php', { day_num: jour }, {
+        headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+    })
+    .then((res) => {
+        if (res.data[0].id !== undefined) {
+            res.data.map(el => (
+                $('video').append(`<source src="video/video_game_${res.data.jour}.mp4" type="video/mp4">`)
+            ))
+        }
+    });
+ }
