@@ -44,7 +44,7 @@ $(document).ready(function() {
   //--------------------------------------------------------- PAGE INDICE VIDEO
 
   if (location.pathname === "/game_indice_video.html") {
-    isLogged() ? fetch_movie(0, Number(localStorage.getItem('jour'))) : window.location.href = "login.html";
+    isLogged() ? fetch_movie(Number(localStorage.getItem('jour'))) : window.location.href = "login.html";
   }
 
   //--------------------------------------------------------- PAGE INDICE
