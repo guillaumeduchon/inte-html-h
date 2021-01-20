@@ -26,7 +26,6 @@ const fetch_indice = async ()=> {
     await axios.post('/server/indice_magasin.php', {magasin: localStorage.getItem('magasin')}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}})
         .then((res) => {
-          if (res.data[0].id !== undefined) {
             $('p').html(`Grâce aux lettres rassemblées depuis le 24 février, saurez-vous reconstituer le mot qui qualifie l’univers du nouveau parfum masculin H24 ?`);
             
             let indices_array= [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
@@ -40,10 +39,6 @@ const fetch_indice = async ()=> {
                 let letter = indice.id !== undefined && indice.id !== 0 ? indice.letter : ' __ '
                 $('.finalgame_indice').append(`<span class="j${(index+1)}">${letter}</span>`)
               }
-            })
-            
-          } else {
-            showError();
-          } 
+            }) 
         });
   }
