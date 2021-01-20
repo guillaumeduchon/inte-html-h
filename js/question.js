@@ -39,12 +39,8 @@ const result_day = async (jour) => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => {
-      //if there are at least one good answer return by api
-      // console.log(resp);
       if (resp.data.indice_id !== undefined && resp.data.indice_id !== 0) {
-         console.log('TEST :', "nowin")
-      } else {
-        /*window.location.href = '/game_win.html'*/ console.log('TEST :', "wiiiiiin")
+        window.location.href = '/game_win.html'
       }
     });
 }
