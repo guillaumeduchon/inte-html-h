@@ -112,38 +112,39 @@ function clear_counter(){
 function compte_a_rebours(){
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
-  date_evenement.setDate(date_evenement.getDate() + 1)
-  date_evenement.setHours(00, 00, 00);
+  date_evenement.setDate(date_evenement.getDate()+1)
+  date_evenement.setHours(10, 24, 00);
   var total_secondes = (date_evenement - date_actuelle) / 1000;
-  
   var jours = new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
   var heures = Math.floor((total_secondes - (0 * 60 * 60 * 24)) / (60 * 60));
   var minutes = Math.floor((total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60))) / 60);
   var secondes = Math.floor(total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
 
-  $('.countdown').find('strong').html(`${heures} H ${minutes} MIN ${secondes} S`);
+  $('.countdown').find('strong').html(`${Math.abs(heures)} H ${minutes} MIN ${secondes} S`);
   $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong>`);
 
   $('.expired').find('.statut').html('Challenge terminé');
   $('.available').find('.statut').addClass('countdown');
-  $('.countdown').html(`Il vous reste encore<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
+  $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
   $('.unavailable').each((index, el)=>{
     if (index === 0){
-      $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${heures} H ${minutes} MIN ${secondes} S</strong>`);
+      $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
     } else {
       //Si le prochain jours est Dimanche
-      var joursWeekEnd ;
-      if (jours[date_evenement.getDay()+index] === undefined) {
+      var joursSuivant ;
+      if (jours[date_evenement.getDay() + index] === undefined) {
         //Je creer un tableau contenant uniquement les jours de lundi à  samedi
         let jours_ouvre = jours.slice(1);
-        joursWeekEnd = jours_ouvre[(index -2)]
-        joursWeekEnd = joursWeekEnd === "Dimanche" ?  joursWeekEnd = 'Lundi': joursWeekEnd;
+  
+        if(index > 7) { index = 2 + index - 8 }
+
+        joursSuivant = jours_ouvre[(index -2)];
 
       } else {
-        joursWeekEnd= jours[date_evenement.getDay()+index]
+        joursSuivant= jours[date_evenement.getDay() + index]
       } 
 
-      $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible<br><strong>${joursWeekEnd}</strong>`);
+      $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible<br><strong>${joursSuivant}</strong>`);
     }
   })
   var actualisation = setTimeout("compte_a_rebours();", 1000);
