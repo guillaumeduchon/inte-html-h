@@ -1,81 +1,109 @@
 $(document).ready(function () {
   //---------------------------------------------------------PAGE LOGIN 
+  if (location.pathname === '/') {
+    if (isLogged()) {
+      goPlateau()
+    }
+  }
 
   if (location.pathname === "/login.html") {
-    fullfiled_magasin();
-    let formEmploiModal = $('#formLogin')
-    formEmploiModal.submit(evt => {
-      evt.preventDefault();
-      var enterLogin = document.getElementById("code");
-      enterLogin.onkeyup = function (e) {
-        e.preventDefault();
-        if (e.keyCode === 13) {
-          if (location.pathname === "/login.html") {
-            fetch_login()
+    if (isLogged()) {
+      goPlateau()
+    } else {
+      clear_counter();
+      localStorage.removeItem('day_played');
+
+      fullfiled_magasin();
+      let formEmploiModal = $('#formLogin')
+      formEmploiModal.submit(evt => {
+        evt.preventDefault();
+        var enterLogin = document.getElementById("code");
+        enterLogin.onkeyup = function (e) {
+          e.preventDefault();
+          if (e.keyCode === 13) {
+            if (location.pathname === "/login.html") {
+              fetch_login()
+            }
           }
         }
-      }
-    });
-    $("#magasin").on('click', () => {
-      hideError();
-    })
+      });
+      $("#magasin").on('click', () => {
+        hideError();
+      })
+    }
   }
 
   //---------------------------------------------------------PAGE REGLES GENERAL
 
   if (location.pathname === "/rules.html") {
-    //lateau() : window.location.href = "login.html";
-
+    if (gameStarted()) {
+      goGame(DAY_NUM);
+    }
   }
 
   //---------------------------------------------------------PAGE PLATEAU
 
   if (location.pathname === "/plateau.html") {
-    isLogged() ? updatePlateau() : window.location.href = "login.html";
-
+    if (isLogged()) {
+      if (!gameStarted()) {
+        clear_counter();
+        updatePlateau()
+      } else {
+        goGame(DAY_NUM)
+      }
+    } else {
+      goLogin()
+    }
   }
 
   //--------------------------------------------------------- PAGE GAME RULE
 
   if (location.pathname === "/game_rule.html") {
-    isLogged() ? (result_day(), fetch_rules()) : window.location.href = "login.html";
+    if (isLogged()) {
+      if (!gameStarted()) {
+        result_day();
+        fetch_rules();
+      } else {
+        goGame(DAY_NUM)
+      }
+    } else {
+      goLogin()
+    }
   }
 
   //--------------------------------------------------------- PAGE INDICE VIDEO
 
   if (location.pathname === "/game_indice_video.html") {
-    isLogged() ? fetch_movie(DAY_NUM) : window.location.href = "login.html";
+    isLogged() ? fetch_movie(DAY_NUM) : goLogin();
   }
 
   //--------------------------------------------------------- PAGE INDICE
 
   if (location.pathname === "/game_indice.html") {
-
     fetch_indice();
   }
 
   //--------------------------------------------------------- PAGE GAGNé
 
   if (location.pathname === "/game_win.html") {
-    isLogged() ? fetch_content() : window.location.href = "login.html";
+    isLogged() ? fetch_content() : goLogin();
   }
 
   //--------------------------------------------------------- PAGE PERDU
 
   if (location.pathname === "/game_lose.html") {
-    isLogged() ? (fetch_content(), set_indice(0)) : window.location.href = "login.html";
+    isLogged() ? (fetch_content(), set_indice(0)) : goLogin();
   }
 
   //--------------------------------------------------------- JOUR 1
 
   if (location.pathname === "/game_day1.html") {
     if (isLogged()) {
-      result_day()
-
+      result_day();
+      startGame();
       fetch_reponse();
     } else {
-      clear_counter();
-      window.location.href = "login.html";
+      goLogin();
     }
   }
 
@@ -83,12 +111,11 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_day2.html") {
     if (isLogged()) {
-      result_day()
-
+      result_day();
+      startGame();
       fetch_reponse2();
     } else {
-      clear_counter();
-      window.location.href = "login.html";
+      goLogin();
     }
   }
 
@@ -96,13 +123,12 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_day3.html") {
     if (isLogged()) {
-      result_day()
-
+      result_day();
+      startGame();
       fetch_reponse3();
     } else {
-      clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
-      window.location.href = "login.html";
+      goLogin();
     }
   }
 
@@ -110,13 +136,12 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_day4.html") {
     if (isLogged()) {
-      result_day()
-
+      result_day();
+      startGame();
       fetch_reponse4();
     } else {
-      clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
-      window.location.href = "login.html";
+      goLogin();
     }
   }
 
@@ -124,13 +149,12 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_day5.html") {
     if (isLogged()) {
-      result_day()
-
+      result_day();
+      startGame();
       fetch_reponse2();
     } else {
-      clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
-      window.location.href = "login.html";
+      goLogin();
     }
   }
 
@@ -138,13 +162,12 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_day6.html") {
     if (isLogged()) {
-      result_day()
-
+      result_day();
+      startGame();
       fetch_reponse6();
     } else {
-      clear_counter();
       // localStorage.setItem('day_'+DAY_NUM)
-      window.location.href = "login.html";
+      goLogin();
     }
   }
 
@@ -152,12 +175,11 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_day7.html") {
     if (isLogged()) {
-      result_day()
-
+      result_day();
+      startGame();
       fetch_reponse7();
     } else {
-      clear_counter();
-      window.location.href = "login.html";
+      goLogin();
     }
   }
 
@@ -165,12 +187,11 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_day8.html") {
     if (isLogged()) {
-      result_day()
-
+      result_day();
+      startGame();
       fetch_reponse8(DAY_NUM);
     } else {
-      clear_counter();
-      window.location.href = "login.html";
+      goLogin();
     }
   }
 
@@ -178,24 +199,22 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_day9.html") {
     if (isLogged()) {
-      result_day()
-
+      result_day();
+      startGame();
       fetch_reponse9();
     } else {
-      clear_counter();
-      window.location.href = "login.html";
+      goLogin();
     }
   }
 
   //--------------------------------------------------------- JOUR 10
   if (location.pathname === "/game_day10.html") {
     if (isLogged()) {
-      result_day()
-
+      result_day();
+      startGame();
       fetch_indices();
     } else {
-      clear_counter();
-      window.location.href = "login.html";
+      goLogin();
     }
   }
 });
@@ -203,13 +222,12 @@ $(document).ready(function () {
 //--------------------------------------------------------- PAGE PERDU FINAL
 
 if (location.pathname === "/endgame_lose.html") {
-  isLogged() ? getMagasin() : window.location.href = "login.html";
+  isLogged() ? getMagasin() : goLogin();
 }
 
 //----------------------------------------------------------- GO
 function goWin() {
   $('.game_button').remove()
-  localStorage.setItem('day_played', 'true');
   setTimeout(() => {
     window.location.href = "game_win.html"
   }, 3000);
@@ -218,7 +236,6 @@ function goWin() {
 function goLoose() {
   setTimeout(() => {
     $('.game_button').remove()
-    localStorage.setItem('day_played', 'true');
     window.location.href = "game_lose.html";
   }, 3000)
 }
@@ -227,18 +244,19 @@ function goLoose() {
 
 function goFinalWin() {
   $('.cta_button').remove()
-  localStorage.setItem('day_played', 'true');
   setTimeout(() => {
     window.location.href = "endgame_win.html"
   }, 3000);
 }
 
 function goFinalLoose() {
-  localStorage.setItem('day_played', 'true');
   setTimeout(() => {
     window.location.href = "endgame_lose.html";
   }, 3000)
 }
 
+function startGame() { localStorage.setItem('day_played', 'true') }
+function gameStarted() { return localStorage.getItem('day_played') }
+function goGame(jour) { window.location.href = "/game_day"+ jour +".html" }
 function goLogin() { window.location.href = "login.html" }
 function goPlateau() { window.location.href = "plateau.html" }
