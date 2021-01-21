@@ -1,20 +1,20 @@
 $(document).ready(function () {
   //---------------------------------------------------------PAGE LOGIN 
 
-  if(location.pathname === '/') {
-    if(isLogged()) {
+  if (location.pathname === '/') {
+    if (isLogged()) {
       goPlateau()
     }
   }
 
   if (location.pathname === "/login.html") {
-    if(isLogged()) {
+    if (isLogged()) {
       goPlateau()
     } else {
 
       clear_counter();
       localStorage.removeItem('day_played');
-      
+
       fullfiled_magasin();
       let formEmploiModal = $('#formLogin')
       formEmploiModal.submit(evt => {
@@ -46,18 +46,16 @@ $(document).ready(function () {
   //---------------------------------------------------------PAGE PLATEAU
 
   if (location.pathname === "/plateau.html") {
-    if(isLogged()) {
-      if (!gameStarted()) { 
+    if (isLogged()) {
+      if (!gameStarted() || gameStoped()) {
         clear_counter();
         updatePlateau()
       } else {
-        if(!gameStoped()) {
-          goGame(Number(localStorage.getItem('jour')))
-        }
+        goGame(Number(localStorage.getItem('jour')))
       }
     } else {
       goLogin()
-    } 
+    }
   }
 
   //--------------------------------------------------------- PAGE GAME RULE
@@ -257,6 +255,6 @@ function startGame() { localStorage.setItem('day_played', 'true') }
 function stopGame() { localStorage.setItem('has_played', 'true') }
 function gameStarted() { return localStorage.getItem('day_played') }
 function gameStoped() { return localStorage.getItem('has_played') }
-function goGame(jour) { window.location.href = "/game_day"+ jour +".html" }
+function goGame(jour) { window.location.href = "/game_day" + jour + ".html" }
 function goLogin() { window.location.href = "login.html" }
 function goPlateau() { window.location.href = "plateau.html" }
