@@ -1,14 +1,14 @@
 const DATE_TAB = [
-  { 1: '12/01/2021' },
-  { 2: '13/01/2021' },
-  { 3: '14/01/2021' },
-  { 4: '15/01/2021' },
-  { 5: '16/01/2021' },
-  { 6: '17/01/2021' },
-  { 7: '18/01/2021' },
-  { 8: '19/01/2021' },
-  { 9: '20/01/2021' },
-  { 10: '21/01/2021' }
+  { 1: '2021/01/21' },
+  { 2: '2021/01/22' },
+  { 3: '2021/01/23' },
+  { 4: '2021/01/25' },
+  { 5: '2021/01/26' },
+  { 6: '2021/01/27' },
+  { 7: '2021/01/28' },
+  { 8: '2021/01/29' },
+  { 9: '2021/01/30' },
+  { 10: '2021/02/01' }
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
@@ -18,16 +18,16 @@ const DAY_NUM = tab_day[0];
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'12/01/2021'},
-    {'status':'','day_num': 2, 'day_date':'13/01/2021'},
-    {'status':'','day_num': 3, 'day_date':'14/01/2021'},
-    {'status':'','day_num': 4, 'day_date':'15/01/2021'},
-    {'status':'','day_num': 5, 'day_date':'16/01/2021'},
-    {'status':'','day_num': 6, 'day_date':'17/01/2021'},
-    {'status':'','day_num': 7, 'day_date':'18/01/2021'},
-    {'status':'','day_num': 8, 'day_date':'19/01/2021'},
-    {'status':'','day_num': 9, 'day_date':'20/01/2021'},
-    {'status':'','day_num': 10, 'day_date':'21/01/2021'},
+    {'status':'','day_num': 1, 'day_date':'2021/01/21'},
+    {'status':'','day_num': 2, 'day_date':'2021/01/22'},
+    {'status':'','day_num': 3, 'day_date':'2021/01/23'},
+    {'status':'','day_num': 4, 'day_date':'2021/01/25'},
+    {'status':'','day_num': 5, 'day_date':'2021/01/26'},
+    {'status':'','day_num': 6, 'day_date':'2021/01/27'},
+    {'status':'','day_num': 7, 'day_date':'2021/01/28'},
+    {'status':'','day_num': 8, 'day_date':'2021/01/29'},
+    {'status':'','day_num': 9, 'day_date':'2021/01/30'},
+    {'status':'','day_num': 10, 'day_date':'2021/02/01'},
   ];
 
   let today = new Date();
