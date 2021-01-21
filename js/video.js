@@ -77,7 +77,7 @@
             // Switched to Page Indice
             video.addEventListener('ended', switchIndice, false);
             function switchIndice(e) {
-				gameStoped() ? window.location.href = "game_indice.html";
+                window.location.href = "game_indice.html";
             }
 		}
 	 }
