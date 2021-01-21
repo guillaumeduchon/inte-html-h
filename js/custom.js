@@ -6,19 +6,19 @@ $(document).on('click', '.carousel_cell-content-linkgame', (el) => {
 
 const DATE_TAB = [
   { 1: '2021/01/21' },
-  { 2: '2021/01/22' },
-  { 3: '2021/01/27' },
-  { 4: '2021/01/28' },
-  { 5: '2021/01/29' },
-  { 6: '2021/01/30' },
-  { 7: '2021/02/01' },
-  { 8: '2021/02/02' },
-  { 9: '2021/02/03' },
-  { 10: '2021/02/04' }
+  { 2: '2021/01/21' },
+  { 3: '2021/01/21' },
+  { 4: '2021/01/21' },
+  { 5: '2021/01/21' },
+  { 6: '2021/01/21' },
+  { 7: '2021/01/21' },
+  { 8: '2021/01/21' },
+  { 9: '2021/01/21' },
+  { 10: '2021/01/21' }
 ];
 var date_today = get_date_today(new Date())
 
-if(date_today >= DATE_TAB[0]) {
+if(date_today >= Object.values(DATE_TAB[0])[0]) {
   var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
   const DAY_NUM = tab_day[0];
 }
@@ -28,15 +28,15 @@ if(date_today >= DATE_TAB[0]) {
 const updatePlateau = () => {
   let date_tab = [
     {'status':'','day_num': 1, 'day_date':'2021/01/21'},
-    {'status':'','day_num': 2, 'day_date':'2021/01/22'},
-    {'status':'','day_num': 3, 'day_date':'2021/01/27'},
-    {'status':'','day_num': 4, 'day_date':'2021/01/28'},
-    {'status':'','day_num': 5, 'day_date':'2021/01/29'},
-    {'status':'','day_num': 6, 'day_date':'2021/01/30'},
-    {'status':'','day_num': 7, 'day_date':'2021/02/01'},
-    {'status':'','day_num': 8, 'day_date':'2021/02/02'},
-    {'status':'','day_num': 9, 'day_date':'2021/02/03'},
-    {'status':'','day_num': 10, 'day_date':'2021/02/04'},
+    {'status':'','day_num': 2, 'day_date':'2021/01/21'},
+    {'status':'','day_num': 3, 'day_date':'2021/01/21'},
+    {'status':'','day_num': 4, 'day_date':'2021/01/21'},
+    {'status':'','day_num': 5, 'day_date':'2021/01/21'},
+    {'status':'','day_num': 6, 'day_date':'2021/01/21'},
+    {'status':'','day_num': 7, 'day_date':'2021/01/21'},
+    {'status':'','day_num': 8, 'day_date':'2021/01/21'},
+    {'status':'','day_num': 9, 'day_date':'2021/01/21'},
+    {'status':'','day_num': 10, 'day_date':'2021/01/21'},
   ];
 
   let today = new Date();
