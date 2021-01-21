@@ -36,7 +36,8 @@ const fetch_indice = async ()=> {
 
             indices_array.map((indice, index) => {
               if (index !== 0 ) {
-                let letter = indice.id !== undefined && indice.id !== 0 ? indice.letter : ' __ '
+                let letter = indice.id !== undefined && indice.id !== 0 ? indice.letter : ' __ ';
+                console.log('DATA: ',letter)
                 $('.finalgame_indice').append(`<span class="j${(index+1)}">${letter}</span>`)
               }
             }) 
