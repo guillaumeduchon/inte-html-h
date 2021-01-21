@@ -3,7 +3,6 @@ $(document).on('click', '.carousel_cell-content-linkgame', (el) => {
   localStorage.setItem('jour', jour)
 })
 
-
 const DATE_TAB = [
   { 1: '2021/01/21' },
   { 2: '2021/01/21' },

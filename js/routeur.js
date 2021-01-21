@@ -51,7 +51,9 @@ $(document).ready(function () {
         clear_counter();
         updatePlateau()
       } else {
-        goGame(Number(localStorage.getItem('jour')))
+        if(!gameStoped()) {
+          goGame(Number(localStorage.getItem('jour')))
+        }
       }
     } else {
       goLogin()
@@ -222,6 +224,7 @@ if (location.pathname === "/endgame_lose.html") {
 //----------------------------------------------------------- UTILS
 function goWin() {
   $('.game_button').remove()
+  stopGame();
   setTimeout(() => {
     window.location.href = "game_win.html"
   }, 3000);
@@ -229,12 +232,14 @@ function goWin() {
 
 function goLoose() {
   setTimeout(() => {
+    stopGame();
     $('.game_button').remove()
     window.location.href = "game_lose.html";
   }, 3000)
 }
 
 function goFinalWin() {
+  stopGame();
   $('.cta_button').remove()
   setTimeout(() => {
     window.location.href = "endgame_win.html"
@@ -242,13 +247,16 @@ function goFinalWin() {
 }
 
 function goFinalLoose() {
+  stopGame();
   setTimeout(() => {
     window.location.href = "endgame_lose.html";
   }, 3000)
 }
 
 function startGame() { localStorage.setItem('day_played', 'true') }
+function stopGame() { localStorage.setItem('has_played', 'true') }
 function gameStarted() { return localStorage.getItem('day_played') }
+function gameStoped() { return localStorage.getItem('has_played') }
 function goGame(jour) { window.location.href = "/game_day"+ jour +".html" }
 function goLogin() { window.location.href = "login.html" }
 function goPlateau() { window.location.href = "plateau.html" }
