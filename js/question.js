@@ -43,7 +43,7 @@ const result_day = async () => {
     .then((resp) => {
       if (resp.data.indice_id !== undefined) {
         if(resp.data.indice_id !== 0) {
-          window.location.href = '/game_indice_video.html'
+          window.location.href = '/game_win.html'
         } else {
           window.location.href = '/game_lose.html'
         }
