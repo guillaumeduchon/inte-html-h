@@ -210,13 +210,8 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 10
   if (location.pathname === "/game_day10.html") {
     if (isLogged()) {
-<<<<<<< Updated upstream
       result_day();
       startGame();
-=======
-      // result_day()
-
->>>>>>> Stashed changes
       fetch_indices();
     } else {
       goLogin();
