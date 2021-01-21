@@ -160,4 +160,4 @@ function get_date_today(d) {
   return `${DAY}/${MONTH}/${today.getFullYear()}`; 
 }
 
-new Date(localStorage.getItem('session_expire')) < new Date(Date.now()) ? (localStorage.removeItem('logged'), alert("Vous avez été déconnecté")) : null;
+new Date(localStorage.getItem('session_expire') && localStorage.getItem('session_expire')) < new Date(Date.now()) ? (localStorage.removeItem('logged')) : null;
