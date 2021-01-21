@@ -261,7 +261,7 @@ const check_answer5 = async () => {
             if (item.id === id_answer) aGood_answers.push(id_answer);
           })
         });
-
+     
         var user_great_answer = [];
         var nbr_user_answers = 0;
 
@@ -270,7 +270,7 @@ const check_answer5 = async () => {
           (aGood_answers.includes(getId(el.id)) ? user_great_answer.push(getId(el.id)) : null);
         });
 
-        handle_user_responses2(valid_resp)
+        handle_user_responses(valid_resp, user_great_answer, nbr_user_answers)
 
         onTimesUp()
 
@@ -419,10 +419,10 @@ const check_answer9 = async () => {
         var tableauTriJ9 = [{}, {}, {}, {}];
 
         valid_resp.data.map(el => {
-          (el.id === 34 ? tableauTriJ9.splice(0, 1, el) : null);
-          (el.id === 37 ? tableauTriJ9.splice(1, 1, el) : null);
-          (el.id === 36 ? tableauTriJ9.splice(2, 1, el) : null);
-          (el.id === 35 ? tableauTriJ9.splice(3, 1, el) : null);
+          (el.id === 35 ? tableauTriJ9.splice(0, 1, el) : null);
+          (el.id === 36 ? tableauTriJ9.splice(1, 1, el) : null);
+          (el.id === 37 ? tableauTriJ9.splice(2, 1, el) : null);
+          (el.id === 34 ? tableauTriJ9.splice(3, 1, el) : null);
         })
 
         var existFalseAnswer = false;
