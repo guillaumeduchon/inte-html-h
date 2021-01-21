@@ -7,8 +7,8 @@ const DATE_TAB = [
   { 6: '17/01/2021' },
   { 7: '18/01/2021' },
   { 8: '19/01/2021' },
-  { 9: '21/01/2021' },
-  { 10: '22/01/2021' }
+  { 9: '20/01/2021' },
+  { 10: '21/01/2021' }
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
@@ -26,8 +26,8 @@ const updatePlateau = () => {
     {'status':'','day_num': 6, 'day_date':'17/01/2021'},
     {'status':'','day_num': 7, 'day_date':'18/01/2021'},
     {'status':'','day_num': 8, 'day_date':'19/01/2021'},
-    {'status':'','day_num': 9, 'day_date':'21/01/2021'},
-    {'status':'','day_num': 10, 'day_date':'22/01/2021'},
+    {'status':'','day_num': 9, 'day_date':'20/01/2021'},
+    {'status':'','day_num': 10, 'day_date':'21/01/2021'},
   ];
 
   let today = new Date();

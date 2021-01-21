@@ -37,12 +37,12 @@ const fetch_content = async () => {
 }
 
 const result_day = async () => {
-  await axios.post('/server/indice_magasin.php', { day_num: DAY_NUM}, {
+  await axios.post('/server/indice_magasin.php', { day_num: DAY_NUM }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => {
       if (resp.data.indice_id !== undefined) {
-        if(resp.data.indice_id !== 0) {
+        if (resp.data.indice_id !== 0) {
           window.location.href = '/game_win.html'
         } else {
           window.location.href = '/game_lose.html'
