@@ -18,7 +18,7 @@ if ($contentType === "application/json") {
         }
 
         if (!isset($decoded['day_num'])) { 
-            $magasin = htmlentities($dvecoded['magasin']);
+            $magasin = htmlentities($decoded['magasin']);
             $stmt = $pdo->prepare("
             SELECT indice.id, indice.letter
             FROM indice LEFT JOIN indice_magasin
