@@ -16,7 +16,7 @@
     // $charset = 'utf8mb4';
 
     $host = '127.0.0.1';
-    $db   = 'jeu_hermes';
+    $db   = 'hermes';
     $user = 'root';
     $pass = '';
     $port = "3306";
