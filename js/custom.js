@@ -168,13 +168,13 @@ function compte_a_rebours(){
         //Je creer un tableau contenant uniquement les jours de lundi à  samedi
         let jours_ouvre = jours.slice(1);
 
-        // if(index === 1 && date_evenement.getDay() === 6) {
-        //   joursSuivant = jours_ouvre[0];
-        //   tomorowSamedi = 1;
-        // } else {
+        if(index === 1 && date_evenement.getDay() === 6) {
+          joursSuivant = jours_ouvre[0];
+          tomorowSamedi = 1;
+        } else {
           if(index > 7) { index = 2 + index - 8 }
           joursSuivant = jours_ouvre[(index -2 + tomorowSamedi)];
-        // }
+        }
       } else {
         joursSuivant= jours[date_evenement.getDay() + index]
       } 
