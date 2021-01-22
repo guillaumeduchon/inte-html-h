@@ -54,7 +54,7 @@ const result_day = async () => {
 }
 
 const fetch_question_responses = async () => {
-  await axios.post('/server/indice_magasin.php', { magasin: localStorage.getItem('magasin'), type: 'responses' }, {
+  let datas = await axios.post('/server/indice_magasin.php', { magasin: localStorage.getItem('magasin'), type: 'responses' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => {
@@ -62,4 +62,5 @@ const fetch_question_responses = async () => {
        return resp.data
       }
     });
+    return datas;
 }
