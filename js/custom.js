@@ -17,6 +17,8 @@ localStorage.setItem('DAY_NUM', tab_day[0]);
 //------------------------------------------------PLATEAU---------------------------------------
 
 const updatePlateau = () => {
+  let getWinLose = fetch_question_responses();
+console.log('VAR: ', getWinLose);
   let date_tab = [
     {'status':'','day_num': 1, 'day_date':'2021/01/21'},
     {'status':'','day_num': 2, 'day_date':'2021/01/22'},
@@ -44,7 +46,6 @@ const updatePlateau = () => {
       el.highlight = '';
       var indexSlide = tab_day-1;
       $carousel.flickity('select', indexSlide);
-      console.log('WIN:', localStorage.getItem('has_win'));
       if ((localStorage.getItem("has_win") === 'true') || (localStorage.getItem("has_win") === 'false')) {
         el.status = 'expired';
         el.img = 'img/fond_plateau_expired.png';
@@ -117,8 +118,7 @@ function clear_counter(){
   localStorage.removeItem('trial');
 }
 
-let getWinLose = fetch_question_responses();
-console.log('VAR: ', getWinLose);
+
 
 function compte_a_rebours(){
   var date_actuelle = new Date();
