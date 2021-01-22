@@ -13,7 +13,7 @@ const DATE_TAB = [
   { 7: '2021/01/22' },
   { 8: '2021/01/22' },
   { 9: '2021/01/22' },
-  { 10: '2021/02/22' }
+  { 10: '2021/01/22' }
 ];
 
 var date_today = get_date_today(new Date())
@@ -36,7 +36,7 @@ const updatePlateau = () => {
     {'status':'','day_num': 7, 'day_date':'2021/01/22'},
     {'status':'','day_num': 8, 'day_date':'2021/01/22'},
     {'status':'','day_num': 9, 'day_date':'2021/01/22'},
-    {'status':'','day_num': 10, 'day_date':'2021/02/22'},
+    {'status':'','day_num': 10, 'day_date':'2021/01/22'},
   ];
 
   let today = new Date();
