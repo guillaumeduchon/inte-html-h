@@ -116,8 +116,6 @@ function clear_counter() {
   localStorage.removeItem('trial');
 }
 
-
-
 function compte_a_rebours() {
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
@@ -162,7 +160,24 @@ function compte_a_rebours() {
     }
   })
 
-  before10h24(Math.abs(heures), minutes, secondes)
+  before10h24(Math.abs(heures), minutes, secondes);
+
+  let getWinLose = fetch_question_responses();
+  console.log('getWinLose :', getWinLose)
+  getWinLose.forEach((game, index) => {
+    // if (date_actuelle === (date_evenement - 1)) {
+    if (game.id <= Number(localStorage.setItem('DAY_NUM'))) {
+      if (game.indice_id > 0) {
+        $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
+      } else {
+        $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
+      }
+    }
+    // } else {
+
+    // }
+  });
+
 
   var actualisation = setTimeout("compte_a_rebours();", 1000);
 }
@@ -214,19 +229,3 @@ function before10h24(heures, minutes, secondes) {
     cleanNbInBefore10h24();
   }
 }
-
-let getWinLose = fetch_question_responses();
-console.log('getWinLose :', getWinLose)
-getWinLose.forEach((game, index) => {
-  // if (date_actuelle === (date_evenement - 1)) {
-  if (game.id <= Number(localStorage.setItem('DAY_NUM'))) {
-    if (game.indice_id > 0) {
-      $('.expired:eq('+ (game.id - 1 ) +')').find('.statut').html('Challenge gagné');
-    } else {
-      $('.expired:eq('+ (game.id - 1 ) +')').find('.statut').html('Challenge perdu');
-    }
-  }
-  // } else {
-
-  // }
-});
