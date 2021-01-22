@@ -13,7 +13,7 @@ const DATE_TAB = [
   { 7: '2021/01/22' },
   { 8: '2021/01/22' },
   { 9: '2021/01/22' },
-  { 10: '2021/02/22' }
+  { 10: '2021/01/22' }
 ];
 
 var date_today = get_date_today(new Date())
@@ -36,7 +36,7 @@ const updatePlateau = () => {
     {'status':'','day_num': 7, 'day_date':'2021/01/22'},
     {'status':'','day_num': 8, 'day_date':'2021/01/22'},
     {'status':'','day_num': 9, 'day_date':'2021/01/22'},
-    {'status':'','day_num': 10, 'day_date':'2021/02/22'},
+    {'status':'','day_num': 10, 'day_date':'2021/01/22'},
   ];
 
   let today = new Date();
@@ -168,13 +168,13 @@ function compte_a_rebours(){
         //Je creer un tableau contenant uniquement les jours de lundi à  samedi
         let jours_ouvre = jours.slice(1);
 
-        if(index === 1 && date_evenement.getDay() === 6) {
-          joursSuivant = jours_ouvre[0];
-          tomorowSamedi = 1;
-        } else {
+        // if(index === 1 && date_evenement.getDay() === 6) {
+        //   joursSuivant = jours_ouvre[0];
+        //   tomorowSamedi = 1;
+        // } else {
           if(index > 7) { index = 2 + index - 8 }
           joursSuivant = jours_ouvre[(index -2 + tomorowSamedi)];
-        }
+        // }
       } else {
         joursSuivant= jours[date_evenement.getDay() + index]
       } 
