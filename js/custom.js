@@ -131,7 +131,15 @@ function compte_a_rebours(){
   $('.countdown').find('strong').html(`${Math.abs(heures)} H ${minutes} MIN ${secondes} S`);
   $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong>`);
 
-  $('.expired').find('.statut').html('Challenge terminé');
+  if (date_actuelle === date_evenement) {
+    if (localStorage.getItem("has_win") === 'true') {
+      $('.expired').find('.statut').html('Challenge gagné');
+    } else {
+      $('.expired').find('.statut').html('Challenge perdu');
+    }
+  } else {
+    $('.expired').find('.statut').html('Challenge terminé');
+  }
   $('.available').find('.statut').addClass('countdown');
   $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >=24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
   let tomorowSamedi = 0;
