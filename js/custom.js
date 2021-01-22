@@ -42,12 +42,20 @@ const updatePlateau = () => {
   date_tab.map((el) => {
     if (el.day_date === today_date) {
       el.highlight = '';
-      el.status = 'available';
-      el.img = 'img/fond_plateau_available.png';
-      el.iconDisplay = 'hide';
-      el.linkDisplay = '';
       var indexSlide = tab_day-1;
       $carousel.flickity('select', indexSlide);
+      console.log('WIN:', localStorage.getItem('has_win'));
+      if ((localStorage.getItem("has_win") === 'true') || (localStorage.getItem("has_win") === 'false')) {
+        el.status = 'expired';
+        el.img = 'img/fond_plateau_expired.png';
+        el.iconDisplay = 'hide';
+        el.linkDisplay = 'hide';
+      } else {
+        el.status = 'available';
+        el.img = 'img/fond_plateau_available.png';
+        el.iconDisplay = 'hide';
+        el.linkDisplay = '';
+      }
     }
     if (el.day_date > today_date) {
       el.highlight = '';
@@ -170,9 +178,9 @@ function get_date_today(d) {
 localStorage.setItem('nbInBefore10h24', 0);
 
 function before10h24(heures) {
-  if (heures === 18) {
-    location.reload();
-  }
+  // if (heures === 18) {
+  //   location.reload();
+  // }
   if (heures > 18) {
     localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24'))+1));
     var $carouChange = $('.carousel_plateau').flickity();
