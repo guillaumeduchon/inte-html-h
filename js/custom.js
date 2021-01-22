@@ -133,23 +133,6 @@ function compte_a_rebours() {
   $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong>`);
 
 
-  let getWinLose = fetch_question_responses();
-
-  getWinLose.forEach((game, index) => {
-    // if (date_actuelle === (date_evenement - 1)) {
-    if (game.id <= Number(localStorage.setItem('DAY_NUM'))) {
-      if (game.indice_id > 0) {
-        $('.expired:eq('+ (game.id - 1 ) +')').find('.statut').html('Challenge gagné');
-      } else {
-        $('.expired:eq('+ (game.id - 1 ) +')').find('.statut').html('Challenge perdu');
-      }
-    }
-    // } else {
-
-    // }
-  });
-
-
   $('.expired').find('.statut').html('Challenge terminé');
   $('.available').find('.statut').addClass('countdown');
   $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
@@ -231,3 +214,19 @@ function before10h24(heures, minutes, secondes) {
     cleanNbInBefore10h24();
   }
 }
+
+let getWinLose = fetch_question_responses();
+console.log('getWinLose :', getWinLose)
+getWinLose.forEach((game, index) => {
+  // if (date_actuelle === (date_evenement - 1)) {
+  if (game.id <= Number(localStorage.setItem('DAY_NUM'))) {
+    if (game.indice_id > 0) {
+      $('.expired:eq('+ (game.id - 1 ) +')').find('.statut').html('Challenge gagné');
+    } else {
+      $('.expired:eq('+ (game.id - 1 ) +')').find('.statut').html('Challenge perdu');
+    }
+  }
+  // } else {
+
+  // }
+});
