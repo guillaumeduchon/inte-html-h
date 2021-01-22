@@ -4,17 +4,18 @@ $(document).on('click', '.carousel_cell-content-linkgame', (el) => {
 })
 
 const DATE_TAB = [
-  { 1: '2021/01/21' },
-  { 2: '2021/01/21' },
-  { 3: '2021/01/21' },
-  { 4: '2021/01/21' },
-  { 5: '2021/01/21' },
-  { 6: '2021/01/21' },
-  { 7: '2021/01/21' },
-  { 8: '2021/01/21' },
-  { 9: '2021/01/21' },
-  { 10: '2021/01/21' }
+  { 1: '20/01/2021' },
+  { 2: '18/01/2021' },
+  { 3: '19/01/2021' },
+  { 4: '17/01/2021' },
+  { 5: '21/01/2021' },
+  { 6: '22/01/2021' },
+  { 7: '23/01/2021' },
+  { 8: '24/01/2021' },
+  { 9: '25/01/2021' },
+  { 10: '26/01/2021' }
 ];
+
 var date_today = get_date_today(new Date())
 
 if(date_today >= Object.values(DATE_TAB[0])[0]) {
@@ -26,16 +27,16 @@ if(date_today >= Object.values(DATE_TAB[0])[0]) {
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'2021/01/21'},
-    {'status':'','day_num': 2, 'day_date':'2021/01/21'},
-    {'status':'','day_num': 3, 'day_date':'2021/01/21'},
-    {'status':'','day_num': 4, 'day_date':'2021/01/21'},
-    {'status':'','day_num': 5, 'day_date':'2021/01/21'},
-    {'status':'','day_num': 6, 'day_date':'2021/01/21'},
-    {'status':'','day_num': 7, 'day_date':'2021/01/21'},
-    {'status':'','day_num': 8, 'day_date':'2021/01/21'},
-    {'status':'','day_num': 9, 'day_date':'2021/01/21'},
-    {'status':'','day_num': 10, 'day_date':'2021/01/21'},
+    {'status':'','day_num': 1, 'day_date':'20/01/2021'},
+    {'status':'','day_num': 2, 'day_date':'18/01/2021'},
+    {'status':'','day_num': 3, 'day_date':'19/01/2021'},
+    {'status':'','day_num': 4, 'day_date':'17/01/2021'},
+    {'status':'','day_num': 5, 'day_date':'21/01/2021'},
+    {'status':'','day_num': 6, 'day_date':'22/01/2021'},
+    {'status':'','day_num': 7, 'day_date':'23/01/2021'},
+    {'status':'','day_num': 8, 'day_date':'24/01/2021'},
+    {'status':'','day_num': 9, 'day_date':'25/01/2021'},
+    {'status':'','day_num': 10, 'day_date':'26/01/2021'},
   ];
 
   let today = new Date();
@@ -157,7 +158,7 @@ function compte_a_rebours(){
 
   $('.expired').find('.statut').html('Challenge terminé');
   $('.available').find('.statut').addClass('countdown');
-  $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
+  $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >=24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
   $('.unavailable').each((index, el)=>{
     if (index === 0){
       $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
