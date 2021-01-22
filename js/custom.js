@@ -1,14 +1,14 @@
 const DATE_TAB = [
-  { 1: '2021/01/21' },
-  { 2: '2021/01/22' },
-  { 3: '2021/01/23' },
-  { 4: '2021/01/25' },
-  { 5: '2021/01/26' },
-  { 6: '2021/01/27' },
-  { 7: '2021/01/28' },
-  { 8: '2021/01/29' },
-  { 9: '2021/01/30' },
-  { 10: '2021/02/01' }
+  { 1: '20/01/2021' },
+  { 2: '18/01/2021' },
+  { 3: '19/01/2021' },
+  { 4: '17/01/2021' },
+  { 5: '21/01/2021' },
+  { 6: '22/01/2021' },
+  { 7: '23/01/2021' },
+  { 8: '24/01/2021' },
+  { 9: '25/01/2021' },
+  { 10: '26/01/2021' }
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
@@ -18,16 +18,16 @@ const DAY_NUM = tab_day[0];
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'2021/01/21'},
-    {'status':'','day_num': 2, 'day_date':'2021/01/22'},
-    {'status':'','day_num': 3, 'day_date':'2021/01/23'},
-    {'status':'','day_num': 4, 'day_date':'2021/01/25'},
-    {'status':'','day_num': 5, 'day_date':'2021/01/26'},
-    {'status':'','day_num': 6, 'day_date':'2021/01/27'},
-    {'status':'','day_num': 7, 'day_date':'2021/01/28'},
-    {'status':'','day_num': 8, 'day_date':'2021/01/29'},
-    {'status':'','day_num': 9, 'day_date':'2021/01/30'},
-    {'status':'','day_num': 10, 'day_date':'2021/02/01'},
+    {'status':'','day_num': 1, 'day_date':'20/01/2021'},
+    {'status':'','day_num': 2, 'day_date':'18/01/2021'},
+    {'status':'','day_num': 3, 'day_date':'19/01/2021'},
+    {'status':'','day_num': 4, 'day_date':'17/01/2021'},
+    {'status':'','day_num': 5, 'day_date':'21/01/2021'},
+    {'status':'','day_num': 6, 'day_date':'22/01/2021'},
+    {'status':'','day_num': 7, 'day_date':'23/01/2021'},
+    {'status':'','day_num': 8, 'day_date':'24/01/2021'},
+    {'status':'','day_num': 9, 'day_date':'25/01/2021'},
+    {'status':'','day_num': 10, 'day_date':'26/01/2021'},
   ];
 
   let today = new Date();
@@ -35,7 +35,7 @@ const updatePlateau = () => {
   let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
   let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
-  let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
+  let today_date = `${DAY}/${MONTH}/${today.getFullYear()}`;
 
   var $carousel = $('.carousel_plateau').flickity();
 
@@ -68,6 +68,7 @@ const updatePlateau = () => {
   $('.carousel_cell').each((index, el)=>{
     $(el).addClass(date_tab[index].highlight);
     $(el).addClass(date_tab[index].status);
+    // var index = $(date_tab[index]).index();
     $('.icon').each((index, el)=>{
       $(el).addClass(date_tab[index].iconDisplay);
     })
@@ -124,7 +125,7 @@ function compte_a_rebours(){
 
   $('.expired').find('.statut').html('Challenge terminé');
   $('.available').find('.statut').addClass('countdown');
-  $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
+  $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >=24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
   $('.unavailable').each((index, el)=>{
     if (index === 0){
       $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
@@ -156,7 +157,5 @@ function get_date_today(d) {
   let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
 
-  return `${today.getFullYear()}/${MONTH}/${DAY}`; 
+  return `${DAY}/${MONTH}/${today.getFullYear()}`; 
 }
-
-new Date(localStorage.getItem('session_expire') && localStorage.getItem('session_expire')) < new Date(Date.now()) ? (localStorage.removeItem('logged')) : null;
