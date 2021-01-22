@@ -1,9 +1,13 @@
 $(document).ready(function () {
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
+    
+    
     cleanNbInBefore10h24();
     if (isLogged()) {
       goPlateau()
+    } else {
+      localStorage.clear();
     }
   }
 
@@ -39,7 +43,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/rules.html") {
     if (gameStarted()) {
-      goGame(DAY_NUM);
+      goGame(Number(localStorage.getItem('DAY_NUM')));
     }
   }
 
@@ -51,7 +55,7 @@ $(document).ready(function () {
         clear_counter();
         updatePlateau()
       } else {
-        goGame(DAY_NUM)
+        goGame(Number(localStorage.getItem('DAY_NUM')))
       }
     } else {
       goLogin()
@@ -66,7 +70,7 @@ $(document).ready(function () {
         result_day();
         fetch_rules();
       } else {
-        goGame(DAY_NUM)
+        goGame(Number(localStorage.getItem('DAY_NUM')))
       }
     } else {
       goLogin()
@@ -76,7 +80,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- PAGE INDICE VIDEO
 
   if (location.pathname === "/game_indice_video.html") {
-    isLogged() ? fetch_movie(DAY_NUM) : goLogin();
+    isLogged() ? fetch_movie(Number(localStorage.getItem('DAY_NUM'))) : goLogin();
   }
 
   //--------------------------------------------------------- PAGE INDICE
@@ -86,7 +90,7 @@ $(document).ready(function () {
       if (!gameStarted() || gameStoped()) {
         fetch_indice();
       } else {
-        goGame(DAY_NUM)
+        goGame(Number(localStorage.getItem('DAY_NUM')))
       }
     } else {
       goLogin();
@@ -312,8 +316,8 @@ function hasWinJs() {
 }
 
 function notTheDayGame(uri) {
-  if (DAY_NUM !== uri.replace('/game_day', '').replace('.html', '')) {
-    window.location.href = "/game_day" + DAY_NUM + ".html";
+  if (localStorage.getItem('DAY_NUM') !== uri.replace('/game_day', '').replace('.html', '')) {
+    window.location.href = "/game_day" + Number(localStorage.getItem('DAY_NUM')) + ".html";
   }
 }
 

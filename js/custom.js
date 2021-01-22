@@ -12,7 +12,7 @@ const DATE_TAB = [
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
-const DAY_NUM = tab_day[0];
+localStorage.setItem('DAY_NUM', tab_day[0]);
 
 //------------------------------------------------PLATEAU---------------------------------------
 
@@ -152,7 +152,7 @@ function compte_a_rebours(){
     }
   })
 
-  before10h24(Math.abs(heures))
+  before10h24(Math.abs(heures), minutes, secondes)
 
   var actualisation = setTimeout("compte_a_rebours();", 1000);
 }
@@ -169,30 +169,38 @@ function get_date_today(d) {
 
 localStorage.setItem('nbInBefore10h24', 0);
 
-function before10h24(heures) {
-  if (heures === 18) {
+function before10h24(heures, minutes, secondes) {
+  if (heures === 18 && minutes === 00 && secondes === 00) {
     location.reload();
   }
+
   if (heures > 18) {
     localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24'))+1));
     var $carouChange = $('.carousel_plateau').flickity();
     $carouChange.addClass('available');
 
-    $('.carousel_cell:eq('+ (DAY_NUM - 1) +')').removeClass('available');
-    // $('.carousel_cell:eq('+ (DAY_NUM - 1) +')').removeClass('is-selected');
-    $('.carousel_cell:eq('+ (DAY_NUM - 1) +')').addClass('unavailable');
-    $('.bg_cell:eq('+ (DAY_NUM - 1) +')').attr("src", 'img/fond_plateau_unavailable.png');
-    $('.carousel_cell:eq('+ (DAY_NUM - 1) +')').attr('aria-hidden','true');
-    $('.icon:eq('+ (DAY_NUM - 1) +')').removeClass('hide');
-    $('.carousel_cell-content:eq('+ (DAY_NUM - 1) +')').find('a').hide();
-    $('.statut:eq('+ (DAY_NUM - 1) +')').removeClass('countdown');
+    $('.carousel_cell:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').removeClass('available');
+    $('.carousel_cell:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').addClass('unavailable');
+    $('.bg_cell:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').attr("src", 'img/fond_plateau_unavailable.png');
+    $('.carousel_cell:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').attr('aria-hidden','true');
+    $('.icon:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').removeClass('hide');
+    $('.carousel_cell-content:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').find('a').hide();
+    $('.statut:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').removeClass('countdown');
 
-    $('.carousel_cell:eq('+ (DAY_NUM - 2) +')').removeClass('expired');
-    $('.carousel_cell-content-linkgame:eq('+ (DAY_NUM - 2) +')').addClass('');
-    $('.icon:eq('+ (DAY_NUM - 2) +')').addClass('hide');
-    $('.bg_cell:eq('+ (DAY_NUM - 2) +')').attr("src", 'img/fond_plateau_available.png');
-    if ( localStorage.getItem('nbInBefore10h24') === '1') $carouChange.flickity('select', (DAY_NUM - 2));
+    $('.carousel_cell:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 2) +')').removeClass('expired');
+    $('.carousel_cell-content-linkgame:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 2) +')').addClass('');
+    $('.icon:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 2) +')').addClass('hide');
+    $('.bg_cell:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 2) +')').attr("src", 'img/fond_plateau_available.png');
+
+    if ( localStorage.getItem('nbInBefore10h24') === '1') {
+      localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) - 1)
+      $carouChange.flickity('select', (Number(localStorage.getItem('DAY_NUM')) - 2));
+    }
   } else {
+    if (localStorage.getItem('nbInBefore10h24')) {
+      localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) + 1)
+    }
+
     cleanNbInBefore10h24();
   }
 }

@@ -1,6 +1,6 @@
 //------------------------------------------------QUESTION---------------------------------------
 const fetch_rules = async () => {
-  await axios.post('/server/question.php', { day_num: DAY_NUM, type: 'rules' }, {
+  await axios.post('/server/question.php', { day_num: Number(localStorage.getItem('DAY_NUM')), type: 'rules' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => {
@@ -25,7 +25,7 @@ const fetch_rules = async () => {
 }
 
 const fetch_content = async () => {
-  await axios.post('/server/question.php', { day_num: DAY_NUM, type: 'content' }, {
+  await axios.post('/server/question.php', { day_num: Number(localStorage.getItem('DAY_NUM')), type: 'content' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => {
@@ -37,7 +37,7 @@ const fetch_content = async () => {
 }
 
 const result_day = async () => {
-  await axios.post('/server/indice_magasin.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/indice_magasin.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => {

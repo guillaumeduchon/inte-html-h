@@ -4,7 +4,7 @@ var context = {};
 /* ----------------------------------- REPONSE JEU 1 ----------------------------------- */
 
 const fetch_reponse = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -19,7 +19,7 @@ const fetch_reponse = async () => {
 }
 
 const check_answer1 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -65,7 +65,7 @@ const fetch_reponse2 = async () => {
       $(el.target).toggleClass('checkedAnswer');
     }
   });
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -83,7 +83,7 @@ const check_answer2 = () => {
   fetch_reponse_valid2();
 }
 const fetch_reponse_valid2 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -121,7 +121,7 @@ const fetch_reponse_valid2 = async () => {
 /* ----------------------------------- REPONSE JEU 3 ----------------------------------- */
 const fetch_reponse3 = async () => {
   //RECUPERE LES BONNES REPONSES UNIQUEMENT
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -133,7 +133,7 @@ const fetch_reponse3 = async () => {
     });
 
   //RECUPERE LES MAUVAISES REPONSES UNIQUEMENT
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'false' }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'false' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -183,7 +183,7 @@ const fetch_reponse3 = async () => {
 }
 
 const check_answer3 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -228,7 +228,7 @@ const fetch_reponse4 = async () => {
       $(el.target).addClass('checkedAnswer');
     }
   });
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -247,7 +247,7 @@ const check_answer4 = () => {
 
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
 const check_answer5 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -283,7 +283,7 @@ const check_answer5 = async () => {
 /* ----------------------------------- REPONSE JEU 6 ----------------------------------- */
 
 const fetch_reponse6 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -301,7 +301,7 @@ const fetch_reponse6 = async () => {
     });
 }
 const check_answer6 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -345,7 +345,7 @@ const fetch_reponse7 = async () => {
       $(el.target).addClass('checkedAnswer');
     }
   });
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -371,7 +371,7 @@ const fetch_reponse8 = async () => {
       $(el.target).addClass('checkedAnswer');
     }
   });
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -397,7 +397,7 @@ const check_answer8 = () => {
 /* ----------------------------------- REPONSE JEU 9 ----------------------------------- */
 
 const fetch_reponse9 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -411,7 +411,7 @@ const fetch_reponse9 = async () => {
     });
 }
 const check_answer9 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -444,7 +444,7 @@ const check_answer9 = async () => {
 
 /* ----------------------------------- REPONSE JEU 10 ----------------------------------- */
 const check_answer10 = async () => {
-  await axios.post('/server/reponse.php', { day_num: DAY_NUM, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -608,5 +608,5 @@ context["check_answer10"] = check_answer10;
 
 
 const check_answer = () => {
-  context["check_answer" + DAY_NUM].apply()
+  context["check_answer" + Number(localStorage.getItem('DAY_NUM'))].apply()
 }

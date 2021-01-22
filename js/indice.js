@@ -2,7 +2,7 @@
 //------------------------------------------------INDICE---------------------------------------
  //GET L'INDICES GAGNÉS PAR LE MAGASIN
 const fetch_indice = async ()=> {
-    await axios.post('/server/indice.php', {day_num: DAY_NUM}, {
+    await axios.post('/server/indice.php', {day_num: Number(localStorage.getItem('DAY_NUM'))}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}})
         .then((res)=>{
           if (res.data.id !== undefined) {
@@ -16,7 +16,7 @@ const fetch_indice = async ()=> {
 
  //SAVE L'INDICES GAGNÉS PAR LE MAGASIN
   const set_indice = async (indice_id)=> {
-    await axios.post('/server/indice.php', {day_num: DAY_NUM, indice: indice_id, magasin: Number(localStorage.getItem('magasin'))}, {
+    await axios.post('/server/indice.php', {day_num: Number(localStorage.getItem('DAY_NUM')), indice: indice_id, magasin: Number(localStorage.getItem('magasin'))}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}
     }).then((res) => { });
   }
