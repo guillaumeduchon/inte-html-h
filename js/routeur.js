@@ -80,19 +80,35 @@ $(document).ready(function () {
   //--------------------------------------------------------- PAGE INDICE
 
   if (location.pathname === "/game_indice.html") {
-    fetch_indice();
+    if (isLogged()) {
+      if (!gameStarted() || gameStoped()) {
+        fetch_indice();
+      } else {
+        goGame(DAY_NUM)
+      }
+    } else {
+      goLogin();
+    }
   }
 
   //--------------------------------------------------------- PAGE GAGNé
 
   if (location.pathname === "/game_win.html") {
-    isLogged() ? fetch_content() : goLogin();
+    if (isLogged()) {
+      fetch_content(); 
+    } else {
+      goLogin();
+    }
   }
 
   //--------------------------------------------------------- PAGE PERDU
 
   if (location.pathname === "/game_lose.html") {
-    isLogged() ? (fetch_content(), set_indice(0)) : goLogin();
+    if (isLogged()) {
+      (fetch_content(), set_indice(0)) 
+    } else {
+      goLogin();
+    } 
   }
 
   //--------------------------------------------------------- JOUR 1
@@ -101,7 +117,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
-      result_day();
+      result_day(),hasWinJs();
       startGame();
       fetch_reponse();
     } else {
@@ -241,17 +257,19 @@ if (location.pathname === "/endgame_lose.html") {
   isLogged() ? getMagasin() : goLogin();
 } else
 
-//----------------------------------------------------------- GO
-function goWin() {
-  stopGame();
-  $('.game_button').remove()
-  setTimeout(() => {
-    window.location.href = "game_win.html"
-  }, 3000);
-}
+  //----------------------------------------------------------- GO
+  function goWin() {
+    stopGame();
+    $('.game_button').remove()
+    setTimeout(() => {
+      localStorage.setItem("has_win",'true');
+      window.location.href = "game_win.html";
+    }, 3000);
+  }
 
 function goLoose() {
   stopGame();
+  localStorage.setItem("has_win", 'false');
   setTimeout(() => {
     $('.game_button').remove()
     window.location.href = "game_lose.html";
@@ -262,9 +280,9 @@ function goLoose() {
 
 function goFinalWin() {
   stopGame();
-  $('.cta_button').remove()
+  $('.cta_button').remove();
   setTimeout(() => {
-    window.location.href = "endgame_win.html"
+    window.location.href = "endgame_win.html";
   }, 3000);
 }
 
@@ -279,12 +297,20 @@ function startGame() { localStorage.setItem('day_played', 'true') }
 function stopGame() { localStorage.setItem('has_played', 'true') }
 function gameStarted() { return localStorage.getItem('day_played') }
 function gameStoped() { return localStorage.getItem('has_played') }
-function goGame(jour) { window.location.href = "/game_day"+ jour +".html" }
+function goGame(jour) { window.location.href = "/game_day" + jour + ".html" }
 function goLogin() { window.location.href = "login.html" }
 function goPlateau() { window.location.href = "plateau.html" }
+function hasWinJs() {
+  if (localStorage.getItem("has_win") === 'true') {
+    window.location.href = "game_win.html";
+  } 
+  if(localStorage.getItem("has_win") === 'false') {
+    window.location.href = "game_lose.html";
+  }
+}
 
-function notTheDayGame (uri) {
- if (DAY_NUM !== uri.replace('/game_day','').replace('.html','')) {
-  window.location.href = "/game_day"+ DAY_NUM +".html";
- }
+function notTheDayGame(uri) {
+  if (DAY_NUM !== uri.replace('/game_day', '').replace('.html', '')) {
+    window.location.href = "/game_day" + DAY_NUM + ".html";
+  }
 }
