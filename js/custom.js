@@ -151,6 +151,9 @@ function compte_a_rebours(){
       $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible<br><strong>${joursSuivant}</strong>`);
     }
   })
+
+  before10h24(Math.abs(heures))
+
   var actualisation = setTimeout("compte_a_rebours();", 1000);
 }
 
@@ -162,4 +165,46 @@ function get_date_today(d) {
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
 
   return `${today.getFullYear()}/${MONTH}/${DAY}`; 
+}
+
+function before10h24(heures) {
+  if (heures >= 20) {
+    let $carousel = $('.carousel_cell:eq(' + (DAY_NUM - 2) + ')')
+    // el.highlight = '';
+    // el.status = 'available';
+    // el.img = 'img/fond_plateau_available.png';
+    // el.iconDisplay = 'hide';
+    // el.linkDisplay = '';
+    // var indexSlide = tab_day - 1;
+    // $carousel.flickity('select', indexSlide);
+
+    // $('.carousel_cell').each((index, el) => {
+    //   $(el).addClass(date_tab[index].highlight);
+    //   $(el).addClass(date_tab[index].status);
+    //   // var index = $(date_tab[index]).index();
+    //   $('.icon').each((index, el) => {
+    //     $(el).addClass(date_tab[index].iconDisplay);
+    //   })
+    //   $('.carousel_cell-content-linkgame').each((index, el) => {
+    //     $(el).addClass(date_tab[index].linkDisplay);
+    //   })
+    // })
+    // $('.bg_cell').each((index, el) => {
+    //   $(el).attr("src", date_tab[index].img);
+    // })
+  
+    // $('.carousel_cell available').find('.statut').addClass('countdown');
+    // $('.countdown').html('Il vous reste encore<br><strong></strong><br>pour trouver l\'indice du jour');
+
+    $carousel.addClass('available');
+
+    $('.carousel_cell:eq('+ (DAY_NUM - 1) +')').removeClass('available');
+    $('.carousel_cell:eq('+ (DAY_NUM - 1) +')').removeClass('is-selected');
+    $('.carousel_cell:eq('+ (DAY_NUM - 1) +')').addClass('unavailable');
+
+    $('.carousel_cell-content-linkgame:eq('+ (DAY_NUM - 2) +')').addClass('');
+    $('.icon:eq('+ (DAY_NUM - 2) +')').addClass('hide');
+    $('.bg_cell:eq('+ (DAY_NUM - 2) +')').attr("src", 'img/fond_plateau_available.png')
+
+  }
 }
