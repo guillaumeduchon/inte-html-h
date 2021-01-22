@@ -18,12 +18,13 @@ if ($contentType === "application/json") {
         }
 
         if (!isset($decoded['day_num'])) { 
-            $magasin = htmlentities($dvecoded['magasin']);
+            $magasin = htmlentities($decoded['magasin']);
             $stmt = $pdo->prepare("
             SELECT indice.id, indice.letter
             FROM indice LEFT JOIN indice_magasin
-            ON indice.id = indice_magasin.indice_id
+            ON indice.id = indice_magasin.id
             WHERE indice_magasin.magasin_id = :magasin
+            AND indice_magasin.indice_id != 0
             ORDER BY indice.id ASC");
             $stmt->execute(['magasin' => $magasin]);
             $aIndices = $stmt->fetchAll();
