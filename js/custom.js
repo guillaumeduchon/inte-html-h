@@ -44,7 +44,7 @@ const updatePlateau = () => {
   let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
   let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
-  let today_date = `${DAY}/${MONTH}/${today.getFullYear()}`;
+  let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
 
   var $carousel = $('.carousel_plateau').flickity();
   // console.log($carousel);
@@ -192,5 +192,5 @@ function get_date_today(d) {
   let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
 
-  return `${DAY}/${MONTH}/${today.getFullYear()}`; 
+  return `${today.getFullYear()}/${MONTH}/${DAY}`;
 }
