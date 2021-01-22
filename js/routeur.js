@@ -1,12 +1,14 @@
 $(document).ready(function () {
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
+    cleanNbInBefore10h24();
     if (isLogged()) {
       goPlateau()
     }
   }
 
   if (location.pathname === "/login.html") {
+    cleanNbInBefore10h24();
     if (isLogged()) {
       goPlateau()
     } else {
@@ -313,4 +315,8 @@ function notTheDayGame(uri) {
   if (DAY_NUM !== uri.replace('/game_day', '').replace('.html', '')) {
     window.location.href = "/game_day" + DAY_NUM + ".html";
   }
+}
+
+function cleanNbInBefore10h24 () {
+  localStorage.removeItem('nbInBefore10h24');
 }
