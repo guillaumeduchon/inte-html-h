@@ -68,7 +68,6 @@ const updatePlateau = () => {
   $('.carousel_cell').each((index, el)=>{
     $(el).addClass(date_tab[index].highlight);
     $(el).addClass(date_tab[index].status);
-    // var index = $(date_tab[index]).index();
     $('.icon').each((index, el)=>{
       $(el).addClass(date_tab[index].iconDisplay);
     })

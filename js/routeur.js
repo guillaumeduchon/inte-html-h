@@ -284,23 +284,7 @@ function goLogin() { window.location.href = "login.html" }
 function goPlateau() { window.location.href = "plateau.html" }
 
 function notTheDayGame (uri) {
- if(DAY_NUM !== Number(uri.replace('/game_day','').replace('.html',''))){
+ if (DAY_NUM !== uri.replace('/game_day','').replace('.html','')) {
   window.location.href = "/game_day"+ DAY_NUM +".html";
  }
-}
-
-function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
 }

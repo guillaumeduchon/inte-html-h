@@ -8,7 +8,6 @@ function logged(magasin_id) {
   let expires = new Date(Date.now() + 1586400); //1586400 ~30minutes / 16400 ~ 1minute
   expires = expires.toUTCString();
   localStorage.setItem('session_expire', expires )
-  document.cookie = ("cookieName=cookieValue; Expires=" + expires ) + ";path=/;"
 }
 
 function disconnect() {
