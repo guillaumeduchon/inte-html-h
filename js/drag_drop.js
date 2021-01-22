@@ -22,6 +22,7 @@ function dragStart( event, chosenClass ) {
     console.log( 'DROP' );
   
     event.target.closest( ".dropdiv" ).append( document.getElementById( event.dataTransfer.getData( 'text' ) ) )
+    document.getElementById("rule").classList.add("hide");
   
     document.getElementsByClassName( "answer_button--active" )[0].classList.remove( "answer_button--active" );
   
@@ -30,6 +31,9 @@ function dragStart( event, chosenClass ) {
     }
   
     event.preventDefault();
+
+    var divDrag = document.querySelector('.dropdiv');
+    var ruleDrag = document.querySelector('.rule');
   
   }
   
