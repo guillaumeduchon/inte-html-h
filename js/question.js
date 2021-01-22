@@ -57,10 +57,9 @@ const fetch_question_responses = async () => {
   let datas = await axios.post('/server/indice_magasin.php', { magasin: localStorage.getItem('magasin'), type: 'responses' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
-    .then((resp) => {
-      if (resp.data.indice_id !== undefined) {
-       return resp.data
-      }
-    });
+    .then((resp) => (
+      resp.data.indice_id !== undefined ? resp.data : null
+    ));
+    console.log('datas :', datas)
     return datas;
 }
