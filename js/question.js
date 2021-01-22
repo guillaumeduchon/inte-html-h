@@ -52,3 +52,14 @@ const result_day = async () => {
       }
     });
 }
+
+const fetch_question_responses = async () => {
+  await axios.post('/server/indice_magasin.php', { magasin: localStorage.getItem('magasin'), type: 'responses' }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((resp) => {
+      if (resp.data.indice_id !== undefined) {
+       return resp.data
+      }
+    });
+}
