@@ -2,7 +2,7 @@ const DATE_TAB = [
   { 1: '2021/01/21' },
   { 2: '2021/01/22' },
   { 3: '2021/01/23' },
-  { 4: '2021/01/25' }, 
+  { 4: '2021/01/25' },
   { 5: '2021/01/26' },
   { 6: '2021/01/27' },
   { 7: '2021/01/28' },
@@ -11,25 +11,23 @@ const DATE_TAB = [
   { 10: '2021/02/01' }
 ];
 var date_today = get_date_today(new Date())
-var tab_day = Object.keys(DATE_TAB.filter(obj=>( Object.values(obj) == date_today))[0])
+var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
 localStorage.setItem('DAY_NUM', tab_day[0]);
 
 //------------------------------------------------PLATEAU---------------------------------------
 
 const updatePlateau = () => {
-  let getWinLose = fetch_question_responses();
-console.log('VAR: ', getWinLose);
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'2021/01/21'},
-    {'status':'','day_num': 2, 'day_date':'2021/01/22'},
-    {'status':'','day_num': 3, 'day_date':'2021/01/23'},
-    {'status':'','day_num': 4, 'day_date':'2021/01/25'},
-    {'status':'','day_num': 5, 'day_date':'2021/01/26'},
-    {'status':'','day_num': 6, 'day_date':'2021/01/27'},
-    {'status':'','day_num': 7, 'day_date':'2021/01/28'},
-    {'status':'','day_num': 8, 'day_date':'2021/01/29'},
-    {'status':'','day_num': 9, 'day_date':'2021/01/30'},
-    {'status':'','day_num': 10, 'day_date':'2021/02/01'},
+    { 'status': '', 'day_num': 1, 'day_date': '2021/01/21' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/01/22' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/01/23' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/01/25' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/01/26' },
+    { 'status': '', 'day_num': 6, 'day_date': '2021/01/27' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/01/28' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/01/29' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/01/30' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/02/01' },
   ];
 
   let today = new Date();
@@ -44,7 +42,7 @@ console.log('VAR: ', getWinLose);
   date_tab.map((el) => {
     if (el.day_date === today_date) {
       el.highlight = '';
-      var indexSlide = tab_day-1;
+      var indexSlide = tab_day - 1;
       $carousel.flickity('select', indexSlide);
       if ((localStorage.getItem("has_win") === 'true') || (localStorage.getItem("has_win") === 'false')) {
         el.status = 'expired';
@@ -74,18 +72,18 @@ console.log('VAR: ', getWinLose);
     }
   })
 
-  $('.carousel_cell').each((index, el)=>{
+  $('.carousel_cell').each((index, el) => {
     $(el).addClass(date_tab[index].highlight);
     $(el).addClass(date_tab[index].status);
     // var index = $(date_tab[index]).index();
-    $('.icon').each((index, el)=>{
+    $('.icon').each((index, el) => {
       $(el).addClass(date_tab[index].iconDisplay);
     })
-    $('.carousel_cell-content-linkgame').each((index, el)=>{
+    $('.carousel_cell-content-linkgame').each((index, el) => {
       $(el).addClass(date_tab[index].linkDisplay);
     })
   })
-  $('.bg_cell').each((index, el)=>{
+  $('.bg_cell').each((index, el) => {
     $(el).attr("src", date_tab[index].img);
   })
 
@@ -98,32 +96,32 @@ console.log('VAR: ', getWinLose);
 //---------------------------------------------Utils
 
 function hideError() {
-  $('.wrongId').attr('style','display:none');
+  $('.wrongId').attr('style', 'display:none');
 }
 
 function showError() {
-  $('.wrongId').attr('style','display:block');
+  $('.wrongId').attr('style', 'display:block');
 }
 
 function showWrongAnswer() {
-  $('.tryagain').attr('style','display:block;');
+  $('.tryagain').attr('style', 'display:block;');
 }
 
 function showWrongFinalAnswer() {
   $('p').html(`Tentez votre chance une seconde fois.`);
 }
 
-function clear_counter(){
+function clear_counter() {
   localStorage.removeItem('timeLeft');
   localStorage.removeItem('trial');
 }
 
 
 
-function compte_a_rebours(){
+function compte_a_rebours() {
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
-  date_evenement.setDate(date_evenement.getDate()+1)
+  date_evenement.setDate(date_evenement.getDate() + 1)
   date_evenement.setHours(10, 24, 00);
   var total_secondes = (date_evenement - date_actuelle) / 1000;
   var jours = new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
@@ -134,44 +132,48 @@ function compte_a_rebours(){
   $('.countdown').find('strong').html(`${Math.abs(heures)} H ${minutes} MIN ${secondes} S`);
   $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong>`);
 
- 
-  // getWinLose.forEach((game, response) => {
 
-  // });
+  let getWinLose = fetch_question_responses();
 
-  if (date_actuelle === (date_evenement-1)) {
-    if (localStorage.getItem("has_win") === 'true') {
-      $('.expired').find('.statut').html('Challenge gagné');
-    } else {
-      $('.expired').find('.statut').html('Challenge perdu');
+  getWinLose.forEach((game, index) => {
+    // if (date_actuelle === (date_evenement - 1)) {
+    if (game.id <= Number(localStorage.setItem('DAY_NUM'))) {
+      if (game.indice_id > 0) {
+        $('.expired').find('.statut').html('Challenge gagné');
+      } else {
+        $('.expired').find('.statut').html('Challenge perdu');
+      }
     }
-  } else {
-    
-  }
+    // } else {
+
+    // }
+  });
+
+
   $('.expired').find('.statut').html('Challenge terminé');
   $('.available').find('.statut').addClass('countdown');
-  $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >=24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
+  $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
   let tomorowSamedi = 0;
-  $('.unavailable').each((index, el)=>{
-    if (index === 0){
+  $('.unavailable').each((index, el) => {
+    if (index === 0) {
       $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
     } else {
-      var joursSuivant ;
+      var joursSuivant;
       //Si le prochain jours est Dimanche
       if (jours[date_evenement.getDay() + index] === undefined) {
         //Je creer un tableau contenant uniquement les jours de lundi à  samedi
         let jours_ouvre = jours.slice(1);
-  
-        if(index === 1 && date_evenement.getDay() === 6) {
+
+        if (index === 1 && date_evenement.getDay() === 6) {
           joursSuivant = jours_ouvre[0];
           tomorowSamedi = 1;
         } else {
-          if(index > 7) { index = 2 + index - 8 }
-          joursSuivant = jours_ouvre[(index -2 + tomorowSamedi)];
+          if (index > 7) { index = 2 + index - 8 }
+          joursSuivant = jours_ouvre[(index - 2 + tomorowSamedi)];
         }
       } else {
-        joursSuivant= jours[date_evenement.getDay() + index]
-      } 
+        joursSuivant = jours[date_evenement.getDay() + index]
+      }
 
       $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible<br><strong>${joursSuivant}</strong>`);
     }
@@ -189,7 +191,7 @@ function get_date_today(d) {
   let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
 
-  return `${today.getFullYear()}/${MONTH}/${DAY}`; 
+  return `${today.getFullYear()}/${MONTH}/${DAY}`;
 }
 
 localStorage.setItem('nbInBefore10h24', 0);
@@ -200,24 +202,24 @@ function before10h24(heures, minutes, secondes) {
   }
 
   if (heures > 24) {
-    localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24'))+1));
+    localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24')) + 1));
     var $carouChange = $('.carousel_plateau').flickity();
     $carouChange.addClass('available');
 
-    $('.carousel_cell:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').removeClass('available');
-    $('.carousel_cell:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').addClass('unavailable');
-    $('.bg_cell:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').attr("src", 'img/fond_plateau_unavailable.png');
-    $('.carousel_cell:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').attr('aria-hidden','true');
-    $('.icon:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').removeClass('hide');
-    $('.carousel_cell-content:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').find('a').hide();
-    $('.statut:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 1) +')').removeClass('countdown');
+    $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').removeClass('available');
+    $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').addClass('unavailable');
+    $('.bg_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').attr("src", 'img/fond_plateau_unavailable.png');
+    $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').attr('aria-hidden', 'true');
+    $('.icon:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').removeClass('hide');
+    $('.carousel_cell-content:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').find('a').hide();
+    $('.statut:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').removeClass('countdown');
 
-    $('.carousel_cell:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 2) +')').removeClass('expired');
-    $('.carousel_cell-content-linkgame:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 2) +')').addClass('');
-    $('.icon:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 2) +')').addClass('hide');
-    $('.bg_cell:eq('+ (Number(localStorage.getItem('DAY_NUM')) - 2) +')').attr("src", 'img/fond_plateau_available.png');
+    $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').removeClass('expired');
+    $('.carousel_cell-content-linkgame:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').addClass('');
+    $('.icon:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').addClass('hide');
+    $('.bg_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').attr("src", 'img/fond_plateau_available.png');
 
-    if ( localStorage.getItem('nbInBefore10h24') === '1') {
+    if (localStorage.getItem('nbInBefore10h24') === '1') {
       localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) - 1)
       $carouChange.flickity('select', (Number(localStorage.getItem('DAY_NUM')) - 2));
     }

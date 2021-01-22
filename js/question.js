@@ -58,6 +58,6 @@ const fetch_question_responses = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => (resp.data ));
-    console.log('datas :', datas)
-    return datas;
+    
+  return datas;
 }
