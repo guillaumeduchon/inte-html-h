@@ -139,9 +139,9 @@ function compte_a_rebours() {
     // if (date_actuelle === (date_evenement - 1)) {
     if (game.id <= Number(localStorage.setItem('DAY_NUM'))) {
       if (game.indice_id > 0) {
-        $('.expired').find('.statut').html('Challenge gagné');
+        $('.expired:eq('+ (game.id - 1 ) +')').find('.statut').html('Challenge gagné');
       } else {
-        $('.expired').find('.statut').html('Challenge perdu');
+        $('.expired:eq('+ (game.id - 1 ) +')').find('.statut').html('Challenge perdu');
       }
     }
     // } else {
