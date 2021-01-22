@@ -50,7 +50,7 @@ $(document).ready(function () {
   //---------------------------------------------------------PAGE PLATEAU
 
   if (location.pathname === "/plateau.html") {
-    fetch_question_responses()
+    //fetch_question_responses()
     if (isLogged()) {
       if (!gameStarted() || gameStoped()) {
         clear_counter();
