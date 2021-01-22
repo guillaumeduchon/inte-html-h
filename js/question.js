@@ -43,8 +43,10 @@ const result_day = async () => {
     .then((resp) => {
       if (resp.data.indice_id !== undefined) {
         if (resp.data.indice_id !== 0) {
+          localStorage.setItem("has_win",'true');
           window.location.href = '/game_win.html'
         } else {
+          localStorage.setItem("has_win",'false');
           window.location.href = '/game_lose.html'
         }
       }
