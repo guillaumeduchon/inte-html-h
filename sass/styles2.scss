@@ -307,6 +307,8 @@ main {
         &.cs--form {
             background: url('../img/fond_screen_connect.jpg') bottom left no-repeat;
             background-size: contain;
+            @media screen and (orientation:landscape) and (max-width: 920px) {background-size: 80%;}
+            @media screen and (orientation:landscape) and (max-width: 720px) {background-size: 75%;}
         }
         .wrongId, .wrongConsent {
             animation: displayblock 0.5s linear, hideblock 0.5s linear forwards 5s;
@@ -326,7 +328,8 @@ main {
             width: 65%;
             background: url('../img/fond_border_block.png') 95% 0% no-repeat;
             background-size: 12%;
-            @media screen and (orientation:landscape) and (min-width:1024px) {padding: 15% 0;}
+            @media screen and (orientation:landscape) and (max-width: 920px) {width: 75%;}
+            @media screen and (orientation:landscape) and (min-width:1024px) {padding: 11% 0;}
             .logo {
                 img {
                     max-width: 150px;
