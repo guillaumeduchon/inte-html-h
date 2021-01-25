@@ -333,18 +333,23 @@ main {
             .logo {
                 img {
                     max-width: 150px;
-                    @media screen and (orientation:landscape) and (max-width: 920px) {
-                        max-width: 100px;
-                    }
-                    @media screen and (orientation:landscape) and (max-width: 640px) {
-                        max-width: 80px;
-                    }
                 }
                 display: block;
                 margin: 0 auto;
                 padding-bottom: 10px;
                 @media screen and (orientation:landscape) and (min-width: 720px) {
                     padding-bottom: 15px;
+                }
+                &.cf {
+                    img {
+                        max-width: 150px;
+                        @media screen and (orientation:landscape) and (max-width: 920px) {
+                            max-width: 100px;
+                        }
+                        @media screen and (orientation:landscape) and (max-width: 640px) {
+                            max-width: 80px;
+                        }
+                    }
                 }
             }
             p {
