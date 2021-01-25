@@ -373,17 +373,19 @@ main {
                 }
             }
             .cta_diamond {
-                @media screen and (orientation:landscape) and (max-width: 920px) {
-                    height: 115px;
-                    width: 115px;
-                    margin-top: -25px;
-                    margin-bottom: -27px;
-                }
-                @media screen and (orientation:landscape) and (max-width: 720px) {
-                    height: 95px;
-                    width: 95px;
-                    margin-top: -25px;
-                    margin-bottom: -27px;
+                &.cf {
+                    @media screen and (orientation:landscape) and (max-width: 920px) {
+                        height: 115px;
+                        width: 115px;
+                        margin-top: -25px;
+                        margin-bottom: -27px;
+                    }
+                    @media screen and (orientation:landscape) and (max-width: 720px) {
+                        height: 95px;
+                        width: 95px;
+                        margin-top: -25px;
+                        margin-bottom: -27px;
+                    }
                 }
             }
             .connect_form {
