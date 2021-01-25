@@ -138,7 +138,6 @@ function compte_a_rebours() {
   $('.countdown').find('strong').html(`${Math.abs(heures)} H ${minutes} MIN ${secondes} S`);
   $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong>`);
   
-
   $('.expired').find('.statut').html('Challenge terminé');
 
   $('.available').find('.statut').addClass('countdown');
@@ -170,8 +169,8 @@ function compte_a_rebours() {
   })
 
   before10h24(Math.abs(heures), minutes, secondes);
-  var actualisation = setTimeout("compte_a_rebours();", 1000);
   ShowGamePlayed();
+  var actualisation = setTimeout("compte_a_rebours();", 1000);
 }
 
 function get_date_today(d) {
@@ -226,12 +225,14 @@ const ShowGamePlayed = () => {
   if (!localStorage.getItem('have_show_played')) {
     localStorage.setItem('have_show_played', true);
 
+    console.log('ESSAI')
+
     fetch_question_responses().then((datas) => {
       datas.forEach((game, index) => {
         // if (date_actuelle === (date_evenement - 1)) {
         if (game.id <= Number(localStorage.setItem('DAY_NUM'))) {
           if (game.indice_id > 0) {
-            $('.statut:eq(' + (game.id - 1) + ')').find('.countdown').html('Challenge gagné<br>Cliquez sur jouer pour<br>voir l&lsquo;indice');
+            $('.available:eq(' + (game.id - 1) + ')').find('.statut.countdown').html('Challenge gagné<br>Cliquez sur jouer pour<br>voir l&lsquo;indice');
           } else {
             $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
           }
