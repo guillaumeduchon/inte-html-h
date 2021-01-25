@@ -103,6 +103,14 @@ function showError() {
   $('.wrongId').attr('style', 'display:block');
 }
 
+function hideConsent() {
+  $('.wrongConsent').attr('style', 'display:none');
+}
+
+function showConsent() {
+  $('.wrongConsent').attr('style', 'display:block');
+}
+
 function showWrongAnswer() {
   $('.tryagain').attr('style', 'display:block;');
 }

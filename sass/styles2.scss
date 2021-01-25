@@ -308,7 +308,7 @@ main {
             background: url('../img/fond_screen_connect.jpg') bottom left no-repeat;
             background-size: contain;
         }
-        .wrongId {
+        .wrongId, .wrongConsent {
             animation: displayblock 0.5s linear, hideblock 0.5s linear forwards 5s;
             position: absolute;
             display: none;
