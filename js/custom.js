@@ -1,14 +1,14 @@
 const DATE_TAB = [
-  { 1: '2021/01/21' },
-  { 2: '2021/01/22' },
-  { 3: '2021/01/23' },
-  { 4: '2021/01/25' },
-  { 5: '2021/01/26' },
-  { 6: '2021/01/27' },
-  { 7: '2021/01/28' },
-  { 8: '2021/01/29' },
-  { 9: '2021/01/30' },
-  { 10: '2021/02/01' }
+  { 1: '2021/01/23' },
+  { 2: '2021/01/24' },
+  { 3: '2021/01/25' },
+  { 4: '2021/01/28' },
+  { 5: '2021/01/29' },
+  { 6: '2021/01/30' },
+  { 7: '2021/01/31' },
+  { 8: '2021/02/01' },
+  { 9: '2021/02/02' },
+  { 10: '2021/02/03' }
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
@@ -18,16 +18,16 @@ localStorage.setItem('DAY_NUM', tab_day[0]);
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/01/21' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/01/22' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/01/23' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/01/25' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/01/26' },
-    { 'status': '', 'day_num': 6, 'day_date': '2021/01/27' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/01/28' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/01/29' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/01/30' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/02/01' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/01/23' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/01/24' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/01/25' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/01/28' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/01/29' },
+    { 'status': '', 'day_num': 6, 'day_date': '2021/01/30' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/01/31' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/02/01' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/02/02' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/02/03' },
   ];
 
   let today = new Date();
@@ -44,7 +44,7 @@ const updatePlateau = () => {
       el.highlight = '';
       var indexSlide = tab_day - 1;
       $carousel.flickity('select', indexSlide);
-      if ((localStorage.getItem("has_win") === 'true') || (localStorage.getItem("has_win") === 'false')) {
+      if (localStorage.getItem("has_win") === 'false') {
         el.status = 'expired';
         el.img = 'img/fond_plateau_expired.png';
         el.iconDisplay = 'hide';
@@ -129,9 +129,10 @@ function compte_a_rebours() {
 
   $('.countdown').find('strong').html(`${Math.abs(heures)} H ${minutes} MIN ${secondes} S`);
   $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong>`);
-
+  
 
   $('.expired').find('.statut').html('Challenge terminé');
+
   $('.available').find('.statut').addClass('countdown');
   $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
   let tomorowSamedi = 0;
@@ -161,8 +162,8 @@ function compte_a_rebours() {
   })
 
   before10h24(Math.abs(heures), minutes, secondes);
-  ShowGamePlayed();
   var actualisation = setTimeout("compte_a_rebours();", 1000);
+  ShowGamePlayed();
 }
 
 function get_date_today(d) {
@@ -222,7 +223,7 @@ const ShowGamePlayed = () => {
         // if (date_actuelle === (date_evenement - 1)) {
         if (game.id <= Number(localStorage.setItem('DAY_NUM'))) {
           if (game.indice_id > 0) {
-            $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
+            $('.statut:eq(' + (game.id - 1) + ')').find('.countdown').html('Challenge gagné<br>Cliquez sur jouer pour<br>voir l&lsquo;indice');
           } else {
             $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
           }

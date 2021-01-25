@@ -183,6 +183,7 @@ main {
             text-decoration: none;
             line-height: 100px;
             @media screen and (orientation:landscape) and (max-width: 580px) {line-height: 80px;}
+            cursor: pointer;
         }
         &:before {
             position: absolute;
@@ -329,13 +330,19 @@ main {
             .logo {
                 img {
                     max-width: 150px;
-                    @media screen and (orientation:landscape) and (max-width: 580px) {
-                        max-width: 110px;
+                    @media screen and (orientation:landscape) and (max-width: 920px) {
+                        max-width: 100px;
+                    }
+                    @media screen and (orientation:landscape) and (max-width: 640px) {
+                        max-width: 80px;
                     }
                 }
                 display: block;
                 margin: 0 auto;
                 padding-bottom: 10px;
+                @media screen and (orientation:landscape) and (min-width: 720px) {
+                    padding-bottom: 15px;
+                }
             }
             p {
                 color: $blue;
@@ -349,19 +356,51 @@ main {
                 }
                 &:first-of-type {padding-bottom: 0;}
             }
+            a {
+                &.reglement {
+                    display: block;
+                    font-size: 13px;
+                    color: $blue;
+                    text-transform: none;
+                    margin-top: 25px;
+                    @media screen and (orientation:landscape) and (max-width: 920px) {margin-top: 15px;}
+                    z-index: 10;
+                    text-decoration: underline;
+                    @media screen and (orientation:landscape) and (max-width: 720px) {font-size: 11px; margin-top: 15px;}
+                }
+            }
+            .cta_diamond {
+                @media screen and (orientation:landscape) and (max-width: 920px) {
+                    height: 115px;
+                    width: 115px;
+                    margin-top: -25px;
+                    margin-bottom: -27px;
+                }
+                @media screen and (orientation:landscape) and (max-width: 720px) {
+                    height: 95px;
+                    width: 95px;
+                    margin-top: -25px;
+                    margin-bottom: -27px;
+                }
+            }
             .connect_form {
                 @media screen and (orientation:landscape) and (max-width: 580px) {
-                    font-size: 14px;
-                    width: 60%;
+                    font-size: 12px;
                     padding-bottom: 30px;
                 }
                 width: 65%;
                 margin: 0 auto;
                 padding: 20px 0;
+                @media screen and (orientation:landscape) and (max-width: 920px) {
+                    padding: 0;
+                }
                 position: relative;
                 .connect_form-select {
                     position: relative;
                     margin: 0 0 20px;
+                    @media screen and (orientation:landscape) and (max-width: 920px) {
+                        margin-bottom: 10px;
+                    }
                     overflow: hidden;
                     &:focus {outline: none;}
                     select {
@@ -380,6 +419,10 @@ main {
                         color: $grey;
                         border-bottom: 2px solid $grey;
                         background: transparent;
+                        @media screen and (orientation:landscape) and (max-width: 920px) {
+                            font-size: 14px;
+                        }
+                        @media screen and (orientation:landscape) and (max-width: 720px) {font-size: 12px;}
                         .option {
                             &:disabled {color: $grey;}
                             &:checked {color: $blue;}
@@ -389,11 +432,11 @@ main {
                         content: url(../img/angle-down.svg);
                         position: absolute;
                         top: 35%; 
-                        margin-top: -6px;
+                        margin-top: -7px;
                         right: 0;  
                         display: block; 
-                        height: 15px;
-                        width: 15px;
+                        height: 14px;
+                        width: 14px;
                         // background-size: 18px 23px;
                         // background-image: url(../img/angle-down.svg);
                         // background-repeat: no-repeat;
@@ -413,6 +456,10 @@ main {
                     text-transform: uppercase;
                     color: $blue;
                     background: transparent;
+                    @media screen and (orientation:landscape) and (max-width: 920px) {
+                        font-size: 14px;
+                    }
+                    @media screen and (orientation:landscape) and (max-width: 720px) {font-size: 12px;}
                     &::placeholder {
                         color: $grey;
                         opacity: 1;
@@ -422,6 +469,63 @@ main {
                     }
                     &[data-state="valid"] {
                         border-color: $blue;
+                    }
+                }
+                .connect_form-consentement {
+                    text-align: left;
+                    font-size: 11px;
+                    line-height: 14px;
+                    margin-top: 10px;
+                    @media screen and (orientation:landscape) and (min-width: 1024px) {
+                        margin-top: 20px;
+                        font-size: 14px;
+                        line-height: 18px;
+                    }
+                    @media screen and (orientation:landscape) and (max-width: 720px) {
+                        font-size: 9px;
+                        line-height: 12px;
+                    }
+                    color: $grey;
+                    .connect_form-consentement_label {
+                        &:last-child {
+                            margin-bottom: 5px;
+                            @media screen and (orientation:landscape) and (max-width: 720px) {margin-bottom: 15px;}
+                        }
+                        a {
+                            color: $blue;
+                        }
+                        input[type=checkbox] {
+                            appearance: none;
+                            border-radius: 0;
+                            border: 1px solid $grey;
+                            width: 14px;
+                            height: 14px;
+                            margin-right: 4px;
+                            @media screen and (orientation:landscape) and (max-width: 920px) {
+                                width: 11px;
+                                height: 11px;
+                            }
+                            &:checked {
+                                background: $blue;
+                                position: relative;
+                                &:before {
+                                    content: url(../img/check-solid.svg);
+                                    display: block;
+                                    color: $green;
+                                    position: absolute;
+                                    width: 12px;
+                                    height: 12px;
+                                    top: -2px;
+                                    @media screen and (orientation:landscape) and (max-width: 920px) {
+                                        width: 9px;
+                                        height: 9px;
+                                    }
+                                    @media screen and (orientation:landscape) and (max-width: 720px) {
+                                        top: 0px;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
