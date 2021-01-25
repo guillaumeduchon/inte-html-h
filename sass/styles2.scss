@@ -19,6 +19,43 @@ $green-light2: #d0d0d0;
 $grey-dark: #7a7d82;
 $grey-bg: #f0f2f1;
 
+/** FONT **/
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('../fonts/CenturyGothic-BoldItalic.woff2') format('woff2'),
+        url('../fonts/CenturyGothic-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('../fonts/CenturyGothic-Italic.woff2') format('woff2'),
+        url('../fonts/CenturyGothic-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('../fonts/CenturyGothic.woff2') format('woff2'),
+        url('../fonts/CenturyGothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('../fonts/CenturyGothic-Bold.woff2') format('woff2'),
+        url('../fonts/CenturyGothic-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
 /** GENERAL **/
 body {
     font-family: 'Century Gothic', sans-serif;
