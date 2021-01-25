@@ -307,8 +307,8 @@ main {
         &.cs--form {
             background: url('../img/fond_screen_connect.jpg') bottom left no-repeat;
             background-size: contain;
-            @media screen and (orientation:landscape) and (max-width: 920px) {background-size: 80%;}
-            @media screen and (orientation:landscape) and (max-width: 720px) {background-size: 75%;}
+            @media screen and (orientation:landscape) and (max-width: 920px) {background-size: 70%;}
+            @media screen and (orientation:landscape) and (max-width: 720px) {background-size: 65%;}
         }
         .wrongId, .wrongConsent {
             animation: displayblock 0.5s linear, hideblock 0.5s linear forwards 5s;
@@ -328,23 +328,28 @@ main {
             width: 65%;
             background: url('../img/fond_border_block.png') 95% 0% no-repeat;
             background-size: 12%;
-            @media screen and (orientation:landscape) and (max-width: 920px) {width: 75%;}
+            @media screen and (orientation:landscape) and (max-width: 920px) {width: 80%;}
             @media screen and (orientation:landscape) and (min-width:1024px) {padding: 11% 0;}
             .logo {
                 img {
                     max-width: 150px;
-                    @media screen and (orientation:landscape) and (max-width: 920px) {
-                        max-width: 100px;
-                    }
-                    @media screen and (orientation:landscape) and (max-width: 640px) {
-                        max-width: 80px;
-                    }
                 }
                 display: block;
                 margin: 0 auto;
                 padding-bottom: 10px;
-                @media screen and (orientation:landscape) and (min-width: 720px) {
+                @media screen and (orientation:landscape) and (min-width: 920px) {
                     padding-bottom: 15px;
+                }
+                &.cf {
+                    img {
+                        max-width: 150px;
+                        @media screen and (orientation:landscape) and (max-width: 920px) {
+                            max-width: 100px;
+                        }
+                        @media screen and (orientation:landscape) and (max-width: 640px) {
+                            max-width: 80px;
+                        }
+                    }
                 }
             }
             p {
@@ -373,17 +378,14 @@ main {
                 }
             }
             .cta_diamond {
-                @media screen and (orientation:landscape) and (max-width: 920px) {
-                    height: 115px;
-                    width: 115px;
-                    margin-top: -25px;
-                    margin-bottom: -27px;
-                }
-                @media screen and (orientation:landscape) and (max-width: 720px) {
-                    height: 95px;
-                    width: 95px;
-                    margin-top: -25px;
-                    margin-bottom: -27px;
+                &.cf {
+                    @media screen and (orientation:landscape) and (max-width: 920px) {
+                        height: 100px;
+                        width: 100px;
+                        margin-top: -25px;
+                        margin-bottom: -23px;
+                        span {line-height: 60px; font-size: 14px;}
+                    }
                 }
             }
             .connect_form {
@@ -492,7 +494,7 @@ main {
                     .connect_form-consentement_label {
                         &:last-child {
                             margin-bottom: 5px;
-                            @media screen and (orientation:landscape) and (max-width: 720px) {margin-bottom: 15px;}
+                            @media screen and (orientation:landscape) and (max-width: 920px) {margin-bottom: 15px;}
                         }
                         a {
                             color: $blue;
