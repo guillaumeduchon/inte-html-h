@@ -101,9 +101,9 @@ function hideError() {
 
 function showError() {
   $('.wrongId').attr('style', 'display:block');
-  setTimeout( function(){
-    $('.wrongId').attr('style','display:none');
-  },6000);
+  setTimeout(function () {
+    $('.wrongId').attr('style', 'display:none');
+  }, 6000);
 }
 
 function showWrongAnswer() {
@@ -132,7 +132,7 @@ function compte_a_rebours() {
 
   $('.countdown').find('strong').html(`${Math.abs(heures)} H ${minutes} MIN ${secondes} S`);
   $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong>`);
-  
+
   $('.expired').find('.statut').html('Challenge terminé');
 
   $('.available').find('.statut').addClass('countdown');
@@ -217,22 +217,22 @@ function before10h24(heures, minutes, secondes) {
 }
 
 const ShowGamePlayed = () => {
-    fetch_question_responses().then((datas) => {
-      console.log('datas :', datas)
-      datas.forEach((game, index) => {
-        console.log('game :', game)
-        // if (date_actuelle === (date_evenement - 1)) {
-        if (game.id <= Number(localStorage.setItem('DAY_NUM'))) {
-          if (game.indice_id > 0) {
-            $('.available:eq(' + (game.id - 1) + ')').find('.statut.countdown').html('Challenge gagné<br>Cliquez sur jouer pour<br>voir l&lsquo;indice');
-          } else {
-            $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
+  fetch_question_responses().then((datas) => {
+
+    $('carousel_cell').forEach((elem, index) => {
+      if (index < Number(localStorage.setItem('DAY_NUM'))) {
+
+        datas.forEach((game, i) => {
+          if((index + 1) === game.id) {
+            if (game.indice_id > 0) {
+              $('.available:eq(' + (game.id - 1) + ')').find('.statut.countdown').html('Challenge gagné<br>Cliquez sur jouer pour<br>voir l&lsquo;indice');
+            } else {
+              $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
+            }
           }
-        }
-        // } else {
-////
-        // }
-      });
+        })
+      }
     });
-  
+  });
+
 }
