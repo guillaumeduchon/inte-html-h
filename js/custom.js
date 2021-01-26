@@ -222,13 +222,10 @@ function before10h24(heures, minutes, secondes) {
 }
 
 const ShowGamePlayed = () => {
-  if (!localStorage.getItem('have_show_played')) {
-    localStorage.setItem('have_show_played', true);
-
-    console.log('ESSAI')
-
     fetch_question_responses().then((datas) => {
+      console.log('datas :', datas)
       datas.forEach((game, index) => {
+        console.log('game :', game)
         // if (date_actuelle === (date_evenement - 1)) {
         if (game.id <= Number(localStorage.setItem('DAY_NUM'))) {
           if (game.indice_id > 0) {
@@ -242,5 +239,5 @@ const ShowGamePlayed = () => {
         // }
       });
     });
-  }
+  
 }
