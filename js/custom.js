@@ -222,7 +222,7 @@ const ShowGamePlayed = () => {
       localStorage.setItem('game_played', JSON.stringify(datas))
     });
   } else {
-    $(document).find('.carousel_cell').each((elem, index) => {
+    $(document).find('.carousel_cell').each((index, elem) => {
       console.log('TEST :' , index ,'nb ', Number(localStorage.getItem('DAY_NUM')))
       if (index < Number(localStorage.getItem('DAY_NUM'))) {
 
