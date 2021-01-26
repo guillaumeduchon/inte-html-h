@@ -208,7 +208,6 @@ function before10h24(heures, minutes, secondes) {
       $carouChange.flickity('select', (Number(localStorage.getItem('DAY_NUM')) - 2));
     }
   } else {
-    console.log('fezfzee :', localStorage.getItem('nbInBefore10h24'))
     if (localStorage.getItem('nbInBefore10h24')) {
       localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) + 1)
     }
@@ -220,7 +219,8 @@ function before10h24(heures, minutes, secondes) {
 const ShowGamePlayed = () => {
   if (!localStorage.getItem("game_played")) {
     fetch_question_responses().then((datas) => {
-      localStorage.setItem('game_played', JSON.stringify(datas))
+      if(datas[0].id !== undefined)
+        localStorage.setItem('game_played', JSON.stringify(datas))
     });
   } else {
     $(document).find('.carousel_cell').each((index, elem) => {
