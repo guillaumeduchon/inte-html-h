@@ -223,7 +223,7 @@ const ShowGamePlayed = () => {
     });
   } else {
     $(document).find('.carousel_cell').each((elem, index) => {
-      if (index < Number(localStorage.setItem('DAY_NUM'))) {
+      if (index < Number(localStorage.getItem('DAY_NUM'))) {
 
         JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
           if ((index + 1) === game.id) {
