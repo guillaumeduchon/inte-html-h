@@ -104,14 +104,9 @@ function hideError() {
 
 function showError() {
   $('.wrongId').attr('style','display:block');
-}
-
-function hideConsent() {
-  $('.wrongConsent').attr('style', 'display:none');
-}
-
-function showConsent() {
-  $('.wrongConsent').attr('style', 'display:block');
+  setTimeout( function(){
+    $('.wrongId').attr('style','display:none');
+  },6000);
 }
 
 function showWrongAnswer() {
