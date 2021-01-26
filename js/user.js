@@ -20,10 +20,11 @@ const fetch_login = (e) => {
   var acceptGame = document.getElementById("acceptGame").checked;
   var acceptData = document.getElementById("acceptData").checked;
   if(magasin !== '') {
+    // try_login(magasin, code);
     if ((acceptGame == true) && (acceptData == true)) {
       try_login(magasin, code);
     } else {
-      showConsent();
+      showError();
     }
   }else{
     showError();
