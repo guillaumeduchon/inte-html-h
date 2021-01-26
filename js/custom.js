@@ -208,7 +208,7 @@ function before10h24(heures, minutes, secondes) {
       $carouChange.flickity('select', (Number(localStorage.getItem('DAY_NUM')) - 2));
     }
   } else {
-    if (localStorage.getItem('nbInBefore10h24') !== null) {
+    if (localStorage.getItem('nbInBefore10h24') && localStorage.getItem('nbInBefore10h24') !== '0') {
       console.log('nbInBefore10h24 :', localStorage.getItem('nbInBefore10h24'))
       localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) + 1)
     }
