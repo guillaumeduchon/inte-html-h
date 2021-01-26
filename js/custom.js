@@ -222,12 +222,12 @@ const ShowGamePlayed = () => {
       localStorage.setItem('game_played', JSON.stringify(datas))
     });
   } else {
-    console.log('TEST :', JSON.parse(localStorage.getItem('game_played')))
     $(document).find('.carousel_cell').each((elem, index) => {
       if (index < Number(localStorage.setItem('DAY_NUM'))) {
 
         JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
           if ((index + 1) === game.id) {
+            console.log('TEST :', game)
             if (game.indice_id > 0) {
               $('.available:eq(' + (game.id - 1) + ')').find('.statut.countdown').html('Challenge gagné<br>Cliquez sur jouer pour<br>voir l&lsquo;indice');
             } else {
