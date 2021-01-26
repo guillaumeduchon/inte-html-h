@@ -164,7 +164,7 @@ function compte_a_rebours() {
   })
 
   before10h24(Math.abs(heures), minutes, secondes);
-  ShowGamePlayed();
+  
   var actualisation = setTimeout("compte_a_rebours();", 1000);
 }
 
@@ -234,5 +234,7 @@ const ShowGamePlayed = () => {
       }
     });
   });
+
+  ShowGamePlayed();
 
 }
