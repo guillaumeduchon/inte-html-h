@@ -164,7 +164,7 @@ function compte_a_rebours() {
   })
 
   before10h24(Math.abs(heures), minutes, secondes);
-  
+  ShowGamePlayed();
   var actualisation = setTimeout("compte_a_rebours();", 1000);
 }
 
@@ -216,14 +216,18 @@ function before10h24(heures, minutes, secondes) {
   }
 }
 
-const ShowGamePlayed = async() => {
-  await fetch_question_responses().then((datas) => {
-
+const ShowGamePlayed = () => {
+  if (!localStorage.getItem("game_played")) {
+    fetch_question_responses().then((datas) => {
+      localStorage.setItem('game_played', JSON.stringify(datas))
+    });
+  } else {
+    console.log('TEST :', JSON.parse(localStorage.getItem('game_played')))
     $(document).find('.carousel_cell').each((elem, index) => {
       if (index < Number(localStorage.setItem('DAY_NUM'))) {
 
-        datas.forEach((game, i) => {
-          if((index + 1) === game.id) {
+        JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
+          if ((index + 1) === game.id) {
             if (game.indice_id > 0) {
               $('.available:eq(' + (game.id - 1) + ')').find('.statut.countdown').html('Challenge gagné<br>Cliquez sur jouer pour<br>voir l&lsquo;indice');
             } else {
@@ -233,8 +237,5 @@ const ShowGamePlayed = async() => {
         })
       }
     });
-  });
-
-  ShowGamePlayed();
-
+  }
 }
