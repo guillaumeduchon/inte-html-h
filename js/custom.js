@@ -219,7 +219,7 @@ function before10h24(heures, minutes, secondes) {
 const ShowGamePlayed = () => {
   fetch_question_responses().then((datas) => {
 
-    $(document).find('.carousel_cell').forEach((elem, index) => {
+    $(document).find('.carousel_cell').each((elem, index) => {
       if (index < Number(localStorage.setItem('DAY_NUM'))) {
 
         datas.forEach((game, i) => {
