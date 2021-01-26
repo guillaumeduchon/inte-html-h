@@ -209,7 +209,7 @@ function before10h24(heures, minutes, secondes) {
     }
   } else {
     console.log('fezfzee :', localStorage.getItem('nbInBefore10h24'))
-    if (localStorage.getItem('nbInBefore10h24')!==0) {
+    if (localStorage.getItem('nbInBefore10h24') > 0 && localStorage.getItem('nbInBefore10h24')!== undefined) {
       localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) + 1)
     }
 
