@@ -121,6 +121,32 @@ body {
 }
 /*** - ***/
 
+/*** BANDEAU COOKIE ***/
+#cookies-eu-banner {
+    font-size: 13px;
+    background-color: $white;
+    border: 2px solid $green;
+    padding: 8px 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 50%;
+    box-shadow: 0 0 4px 2px rgba($black, 0.2);
+    text-align: left;
+    z-index: 2;
+    .cookie-links {padding-top: 10px;}
+    #cookies-eu-more, button {
+        background-color: $green;
+        border-radius: 0;
+        border: 0;
+        color: $white;
+        margin-right: 10px;
+        display: inline-block;
+        padding: 1px 6px;
+        text-transform: uppercase;
+    }
+}
+
 /*** ANIMATIONS ***/
 @keyframes displayblock {
     from {
