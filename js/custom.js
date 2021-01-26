@@ -2,7 +2,7 @@ const DATE_TAB = [
   { 1: '2021/01/23' },
   { 2: '2021/01/24' },
   { 3: '2021/01/25' },
-  { 4: '2021/01/28' },
+  { 4: '2021/01/26' },
   { 5: '2021/01/29' },
   { 6: '2021/01/30' },
   { 7: '2021/01/31' },
@@ -21,7 +21,7 @@ const updatePlateau = () => {
     { 'status': '', 'day_num': 1, 'day_date': '2021/01/23' },
     { 'status': '', 'day_num': 2, 'day_date': '2021/01/24' },
     { 'status': '', 'day_num': 3, 'day_date': '2021/01/25' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/01/28' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/01/26' },
     { 'status': '', 'day_num': 5, 'day_date': '2021/01/29' },
     { 'status': '', 'day_num': 6, 'day_date': '2021/01/30' },
     { 'status': '', 'day_num': 7, 'day_date': '2021/01/31' },
@@ -101,14 +101,9 @@ function hideError() {
 
 function showError() {
   $('.wrongId').attr('style', 'display:block');
-}
-
-function hideConsent() {
-  $('.wrongConsent').attr('style', 'display:none');
-}
-
-function showConsent() {
-  $('.wrongConsent').attr('style', 'display:block');
+  setTimeout( function(){
+    $('.wrongId').attr('style','display:none');
+  },6000);
 }
 
 function showWrongAnswer() {

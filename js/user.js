@@ -26,7 +26,7 @@ const fetch_login = (e) => {
     if ((acceptGame == true) && (acceptData == true)) {
       try_login(magasin, code);
     } else {
-      showConsent();
+      showError();
     }
   }else{
     showError();
