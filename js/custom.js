@@ -209,7 +209,6 @@ function before10h24(heures, minutes, secondes) {
     }
   } else {
     if (localStorage.getItem('nbInBefore10h24') && localStorage.getItem('nbInBefore10h24') !== '0') {
-      console.log('nbInBefore10h24 :', localStorage.getItem('nbInBefore10h24'))
       localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) + 1)
     }
 
@@ -225,12 +224,9 @@ const ShowGamePlayed = () => {
     });
   } else {
     $(document).find('.carousel_cell').each((index, elem) => {
-      console.log('TEST :' , index ,'nb ', Number(localStorage.getItem('DAY_NUM')))
       if (index < Number(localStorage.getItem('DAY_NUM'))) {
-
         JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
           if ((index + 1) === game.id) {
-            console.log('game :', game)
             if (game.indice_id > 0) {
               $('.available:eq(' + (game.id - 1) + ')').find('.statut.countdown').html('Challenge gagné<br>Cliquez sur jouer pour<br>voir l&lsquo;indice');
             } else {

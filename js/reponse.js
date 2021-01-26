@@ -608,5 +608,6 @@ context["check_answer10"] = check_answer10;
 
 
 const check_answer = () => {
+  localStorage.removeItem("game_played");
   context["check_answer" + Number(localStorage.getItem('DAY_NUM'))].apply()
 }
