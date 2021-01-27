@@ -121,6 +121,38 @@ body {
 }
 /*** - ***/
 
+/*** BANDEAU COOKIE ***/
+#cookies-eu-banner {
+    font-size: 13px;
+    background-color: $white;
+    border: 2px solid $green;
+    padding: 8px 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 50%;
+    box-shadow: 0 0 4px 2px rgba($black, 0.2);
+    text-align: left;
+    z-index: 2;
+    .cookie-links {padding-top: 10px;}
+    #cookies-eu-more, button {
+        background-color: $green;
+        border-radius: 0;
+        border: 0;
+        color: $white;
+        margin-right: 10px;
+        display: inline-block;
+        padding: 1px 6px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.5s all;
+        &:hover {
+            text-decoration: none;
+            background-color: $blue;
+        }
+    }
+}
+
 /*** ANIMATIONS ***/
 @keyframes displayblock {
     from {
@@ -307,8 +339,10 @@ main {
         &.cs--form {
             background: url('../img/fond_screen_connect.jpg') bottom left no-repeat;
             background-size: contain;
-            @media screen and (orientation:landscape) and (max-width: 920px) {background-size: 70%;}
-            @media screen and (orientation:landscape) and (max-width: 720px) {background-size: 65%;}
+            @media screen and (orientation:landscape) and (max-width: 920px) {background-size: 80%;}
+            @media screen and (orientation:landscape) and (max-width: 720px) {background-size: 75%;}
+            // @media screen and (orientation:landscape) and (max-width: 920px) {background-size: 70%;}
+            // @media screen and (orientation:landscape) and (max-width: 720px) {background-size: 65%;}
         }
         .wrongId, .wrongConsent {
             animation: displayblock 0.5s linear, hideblock 0.5s linear forwards 5s;
@@ -328,27 +362,29 @@ main {
             width: 65%;
             background: url('../img/fond_border_block.png') 95% 0% no-repeat;
             background-size: 12%;
-            @media screen and (orientation:landscape) and (max-width: 920px) {width: 80%;}
-            @media screen and (orientation:landscape) and (min-width:1024px) {padding: 11% 0;}
+            @media screen and (orientation:landscape) and (max-width: 920px) {width: 75%;}
+            @media screen and (orientation:landscape) and (min-width:1024px) {padding: 15% 0;}
+            // @media screen and (orientation:landscape) and (max-width: 920px) {width: 80%;}
+            // @media screen and (orientation:landscape) and (min-width:1024px) {padding: 11% 0;}
             .logo {
                 img {
                     max-width: 150px;
                 }
                 display: block;
                 margin: 0 auto;
-                padding-bottom: 10px;
-                @media screen and (orientation:landscape) and (min-width: 920px) {
-                    padding-bottom: 15px;
+                padding-bottom: 0;
+                @media screen and (orientation:landscape) and (min-width: 720px) {
+                    padding-bottom: 10px;
                 }
                 &.cf {
                     img {
                         max-width: 150px;
-                        @media screen and (orientation:landscape) and (max-width: 920px) {
-                            max-width: 100px;
+                        @media screen and (orientation:landscape) and (max-width: 580px) {
+                            max-width: 110px;
                         }
-                        @media screen and (orientation:landscape) and (max-width: 640px) {
-                            max-width: 80px;
-                        }
+                        // @media screen and (orientation:landscape) and (max-width: 640px) {
+                        //     max-width: 80px;
+                        // }
                     }
                 }
             }
@@ -378,33 +414,46 @@ main {
                 }
             }
             .cta_diamond {
-                &.cf {
-                    @media screen and (orientation:landscape) and (max-width: 920px) {
-                        height: 100px;
-                        width: 100px;
-                        margin-top: -25px;
-                        margin-bottom: -23px;
-                        span {line-height: 60px; font-size: 14px;}
-                    }
+                @media screen and (orientation:landscape) and (max-width: 920px) {
+                    height: 115px;
+                    width: 115px;
+                    margin-top: -25px;
+                    margin-bottom: -27px;
                 }
+                @media screen and (orientation:landscape) and (max-width: 720px) {
+                    height: 95px;
+                    width: 95px;
+                    margin-top: -25px;
+                    margin-bottom: -27px;
+                }
+                // &.cf {
+                //     @media screen and (orientation:landscape) and (max-width: 920px) {
+                //         height: 100px;
+                //         width: 100px;
+                //         margin-top: -25px;
+                //         margin-bottom: -23px;
+                //         span {line-height: 60px; font-size: 14px;}
+                //     }
+                // }
             }
             .connect_form {
                 @media screen and (orientation:landscape) and (max-width: 580px) {
-                    font-size: 12px;
-                    padding-bottom: 30px;
+                    font-size: 14px;
+                    width: 60%;
+                    // padding-bottom: 30px;
                 }
                 width: 65%;
                 margin: 0 auto;
                 padding: 20px 0;
-                @media screen and (orientation:landscape) and (max-width: 920px) {
-                    padding: 0;
-                }
+                // @media screen and (orientation:landscape) and (max-width: 920px) {
+                //     padding: 0;
+                // }
                 position: relative;
                 .connect_form-select {
                     position: relative;
                     margin: 0 0 20px;
-                    @media screen and (orientation:landscape) and (max-width: 920px) {
-                        margin-bottom: 10px;
+                    @media screen and (orientation:landscape) and (max-width: 640px) {
+                        margin-bottom: 15px;
                     }
                     overflow: hidden;
                     &:focus {outline: none;}
@@ -424,10 +473,10 @@ main {
                         color: $grey;
                         border-bottom: 2px solid $grey;
                         background: transparent;
-                        @media screen and (orientation:landscape) and (max-width: 920px) {
-                            font-size: 14px;
-                        }
-                        @media screen and (orientation:landscape) and (max-width: 720px) {font-size: 12px;}
+                        // @media screen and (orientation:landscape) and (max-width: 920px) {
+                        //     font-size: 14px;
+                        // }
+                        // @media screen and (orientation:landscape) and (max-width: 720px) {font-size: 12px;}
                         .option {
                             &:disabled {color: $grey;}
                             &:checked {color: $blue;}
@@ -461,10 +510,10 @@ main {
                     text-transform: uppercase;
                     color: $blue;
                     background: transparent;
-                    @media screen and (orientation:landscape) and (max-width: 920px) {
-                        font-size: 14px;
-                    }
-                    @media screen and (orientation:landscape) and (max-width: 720px) {font-size: 12px;}
+                    // @media screen and (orientation:landscape) and (max-width: 920px) {
+                    //     font-size: 14px;
+                    // }
+                    // @media screen and (orientation:landscape) and (max-width: 720px) {font-size: 12px;}
                     &::placeholder {
                         color: $grey;
                         opacity: 1;
