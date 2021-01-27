@@ -13,10 +13,12 @@
         <div class="screen row no-gutters">
             <div id="splashscreen"></div>
             <div id="cookies-eu-banner" style="display: none;">
-                By continuing to visit this site, you accept the use of cookies by Google Analytics for statistical purposes.
-                <a href="./read-more.html" id="cookies-eu-more">Read more</a>
-                <button id="cookies-eu-reject">Reject</button>
-                <button id="cookies-eu-accept">Accept</button>
+                En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies par Google Analytics à des fins statistiques.
+                <div class="cookie-links">
+                    <a href="./read-more.html" id="cookies-eu-more">EN SAVOIR PLUS</a>
+                    <button id="cookies-eu-reject">REFUSER</button>
+                    <button id="cookies-eu-accept">ACCEPTER</button>
+                </div>
             </div>
             <div class="flex_contain connect_screen">
                 <div class="connect_block">
@@ -39,6 +41,11 @@
     </div>
     <!-- / -->
     <script src="js/cookies-eu-banner.js"></script>
+    <script>
+        new CookiesEuBanner(function () {
+            // Your code to launch when user accept cookies
+        });
+    </script>
     <script src="js/function.js"></script>
     <script src="js/user.js"></script>
     <script src="js/routeur.js"></script>

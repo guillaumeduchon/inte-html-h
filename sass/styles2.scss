@@ -144,6 +144,12 @@ body {
         display: inline-block;
         padding: 1px 6px;
         text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.5s all;
+        &:hover {
+            text-decoration: none;
+            background-color: $blue;
+        }
     }
 }
 
