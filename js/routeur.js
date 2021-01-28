@@ -249,7 +249,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
-      result_finalday();
+      result_finalday();hasWinFinalJs();
       startGame();
       fetch_indices();
     } else {
