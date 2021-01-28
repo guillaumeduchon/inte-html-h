@@ -249,7 +249,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
-      result_day();
+      result_finalday();
       startGame();
       fetch_indices();
     } else {
@@ -313,6 +313,14 @@ function hasWinJs() {
   } 
   if(localStorage.getItem("has_win") === 'false') {
     window.location.href = "game_lose.html";
+  }
+}
+function hasWinFinalJs() {
+  if (localStorage.getItem("has_win") === 'true') {
+    window.location.href = "endgame_win.html";
+  } 
+  if(localStorage.getItem("has_win") === 'false') {
+    window.location.href = "endgame_lose.html";
   }
 }
 

@@ -53,6 +53,23 @@ const result_day = async () => {
     });
 }
 
+const result_finalday = async () => {
+  await axios.post('/server/indice_magasin.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((resp) => {
+      if (resp.data.indice_id !== undefined) {
+        if (resp.data.indice_id !== 0) {
+          localStorage.setItem("has_win",'true');
+          window.location.href = '/endgame_win.html'
+        } else {
+          localStorage.setItem("has_win",'false');
+          window.location.href = '/endgame_lose.html'
+        }
+      }
+    });
+}
+
 const fetch_question_responses = async () => {
   let datas = await axios.post('/server/indice_magasin.php', { magasin: localStorage.getItem('magasin'), type: 'responses' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
