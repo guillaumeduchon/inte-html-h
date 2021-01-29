@@ -1226,12 +1226,14 @@ main {
                                     height: 160px;
                                 }
                             }
-                            width: 65px;
+                            width: 92px;
                             height: 210px;
-                            @media screen and (orientation:landscape) and (min-width: 760px) {width: 75px; height: 238px;}
-                            @media screen and (orientation:landscape) and (min-width: 1024px) {width: 115px; height: 359px;}
-                            @media screen and (orientation:landscape) and (min-width: 1366px) {width: 160px; height: 494px;}
+                            @media screen and (orientation:landscape) and (min-width: 760px) {width: 102px; height: 238px;}
+                            @media screen and (orientation:landscape) and (min-width: 1024px) {width: 142px; height: 359px;}
+                            @media screen and (orientation:landscape) and (min-width: 1366px) {width: 197px; height: 494px;}
                             grid-gap: 7px;
+                            overflow: hidden;
+                            padding-right: 7px;
                         }
                         .answers {
                             grid-template-columns: repeat(1, 1fr);
