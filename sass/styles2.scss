@@ -59,11 +59,6 @@ $grey-bg: #f0f2f1;
 /** GENERAL **/
 body {
     font-family: 'Century Gothic', sans-serif;
-    touch-action: none;
-    -ms-touch-action: none;
-    position: relative;
-    height: 100%;
-    overflow: hidden;
 }
 
 /*** MESSAGE PAYSAGE + SPLASHSCREEN ***/
@@ -181,13 +176,15 @@ main {
     position: relative;
     margin: 0 auto;
     overflow: hidden;
+    touch-action: none;
+    -ms-touch-action: none;
     // @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
     .screen {
         width: 100vw;
         height: calc(var(--vh, 1vh) * 100);
         overflow: hidden;
         // @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
-        min-height: -webkit-fill-available;
+        // min-height: -webkit-fill-available;
     }
     .flex_contain {
         display: flex;
