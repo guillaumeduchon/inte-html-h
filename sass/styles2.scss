@@ -59,6 +59,7 @@ $grey-bg: #f0f2f1;
 /** GENERAL **/
 body {
     font-family: 'Century Gothic', sans-serif;
+    min-height: 100vh;
     min-height: -webkit-fill-available;
 }
 html {
