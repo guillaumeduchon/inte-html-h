@@ -176,12 +176,12 @@ main {
     position: relative;
     margin: 0 auto;
     overflow: hidden;
-    @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
+    // @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
     .screen {
         width: 100vw;
-        overflow: hidden;
         height: calc(var(--vh, 1vh) * 100);
-        @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
+        overflow: hidden;
+        // @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
         min-height: -webkit-fill-available;
     }
     .flex_contain {
