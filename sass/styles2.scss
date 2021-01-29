@@ -182,9 +182,9 @@ main {
     .screen {
         width: 100vw;
         height: calc(var(--vh, 1vh) * 100);
-        overflow: hidden;
+        // overflow: hidden;
         // @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
-        // min-height: -webkit-fill-available;
+        min-height: -webkit-fill-available;
     }
     .flex_contain {
         display: flex;
