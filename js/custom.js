@@ -1,14 +1,14 @@
 const DATE_TAB = [
-  { 1: '2021/01/19' },
-  { 2: '2021/01/20' },
-  { 3: '2021/01/21' },
-  { 4: '2021/01/22' },
-  { 5: '2021/01/23' },
-  { 6: '2021/01/24' },
-  { 7: '2021/01/25' },
-  { 8: '2021/01/26' },
-  { 9: '2021/01/27' },
-  { 10: '2021/01/28' }
+  { 1: '2021/01/21' },
+  { 2: '2021/01/22' },
+  { 3: '2021/01/23' },
+  { 4: '2021/01/24' },
+  { 5: '2021/01/25' },
+  { 6: '2021/01/26' },
+  { 7: '2021/01/27' },
+  { 8: '2021/01/28' },
+  { 9: '2021/01/29' },
+  { 10: '2021/01/30' }
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
@@ -18,16 +18,16 @@ localStorage.setItem('DAY_NUM', tab_day[0]);
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/01/19' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/01/20' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/01/21' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/01/22' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/01/23' },
-    { 'status': '', 'day_num': 6, 'day_date': '2021/01/24' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/01/25' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/01/26' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/01/27' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/01/28' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/01/21' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/01/22' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/01/23' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/01/24' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/01/25' },
+    { 'status': '', 'day_num': 6, 'day_date': '2021/01/26' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/01/27' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/01/28' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/01/29' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/01/30' },
   ];
 
   let today = new Date();

@@ -754,6 +754,11 @@ main {
                     // box-shadow: 0 0 9px rgba($black, 0.6);
                     .carousel_cell-content-container {display: flex;}
                     .carousel_cell-content-resume {display: none;}
+                    @media screen and (orientation:landscape) and (max-width: 920px) {
+                        &.available {
+                            .carousel_cell-content-container {margin-bottom: 15px;}
+                        }
+                    }
                 }
                 &.is-previous {
                     .carousel_cell-content-resume {
@@ -1332,6 +1337,7 @@ main {
                                 min-height: 0;
                                 padding: 0;
                                 img {width: 100%;}
+                                border: 1px dotted $grey-dark;
                                 .answer_button {
                                     max-width: 2000px;
                                     max-height: 30px;
