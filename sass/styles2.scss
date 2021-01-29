@@ -607,6 +607,9 @@ main {
                 padding: 10px;
                 // background-color: $blue;
                 transition: 0.2s linear all;
+                @media screen and (orientation:landscape) and (max-height: 335px) {
+                    top: 3px;
+                }
                 img.bg_cell {
                     max-width: 100%;
                     height: auto;
