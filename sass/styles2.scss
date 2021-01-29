@@ -2079,6 +2079,21 @@ main {
             &[data-state=visible] {
                 display: block;
             }
+            .message {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                display: block;
+                background: rgba($black, 0.6);
+                padding: 10px;
+                font-size: 12px;
+                line-height: 16px;
+                color: $white;
+                font-weight: bold;
+                text-transform: uppercase;
+                text-align: center;
+            }
             & progress {
                 display:block;
                 width:100%;
