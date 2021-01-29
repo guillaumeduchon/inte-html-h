@@ -20,9 +20,9 @@
 
     // $_ENV = new DotEnv(__DIR__ . '/.env')->load();
 
-    echo getenv('APP_ENV');
+    // echo getenv('APP_ENV');
     // dev
-    echo getenv('DATABASE_DNS');
+    // echo getenv('DATABASE_DNS');
 
     $host = '127.0.0.1'; //$_ENV->getenv('APP_HOST')
     $db   = 'jeu_hermes'; //$_ENV->getenv('APP_BDD')
