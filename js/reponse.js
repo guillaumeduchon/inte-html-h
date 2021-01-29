@@ -291,9 +291,7 @@ const fetch_reponse6 = async () => {
         res.data.map(el => {
           $('.dropzone').append(`<div class="dropdiv dz" id="answer_${el.id}" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>`);
           $('.answers').append(`<div class="answer_button" id="answer_${el.id}">${el.content}</div>`);
-          if (el.id !== 24 && el.id !== 26) {
-            $('.grid_parfums').append(`<img src="${el.reponse_url}" alt="" id="answer_${el.id}" draggable="true" class="draggable answer_img" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">`)
-          }
+          $('.grid_parfums').append(`<img src="${el.reponse_url}" alt="" id="answer_${el.id}" draggable="true" class="draggable answer_img" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">`)
         })
       } else {
         showError();
@@ -309,7 +307,9 @@ const check_answer6 = async () => {
         var tableauTriJ6 = [{}, {}, {}, {}, {}];
 
         valid_resp.data.map(el => {
+          (el.id === 24 ? tableauTriJ6.splice(0, 1, el) : null);
           (el.id === 25 ? tableauTriJ6.splice(1, 1, el) : null);
+          (el.id === 26 ? tableauTriJ6.splice(2, 1, el) : null);
           (el.id === 27 ? tableauTriJ6.splice(3, 1, el) : null);
           (el.id === 28 ? tableauTriJ6.splice(4, 1, el) : null);
         })
