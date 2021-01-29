@@ -176,6 +176,8 @@ main {
     position: relative;
     margin: 0 auto;
     overflow: hidden;
+    touch-action: none;
+    -ms-touch-action: none;
     // @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
     .screen {
         width: 100vw;
