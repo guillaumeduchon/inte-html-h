@@ -62,11 +62,12 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_rule.html") {
     if (isLogged()) {
-      if (!gameStarted()) {
-        fetch_rules(Number(localStorage.getItem('jour')));
-      } else {
-        goGame(Number(localStorage.getItem('jour')))
-      }
+      fetch_rules(Number(localStorage.getItem('jour')));
+      // if (!gameStarted()) {
+      //   fetch_rules(Number(localStorage.getItem('jour')));
+      // } else {
+      //   goGame(Number(localStorage.getItem('jour')))
+      // }
 
     } else {
       goLogin()
