@@ -1005,7 +1005,6 @@ main {
                 &.q4 {
                     background: url('../img/fond_q4.jpg') no-repeat right;
                     background-size: cover;
-                    .question {text-shadow: 2px 0 0 $grey-bg, -2px 0 0 $grey-bg, 0 2px 0 $grey-bg, 0 -2px 0 $grey-bg, 1px 1px $grey-bg, -1px -1px 0 $grey-bg, 1px -1px 0 $grey-bg, -1px 1px 0 $grey-bg;}
                 }
                 .tryagain {
                     animation: displayblock 0.5s linear, hideblock 0.5s linear forwards 5s;
@@ -1124,7 +1123,15 @@ main {
                                         width: 150px;
                                         justify-content: flex-end;
                                         align-items: start;
-                                        text-shadow: 1px 0 0 $white, -1px 0 0 $white, 0 1px 0 $white, 0 -1px 0 $white, 1px 1px $white, -1px -1px 0 $white, 1px -1px 0 $white, -1px 1px 0 $white;
+                                        &#answer_43, &#answer_45, &#answer_47, &#answer_48, &#answer_50 {
+                                            color: $white;
+                                        }
+                                        &.win {
+                                            &#answer_43, &#answer_45, &#answer_47, &#answer_48, &#answer_50 {color: $green;}
+                                        }
+                                        &.lose {
+                                            &#answer_43, &#answer_45, &#answer_47, &#answer_48, &#answer_50 {color: $red;}
+                                        }
                                     }
                                 }
                             }
@@ -1347,20 +1354,20 @@ main {
                                 border: 1px dotted $grey-dark;
                                 .answer_button {
                                     max-width: 2000px;
-                                    max-height: 30px;
+                                    max-height: 34px;
                                     align-items: start;
                                     white-space: nowrap;
                                     text-overflow: ellipsis;
                                     display: block;
                                     @media screen and (orientation:landscape) and (min-width: 1024px) {
-                                        max-height: 47px;
+                                        max-height: 49px;
                                         align-items: center;
                                         max-width: 100%;
                                         white-space: normal;
                                         display: flex;
                                     }
                                     @media screen and (orientation:landscape) and (min-width: 1366px) {
-                                        max-height: 60px;
+                                        max-height: 62px;
                                     }
                                 }
                             }

@@ -179,7 +179,7 @@ const fetch_reponse3 = async () => {
       var $slideGame = $(`<div class="carousel_cell">
       <figure class="item">
         <img src="${response.reponse_url}" alt="">
-          <figcaption class="answer_button" id="${response.id}">${response.content}</figcaption>
+          <figcaption class="answer_button" id="answer_${response.id}">${response.content}</figcaption>
       </figure>
     </div>`);
     $carousel.flickity('append', $slideGame);
