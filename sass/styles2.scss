@@ -1354,20 +1354,18 @@ main {
                                 border: 1px dotted $grey-dark;
                                 .answer_button {
                                     max-width: 2000px;
-                                    max-height: 34px;
-                                    align-items: start;
+                                    height: 34px;
                                     white-space: nowrap;
                                     text-overflow: ellipsis;
                                     display: block;
                                     @media screen and (orientation:landscape) and (min-width: 1024px) {
-                                        max-height: 49px;
-                                        align-items: center;
+                                        height: 49px;
                                         max-width: 100%;
                                         white-space: normal;
                                         display: flex;
                                     }
                                     @media screen and (orientation:landscape) and (min-width: 1366px) {
-                                        max-height: 62px;
+                                        height: 62px;
                                     }
                                 }
                             }
