@@ -121,6 +121,19 @@ body {
 }
 /*** - ***/
 
+/*** ADD TO HOME SCREEN MESSAGE ***/
+.add_button {
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    background: $white;
+    border-bottom: 1px solid $green;
+    text-align: center;
+    font-size: 11px;
+    color: $blue;
+    font-weight: bold;
+}
+
 /*** BANDEAU COOKIE ***/
 #cookies-eu-banner {
     font-size: 13px;
