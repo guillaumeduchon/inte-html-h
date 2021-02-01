@@ -11,12 +11,13 @@
 
     // $host= $protocol . '://' . $_SERVER['SERVER_NAME'];
 
-    // $host = '127.0.0.1';
-    // $db   = 'jeu_hermes';
-    // $user = 'hermes_surf';
-    // $pass = 'Surf2020!';
-    // $port = "3306";
-    // $charset = 'utf8mb4';
+    $host = '127.0.0.1';
+    $db   = 'jeu_hermes';
+    $user = 'hermes_surf';
+    $pass = 'Surf2020!';
+    $port = "3306";
+    $charset = 'utf8mb4';
+
 
     // $_ENV = new DotEnv(__DIR__ . '/.env')->load();
 
@@ -24,12 +25,13 @@
     // dev
     // echo getenv('DATABASE_DNS');
 
-    $host = '127.0.0.1'; //$_ENV->getenv('APP_HOST')
-    $db   = 'jeu_hermes'; //$_ENV->getenv('APP_BDD')
-    $user = 'root'; //$_ENV->getenv('APP_USER')
-    $pass = ''; //$_ENV->getenv('APP_PASS')
-    $port = "3306"; //$_ENV->getenv('APP_PORT')
-    $charset = 'utf8mb4'; //$_ENV->getenv('APP_CHARSET')
+    // $host = '127.0.0.1'; //$_ENV->getenv('APP_HOST')
+    // $db   = 'jeu_hermes'; //$_ENV->getenv('APP_BDD')
+    // $user = 'root'; //$_ENV->getenv('APP_USER')
+    // $pass = ''; //$_ENV->getenv('APP_PASS')
+    // $port = "3306"; //$_ENV->getenv('APP_PORT')
+    // $charset = 'utf8mb4'; //$_ENV->getenv('APP_CHARSET')
+
 
     $options = [
         \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,

@@ -58,6 +58,7 @@ const result_finalday = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => {
+      console.log('DATA: ',resp)
       if (resp.data.indice_id !== undefined) {
         if (resp.data.indice_id !== 0) {
           localStorage.setItem("has_win",'true');

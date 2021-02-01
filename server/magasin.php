@@ -15,10 +15,23 @@
             $magasins = $stmt->fetchAll();
             $oDatas = !$magasins ? [] :$magasins;
         } else {
-            $stmt = $pdo->prepare("SELECT * FROM magasin WHERE id=:id");
-            $stmt->execute(['id' => $decoded['magasin']]);
-            $aMagasin = $stmt->fetch();
-            $oDatas = !$aMagasin ? [] :$aMagasin;
+            if ($decoded['final_winners']) {
+                $finalQuestionID = 10;
+                $stmt = $pdo->prepare("SELECT magasin.*
+                FROM magasin
+                LEFT JOIN indice_magasin 
+                ON indice_magasin.magasin_id = magasin.id
+                WHERE indice_magasin.indice_id =:magasin_id AND question_id =:question_id
+                GROUP BY magasin.id");
+                $stmt->execute(['magasin_id' => $decoded['magasin'] , 'question_id' => $finalQuestionID]);
+                $aMagasin = $stmt->fetch();
+                $oDatas = !$aMagasin ? [] :$aMagasin;
+            } else {
+                $stmt = $pdo->prepare("SELECT * FROM magasin WHERE id=:id");
+                $stmt->execute(['id' => $decoded['magasin']]);
+                $aMagasin = $stmt->fetch();
+                $oDatas = !$aMagasin ? [] :$aMagasin;
+            }
         }
         
     }
