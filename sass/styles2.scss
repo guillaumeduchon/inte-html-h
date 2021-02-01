@@ -1364,6 +1364,7 @@ main {
                                         max-width: 100%;
                                         white-space: normal;
                                         display: flex;
+                                        line-height: inherit;
                                     }
                                     @media screen and (orientation:landscape) and (min-width: 1366px) {
                                         height: 62px;
