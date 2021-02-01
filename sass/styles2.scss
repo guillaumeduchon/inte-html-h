@@ -1357,6 +1357,7 @@ main {
                                     height: 34px;
                                     white-space: nowrap;
                                     text-overflow: ellipsis;
+                                    overflow: hidden;
                                     display: flex;
                                     @media screen and (orientation:landscape) and (min-width: 1024px) {
                                         height: 49px;
