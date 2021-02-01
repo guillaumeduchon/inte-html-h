@@ -176,12 +176,14 @@ main {
     position: relative;
     margin: 0 auto;
     overflow: hidden;
-    @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
+    touch-action: none;
+    -ms-touch-action: none;
+    // @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
     .screen {
         width: 100vw;
-        overflow: hidden;
         height: calc(var(--vh, 1vh) * 100);
-        @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
+        overflow: hidden;
+        // @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
         min-height: -webkit-fill-available;
     }
     .flex_contain {
@@ -1126,6 +1128,7 @@ main {
                                         }
                                         &.win {
                                             &#answer_43, &#answer_45, &#answer_47, &#answer_48, &#answer_50 {color: $green;}
+                                            &#answer_46 {color: $blue;}
                                         }
                                         &.lose {
                                             &#answer_43, &#answer_45, &#answer_47, &#answer_48, &#answer_50 {color: $red;}
@@ -1351,21 +1354,21 @@ main {
                                 img {width: 100%;}
                                 border: 1px dotted $grey-dark;
                                 .answer_button {
-                                    max-width: 2000px;
-                                    max-height: 34px;
-                                    align-items: start;
+                                    max-width: 100%;
+                                    height: 34px;
+                                    line-height: 22px;
                                     white-space: nowrap;
                                     text-overflow: ellipsis;
                                     display: block;
                                     @media screen and (orientation:landscape) and (min-width: 1024px) {
-                                        max-height: 49px;
-                                        align-items: center;
+                                        height: 49px;
                                         max-width: 100%;
                                         white-space: normal;
                                         display: flex;
+                                        line-height: inherit;
                                     }
                                     @media screen and (orientation:landscape) and (min-width: 1366px) {
-                                        max-height: 62px;
+                                        height: 62px;
                                     }
                                 }
                             }
