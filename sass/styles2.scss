@@ -127,11 +127,13 @@ body {
     width: 100%;
     padding: 10px;
     background: $white;
+    border: 0;
     border-bottom: 1px solid $green;
     text-align: center;
     font-size: 11px;
     color: $blue;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 /*** BANDEAU COOKIE ***/
