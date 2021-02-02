@@ -1222,6 +1222,7 @@ main {
                         @media screen and (orientation:landscape) and (max-width: 640px) {width: 90%;}
                         padding: 0;
                         margin: 0 auto;
+                        text-align: center;
                         #timer {
                             @media screen and (orientation:landscape) and (max-width: 600px) {
                                 .timer_new {

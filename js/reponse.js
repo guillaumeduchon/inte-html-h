@@ -552,7 +552,7 @@ function handle_user_responsesFinal(existFalseAnswer, tableauTri) {
       goFinalWin();
     } else {
       colors_buttonFinal(tableauTri)
-      showWrongFinalAnswer();
+      showWrongAnswer();
     }
   } else {
     if (!existFalseAnswer) {
@@ -560,7 +560,7 @@ function handle_user_responsesFinal(existFalseAnswer, tableauTri) {
       goFinalWin(), clear_counter()
     } else {
       colors_buttonFinal(tableauTri)
-      clear_counter(), goFinalLoose(), showWrongFinalAnswer()
+      clear_counter(), goFinalLoose(), showWrongAnswer()
     }
   }
 }

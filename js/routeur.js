@@ -238,16 +238,17 @@ function goLoose() {
 }
 
 function goFinalWin() {
+  $('.game_button').remove()
   stopGame();
-  $('.cta_button').remove()
   setTimeout(() => {
     window.location.href = "endgame_win.html"
   }, 3000);
 }
 
 function goFinalLoose() {
-  stopGame();
   setTimeout(() => {
+    stopGame();
+    $('.game_button').remove()
     window.location.href = "endgame_lose.html";
   }, 3000)
 }
