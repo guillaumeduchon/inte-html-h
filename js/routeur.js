@@ -287,7 +287,7 @@ function goLoose() {
 
 function goFinalWin() {
   stopGame();
-  $('.cta_button').remove();
+  $('.game_button').remove();
   setTimeout(() => {
     localStorage.setItem("has_win",'true');
     window.location.href = "endgame_win.html";
@@ -297,6 +297,7 @@ function goFinalWin() {
 function goFinalLoose() {
   stopGame();
   setTimeout(() => {
+    $('.game_button').remove()
     localStorage.setItem("has_win", 'false');
     window.location.href = "endgame_lose.html";
   }, 3000)

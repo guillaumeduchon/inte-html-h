@@ -14,29 +14,36 @@
 <body>
     <main>
         <div class="screen row no-gutters">
-            <div class="flex_contain finalgame_screen">
-                <div class="finalgame_container">
-                    <div class="finalgame_contain">
+            <div class="flex_contain game_screen">
+                <div class="game_container flex_contain">
+                    <div class="game_space finalgame">
+                        <div class="tryagain">dommage, mauvaise réponse, il vous reste une tentative !</div>
+                        <div class="finalgame_contain">
+                            <h2>Le H24 Challenge touche à sa fin !</h2>
+                            <p></p>
+                            <div class="finalgame_indice"></div>
+                            <div class="finalgame_answer">
+                                <form>
+                                    <input type="text" maxlength="1" name="" id="answer_1">
+                                    <input type="text" maxlength="1" name="" id="answer_2">
+                                    <input type="text" maxlength="1" name="" id="answer_3">
+                                    <input type="text" maxlength="1" name="" id="answer_4">
+                                    <input type="text" maxlength="1" name="" id="answer_5">
+                                    <input type="text" maxlength="1" name="" id="answer_6">
+                                    <input type="text" maxlength="1" name="" id="answer_7">
+                                    <input type="text" maxlength="1" name="" id="answer_8">
+                                    <input type="text" maxlength="1" name="" id="answer_9">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game_infos">
                         <div id="timer"></div>
-                        <h2>Le H24 Challenge touche à sa fin !</h2>
-                        <p></p>
-                        <div class="finalgame_indice"></div>
-                        <div class="finalgame_answer">
-                            <form>
-                                <input type="text" maxlength="1" name="" id="answer_1">
-                                <input type="text" maxlength="1" name="" id="answer_2">
-                                <input type="text" maxlength="1" name="" id="answer_3">
-                                <input type="text" maxlength="1" name="" id="answer_4">
-                                <input type="text" maxlength="1" name="" id="answer_5">
-                                <input type="text" maxlength="1" name="" id="answer_6">
-                                <input type="text" maxlength="1" name="" id="answer_7">
-                                <input type="text" maxlength="1" name="" id="answer_8">
-                                <input type="text" maxlength="1" name="" id="answer_9">
-                            </form>
+                        <div class="try">
+                            <span class="title">Essais restants</span>
+                            <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
                         </div>
-                        <div class="cta_diamond" onclick="check_answer10()">
-                            <span>VALIDER</span>
-                        </div>
+                        <div class="game_button" onclick="check_answer10()" id="valide"><span>VALIDER</span></div>
                     </div>
                 </div>
             </div>

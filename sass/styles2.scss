@@ -1210,6 +1210,90 @@ main {
                     background: url('../img/fond_q4.jpg') no-repeat right;
                     background-size: cover;
                 }
+                &.finalgame {
+                    background: url('../img/fond_finalgame.jpg') no-repeat;
+                    background-size: cover;
+                    color: $white;
+                    margin:0 auto;
+                    display: flex;
+                    align-items: center;
+                    padding: 20px 0;
+                    .finalgame_contain {
+                        width: 80%;
+                        @media screen and (orientation:landscape) and (max-width: 640px) {width: 90%;}
+                        padding: 0;
+                        margin: 0 auto;
+                        text-align: center;
+                        h2 {
+                            text-transform: uppercase;
+                            @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 21px;}
+                            @media screen and (orientation:landscape) and (min-width: 1024px) {font-size: 30px; margin-bottom: 12px;}
+                        }
+                        p {
+                            font-weight: bold;
+                            text-transform: uppercase;
+                            font-size: 15px;
+                            line-height: 19px;
+                            @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 13px; line-height: 17px;}
+                            @media screen and (orientation:landscape) and (min-width: 1024px) {font-size: 19px; line-height: 23px;}
+                        }
+                        .finalgame_indice {
+                            font-weight: bold;
+                            text-transform: uppercase;
+                            color: $green;
+                            font-size: 21px;
+                            padding-bottom: 10px;
+                            @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 16px;}
+                            @media screen and (orientation:landscape) and (min-width: 1024px) {font-size: 27px;}
+                        }
+                        form {
+                            input[type="text"]{
+                                display: inline-block;
+                                width: 40px;
+                                height: 40px;
+                                font-size: 22px;
+                                line-height: 40px;
+                                text-align: center;
+                                text-transform: uppercase;
+                                position: relative;
+                                box-shadow: 0 0 0 0;
+                                border-radius: 0;
+                                border-style: initial;
+                                padding: 3px;
+                                -webkit-appearance: none;
+                                @media screen and (orientation:landscape) and (min-width: 1024px) {
+                                    width: 65px;
+                                    height: 65px;
+                                    font-size: 30px;
+                                    line-height: 65px;
+                                    margin: 0 3px;
+                                }
+                                &.win {
+                                    border: 2px solid $green;
+                                    color: $green;
+                                    background-color: $green-light;
+                                }
+                                &.lose {
+                                    border: 2px solid $red;
+                                    color: $red;
+                                }
+                            }
+                            margin-bottom: 30px;
+                            @media screen and (orientation:landscape) and (min-width: 1024px) {margin-bottom: 45px;}
+                        }
+                        .cta_diamond {
+                            @media screen and (orientation:landscape) and (max-width: 920px) {
+                                height: 110px;
+                                width: 110px;
+                                a, span {font-size: 14px; line-height: 60px;}
+                            }
+                            &:after {
+                                background-color: $green;
+                                box-shadow: 0 0 0 0;
+                            }
+                        }
+                    }
+                }
                 .tryagain {
                     animation: displayblock 0.5s linear, hideblock 0.5s linear forwards 5s;
                     background: $green;
@@ -1327,15 +1411,15 @@ main {
                                         width: 150px;
                                         justify-content: flex-end;
                                         align-items: start;
-                                        &#answer_43, &#answer_45, &#answer_47, &#answer_48, &#answer_50 {
+                                        &.answer_43, &.answer_45, &.answer_47, &.answer_48, &.answer_50 {
                                             color: $white;
                                         }
                                         &.win {
-                                            &#answer_43, &#answer_45, &#answer_47, &#answer_48, &#answer_50 {color: $green;}
-                                            &#answer_46 {color: $blue;}
+                                            &.answer_43, &.answer_45, &.answer_47, &.answer_48, &.answer_50 {color: $green;}
+                                            &.answer_46 {color: $blue;}
                                         }
                                         &.lose {
-                                            &#answer_43, &#answer_45, &#answer_47, &#answer_48, &#answer_50 {color: $red;}
+                                            &.answer_43, &.answer_45, &.answer_47, &.answer_48, &.answer_50 {color: $red;}
                                         }
                                     }
                                 }
@@ -1583,6 +1667,7 @@ main {
                             @media screen and (orientation:landscape) and (min-width: 1366px) {height: 64px;}
                         }
                     }
+                    
                     .grid_parfums {
                         display: grid;
                         grid-template-columns: repeat(1, 1fr);

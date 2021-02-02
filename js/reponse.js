@@ -174,7 +174,7 @@ const fetch_reponse3 = async () => {
       var $slideGame = $(`<div class="carousel_cell">
       <figure class="item">
         <img src="${response.reponse_url}" alt="">
-          <figcaption class="answer_button" id="answer_${response.id}">${response.content}</figcaption>
+          <figcaption class="answer_button answer_${response.id}" id="${response.id}">${response.content}</figcaption>
       </figure>
     </div>`);
     $carousel.flickity('append', $slideGame);
@@ -536,7 +536,7 @@ function handle_user_responsesFinal(existFalseAnswer, valid_resp) {
       goFinalWin();
     } else {
       colors_buttonFinal(valid_resp)
-      showWrongFinalAnswer();
+      showWrongAnswer();
     }
   } else {
     if (!existFalseAnswer) {
@@ -544,7 +544,7 @@ function handle_user_responsesFinal(existFalseAnswer, valid_resp) {
       goFinalWin(), clear_counter()
     } else {
       colors_buttonFinal(valid_resp)
-      clear_counter(), goFinalLoose(), showWrongFinalAnswer()
+      clear_counter(), goFinalLoose(), showWrongAnswer()
     }
   }
 }
