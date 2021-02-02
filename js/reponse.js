@@ -587,7 +587,7 @@ function handle_user_responsesFinal(existFalseAnswer, tableauTri) {
 
 //---------------------------------------------Utils
 
-function getId(answer) { console.log('GET ID:', answer); return Number(answer.replace('answer_', '')); }
+function getId(answer) {return Number(answer.replace('answer_', '')); }
 
 function all_button_win() {
   $('.answer_button').each((index, button) => {
@@ -611,10 +611,10 @@ function colors_button2(tableauTri) {
 }
 
 function colors_button3(tableauTri) {
-  for(i=0; i < tableauTri.length ; i++) {
-    let $button = $('.dz > .answer_img:eq('+i+')')
-    tableauTri[i].id === getId($button.attr('id')) ? $button.addClass('win') : $button.addClass('lose')
-  }
+  // for(i=0; i < tableauTri.length ; i++) {
+  //   let $button = $('.dz > .answer_img:eq('+i+')')
+  //   tableauTri[i].id === getId($button.attr('id')) ? $button.addClass('win') : $button.addClass('lose')
+  // }
 }
 
 function colors_buttonFinal(tableauTri) {
