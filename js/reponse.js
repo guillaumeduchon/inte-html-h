@@ -576,7 +576,7 @@ function handle_user_responsesFinal(existFalseAnswer, tableauTri) {
 
 //---------------------------------------------Utils
 
-function getId(answer) { return Number(answer.replace('answer_', '')); }
+function getId(answer) { console.log('GET ID:', answer); return Number(answer.replace('answer_', '')); }
 
 function all_button_win() {
   $('.answer_button').each((index, button) => {
