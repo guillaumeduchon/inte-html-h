@@ -328,8 +328,8 @@ const check_answer6 = async () => {
 
         var existFalseAnswer = false;
         $('.dz > .answer_img').each((index, el) => {
+          console.log($(el).attr('id'));
           if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
-            console.log($(el).attr('id'));
             existFalseAnswer = true;
           }
         });
