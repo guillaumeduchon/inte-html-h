@@ -325,22 +325,22 @@ const check_answer6 = async () => {
         })
 
         var existFalseAnswer = false;
-        // $('.dz > img').each((index, el) => {
-        //   if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
-        //     existFalseAnswer = true;
-        //   }
-        // });
-
-        $('.dropzone > .dropdiv.dz').each((index, el) => {
-          let rowImgId = undefined;
-
-          if ($(el).find('.answer_img').length > 0) {
-            rowImgId = getId($(el).find('.answer_img').attr('id'));
-          }
-          if (rowImgId !== tableauTriJ6[index].id) {
+        $('.dz > img').each((index, el) => {
+          if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
             existFalseAnswer = true;
           }
         });
+
+        // $('.dropzone > .dropdiv.dz').each((index, el) => {
+        //   let rowImgId = undefined;
+
+        //   if ($(el).find('.answer_img').length > 0) {
+        //     rowImgId = getId($(el).find('.answer_img').attr('id'));
+        //   }
+        //   if (rowImgId !== tableauTriJ6[index].id) {
+        //     existFalseAnswer = true;
+        //   }
+        // });
 
         handle_user_responses3(existFalseAnswer, tableauTriJ6, true)
 
