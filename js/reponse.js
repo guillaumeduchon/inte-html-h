@@ -422,12 +422,13 @@ const fetch_reponse9 = async () => {
     });
 }
 const check_answer9 = async () => {
+  console.log("[{'canvasRelativeX '}]");
   await axios.post('/server/reponse.php', { day_num: 9, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
       if (valid_resp.data[0].id !== undefined) {
-        console.log("[{'canvasRelativeX '}]")
+        
         var tableauTriJ9 = [{}, {}, {}, {}];
         
         valid_resp.data.map(el => {
