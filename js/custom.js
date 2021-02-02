@@ -53,7 +53,7 @@ const updatePlateau = () => {
     if (el.day_date === today_date) {
       el.highlight = '';
       el.status = 'available';
-      el.img = 'img/fond_plateau_available.png';
+      el.img = 'img/fond_plateau_available_v2.png';
       el.iconDisplay = 'hide';
       el.linkDisplay = '';  
       var indexSlide = tab_day-1;
