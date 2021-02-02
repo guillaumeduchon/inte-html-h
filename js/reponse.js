@@ -452,14 +452,14 @@ const check_answer9 = async () => {
               existFalseAnswer = true;
             }
           } else {
-            if (!idsTab1.includes(getId($(el).attr('id')))) {
+            if (!idsTab2.includes(getId($(el).attr('id')))) {
               existFalseAnswer = true;
             }
           }
           
         });
 
-        handle_user_responses4(existFalseAnswer, tableauTriJ9);
+        handle_user_responses4(existFalseAnswer, tableauTriJ9, idsTab1, idsTab2);
 
         onTimesUp()
 
@@ -554,25 +554,25 @@ function handle_user_responses3(existFalseAnswer, tableauTri) {
     }
   }
 }
-function handle_user_responses4(existFalseAnswer, tableauTri) {
+function handle_user_responses4(existFalseAnswer, tableauTri, idsTab1, idsTab2) {
   let trial_storage = Number(localStorage.getItem('trial'));
   //Si on est au premier essaie
   if (trial_storage > 1) {
     if (!existFalseAnswer) {
-      colors_button2(tableauTri)
+      colors_button2(tableauTri, idsTab1, idsTab2)
       goWin();
       clear_counter()
     } else {
-      colors_button2(tableauTri);
+      colors_button2(tableauTri, idsTab1, idsTab2);
       showWrongAnswer();
     }
   } else {
     if (!existFalseAnswer) {
-      colors_button2(tableauTri);
+      colors_button2(tableauTri, idsTab1, idsTab2);
       goWin();
       clear_counter()
     } else {
-      colors_button2(tableauTri);
+      colors_button2(tableauTri, idsTab1, idsTab2);
       clear_counter(), goLoose(), showWrongAnswer()
     }
   }
@@ -620,9 +620,21 @@ function colors_button(valid_answers) {
   })
 }
 
-function colors_button2(tableauTri) {
+function colors_button2(tableauTri, idsTab1, idsTab2) {
   $('.answer_button').each((index, button) => {
-    tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
+    if(index < 2) {
+      if (!idsTab1.includes(getId($(button).attr('id')))) {
+        tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
+      }else {
+        $(button).addClass('lose')
+      }
+    } else {
+      if (!idsTab2.includes(getId($(button).attr('id')))) {
+        tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
+      } else {
+        $(button).addClass('lose')
+      }
+    }
   })
 }
 
