@@ -32,8 +32,8 @@
     // message in all supported languages
     ath.intl = {
         fr_fr: {
-            ios: 'Pour ajouter cette application web sur l\'écran d\'accueil : Appuyez %icon et sélectionnez <strong>Ajouter sur l\'écran d\'accueil</strong>.',
-            android: 'Pour ajouter cette application web sur l\'écran d\'accueil : Appuyez sur le bouton "menu", puis sur <strong>Ajouter sur l\'écran d\'accueil</strong>. <small>Le menu peut-être accessible en appuyant sur le bouton "menu" du téléphone s\'il en possède un <i class="fa fa-bars"></i>. Sinon, il se trouve probablement dans la coin supérieur droit du navigateur %icon.</small>'
+            ios: 'Pour ajouter H24 Challenge sur l\'écran d\'accueil : Appuyez sur %icon et sélectionnez <strong>Ajouter sur l\'écran d\'accueil</strong>.',
+            android: 'Pour ajouter H24 Challenge sur l\'écran d\'accueil : Appuyez sur le bouton "menu", puis sur <strong>Ajouter sur l\'écran d\'accueil</strong>. <small>Le menu peut-être accessible en appuyant sur le bouton "menu" du téléphone s\'il en possède un <i class="fa fa-bars"></i>. Sinon, il se trouve probablement dans la coin supérieur droit du navigateur %icon.</small>'
         },
     };
     
@@ -45,7 +45,7 @@
     // default options
     ath.defaults = {
         appID: 'org.cubiq.addtohome',		// local storage name (no need to change)
-        fontSize: 15,				// base font size, used to properly resize the popup based on viewport scale factor
+        fontSize: 14,				// base font size, used to properly resize the popup based on viewport scale factor
         debug: false,				// override browser checks
         logging: false,				// log reasons for showing or not showing to js console; defaults to true when debug is true
         modal: false,				// prevent further actions until the message is closed
@@ -54,7 +54,8 @@
         skipFirstVisit: false,		// show only to returning visitors (ie: skip the first time you visit)
         startDelay: 1,				// display the message after that many seconds from page load
         lifespan: 15,				// life of the message in seconds
-        displayPace: 1440,			// minutes before the message is shown again (0: display every time, default 24 hours)
+        // displayPace: 1440,			// minutes before the message is shown again (0: display every time, default 24 hours)
+        displayPace: 0,
         maxDisplayCount: 0,			// absolute maximum number of times the message will be shown to the user (0: no limit)
         icon: true,					// add touch icon to the message
         message: '',				// the message can be customized
@@ -82,7 +83,7 @@
     });
     
     // falls back to en_us if language is unsupported
-    ath.language = ath.language && ath.language in ath.intl ? ath.language : 'en_us';
+    ath.language = ath.language && ath.language in ath.intl ? ath.language : 'fr_fr';
     
     ath.isMobileSafari = ath.isIDevice && _ua.indexOf('Safari') > -1 && _ua.indexOf('CriOS') < 0;
     ath.OS = ath.isIDevice ? 'ios' : ath.isMobileChrome ? 'android' : ath.isMobileIE ? 'windows' : 'unsupported';
