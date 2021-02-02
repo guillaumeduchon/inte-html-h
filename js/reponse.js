@@ -611,10 +611,10 @@ function colors_button2(tableauTri) {
 }
 
 function colors_button3(tableauTri) {
-  for(i=0; i < tableauTri ; i++) {
+  for(i=0; i < tableauTri.length ; i++) {
     let $button = $('.dz > .answer_img:eq('+i+')')
     console.table([{'QQQQQQ' : String(tableauTri[i].id) ,'RRRRRRRRRR' :  getId($button.attr('id')) }])
-    String(tableauTri[i].id) === getId($button.attr('id')) ? $button.parent().addClass('win') : $button.parennt().addClass('lose')
+    String(tableauTri[i].id) === getId($button.attr('id')) ? $button.addClass('win') : $button.addClass('lose')
   }
 }
 
