@@ -611,10 +611,11 @@ function colors_button2(tableauTri) {
 }
 
 function colors_button3(tableauTri) {
-  // for(i=0; i < tableauTri.length ; i++) {
-  //   let $button = $('.dz > .answer_img:eq('+i+')')
-  //   tableauTri[i].id === getId($button.attr('id')) ? $button.addClass('win') : $button.addClass('lose')
-  // }
+  for(i=0; i < tableauTri.length ; i++) {
+    let $button = $('.dz > .answer_img:eq('+i+')')
+    console.table([{'button :' : $button , 'canvasRelativeY: ': canvasRelativeY}])
+    //tableauTri[i].id === getId($button.attr('id')) ? $button.addClass('win') : $button.addClass('lose')
+  }
 }
 
 function colors_buttonFinal(tableauTri) {
