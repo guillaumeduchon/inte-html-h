@@ -427,6 +427,7 @@ const check_answer9 = async () => {
   })
     .then((valid_resp) => {
       if (valid_resp.data[0].id !== undefined) {
+        console.log("[{'canvasRelativeX '}]")
         var tableauTriJ9 = [{}, {}, {}, {}];
         
         valid_resp.data.map(el => {
