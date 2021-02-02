@@ -316,6 +316,8 @@ const check_answer6 = async () => {
       if (valid_resp.data[0].id !== undefined) {
         var tableauTriJ6 = [{}, {}, {}, {}, {}];
 
+        console.log('TEST');
+
         valid_resp.data.map(el => {
           (el.id === 24 ? tableauTriJ6.splice(0, 1, el) : null);
           (el.id === 25 ? tableauTriJ6.splice(1, 1, el) : null);
