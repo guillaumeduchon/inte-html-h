@@ -327,8 +327,9 @@ const check_answer6 = async () => {
         })
 
         var existFalseAnswer = false;
+        console.log('LENGTH:', $('.dz > .answer_img').length);
         $('.dz > .answer_img').each((index, el) => {
-          console.log($(el).attr('id'));
+          console.log('DATA:', $(el).attr('id'), ' / INDEX:', index);
           if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
             existFalseAnswer = true;
           }
