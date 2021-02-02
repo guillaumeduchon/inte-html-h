@@ -169,7 +169,9 @@ body {
 
 	font-size: 15px;
 	line-height: 1.5em;
-	text-align: center;
+    text-align: center;
+    
+    color: $blue;
 }
 
 .ath-container small {
@@ -180,8 +182,8 @@ body {
 }
 
 .ath-ios.ath-phone {
-	bottom: 1.8em;
-	left: 50%;
+	top: 1.8em;
+	left: 65%;
 	margin-left: -9em;
 }
 
@@ -203,7 +205,7 @@ body {
 }
 
 .ath-android {
-	bottom: 1.8em;
+	top: 1.8em;
 	left: 50%;
 	margin-left: -9em;
 }
@@ -339,12 +341,12 @@ body {
 	margin: 0 auto 0.2em auto;
 	height: 6em;
 	width: 6em;
-	z-index: 2147483642;
+    z-index: 2147483642;
+    border-radius: 1em;
+	border: 1px solid $green;
 }
 
 .ath-container.ath-ios .ath-application-icon {
-	border-radius: 1em;
-	border: 1px solid $green;
 	margin: 0 auto 0.4em auto;
 }
 

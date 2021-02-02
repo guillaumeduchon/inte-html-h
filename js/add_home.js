@@ -33,7 +33,7 @@
     ath.intl = {
         fr_fr: {
             ios: 'Pour ajouter H24 Challenge sur l\'écran d\'accueil : Appuyez sur %icon et sélectionnez <strong>Ajouter sur l\'écran d\'accueil</strong>.',
-            android: 'Pour ajouter H24 Challenge sur l\'écran d\'accueil : Appuyez sur le bouton "menu", puis sur <strong>Ajouter sur l\'écran d\'accueil</strong>. <small>Le menu peut-être accessible en appuyant sur le bouton "menu" du téléphone s\'il en possède un <i class="fa fa-bars"></i>. Sinon, il se trouve probablement dans la coin supérieur droit du navigateur %icon.</small>'
+            android: 'Pour ajouter H24 Challenge sur l\'écran d\'accueil : Appuyez sur le bouton "menu", puis sur <strong>Ajouter sur l\'écran d\'accueil</strong>. <small>Le menu peut-être accessible en appuyant sur le bouton "menu" du téléphone s\'il en possède un <i class="fa fa-bars"></i>. Sinon, il se trouve probablement dans le coin supérieur droit du navigateur %icon.</small>'
         },
     };
     
