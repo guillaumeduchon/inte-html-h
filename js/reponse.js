@@ -613,14 +613,11 @@ function colors_button2(tableauTri) {
 function colors_button3(tableauTri) {
   for(i=0; i < tableauTri.length ; i++) {
     let $button = $('.dz > .answer_img:eq('+i+')')
-    console.log('button', $button)
-    if($button) {
-      console.log('isbutton', 'isbutton')
-        //tableauTri[i].id === getId($button.attr('id')) ? $button.addClass('win') : $button.addClass('lose')
+    if($button.length > 0) {
+      tableauTri[i].id === getId($button.attr('id')) ? $button.addClass('win') : $button.addClass('lose')
     }else {
-
+      $button.addClass('lose')
     }
-    
   }
 }
 
