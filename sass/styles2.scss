@@ -1213,6 +1213,10 @@ main {
                 &.finalgame {
                     background: url('../img/fond_finalgame.jpg') no-repeat;
                     background-size: cover;
+                    color: $white;
+                    margin:0 auto;
+                    display: flex;
+                    align-items: center;
                     .finalgame_contain {
                         width: 80%;
                         @media screen and (orientation:landscape) and (max-width: 640px) {width: 90%;}
