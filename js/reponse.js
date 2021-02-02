@@ -437,10 +437,21 @@ const check_answer9 = async () => {
         })
   
         var existFalseAnswer = false;
+        let idsTab1 = tableauTriJ9.slice(0, 1).map((e)=> idsTab1.push(e.id))
+        console.table([{'idsTab1 :' : idsTab1 }])
+        
+        let idsTab2 = tableauTriJ9.slice(2, 3)
         $('.dz > .answer_button').each((index, el) => {
-          if (getId($(el).attr('id')) !== tableauTriJ9[index].id) {
-            existFalseAnswer = true;
+          if(index < 2) {
+            if (getId($(el).attr('id')) !== tableauTriJ9[index].id) {
+              existFalseAnswer = true;
+            }
+          } else {
+            if (getId($(el).attr('id')) !== tableauTriJ9[index].id) {
+              existFalseAnswer = true;
+            }
           }
+          
         });
 
         handle_user_responses4(existFalseAnswer, tableauTriJ9);
