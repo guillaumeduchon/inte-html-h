@@ -1210,6 +1210,10 @@ main {
                     background: url('../img/fond_q4.jpg') no-repeat right;
                     background-size: cover;
                 }
+                &.finalgame {
+                    background: url('../img/fond_finalgame.jpg') no-repeat;
+                    background-size: cover;
+                }
                 .tryagain {
                     animation: displayblock 0.5s linear, hideblock 0.5s linear forwards 5s;
                     background: $green;
