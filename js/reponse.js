@@ -316,8 +316,6 @@ const check_answer6 = async () => {
       if (valid_resp.data[0].id !== undefined) {
         var tableauTriJ6 = [{}, {}, {}, {}, {}];
 
-        console.log('TEST');
-
         valid_resp.data.map(el => {
           (el.id === 24 ? tableauTriJ6.splice(0, 1, el) : null);
           (el.id === 25 ? tableauTriJ6.splice(1, 1, el) : null);
@@ -327,9 +325,8 @@ const check_answer6 = async () => {
         })
 
         var existFalseAnswer = false;
-        console.log('LENGTH:', $('.dz > .answer_img').length);
         $('.dz > .answer_img').each((index, el) => {
-          console.log('DATA:', $(el).attr('id'), ' / INDEX:', index);
+          console.log('DATA:',getId($(el).attr('id')) ,"!==", tableauTriJ6[index].id);
           if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
             existFalseAnswer = true;
           }
