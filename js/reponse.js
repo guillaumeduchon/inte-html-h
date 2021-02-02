@@ -331,7 +331,6 @@ const check_answer6 = async () => {
           }
         });
 
-        console.table([{'$(.dz > .answer_img.length) :' : $('.dz > .answer_img').length , 'tableauTriJ6.length: ': tableauTriJ6.length},])
         if ($('.dz > .answer_img').length !== tableauTriJ6.length) {
           existFalseAnswer = true;
         }
@@ -520,7 +519,7 @@ function handle_user_responses3(existFalseAnswer, tableauTri) {
   //Si on est au premier essaie
   console.log(existFalseAnswer);
   if (trial_storage > 1) {
-    if (!existFalseAnswer && $('.dz > .answer_img').length == tableauTri.length) {
+    if (!existFalseAnswer) {
       colors_button3(tableauTri)
       goWin();
       clear_counter()
@@ -529,7 +528,7 @@ function handle_user_responses3(existFalseAnswer, tableauTri) {
       showWrongAnswer();
     }
   } else {
-    if (!existFalseAnswer && $('.dz > .answer_img').length == tableauTri.length) {
+    if (!existFalseAnswer) {
       colors_button3(tableauTri)
       goWin();
       clear_counter()
@@ -612,9 +611,11 @@ function colors_button2(tableauTri) {
 }
 
 function colors_button3(tableauTri) {
-  $('.answer_img').each((index, button) => {
-    String(tableauTri[index].id) === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
-  })
+  for(i=0; i < tableauTri ; i++) {
+    let $button = $('.dz > .answer_img:eq('+i+')')
+    console.table([{'QQQQQQ' : String(tableauTri[i].id) ,'RRRRRRRRRR' :  getId($button.attr('id')) }])
+    String(tableauTri[i].id) === getId($button.attr('id')) ? $button.parent().addClass('win') : $button.parennt().addClass('lose')
+  }
 }
 
 function colors_buttonFinal(tableauTri) {
