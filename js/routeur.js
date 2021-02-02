@@ -80,6 +80,12 @@ $(document).ready(function () {
     isLogged() ? fetch_movie(Number(localStorage.getItem('jour'))) : goLogin()
   }
 
+  //--------------------------------------------------------- PAGE PERDU VIDEO
+
+  if (location.pathname === "/game_lose_video.html") {
+    isLogged() ? fetch_movie(Number(localStorage.getItem('DAY_NUM'))) : goLogin();
+  }
+
   //--------------------------------------------------------- PAGE INDICE
 
   if (location.pathname === "/game_indice.html") {

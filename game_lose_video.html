@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Jeu-concours Hermes</title>
     <link rel="stylesheet" href="css/style2.css">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/icon_manifest.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="img/icon_manifest.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <main>
         <div class="screen row no-gutters">
-            <div class="flex_contain rules_screen rules_endgame">
-                <div class="rules_container lose">
-                    <div class="rules_contain">
-                        <h3>Dommage !</h3>
-                        <h4>Tentez votre chance demain</h4>
-                        <div class="explicgame"></div>
-                        <p>En attendant le prochain challenge, vivez une expérience digitale inédite en cliquant sur le lien suivant : <a href="https://www.suivez-la-ligne-verte.com" target="_blank" class="link nomaj">www.suivez-la-ligne-verte.com</a></p>
-                        <p><a href="/game_lose_video.html" class="link">Retour à l'accueil</a></p>
+            <div class="flex_contain video_screen">
+                    <div id="videoIndice">
+                        <video autoplay id="video" class="videoreplace" controls></video>
+                        <div id="video-controls" class="controls" data-state="hidden">
+                            <div class="message">La suite du jeu après cette vidéo</div>
+                            <div class="progress">
+                                <progress id="progress" value="0" min="0">
+                                    <span id="progress-bar"></span>
+                                </progress>
+                            </div>
+                            <button id="playpause" type="button" data-state="play"></button>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     </main>
@@ -39,7 +39,7 @@
     <script src="js/custom.js"></script>
     <script src="js/user.js"></script>
     <script src="js/routeur.js"></script>
-    <script src="js/question.js"></script>
     <script src="js/indice.js"></script>
+    <script src="js/video2.js"></script>
 </body>
 </html>
