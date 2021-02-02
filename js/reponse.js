@@ -301,7 +301,7 @@ const fetch_reponse6 = async () => {
         res.data.map(el => {
           // $('.dropzone').append(`<div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>`);
           $('.answers').append(`<div class="answer_button" id="answer_${el.id}">${el.content}</div>`);
-          $('.grid_parfums').append(`<img src="${el.reponse_url}" alt="" id="answer_${el.id}" draggable="true" class="draggable answer_img" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">`)
+          $('.grid_parfums').append(`<img src="${el.reponse_url}" alt="" id="answer_${el.id}" draggable="true" class="answer_img" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">`)
         })
       } else {
         showError();
@@ -325,22 +325,22 @@ const check_answer6 = async () => {
         })
 
         var existFalseAnswer = false;
-        $('.dz > img').each((index, el) => {
-          if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
-            existFalseAnswer = true;
-          }
-        });
-
-        // $('.dropzone > .dropdiv.dz').each((index, el) => {
-        //   let rowImgId = undefined;
-
-        //   if ($(el).find('.answer_img').length > 0) {
-        //     rowImgId = getId($(el).find('.answer_img').attr('id'));
-        //   }
-        //   if (rowImgId !== tableauTriJ6[index].id) {
+        // $('.dz > img').each((index, el) => {
+        //   if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
         //     existFalseAnswer = true;
         //   }
         // });
+
+        $('.dropzone > .dropdiv.dz').each((index, el) => {
+          let rowImgId = undefined;
+
+          if ($(el).find('.answer_img').length > 0) {
+            rowImgId = getId($(el).find('.answer_img').attr('id'));
+          }
+          if (rowImgId !== tableauTriJ6[index].id) {
+            existFalseAnswer = true;
+          }
+        });
 
         handle_user_responses3(existFalseAnswer, tableauTriJ6, true)
 
