@@ -331,6 +331,11 @@ const check_answer6 = async () => {
           }
         });
 
+        console.table([{'$(.dz > .answer_img.length) :' : $('.dz > .answer_img').length , 'tableauTriJ6.length: ': tableauTriJ6.length},])
+        if ($('.dz > .answer_img').length !== tableauTriJ6.length) {
+          existFalseAnswer = true;
+        }
+
         // $('.dropzone > .dropdiv.dz').each((index, el) => {
         //   let rowImgId = undefined;
 
@@ -435,7 +440,7 @@ const check_answer9 = async () => {
     .then((valid_resp) => {
       if (valid_resp.data[0].id !== undefined) {
         var tableauTriJ9 = [{}, {}, {}, {}];
-
+        
         valid_resp.data.map(el => {
           (el.id === 35 ? tableauTriJ9.splice(0, 1, el) : null);
           (el.id === 36 ? tableauTriJ9.splice(1, 1, el) : null);
@@ -532,7 +537,7 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
   if (trial_storage > 1) {
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
-      if (game6 && $('.dz > .answer_img').length == 5) {
+      if (game6 && $('.dz > .answer_img').length == tableauTri.length) {
         goWin();
       } else if (!game6) {
         goWin();
