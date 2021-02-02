@@ -532,12 +532,12 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
   if (trial_storage > 1) {
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
-      clear_counter()
       if (game6 && $('.dz > .answer_img').length == 5) {
         goWin();
       } else if (!game6) {
         goWin();
       }
+      clear_counter()
     } else {
       colors(tableauTri, game6)
       showWrongAnswer();
