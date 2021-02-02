@@ -51,7 +51,7 @@ const updatePlateau = () => {
         el.linkDisplay = 'hide';
       } else {
         el.status = 'available';
-        el.img = 'img/fond_plateau_available.png';
+        el.img = 'img/fond_plateau_available_v2.png';
         el.iconDisplay = 'hide';
         el.linkDisplay = '';
       }
