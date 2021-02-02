@@ -336,18 +336,7 @@ const check_answer6 = async () => {
           existFalseAnswer = true;
         }
 
-        // $('.dropzone > .dropdiv.dz').each((index, el) => {
-        //   let rowImgId = undefined;
-
-        //   if ($(el).find('.answer_img').length > 0) {
-        //     rowImgId = getId($(el).find('.answer_img').attr('id'));
-        //   }
-        //   if (rowImgId !== tableauTriJ6[index].id) {
-        //     existFalseAnswer = true;
-        //   }
-        // });
-
-        handle_user_responses3(existFalseAnswer, tableauTriJ6, true)
+        handle_user_responses3(existFalseAnswer, tableauTriJ6)
 
         onTimesUp()
 
@@ -455,9 +444,7 @@ const check_answer9 = async () => {
           }
         });
 
-        console.log("existFalseAnswer", existFalseAnswer);
-
-        handle_user_responses3(existFalseAnswer, tableauTriJ9, false);
+        handle_user_responses4(existFalseAnswer, tableauTriJ9);
 
         onTimesUp()
 
@@ -481,8 +468,6 @@ const check_answer10 = async () => {
             existFalseAnswer = true;
           }
         });
-
-        console.log("existFalseAnswer", existFalseAnswer);
 
         handle_user_responsesFinal(existFalseAnswer, valid_resp);
 
@@ -530,34 +515,49 @@ function handle_user_responses2(valid_resp) {
   clear_counter();
 }
 
-function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
+function handle_user_responses3(existFalseAnswer, tableauTri) {
   let trial_storage = Number(localStorage.getItem('trial'));
   //Si on est au premier essaie
   console.log(existFalseAnswer);
   if (trial_storage > 1) {
-    if (!existFalseAnswer) {
-      colors(tableauTri, game6)
-      if (game6 && $('.dz > .answer_img').length == tableauTri.length) {
-        goWin();
-      } else if (!game6) {
-        goWin();
-      }
+    if (!existFalseAnswer && $('.dz > .answer_img').length == tableauTri.length) {
+      colors_button3(tableauTri)
+      goWin();
       clear_counter()
     } else {
-      colors(tableauTri, game6)
+      colors_button3(tableauTri)
+      showWrongAnswer();
+    }
+  } else {
+    if (!existFalseAnswer && $('.dz > .answer_img').length == tableauTri.length) {
+      colors_button3(tableauTri)
+      goWin();
+      clear_counter()
+    } else {
+      colors_button3(tableauTri)
+      clear_counter(), goLoose(), showWrongAnswer()
+    }
+  }
+}
+function handle_user_responses4(existFalseAnswer, tableauTri) {
+  let trial_storage = Number(localStorage.getItem('trial'));
+  //Si on est au premier essaie
+  if (trial_storage > 1) {
+    if (!existFalseAnswer) {
+      colors_button2(tableauTri)
+      goWin();
+      clear_counter()
+    } else {
+      colors_button2(tableauTri);
       showWrongAnswer();
     }
   } else {
     if (!existFalseAnswer) {
-      colors(tableauTri, game6)
-      if (game6 && $('.dz > .answer_img').length == 5) {
-        goWin();
-      } else if (!game6) {
-        goWin();
-      }
+      colors_button2(tableauTri);
+      goWin();
       clear_counter()
     } else {
-      colors(tableauTri, game6)
+      colors_button2(tableauTri);
       clear_counter(), goLoose(), showWrongAnswer()
     }
   }
@@ -603,14 +603,6 @@ function colors_button(valid_answers) {
   $('.answer_button').each((index, button) => {
     valid_answers_id.includes(getId($(button).attr('id'))) ? $(button).addClass('win') : $(button).addClass('lose')
   })
-}
-
-function colors(tableauTri, game6) {
-  if (game6) {
-    colors_button3(tableauTri);
-  } else {
-    colors_button2(tableauTri);
-  }
 }
 
 function colors_button2(tableauTri) {
