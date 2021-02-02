@@ -532,6 +532,7 @@ function handle_user_responses2(valid_resp) {
 function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
   let trial_storage = Number(localStorage.getItem('trial'));
   //Si on est au premier essaie
+  console.log(existFalseAnswer);
   if (trial_storage > 1) {
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
@@ -609,9 +610,7 @@ function colors_button2(tableauTri) {
 }
 
 function colors_button3(tableauTri) {
-  console.log('COLORS');
   $('.answer_img').each((index, button) => {
-    console.log('hhh', tableauTri[index].id , getId($(button).attr('id')))
     String(tableauTri[index].id) === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
