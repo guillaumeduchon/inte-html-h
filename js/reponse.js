@@ -326,7 +326,6 @@ const check_answer6 = async () => {
 
         var existFalseAnswer = false;
         $('.dz > .answer_img').each((index, el) => {
-          console.log('DATA:',getId($(el).attr('id')) ,"!==", tableauTriJ6[index].id);
           if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
             existFalseAnswer = true;
           }
@@ -534,7 +533,11 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
       clear_counter()
-      goWin();
+      if (game6 && $('.dz > .answer_img').length == 5) {
+        goWin();
+      } else if (!game6) {
+        goWin();
+      }
     } else {
       colors(tableauTri, game6)
       showWrongAnswer();
@@ -542,7 +545,12 @@ function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
   } else {
     if (!existFalseAnswer) {
       colors(tableauTri, game6)
-      goWin(), clear_counter()
+      if (game6 && $('.dz > .answer_img').length == 5) {
+        goWin();
+      } else if (!game6) {
+        goWin();
+      }
+      clear_counter()
     } else {
       colors(tableauTri, game6)
       clear_counter(), goLoose(), showWrongAnswer()
