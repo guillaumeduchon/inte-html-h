@@ -83,7 +83,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- PAGE PERDU VIDEO
 
   if (location.pathname === "/game_lose_video.html") {
-    isLogged() ? fetch_movie(Number(localStorage.getItem('DAY_NUM'))) : goLogin();
+    isLogged() ? fetch_movie(Number(localStorage.getItem('jour'))) : goLogin()
   }
 
   //--------------------------------------------------------- PAGE INDICE
