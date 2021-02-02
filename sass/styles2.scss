@@ -1327,15 +1327,15 @@ main {
                                         width: 150px;
                                         justify-content: flex-end;
                                         align-items: start;
-                                        &#answer_43, &#answer_45, &#answer_47, &#answer_48, &#answer_50 {
+                                        &.answer_43, &.answer_45, &.answer_47, &.answer_48, &.answer_50 {
                                             color: $white;
                                         }
                                         &.win {
-                                            &#answer_43, &#answer_45, &#answer_47, &#answer_48, &#answer_50 {color: $green;}
-                                            &#answer_46 {color: $blue;}
+                                            &.answer_43, &.answer_45, &.answer_47, &.answer_48, &.answer_50 {color: $green;}
+                                            &.answer_46 {color: $blue;}
                                         }
                                         &.lose {
-                                            &#answer_43, &#answer_45, &#answer_47, &#answer_48, &#answer_50 {color: $red;}
+                                            &.answer_43, &.answer_45, &.answer_47, &.answer_48, &.answer_50 {color: $red;}
                                         }
                                     }
                                 }
@@ -1583,6 +1583,7 @@ main {
                             @media screen and (orientation:landscape) and (min-width: 1366px) {height: 64px;}
                         }
                     }
+                    
                     .grid_parfums {
                         display: grid;
                         grid-template-columns: repeat(1, 1fr);
