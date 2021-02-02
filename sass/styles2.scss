@@ -1217,6 +1217,7 @@ main {
                     margin:0 auto;
                     display: flex;
                     align-items: center;
+                    padding: 20px 0;
                     .finalgame_contain {
                         width: 80%;
                         @media screen and (orientation:landscape) and (max-width: 640px) {width: 90%;}
@@ -1279,6 +1280,8 @@ main {
                                 box-shadow: 0 0 0 0;
                                 border-radius: 0;
                                 border-style: initial;
+                                padding: 3px;
+                                -webkit-appearance: none;
                                 @media screen and (orientation:landscape) and (min-width: 1024px) {
                                     width: 65px;
                                     height: 65px;
