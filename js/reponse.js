@@ -609,7 +609,8 @@ function colors_button2(tableauTri) {
 }
 
 function colors_button3(tableauTri) {
-  $('.dropdiv.dz').each((index, button) => {
+  $('.answer_img').each((index, button) => {
+    console.log($(button));
     String(tableauTri[index].id) === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
   })
 }
