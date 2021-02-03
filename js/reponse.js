@@ -445,8 +445,9 @@ const check_answer9 = async () => {
         tableauTriJ9.slice(2, 4).map((e)=> idsTab2.push(e.id))
 
         console.table([{'idsTab1 :' : idsTab1 , 'idsTab2 :' : idsTab2 }])
+        console.log($('.dz > .answer_button').length);
 
-        $('.dz > .answer_button').each((index, el) => {
+        $('.dz > .answer_button').each((index, el) => {$
           if(index < 2) {
             if (!idsTab1.includes(getId($(el).attr('id')))) {
               existFalseAnswer = true;
@@ -458,6 +459,12 @@ const check_answer9 = async () => {
           }
           
         });
+        
+        if($('.dz > .answer_button').length === 0) {
+          existFalseAnswer = true;
+        }
+
+        console.log('EXIST', existFalseAnswer);
 
         handle_user_responses4(existFalseAnswer, idsTab1, idsTab2);
 
