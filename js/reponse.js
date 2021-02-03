@@ -624,13 +624,13 @@ function colors_button2(tableauTri, idsTab1, idsTab2) {
   $('.answer_button').each((index, button) => {
     console.log('INDEX:', index);
     if(index < 2) {
-      if (idsTab1.includes(getId($(button).attr('id')))) {
+      if (!idsTab1.includes(getId($(index).attr('id')))) {
         tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
       }else {
         $(button).addClass('lose')
       }
     } else {
-      if (idsTab2.includes(getId($(button).attr('id')))) {
+      if (!idsTab2.includes(getId($(index).attr('id')))) {
         tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
       } else {
         $(button).addClass('lose')
