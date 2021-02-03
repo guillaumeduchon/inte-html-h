@@ -283,7 +283,7 @@ const check_answer5 = async () => {
 /* ----------------------------------- REPONSE JEU 6 ----------------------------------- */
 
 const fetch_reponse6 = async () => {
-  await axios.post('/server/reponse.php', { day_num: 6 }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -299,7 +299,7 @@ const fetch_reponse6 = async () => {
     });
 }
 const check_answer6 = async () => {
-  await axios.post('/server/reponse.php', { day_num: 6, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -396,7 +396,7 @@ const check_answer8 = () => {
 /* ----------------------------------- REPONSE JEU 9 ----------------------------------- */
 
 const fetch_reponse9 = async () => {
-  await axios.post('/server/reponse.php', { day_num: 9 }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -411,7 +411,7 @@ const fetch_reponse9 = async () => {
 }
 const check_answer9 = async () => {
   console.log("[{'canvasRelativeX '}]");
-  await axios.post('/server/reponse.php', { day_num: 9, valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -609,15 +609,14 @@ function colors_button(valid_answers) {
 }
 
 function colors_button2(tableauTri, idsTab1, idsTab2) {
+  console.log('idsTab1',idsTab1, "idsTab2", idsTab2);
+
   $('.answer_button').each((index, button) => {
+    console.log("INDEX", "getId($(button).attr('id'))", getId($(button).attr('id')))
     if(index < 2) {
-      if (!idsTab1.includes(getId($(button).attr('id')))) {
-        tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
-      }
+      idsTab1.includes(getId($(button).attr('id'))) ? $(button).addClass('win') : $(button).addClass('lose')
     } else {
-      if (!idsTab2.includes(getId($(button).attr('id')))) {
-        tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
-      }
+      idsTab2.includes(getId($(button).attr('id'))) ? $(button).addClass('win') : $(button).addClass('lose')
     }
   })
 }
