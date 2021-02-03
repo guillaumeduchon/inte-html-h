@@ -559,20 +559,20 @@ function handle_user_responses4(existFalseAnswer, tableauTri, idsTab1, idsTab2) 
   //Si on est au premier essaie
   if (trial_storage > 1) {
     if (!existFalseAnswer) {
-      colors_button2(tableauTri, idsTab1, idsTab2)
+      colors_button2(idsTab1, idsTab2)
       goWin();
       clear_counter()
     } else {
-      colors_button2(tableauTri, idsTab1, idsTab2);
+      colors_button2(idsTab1, idsTab2);
       showWrongAnswer();
     }
   } else {
     if (!existFalseAnswer) {
-      colors_button2(tableauTri, idsTab1, idsTab2);
+      colors_button2(idsTab1, idsTab2);
       goWin();
       clear_counter()
     } else {
-      colors_button2(tableauTri, idsTab1, idsTab2);
+      colors_button2(idsTab1, idsTab2);
       clear_counter(), goLoose(), showWrongAnswer()
     }
   }
@@ -620,11 +620,8 @@ function colors_button(valid_answers) {
   })
 }
 
-function colors_button2(tableauTri, idsTab1, idsTab2) {
-  console.log('idsTab1',idsTab1, "idsTab2", idsTab2);
-
+function colors_button2(idsTab1, idsTab2) {
   $('.answer_button').each((index, button) => {
-    console.log("INDEX", "getId($(button).attr('id'))", getId($(button).attr('id')))
     if(index < 2) {
       idsTab1.includes(getId($(button).attr('id'))) ? $(button).addClass('win') : $(button).addClass('lose')
     } else {
