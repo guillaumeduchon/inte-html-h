@@ -283,15 +283,15 @@ const check_answer5 = async () => {
 /* ----------------------------------- REPONSE JEU 6 ----------------------------------- */
 
 const fetch_reponse6 = async () => {
-  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
+  await axios.post('/server/reponse.php', { day_num: 6 }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
       if (res.data[0].id !== undefined) {
         res.data.map(el => {
-          $('.dropzone').append(`<div class="dropdiv dz" id="answer_${el.id}" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>`);
+          // $('.dropzone').append(`<div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>`);
           $('.answers').append(`<div class="answer_button" id="answer_${el.id}">${el.content}</div>`);
-          $('.grid_parfums').append(`<img src="${el.reponse_url}" alt="" id="answer_${el.id}" draggable="true" class="draggable answer_img" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">`)
+          $('.grid_parfums').append(`<img src="${el.reponse_url}" alt="" id="answer_${el.id}" draggable="true" class="answer_img" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">`)
         })
       } else {
         showError();
@@ -299,7 +299,7 @@ const fetch_reponse6 = async () => {
     });
 }
 const check_answer6 = async () => {
-  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
+  await axios.post('/server/reponse.php', { day_num: 6, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -315,18 +315,17 @@ const check_answer6 = async () => {
         })
 
         var existFalseAnswer = false;
-        $('.dropzone > .dropdiv.dz').each((index, el) => {
-          let rowImgId = undefined;
-
-          if ($(el).find('.answer_img').length > 0) {
-            rowImgId = getId($(el).find('.answer_img').attr('id'));
-          }
-          if (rowImgId !== tableauTriJ6[index].id) {
+        $('.dz > .answer_img').each((index, el) => {
+          if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
             existFalseAnswer = true;
           }
         });
 
-        handle_user_responses3(existFalseAnswer, tableauTriJ6, true)
+        if ($('.dz > .answer_img').length !== tableauTriJ6.length) {
+          existFalseAnswer = true;
+        }
+
+        handle_user_responses3(existFalseAnswer, tableauTriJ6)
 
         onTimesUp()
 
@@ -397,7 +396,7 @@ const check_answer8 = () => {
 /* ----------------------------------- REPONSE JEU 9 ----------------------------------- */
 
 const fetch_reponse9 = async () => {
-  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
+  await axios.post('/server/reponse.php', { day_num: 9 }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((res) => {
@@ -411,30 +410,44 @@ const fetch_reponse9 = async () => {
     });
 }
 const check_answer9 = async () => {
-  await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
+  console.log("[{'canvasRelativeX '}]");
+  await axios.post('/server/reponse.php', { day_num: 9, valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
       if (valid_resp.data[0].id !== undefined) {
+        
         var tableauTriJ9 = [{}, {}, {}, {}];
-
+        
         valid_resp.data.map(el => {
-          (el.id === 35 || el.id === 36 ? tableauTriJ9.splice(0, 1, el) : null);
-          (el.id === 36 || el.id === 35 ? tableauTriJ9.splice(1, 1, el) : null);
-          (el.id === 37 || el.id === 34 ? tableauTriJ9.splice(2, 1, el) : null);
-          (el.id === 34 || el.id === 37 ? tableauTriJ9.splice(3, 1, el) : null);
+          (el.id === 35 ? tableauTriJ9.splice(0, 1, el) : null);
+          (el.id === 36 ? tableauTriJ9.splice(1, 1, el) : null);
+          (el.id === 37 ? tableauTriJ9.splice(2, 1, el) : null);
+          (el.id === 34 ? tableauTriJ9.splice(3, 1, el) : null);
         })
-
-        console.log(tableauTriJ9);
-
+  
         var existFalseAnswer = false;
+        let idsTab1 = [];
+        let idsTab2 = [];
+        tableauTriJ9.slice(0, 2).map((e)=> idsTab1.push(e.id))
+        tableauTriJ9.slice(2, 4).map((e)=> idsTab2.push(e.id))
+
+        console.table([{'idsTab1 :' : idsTab1 , 'idsTab2 :' : idsTab2 }])
+
         $('.dz > .answer_button').each((index, el) => {
-          if (getId($(el).attr('id')) !== tableauTriJ9[index].id) {
-            existFalseAnswer = true;
+          if(index < 2) {
+            if (!idsTab1.includes(getId($(el).attr('id')))) {
+              existFalseAnswer = true;
+            }
+          } else {
+            if (!idsTab2.includes(getId($(el).attr('id')))) {
+              existFalseAnswer = true;
+            }
           }
+          
         });
 
-        handle_user_responses3(existFalseAnswer, tableauTriJ9, false);
+        handle_user_responses4(existFalseAnswer, tableauTriJ9, idsTab1, idsTab2);
 
         onTimesUp()
 
@@ -505,24 +518,49 @@ function handle_user_responses2(valid_resp) {
   clear_counter();
 }
 
-function handle_user_responses3(existFalseAnswer, tableauTri, game6) {
+function handle_user_responses3(existFalseAnswer, tableauTri) {
   let trial_storage = Number(localStorage.getItem('trial'));
   //Si on est au premier essaie
+  console.log(existFalseAnswer);
   if (trial_storage > 1) {
     if (!existFalseAnswer) {
-      colors(tableauTri, game6)
-      clear_counter()
+      colors_button3(tableauTri)
       goWin();
+      clear_counter()
     } else {
-      colors(tableauTri, game6)
+      colors_button3(tableauTri)
       showWrongAnswer();
     }
   } else {
     if (!existFalseAnswer) {
-      colors(tableauTri, game6)
-      goWin(), clear_counter()
+      colors_button3(tableauTri)
+      goWin();
+      clear_counter()
     } else {
-      colors(tableauTri, game6)
+      colors_button3(tableauTri)
+      clear_counter(), goLoose(), showWrongAnswer()
+    }
+  }
+}
+function handle_user_responses4(existFalseAnswer, tableauTri, idsTab1, idsTab2) {
+  let trial_storage = Number(localStorage.getItem('trial'));
+  //Si on est au premier essaie
+  if (trial_storage > 1) {
+    if (!existFalseAnswer) {
+      colors_button2(tableauTri, idsTab1, idsTab2)
+      goWin();
+      clear_counter()
+    } else {
+      colors_button2(tableauTri, idsTab1, idsTab2);
+      showWrongAnswer();
+    }
+  } else {
+    if (!existFalseAnswer) {
+      colors_button2(tableauTri, idsTab1, idsTab2);
+      goWin();
+      clear_counter()
+    } else {
+      colors_button2(tableauTri, idsTab1, idsTab2);
       clear_counter(), goLoose(), showWrongAnswer()
     }
   }
@@ -570,24 +608,29 @@ function colors_button(valid_answers) {
   })
 }
 
-function colors(tableauTri, game6) {
-  if (game6) {
-    colors_button3(tableauTri);
-  } else {
-    colors_button2(tableauTri);
-  }
-}
-
-function colors_button2(tableauTri) {
+function colors_button2(tableauTri, idsTab1, idsTab2) {
   $('.answer_button').each((index, button) => {
-    tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
+    if(index < 2) {
+      if (!idsTab1.includes(getId($(button).attr('id')))) {
+        tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
+      }
+    } else {
+      if (!idsTab2.includes(getId($(button).attr('id')))) {
+        tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
+      }
+    }
   })
 }
 
 function colors_button3(tableauTri) {
-  $('.dropdiv.dz').each((index, button) => {
-    String(tableauTri[index].id) === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
-  })
+  for(i=0; i < tableauTri.length ; i++) {
+    let $button = $('.dz > .answer_img:eq('+i+')')
+    if($button.length > 0) {
+      tableauTri[i].id === getId($button.attr('id')) ? $button.addClass('win') : $button.addClass('lose')
+    }else {
+      $button.addClass('lose')
+    }
+  }
 }
 
 function colors_buttonFinal(valid_resp) {
