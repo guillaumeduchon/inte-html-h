@@ -459,7 +459,7 @@ const check_answer9 = async () => {
           
         });
 
-        handle_user_responses4(existFalseAnswer, tableauTriJ9, idsTab1, idsTab2);
+        handle_user_responses4(existFalseAnswer, idsTab1, idsTab2);
 
         onTimesUp()
 
@@ -554,7 +554,7 @@ function handle_user_responses3(existFalseAnswer, tableauTri) {
     }
   }
 }
-function handle_user_responses4(existFalseAnswer, tableauTri, idsTab1, idsTab2) {
+function handle_user_responses4(existFalseAnswer, idsTab1, idsTab2) {
   let trial_storage = Number(localStorage.getItem('trial'));
   //Si on est au premier essaie
   if (trial_storage > 1) {
