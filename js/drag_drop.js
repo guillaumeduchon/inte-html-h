@@ -22,7 +22,9 @@ function dragStart( event, chosenClass ) {
     console.log( 'DROP' );
   
     event.target.closest( ".dropdiv" ).append( document.getElementById( event.dataTransfer.getData( 'text' ) ) )
-    document.getElementById("rule").classList.add("hide");
+    if (document.getElementById("rule")) {
+      document.getElementById("rule").classList.add("hide");
+    }
   
     document.getElementsByClassName( "answer_button--active" )[0].classList.remove( "answer_button--active" );
   
