@@ -622,19 +622,19 @@ function colors_button(valid_answers) {
 
 function colors_button2(tableauTri, idsTab1, idsTab2) {
   $('.answer_button').each((index, button) => {
-    if(index < 2) {
+    // if(index < 2) {
       if (!idsTab1.includes(getId($(button).attr('id')))) {
         tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
       }else {
         $(button).addClass('lose')
       }
-    } else {
+    // } else {
       if (!idsTab2.includes(getId($(button).attr('id')))) {
         tableauTri[index].id === getId($(button).attr('id')) ? $(button).addClass('win') : $(button).addClass('lose')
       } else {
         $(button).addClass('lose')
       }
-    }
+    // }
   })
 }
 
