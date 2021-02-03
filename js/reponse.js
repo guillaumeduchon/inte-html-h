@@ -441,8 +441,8 @@ const check_answer9 = async () => {
         var existFalseAnswer = false;
         let idsTab1 = [];
         let idsTab2 = [];
-        tableauTriJ9.slice(0, 1).map((e)=> idsTab1.push(e.id))
-        tableauTriJ9.slice(2, 3).map((e)=> idsTab2.push(e.id))
+        tableauTriJ9.slice(0, 2).map((e)=> idsTab1.push(e.id))
+        tableauTriJ9.slice(2, 4).map((e)=> idsTab2.push(e.id))
 
         console.table([{'idsTab1 :' : idsTab1 , 'idsTab2 :' : idsTab2 }])
 
