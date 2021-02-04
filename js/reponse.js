@@ -302,37 +302,37 @@ const check_answer6 = async () => {
   await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
-    .then((valid_resp) => {
-      if (valid_resp.data[0].id !== undefined) {
-        var tableauTriJ6 = [{}, {}, {}, {}, {}];
+  .then((valid_resp) => {
+    if (valid_resp.data[0].id !== undefined) {
+      var tableauTriJ6 = [{}, {}, {}, {}, {}];
 
-        valid_resp.data.map(el => {
-          (el.id === 24 ? tableauTriJ6.splice(0, 1, el) : null);
-          (el.id === 25 ? tableauTriJ6.splice(1, 1, el) : null);
-          (el.id === 26 ? tableauTriJ6.splice(2, 1, el) : null);
-          (el.id === 27 ? tableauTriJ6.splice(3, 1, el) : null);
-          (el.id === 28 ? tableauTriJ6.splice(4, 1, el) : null);
-        })
+      valid_resp.data.map(el => {
+        (el.id === 24 ? tableauTriJ6.splice(0, 1, el) : null);
+        (el.id === 25 ? tableauTriJ6.splice(1, 1, el) : null);
+        (el.id === 26 ? tableauTriJ6.splice(2, 1, el) : null);
+        (el.id === 27 ? tableauTriJ6.splice(3, 1, el) : null);
+        (el.id === 28 ? tableauTriJ6.splice(4, 1, el) : null);
+      })
 
-        var existFalseAnswer = false;
-        $('.dz > .answer_img').each((index, el) => {
-          if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
-            existFalseAnswer = true;
-          }
-        });
-
-        if ($('.dz > .answer_img').length !== tableauTriJ6.length) {
+      var existFalseAnswer = false;
+      $('.dz > .answer_img').each((index, el) => {
+        if (getId($(el).attr('id')) !== tableauTriJ6[index].id) {
           existFalseAnswer = true;
         }
+      });
 
-        handle_user_responses3(existFalseAnswer, tableauTriJ6)
-
-        onTimesUp()
-
-      } else {
-        console.warn('Aucune bonne reponse n\'a été trouvé')
+      if ($('.dz > .answer_img').length !== tableauTriJ6.length) {
+        existFalseAnswer = true;
       }
-    });
+
+      handle_user_responses3(existFalseAnswer, tableauTriJ6)
+
+      onTimesUp()
+
+    } else {
+      console.warn('Aucune bonne reponse n\'a été trouvé')
+    }
+  });
 }
 
 /* ----------------------------------- REPONSE JEU 7 ----------------------------------- */
@@ -410,51 +410,54 @@ const fetch_reponse9 = async () => {
     });
 }
 const check_answer9 = async () => {
-  console.log("[{'canvasRelativeX '}]");
   await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')), valid: 'true' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
-    .then((valid_resp) => {
-      if (valid_resp.data[0].id !== undefined) {
-        
-        var tableauTriJ9 = [{}, {}, {}, {}];
-        
-        valid_resp.data.map(el => {
-          (el.id === 35 ? tableauTriJ9.splice(0, 1, el) : null);
-          (el.id === 36 ? tableauTriJ9.splice(1, 1, el) : null);
-          (el.id === 37 ? tableauTriJ9.splice(2, 1, el) : null);
-          (el.id === 34 ? tableauTriJ9.splice(3, 1, el) : null);
-        })
-  
-        var existFalseAnswer = false;
-        let idsTab1 = [];
-        let idsTab2 = [];
-        tableauTriJ9.slice(0, 2).map((e)=> idsTab1.push(e.id))
-        tableauTriJ9.slice(2, 4).map((e)=> idsTab2.push(e.id))
+  .then((valid_resp) => {
+    if (valid_resp.data[0].id !== undefined) {
+      
+      var tableauTriJ9 = [{}, {}, {}, {}];
+      
+      valid_resp.data.map(el => {
+        (el.id === 35 ? tableauTriJ9.splice(0, 1, el) : null);
+        (el.id === 36 ? tableauTriJ9.splice(1, 1, el) : null);
+        (el.id === 37 ? tableauTriJ9.splice(2, 1, el) : null);
+        (el.id === 34 ? tableauTriJ9.splice(3, 1, el) : null);
+      })
 
-        console.table([{'idsTab1 :' : idsTab1 , 'idsTab2 :' : idsTab2 }])
+      var existFalseAnswer = false;
+      let idsTab1 = [];
+      let idsTab2 = [];
+      tableauTriJ9.slice(0, 2).map((e)=> idsTab1.push(e.id))
+      tableauTriJ9.slice(2, 4).map((e)=> idsTab2.push(e.id))
 
-        $('.dz > .answer_button').each((index, el) => {
-          if(index < 2) {
-            if (!idsTab1.includes(getId($(el).attr('id')))) {
-              existFalseAnswer = true;
-            }
-          } else {
-            if (!idsTab2.includes(getId($(el).attr('id')))) {
-              existFalseAnswer = true;
-            }
+      $('.dz > .answer_button').each((index, el) => {$
+        if(index < 2) {
+          if (!idsTab1.includes(getId($(el).attr('id')))) {
+            existFalseAnswer = true;
           }
-          
-        });
-
-        handle_user_responses4(existFalseAnswer, tableauTriJ9, idsTab1, idsTab2);
-
-        onTimesUp()
-
-      } else {
-        console.warn('Aucune bonne reponse n\'a été trouvé');
+        } else {
+          if (!idsTab2.includes(getId($(el).attr('id')))) {
+            existFalseAnswer = true;
+          }
+        }
+        
+      });
+      
+      if($('.dz > .answer_button').length === 0) {
+        existFalseAnswer = true;
       }
-    });
+
+      console.log('EXIST', existFalseAnswer);
+
+      handle_user_responses4(existFalseAnswer, idsTab1, idsTab2);
+
+      onTimesUp()
+
+    } else {
+      console.warn('Aucune bonne reponse n\'a été trouvé');
+    }
+  });
 }
 
 /* ----------------------------------- REPONSE JEU 10 ----------------------------------- */
@@ -542,25 +545,25 @@ function handle_user_responses3(existFalseAnswer, tableauTri) {
     }
   }
 }
-function handle_user_responses4(existFalseAnswer, tableauTri, idsTab1, idsTab2) {
+function handle_user_responses4(existFalseAnswer, idsTab1, idsTab2) {
   let trial_storage = Number(localStorage.getItem('trial'));
   //Si on est au premier essaie
   if (trial_storage > 1) {
     if (!existFalseAnswer) {
-      colors_button2(tableauTri, idsTab1, idsTab2)
+      colors_button2(idsTab1, idsTab2)
       goWin();
       clear_counter()
     } else {
-      colors_button2(tableauTri, idsTab1, idsTab2);
+      colors_button2(idsTab1, idsTab2);
       showWrongAnswer();
     }
   } else {
     if (!existFalseAnswer) {
-      colors_button2(tableauTri, idsTab1, idsTab2);
+      colors_button2(idsTab1, idsTab2);
       goWin();
       clear_counter()
     } else {
-      colors_button2(tableauTri, idsTab1, idsTab2);
+      colors_button2(idsTab1, idsTab2);
       clear_counter(), goLoose(), showWrongAnswer()
     }
   }
@@ -608,11 +611,8 @@ function colors_button(valid_answers) {
   })
 }
 
-function colors_button2(tableauTri, idsTab1, idsTab2) {
-  console.log('idsTab1',idsTab1, "idsTab2", idsTab2);
-
+function colors_button2(idsTab1, idsTab2) {
   $('.answer_button').each((index, button) => {
-    console.log("INDEX", "getId($(button).attr('id'))", getId($(button).attr('id')))
     if(index < 2) {
       idsTab1.includes(getId($(button).attr('id'))) ? $(button).addClass('win') : $(button).addClass('lose')
     } else {
