@@ -1,14 +1,14 @@
 const DATE_TAB = [
-  { 1: '2021/01/26' },
-  { 2: '2021/01/27' },
-  { 3: '2021/01/28' },
-  { 4: '2021/01/29' },
-  { 5: '2021/01/30' },
-  { 6: '2021/01/31' },
-  { 7: '2021/02/01' },
-  { 8: '2021/02/02' },
-  { 9: '2021/02/03' },
-  { 10: '2021/02/04' }
+  { 1: '2021/02/05' },
+  { 2: '2021/02/06' },
+  { 3: '2021/01/08' },
+  { 4: '2021/01/09' },
+  { 5: '2021/01/10' },
+  { 6: '2021/01/11' },
+  { 7: '2021/02/12' },
+  { 8: '2021/02/13' },
+  { 9: '2021/02/15' },
+  { 10: '2021/02/16' }
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
@@ -18,16 +18,16 @@ localStorage.setItem('DAY_NUM', tab_day[0]);
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/01/26' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/01/27' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/01/28' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/01/29' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/01/30' },
-    { 'status': '', 'day_num': 6, 'day_date': '2021/01/31' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/02/01' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/02/02' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/02/03' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/02/04' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/02/05' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/02/06' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/02/08' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/02/09' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/02/10' },
+    { 'status': '', 'day_num': 6, 'day_date': '2021/02/11' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/02/12' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/02/13' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/02/15' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/02/16' },
   ];
 
   let today = new Date();
@@ -131,6 +131,7 @@ function clear_counter() {
 }
 
 function compte_a_rebours() {
+  new Date(localStorage.getItem('session_expire')) < new Date(Date.now()) ? (localStorage.removeItem('logged'), alert("Vous avez été déconnecté")) : null;
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
   date_evenement.setDate(date_evenement.getDate() + 1)
@@ -185,7 +186,7 @@ function get_date_today(d) {
   let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
   let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
-
+  
   return `${today.getFullYear()}/${MONTH}/${DAY}`;
 }
 
@@ -230,8 +231,11 @@ function before10h24(heures, minutes, secondes) {
 const ShowGamePlayed = () => {
   if (!localStorage.getItem("game_played")) {
     fetch_question_responses().then((datas) => {
-      if(datas[0].id !== undefined)
-        localStorage.setItem('game_played', JSON.stringify(datas))
+      if (datas.length > 0) {
+        if(datas[0].id !== undefined) {
+          localStorage.setItem('game_played', JSON.stringify(datas))
+        }
+      }
     });
   } else {
     $(document).find('.carousel_cell').each((index, elem) => {

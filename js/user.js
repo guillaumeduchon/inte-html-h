@@ -5,7 +5,8 @@ function isLogged() {
 function logged(magasin_id) {
   localStorage.setItem('logged', 'true');
   localStorage.setItem('magasin', magasin_id);
-  let expires = new Date(Date.now() + 1586400); //1586400 ~30minutes / 16400 ~ 1minute
+  console.log('DATA: ',(Date.now() + (16400 + 60 * 60 * 1000)) );
+  let expires = new Date((Date.now()  + (510000 + 60 * 60*1000)) ); //1586400 ~30minutes / 16400 ~ 1minute 1386400 /1086400 
   expires = expires.toUTCString();
   localStorage.setItem('session_expire', expires )
 }
