@@ -130,8 +130,14 @@ function clear_counter() {
   localStorage.removeItem('trial');
 }
 
-function sessionTimeOut () {
-  new Date(localStorage.getItem('session_expire')) < new Date(Date.now()) ? (localStorage.removeItem('logged'), alert("Vous avez été déconnecté"), goLogin() ): null;
+function sessionTimeOut() {
+  new Date(localStorage.getItem('session_expire')) < new Date(Date.now()) ?
+    (localStorage.removeItem('logged'),
+      localStorage.removeItem('magasin'),
+      localStorage.removeItem('has_played'),
+      localStorage.removeItem('has_win'),
+      alert("Vous avez été déconnecté"),
+      goLogin()) : null;
 }
 
 function compte_a_rebours() {
@@ -190,7 +196,7 @@ function get_date_today(d) {
   let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
   let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
-  
+
   return `${today.getFullYear()}/${MONTH}/${DAY}`;
 }
 
@@ -236,7 +242,7 @@ const ShowGamePlayed = () => {
   if (!localStorage.getItem("game_played")) {
     fetch_question_responses().then((datas) => {
       if (datas.length > 0) {
-        if(datas[0].id !== undefined) {
+        if (datas[0].id !== undefined) {
           localStorage.setItem('game_played', JSON.stringify(datas))
         }
       }

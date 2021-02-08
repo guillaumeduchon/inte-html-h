@@ -1,8 +1,6 @@
 $(document).ready(function () {
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
-    
-    
     cleanNbInBefore10h24();
     if (isLogged()) {
       sessionTimeOut();
