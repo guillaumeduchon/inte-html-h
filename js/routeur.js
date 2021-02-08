@@ -5,6 +5,7 @@ $(document).ready(function () {
     
     cleanNbInBefore10h24();
     if (isLogged()) {
+      sessionTimeOut();
       goPlateau()
     } else {
       localStorage.clear();
@@ -67,6 +68,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_rule.html") {
     if (isLogged()) {
+      sessionTimeOut();
       if (!gameStarted()) {
         result_day();
         fetch_rules();
@@ -94,6 +96,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_indice.html") {
     if (isLogged()) {
+      sessionTimeOut();
       if (!gameStarted() || gameStoped()) {
         fetch_indice();
       } else {
@@ -108,6 +111,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_win.html") {
     if (isLogged()) {
+      sessionTimeOut();
       fetch_content(); 
     } else {
       goLogin();
@@ -118,6 +122,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_lose.html") {
     if (isLogged()) {
+      sessionTimeOut();
       (fetch_content(), set_indice(0)) 
     } else {
       goLogin();
@@ -130,6 +135,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      sessionTimeOut();
       result_day(),hasWinJs();
       startGame();
       fetch_reponse();
@@ -144,6 +150,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      sessionTimeOut();
       result_day();
       startGame();
       fetch_reponse2();
@@ -158,6 +165,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      sessionTimeOut();
       result_day();
       startGame();
       fetch_reponse3();
@@ -172,6 +180,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      sessionTimeOut();
       result_day();
       startGame();
       fetch_reponse4();
@@ -186,6 +195,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      sessionTimeOut();
       result_day();
       startGame();
       fetch_reponse2();
@@ -200,6 +210,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      sessionTimeOut();
       result_day();
       startGame();
       fetch_reponse6();
@@ -214,6 +225,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      sessionTimeOut();
       result_day();
       startGame();
       fetch_reponse7();
@@ -228,6 +240,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      sessionTimeOut();
       result_day();
       startGame();
       fetch_reponse8();
@@ -242,6 +255,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      sessionTimeOut();
       result_day();
       startGame();
       fetch_reponse9();
@@ -255,6 +269,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      sessionTimeOut();
       result_finalday();hasWinFinalJs();
       startGame();
       fetch_indices();

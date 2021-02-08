@@ -130,8 +130,12 @@ function clear_counter() {
   localStorage.removeItem('trial');
 }
 
+function sessionTimeOut () {
+  new Date(localStorage.getItem('session_expire')) < new Date(Date.now()) ? (localStorage.removeItem('logged'), alert("Vous avez été déconnecté"), goLogin() ): null;
+}
+
 function compte_a_rebours() {
-  new Date(localStorage.getItem('session_expire')) < new Date(Date.now()) ? (localStorage.removeItem('logged'), alert("Vous avez été déconnecté")) : null;
+  sessionTimeOut();
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
   date_evenement.setDate(date_evenement.getDate() + 1)
