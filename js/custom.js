@@ -1,14 +1,14 @@
 const DATE_TAB = [
-  { 1: '2021/02/05' },
-  { 2: '2021/02/06' },
-  { 3: '2021/01/08' },
-  { 4: '2021/01/09' },
-  { 5: '2021/01/10' },
-  { 6: '2021/01/11' },
-  { 7: '2021/02/12' },
-  { 8: '2021/02/13' },
-  { 9: '2021/02/15' },
-  { 10: '2021/02/16' }
+  { 1: '2021/02/08' },
+  { 2: '2021/02/09' },
+  { 3: '2021/01/10' },
+  { 4: '2021/01/11' },
+  { 5: '2021/01/12' },
+  { 6: '2021/01/13' },
+  { 7: '2021/02/15' },
+  { 8: '2021/02/16' },
+  { 9: '2021/02/17' },
+  { 10: '2021/02/18' }
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
@@ -18,16 +18,16 @@ localStorage.setItem('DAY_NUM', tab_day[0]);
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/02/05' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/02/06' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/02/08' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/02/09' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/02/10' },
-    { 'status': '', 'day_num': 6, 'day_date': '2021/02/11' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/02/12' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/02/13' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/02/15' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/02/16' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/02/08' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/02/09' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/02/10' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/02/11' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/02/12' },
+    { 'status': '', 'day_num': 6, 'day_date': '2021/02/13' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/02/15' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/02/16' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/02/17' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/02/18' },
   ];
 
   let today = new Date();
@@ -131,6 +131,7 @@ function clear_counter() {
 }
 
 function compte_a_rebours() {
+  console.log('rebour', new Date(localStorage.getItem('session_expire')) < new Date(Date.now()))
   new Date(localStorage.getItem('session_expire')) < new Date(Date.now()) ? (localStorage.removeItem('logged'), alert("Vous avez été déconnecté")) : null;
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)

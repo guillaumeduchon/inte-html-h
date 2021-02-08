@@ -292,6 +292,7 @@ function goLoose() {
 //--------------------------------------------------------- GO FINAL
 
 function goFinalWin() {
+  set_winners();
   stopGame();
   $('.game_button').remove();
   setTimeout(() => {

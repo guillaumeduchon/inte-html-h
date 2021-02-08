@@ -21,14 +21,3 @@ const getMagasin = async () => {
     }
   });
 }
-
-const getWinners = async () => {
-  await axios.post('/server/magasin.php', {magasin: localStorage.getItem('magasin'),  final_winners: 'true'}, {
-    headers: {'Content-Type': 'application/json','mode': 'cors'}
-  }).then((res) => {
-    if (res.data[0].id !== undefined) {
-      //HERE DO WHAT YOU WANT TO DO
-      
-    }
-  });
-}

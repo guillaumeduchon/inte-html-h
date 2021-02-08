@@ -13,21 +13,17 @@
       if(! is_array($decoded)) {
             die('Missed action');
       } else {
-        if (!isset($decoded['day_num'])) {
+        if (!isset($decoded['magasin'])) {
             die('Missed action');
         }
 
-        $day_num = $decoded['day_num'];
-        $stmt = $pdo->prepare("SELECT id FROM question WHERE jour=:jour");
-        $stmt->execute(['jour'=> $day_num]);
-        $aQuestion = $stmt->fetch();
-        
-            $winning = (int)$decoded['winning'];
-            $magasin = (int)$decoded['magasin'];
-            $stmt = $pdo->prepare("INSERT INTO winners(`id`,`winning_id`,`magasin_id`) VALUES (:day_num, :winning, :magasin )");
-            $stmt->execute(['day_num' => $day_num, 'winning' => $winning, 'magasin' => $magasin]);
-            $aWinning = $stmt->fetch();
-            $oDatas = !$aWinning ? [] :$aWinning;
+        $magasin = $decoded['magasin'];
+        $stmt = $pdo->prepare("INSERT INTO winners (id, num, `name`, region) SELECT `id`, num, `name`, region
+        FROM magasin
+        WHERE magasin.id = :magasin");
+        $stmt->execute(['magasin'=> $magasin]);
+        $aWinning = $stmt->fetchAll();
+        $oDatas = !$aWinning ? [] :$aWinning;
       }
     }
     
