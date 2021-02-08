@@ -41,11 +41,13 @@ if ($contentType === "application/json") {
             $oDatas = !$aIndices ? [] : $aIndices;
         } else {
             $day_num = (int)$decoded['day_num'];
+            $magasin = (int) $decoded['magasin'];
             $stmt = $pdo->prepare("
             SELECT *
             FROM indice_magasin
-            WHERE indice_magasin.id = :jour");
-            $stmt->execute(['jour' => $day_num]);
+            WHERE indice_magasin.id = :jour
+            AND indice_magasin.magasin_id = :magasin ");
+            $stmt->execute(['jour' => $day_num, 'magasin' => $magasin]);
             $aIndices = $stmt->fetch();
             $oDatas = !$aIndices ? [] : $aIndices;
         }

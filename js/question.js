@@ -37,10 +37,11 @@ const fetch_content = async () => {
 }
 
 const result_day = async () => {
-  await axios.post('/server/indice_magasin.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
+  await axios.post('/server/indice_magasin.php', { day_num: Number(localStorage.getItem('DAY_NUM')), magasin: Number(localStorage.getItem('magasin')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
-    .then((resp) => {console.log('resp.data: ',resp.data)
+    .then((resp) => {
+      console.log('resp.data: ',resp.data)
       if (resp.data.indice_id !== undefined) {
         if (resp.data.indice_id !== 0) {
           localStorage.setItem("has_win",'true');
