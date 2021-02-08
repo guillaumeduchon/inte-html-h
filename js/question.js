@@ -41,7 +41,6 @@ const result_day = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => {
-      console.log('resp.data: ',resp.data)
       if (resp.data.indice_id !== undefined) {
         if (resp.data.indice_id !== 0) {
           localStorage.setItem("has_win",'true');
