@@ -131,7 +131,6 @@ function clear_counter() {
 }
 
 function compte_a_rebours() {
-  console.log('rebour', new Date(localStorage.getItem('session_expire')) < new Date(Date.now()))
   new Date(localStorage.getItem('session_expire')) < new Date(Date.now()) ? (localStorage.removeItem('logged'), alert("Vous avez été déconnecté")) : null;
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
