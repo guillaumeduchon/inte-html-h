@@ -40,7 +40,7 @@ const result_day = async () => {
   await axios.post('/server/indice_magasin.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
-    .then((resp) => {
+    .then((resp) => {console.log('resp.data: ',resp.data)
       if (resp.data.indice_id !== undefined) {
         if (resp.data.indice_id !== 0) {
           localStorage.setItem("has_win",'true');
