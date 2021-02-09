@@ -11,7 +11,7 @@
       $oDatas = [];
       //If json_decode failed, the JSON is invalid.
       if (!isset($decoded['magasin'])) {
-            $stmt = $pdo->query("SELECT * FROM magasin");
+            $stmt = $pdo->query("SELECT * FROM magasin ORDER BY magasin.name ASC");
             $magasins = $stmt->fetchAll();
             $oDatas = !$magasins ? [] :$magasins;
         } else {
