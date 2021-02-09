@@ -1516,6 +1516,7 @@ main {
                         }
                     }
                     &.q6 {
+                        @media screen and (orientation:landscape) and (max-width: 920px) {height: 75%;}
                         grid-gap: 10px;
                         @media screen and (orientation:landscape) and (min-width: 760px) {
                             grid-gap: 15px;
@@ -1523,9 +1524,6 @@ main {
                         .grid_parfums {
                             img {
                                 height: 65px; border: 2px solid $green; align-self: center;
-                                @media screen and (orientation:landscape) and (min-width: 760px) {
-                                    height: 75px;
-                                }
                                 @media screen and (orientation:landscape) and (min-width: 1024px) {
                                     height: 115px;
                                 }
@@ -1553,10 +1551,6 @@ main {
                                 height: 65px;
                                 min-height: 0;
                                 padding: 0;
-                                @media screen and (orientation:landscape) and (min-width: 760px) {
-                                    width: 75px;
-                                    height: 75px;
-                                }
                                 @media screen and (orientation:landscape) and (min-width: 1024px) {
                                     width: 115px;
                                     height: 115px;
@@ -1575,9 +1569,6 @@ main {
                             height: 65px;
                             background-color: transparent;
                             border: 0;
-                            @media screen and (orientation:landscape) and (min-width: 760px) {
-                                height: 75px;
-                            }
                             @media screen and (orientation:landscape) and (min-width: 1024px) {
                                 height: 115px;
                                 font-size: 14px;
@@ -1613,8 +1604,8 @@ main {
                             form {
                                 grid-template-columns: 100px 2fr 100px;
                                 @media screen and (orientation:landscape) and (min-width: 640px) {grid-template-columns: 120px 1fr 120px;}
-                                @media screen and (orientation:landscape) and (min-width: 730px) {grid-template-columns: 160px 1fr 160px;}
-                                @media screen and (orientation:landscape) and (min-width: 730px) and (max-height: 375px) {grid-template-columns: 190px 1fr 190px;}
+                                @media screen and (orientation:landscape) and (min-width: 730px) {grid-template-columns: 170px 1fr 170px;}
+                                @media screen and (orientation:landscape) and (min-width: 730px) and (max-height: 375px) {grid-template-columns: 170px 1fr 170px;}
                                 @media screen and (orientation:landscape) and (min-width: 930px) and (max-height: 375px) {grid-template-columns: 160px 1fr 160px;}
                                 @media screen and (orientation:landscape) and (min-width: 1024px) {grid-template-columns: 165px 1fr 165px;}
                                 @media screen and (orientation:landscape) and (min-width: 1366px) {grid-template-columns: 210px 1fr 210px;}
