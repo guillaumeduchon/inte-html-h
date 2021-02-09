@@ -1534,12 +1534,10 @@ main {
                                 }
                             }
                             width: 92px;
-                            height: 210px;
-                            @media screen and (orientation:landscape) and (min-width: 760px) {width: 102px; height: 238px;}
-                            @media screen and (orientation:landscape) and (min-width: 1024px) {width: 142px; height: 359px;}
-                            @media screen and (orientation:landscape) and (min-width: 1366px) {width: 197px; height: 494px;}
+                            @media screen and (orientation:landscape) and (min-width: 760px) {width: 102px;}
+                            @media screen and (orientation:landscape) and (min-width: 1024px) {width: 142px;}
+                            @media screen and (orientation:landscape) and (min-width: 1366px) {width: 197px;}
                             grid-gap: 7px;
-                            overflow: hidden;
                             padding-right: 7px;
                         }
                         .answers {
@@ -1551,21 +1549,21 @@ main {
                             grid-template-columns: repeat(1, 1fr);
                             grid-gap: 7px;
                             .dz {
-                                width: 36px;
-                                height: 36px;
+                                width: 65px;
+                                height: 65px;
                                 min-height: 0;
                                 padding: 0;
                                 @media screen and (orientation:landscape) and (min-width: 760px) {
-                                    width: 42px;
-                                    height: 42px;
+                                    width: 75px;
+                                    height: 75px;
                                 }
                                 @media screen and (orientation:landscape) and (min-width: 1024px) {
-                                    width: 66px;
-                                    height: 66px;
+                                    width: 115px;
+                                    height: 115px;
                                 }
                                 @media screen and (orientation:landscape) and (min-width: 1366px) {
-                                    width: 93px;
-                                    height: 93px;
+                                    width: 160px;
+                                    height: 160px;
                                 }
                                 img {
                                     height: 100%;
@@ -1574,18 +1572,18 @@ main {
                             }
                         }
                         .answer_button {
-                            height: 36px;
+                            height: 65px;
                             background-color: transparent;
                             border: 0;
                             @media screen and (orientation:landscape) and (min-width: 760px) {
-                                height: 42px;
+                                height: 75px;
                             }
                             @media screen and (orientation:landscape) and (min-width: 1024px) {
-                                height: 66px;
+                                height: 115px;
                                 font-size: 14px;
                             }
                             @media screen and (orientation:landscape) and (min-width: 1366px) {
-                                height: 93px;
+                                height: 160px;
                                 font-size: 18px;
                             }
                         }
