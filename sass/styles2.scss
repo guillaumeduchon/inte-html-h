@@ -1604,7 +1604,7 @@ main {
                             form {
                                 grid-template-columns: 100px 2fr 100px;
                                 @media screen and (orientation:landscape) and (min-width: 640px) {grid-template-columns: 120px 1fr 120px;}
-                                @media screen and (orientation:landscape) and (min-width: 730px) {grid-template-columns: 147px 1fr 147px;}
+                                @media screen and (orientation:landscape) and (min-width: 730px) {grid-template-columns: 155px 1fr 155px;}
                                 @media screen and (orientation:landscape) and (min-width: 910px) {grid-template-columns: 150px 1fr 150px;}
                                 @media screen and (orientation:landscape) and (min-width: 1024px) {grid-template-columns: 165px 1fr 165px;}
                                 @media screen and (orientation:landscape) and (min-width: 1366px) {grid-template-columns: 210px 1fr 210px;}
