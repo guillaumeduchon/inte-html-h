@@ -1224,6 +1224,27 @@ main {
                         padding: 0;
                         margin: 0 auto;
                         text-align: center;
+                        #timer {
+                            @media screen and (orientation:landscape) and (max-width: 600px) {
+                                .timer_new {
+                                    width: 50px;
+                                    height: 50px;
+                                }
+                                .timer_new__label {
+                                        width: 50px;
+                                        top: 11px;
+                                        font-size: 17px;
+                                    .label {
+                                            font-size: 10px;
+                                            line-height: 10px;
+                                    }
+                                    .timer_new__seconds {
+                                            font-size: 17px;
+                                            line-height: 18px;
+                                    }
+                                }
+                            }
+                        }
                         h2 {
                             text-transform: uppercase;
                             @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 21px;}
@@ -1290,6 +1311,14 @@ main {
                             &:after {
                                 background-color: $green;
                                 box-shadow: 0 0 0 0;
+                            }
+                        }
+                        #timer {
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                            .label {
+                                color: $white;
                             }
                         }
                     }
@@ -1505,12 +1534,10 @@ main {
                                 }
                             }
                             width: 92px;
-                            height: 210px;
-                            @media screen and (orientation:landscape) and (min-width: 760px) {width: 102px; height: 238px;}
-                            @media screen and (orientation:landscape) and (min-width: 1024px) {width: 142px; height: 359px;}
-                            @media screen and (orientation:landscape) and (min-width: 1366px) {width: 197px; height: 494px;}
+                            @media screen and (orientation:landscape) and (min-width: 760px) {width: 102px;}
+                            @media screen and (orientation:landscape) and (min-width: 1024px) {width: 142px;}
+                            @media screen and (orientation:landscape) and (min-width: 1366px) {width: 197px;}
                             grid-gap: 7px;
-                            overflow: hidden;
                             padding-right: 7px;
                         }
                         .answers {
@@ -1522,21 +1549,21 @@ main {
                             grid-template-columns: repeat(1, 1fr);
                             grid-gap: 7px;
                             .dz {
-                                width: 36px;
-                                height: 36px;
+                                width: 65px;
+                                height: 65px;
                                 min-height: 0;
                                 padding: 0;
                                 @media screen and (orientation:landscape) and (min-width: 760px) {
-                                    width: 42px;
-                                    height: 42px;
+                                    width: 75px;
+                                    height: 75px;
                                 }
                                 @media screen and (orientation:landscape) and (min-width: 1024px) {
-                                    width: 66px;
-                                    height: 66px;
+                                    width: 115px;
+                                    height: 115px;
                                 }
                                 @media screen and (orientation:landscape) and (min-width: 1366px) {
-                                    width: 93px;
-                                    height: 93px;
+                                    width: 160px;
+                                    height: 160px;
                                 }
                                 img {
                                     height: 100%;
@@ -1545,18 +1572,18 @@ main {
                             }
                         }
                         .answer_button {
-                            height: 36px;
+                            height: 65px;
                             background-color: transparent;
                             border: 0;
                             @media screen and (orientation:landscape) and (min-width: 760px) {
-                                height: 42px;
+                                height: 75px;
                             }
                             @media screen and (orientation:landscape) and (min-width: 1024px) {
-                                height: 66px;
+                                height: 115px;
                                 font-size: 14px;
                             }
                             @media screen and (orientation:landscape) and (min-width: 1366px) {
-                                height: 93px;
+                                height: 160px;
                                 font-size: 18px;
                             }
                         }
@@ -1585,9 +1612,10 @@ main {
                             display: block;
                             form {
                                 grid-template-columns: 100px 2fr 100px;
-                                @media screen and (orientation:landscape) and (min-width: 640px) {grid-template-columns: 110px 1fr 110px;}
-                                @media screen and (orientation:landscape) and (min-width: 730px) {grid-template-columns: 120px 1fr 120px;}
-                                @media screen and (orientation:landscape) and (min-width: 730px) and (max-height: 375px) {grid-template-columns: 160px 1fr 160px;}
+                                @media screen and (orientation:landscape) and (min-width: 640px) {grid-template-columns: 120px 1fr 120px;}
+                                @media screen and (orientation:landscape) and (min-width: 730px) {grid-template-columns: 160px 1fr 160px;}
+                                @media screen and (orientation:landscape) and (min-width: 730px) and (max-height: 375px) {grid-template-columns: 190px 1fr 190px;}
+                                @media screen and (orientation:landscape) and (min-width: 930px) and (max-height: 375px) {grid-template-columns: 160px 1fr 160px;}
                                 @media screen and (orientation:landscape) and (min-width: 1024px) {grid-template-columns: 165px 1fr 165px;}
                                 @media screen and (orientation:landscape) and (min-width: 1366px) {grid-template-columns: 210px 1fr 210px;}
                                 align-items: center;
