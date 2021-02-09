@@ -1,4 +1,5 @@
 <?php
+try {
     require_once 'config.php';
 
     $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
@@ -37,4 +38,6 @@
     }
     
     return  print json_encode($oDatas);
-?>
+} catch (Exception $x) {
+    var_dump($x);
+}
