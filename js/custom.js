@@ -4,16 +4,16 @@ $(document).on('click', '.carousel_cell-content-linkgame', (el) => {
 })
 
 const DATE_TAB = [
-  { 1: '2021/02/09' },
-  { 2: '2021/02/09' },
-  { 3: '2021/02/09' },
-  { 4: '2021/02/09' }, 
-  { 5: '2021/02/09' },
-  { 6: '2021/02/09' },
-  { 7: '2021/02/09' },
-  { 8: '2021/02/09' },
-  { 9: '2021/02/09' },
-  { 10: '2021/02/09' }
+  { 1: '2021/02/10' },
+  { 2: '2021/02/10' },
+  { 3: '2021/02/10' },
+  { 4: '2021/02/10' }, 
+  { 5: '2021/02/10' },
+  { 6: '2021/02/10' },
+  { 7: '2021/02/10' },
+  { 8: '2021/02/10' },
+  { 9: '2021/02/10' },
+  { 10: '2021/02/10' }
 ];
 
 var date_today = get_date_today(new Date())
@@ -27,16 +27,16 @@ if(date_today >= Object.values(DATE_TAB[0])[0]) {
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'2021/02/09'},
-    {'status':'','day_num': 2, 'day_date':'2021/02/09'},
-    {'status':'','day_num': 3, 'day_date':'2021/02/09'},
-    {'status':'','day_num': 4, 'day_date':'2021/02/09'},
-    {'status':'','day_num': 5, 'day_date':'2021/02/09'},
-    {'status':'','day_num': 6, 'day_date':'2021/02/09'},
-    {'status':'','day_num': 7, 'day_date':'2021/02/09'},
-    {'status':'','day_num': 8, 'day_date':'2021/02/09'},
-    {'status':'','day_num': 9, 'day_date':'2021/02/09'},
-    {'status':'','day_num': 10, 'day_date':'2021/02/09'},
+    {'status':'','day_num': 1, 'day_date':'2021/02/10'},
+    {'status':'','day_num': 2, 'day_date':'2021/02/10'},
+    {'status':'','day_num': 3, 'day_date':'2021/02/10'},
+    {'status':'','day_num': 4, 'day_date':'2021/02/10'},
+    {'status':'','day_num': 5, 'day_date':'2021/02/10'},
+    {'status':'','day_num': 6, 'day_date':'2021/02/10'},
+    {'status':'','day_num': 7, 'day_date':'2021/02/10'},
+    {'status':'','day_num': 8, 'day_date':'2021/02/10'},
+    {'status':'','day_num': 9, 'day_date':'2021/02/10'},
+    {'status':'','day_num': 10, 'day_date':'2021/02/10'},
   ]
 
   let today = new Date();
@@ -53,7 +53,7 @@ const updatePlateau = () => {
     if (el.day_date === today_date) {
       el.highlight = '';
       el.status = 'available';
-      el.img = 'img/fond_plateau_available_v2.png';
+      el.img = 'img/fond_plateau_available_v3.png';
       el.iconDisplay = 'hide';
       el.linkDisplay = '';  
       var indexSlide = tab_day-1;

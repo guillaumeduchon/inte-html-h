@@ -965,7 +965,12 @@ main {
                     .carousel_cell-content-resume {display: none;}
                     @media screen and (orientation:landscape) and (max-width: 920px) {
                         &.available {
-                            .carousel_cell-content-container {margin-bottom: 15px;}
+                            .carousel_cell-content-container {margin-bottom: 25px;}
+                        }
+                    }
+                    @media screen and (orientation:landscape) and (min-width: 1024px) {
+                        &.available {
+                            .carousel_cell-content-container {margin-bottom: 20px;}
                         }
                     }
                 }
