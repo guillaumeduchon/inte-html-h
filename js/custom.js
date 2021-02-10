@@ -160,6 +160,9 @@ function compte_a_rebours(){
   $('.expired').find('.statut').html('Challenge terminé');
   $('.available').find('.statut').addClass('countdown');
   $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >=24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
+  $('.available.is-next').find('.bg_cell').attr('src', 'img/fond_plateau_available_v2.png');
+  $('.available.is-previous').find('.bg_cell').attr('src', 'img/fond_plateau_available_v2.png');
+  $('.available.is-selected').find('.bg_cell').attr('src', 'img/fond_plateau_available_v3.png');
   let tomorowSamedi = 0;
   $('.unavailable').each((index, el)=>{
     if (index === 0){
