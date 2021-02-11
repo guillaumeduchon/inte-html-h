@@ -14,7 +14,7 @@
     $host = '127.0.0.1';
     $db   = 'jeu_hermes';
     $user = 'hermes';
-    $pass = 'VP91rS.3*2614iPLa';
+    $pass = 'Vpspassword1.';
     $port = "3306";
     $charset = 'utf8mb4';
 
