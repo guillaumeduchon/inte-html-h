@@ -13,8 +13,8 @@
 
     $host = '127.0.0.1';
     $db   = 'jeu_hermes';
-    $user = 'hermes_surf';
-    $pass = 'Surf2020!';
+    $user = 'hermes';
+    $pass = 'Vpspassword1.';
     $port = "3306";
     $charset = 'utf8mb4';
 
