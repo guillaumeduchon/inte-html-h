@@ -4,16 +4,16 @@ $(document).on('click', '.carousel_cell-content-linkgame', (el) => {
 })
 
 const DATE_TAB = [
-  { 1: '2021/02/11' },
-  { 2: '2021/02/11' },
-  { 3: '2021/02/11' },
-  { 4: '2021/02/11' }, 
-  { 5: '2021/02/11' },
-  { 6: '2021/02/11' },
-  { 7: '2021/02/11' },
-  { 8: '2021/02/11' },
-  { 9: '2021/02/11' },
-  { 10: '2021/02/11' }
+  { 1: '2021/02/12' },
+  { 2: '2021/02/12' },
+  { 3: '2021/02/12' },
+  { 4: '2021/02/12' },
+  { 5: '2021/02/12' },
+  { 6: '2021/02/12' },
+  { 7: '2021/02/12' },
+  { 8: '2021/02/12' },
+  { 9: '2021/02/12' },
+  { 10: '2021/02/12' }
 ];
 
 var date_today = get_date_today(new Date())
@@ -27,16 +27,16 @@ if(date_today >= Object.values(DATE_TAB[0])[0]) {
 
 const updatePlateau = () => {
   let date_tab = [
-    {'status':'','day_num': 1, 'day_date':'2021/02/11'},
-    {'status':'','day_num': 2, 'day_date':'2021/02/11'},
-    {'status':'','day_num': 3, 'day_date':'2021/02/11'},
-    {'status':'','day_num': 4, 'day_date':'2021/02/11'},
-    {'status':'','day_num': 5, 'day_date':'2021/02/11'},
-    {'status':'','day_num': 6, 'day_date':'2021/02/11'},
-    {'status':'','day_num': 7, 'day_date':'2021/02/11'},
-    {'status':'','day_num': 8, 'day_date':'2021/02/11'},
-    {'status':'','day_num': 9, 'day_date':'2021/02/11'},
-    {'status':'','day_num': 10, 'day_date':'2021/02/11'},
+    {'status':'','day_num': 1, 'day_date':'2021/02/12'},
+    {'status':'','day_num': 2, 'day_date':'2021/02/12'},
+    {'status':'','day_num': 3, 'day_date':'2021/02/12'},
+    {'status':'','day_num': 4, 'day_date':'2021/02/12'},
+    {'status':'','day_num': 5, 'day_date':'2021/02/12'},
+    {'status':'','day_num': 6, 'day_date':'2021/02/12'},
+    {'status':'','day_num': 7, 'day_date':'2021/02/12'},
+    {'status':'','day_num': 8, 'day_date':'2021/02/12'},
+    {'status':'','day_num': 9, 'day_date':'2021/02/12'},
+    {'status':'','day_num': 10, 'day_date':'2021/02/12'},
   ]
 
   let today = new Date();
