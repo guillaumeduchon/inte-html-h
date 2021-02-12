@@ -1,0 +1,20 @@
+name: deploy-preprod
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Preprod
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_SERVER_PP_HERMES }}
+          username: ${{ secrets.SSH_USER_PP_HERMES }}
+          password: ${{ secrets.SSH_PASSWORD_PP_HERMES }}
+          script: |
+            cd /var/www/html/inte-html-h
+            sudo git fetch 
+            sudo git pull origin dev
