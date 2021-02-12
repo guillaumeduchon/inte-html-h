@@ -1,20 +1,20 @@
-name: deploy-preprod
+name: deploy-testing
 on:
   push:
     branches:
-      - dev
+      - testing
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Deploy Preprod
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_SERVER_PP_HERMES }}
-          username: ${{ secrets.SSH_USER_PP_HERMES }}
-          password: ${{ secrets.SSH_PASSWORD_PP_HERMES }}
+          host: ${{ secrets.SSH_SERVER_TEST_HERMES }}
+          username: ${{ secrets.SSH_USER_TEST_HERMES }}
+          password: ${{ secrets.SSH_PASSWORD_TEST_HERMES }}
           script: |
-            cd /var/www/html/inte-html-h
+            cd /hermes.agence.surf
             sudo git fetch 
-            sudo git pull origin dev
+            sudo git pull origin testing
