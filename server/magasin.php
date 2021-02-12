@@ -28,7 +28,7 @@ try {
                 $aMagasin = $stmt->fetch();
                 $oDatas = !$aMagasin ? [] :$aMagasin;
             } else {
-                $stmt = $pdo->prepare("SELECT * FROM magasin WHERE id=:id");
+                $stmt = $pdo->prepare("SELECT * FROM magasin WHERE id=:id AND active=1");
                 $stmt->execute(['id' => $decoded['magasin']]);
                 $aMagasin = $stmt->fetch();
                 $oDatas = !$aMagasin ? [] :$aMagasin;
