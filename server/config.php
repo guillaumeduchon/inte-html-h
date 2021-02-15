@@ -25,7 +25,7 @@
     // dev
     // echo getenv('DATABASE_DNS');
 
-    // $host = '127.0.0.1'; //$_ENV->getenv('APP_HOST')
+    // $host = '127.0.0.1'; //$_ENV->getenv('APP_HOST');
     // $db   = 'jeu_hermes'; //$_ENV->getenv('APP_BDD')
     // $user = 'root'; //$_ENV->getenv('APP_USER')
     // $pass = ''; //$_ENV->getenv('APP_PASS')
