@@ -1,13 +1,13 @@
 const DATE_TAB = [
   { 1: '2021/02/12' },
   { 2: '2021/02/13' },
-  { 3: '2021/02/14' },
+  { 3: '2021/02/15' },
   { 4: '2021/02/16' },
   { 5: '2021/02/17' },
   { 6: '2021/02/18' },
   { 7: '2021/02/19' },
   { 8: '2021/02/20' },
-  { 9: '2021/02/21' },
+  { 9: '2021/02/22' },
   { 10: '2021/02/23' }
 ];
 var date_today = get_date_today(new Date())
@@ -20,14 +20,14 @@ const updatePlateau = () => {
   let date_tab = [
     { 'status': '', 'day_num': 1, 'day_date': '2021/02/12' },
     { 'status': '', 'day_num': 2, 'day_date': '2021/02/13' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/02/14' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/02/15' },
     { 'status': '', 'day_num': 4, 'day_date': '2021/02/16' },
     { 'status': '', 'day_num': 5, 'day_date': '2021/02/17' },
     { 'status': '', 'day_num': 6, 'day_date': '2021/02/18' },
     { 'status': '', 'day_num': 7, 'day_date': '2021/02/19' },
     { 'status': '', 'day_num': 8, 'day_date': '2021/02/20' },
     { 'status': '', 'day_num': 9, 'day_date': '2021/02/21' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/02/23' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/02/22' },
   ];
 
   let today = new Date();
