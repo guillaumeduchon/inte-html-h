@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-lastest
     steps:
       - name: Deploy Preprod
         uses: appleboy/ssh-action@master
