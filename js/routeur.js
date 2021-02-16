@@ -51,6 +51,7 @@ $(document).ready(function () {
   if (location.pathname === "/plateau.html") {
     //fetch_question_responses()
     if (isLogged()) {
+      isEnableMagasin()
       if (!gameStarted() || gameStoped()) {
         clear_counter();
         updatePlateau()
@@ -66,6 +67,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_rule.html") {
     if (isLogged()) {
+      isEnableMagasin()
       sessionTimeOut();
       if (!gameStarted()) {
         result_day();
@@ -81,13 +83,13 @@ $(document).ready(function () {
   //--------------------------------------------------------- PAGE INDICE VIDEO
 
   if (location.pathname === "/game_indice_video.html") {
-    isLogged() ? fetch_movie(Number(localStorage.getItem('DAY_NUM'))) : goLogin();
+    isLogged() ? (isEnableMagasin, fetch_movie(Number(localStorage.getItem('DAY_NUM')))) : goLogin();
   }
 
   //--------------------------------------------------------- PAGE PERDU VIDEO
 
   if (location.pathname === "/game_lose_video.html") {
-    isLogged() ? fetch_movie(Number(localStorage.getItem('DAY_NUM'))) : goLogin();
+    isLogged() ? (isEnableMagasin, fetch_movie(Number(localStorage.getItem('DAY_NUM')))) : goLogin();
   }
 
   //--------------------------------------------------------- PAGE INDICE
@@ -355,4 +357,14 @@ function notTheDayGame(uri) {
 
 function cleanNbInBefore10h24 () {
   localStorage.removeItem('nbInBefore10h24');
+}
+
+const  isEnableMagasin = async () => {
+  await checkIsActiveMagasin().then(resp =>{
+    if (resp.id !== undefined) {
+      //window.location.href = location.pathname;
+    } else {
+      window.location.href = "/noactive.html";
+    }
+  })
 }
