@@ -305,7 +305,7 @@ const fetch_reponse6 = async () => {
         array = randomArrayShuffle(array); 
         array.map((value, index) => {
           // $('.dropzone').append(`<div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>`);
-          $('.answers').append(`<div class="answer_button" id="answer_${res.data[value].id}">${res.data[value].content}</div>`);
+          // $('.answers').append(`<div class="answer_button" id="answer_${res.data[value].id}">${res.data[value].content}</div>`);
           $('.grid_parfums').append(`<img src="${res.data[value].reponse_url}" alt="" id="answer_${res.data[value].id}" draggable="true" class="answer_img" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">`)
         })
       } else {
