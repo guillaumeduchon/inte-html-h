@@ -361,10 +361,19 @@ function cleanNbInBefore10h24 () {
 
 const  isEnableMagasin = async () => {
   await checkIsActiveMagasin().then(resp =>{
-    if (resp.id !== undefined) {
-      //window.location.href = location.pathname;
+    if (resp[0].id !== undefined) {
+      console.log('DATA: ',resp[0].done_last_game)
+      if(resp[0].active === 0 && (resp[0].done_last_game >= 1)) {
+        window.location.href = "/already.html";
+      } else if (resp[0].active === 1) {
+        // OK
+      } else {
+        console.log('DATA: ','nooooope')
+        window.location.href = "/noactive.html";
+      }
+      
     } else {
-      window.location.href = "/noactive.html";
+     console.log('request failed')
     }
   })
 }

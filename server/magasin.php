@@ -28,9 +28,14 @@ try {
                 $aMagasin = $stmt->fetch();
                 $oDatas = !$aMagasin ? [] :$aMagasin;
             } else if(isset($decoded['active'])) {
-                $stmt = $pdo->prepare("SELECT * FROM magasin WHERE id=:id AND active=1");
+                $stmt = $pdo->prepare("SELECT magasin.*, indice_magasin.id as 'done_last_game'
+                FROM magasin 
+                LEFT JOIN indice_magasin 
+                ON indice_magasin.magasin_id = magasin.id
+                WHERE magasin.id=:id 
+                ORDER BY 'done_last_game' DESC");
                 $stmt->execute(['id' => $decoded['magasin']]);
-                $aMagasin = $stmt->fetch();
+                $aMagasin = $stmt->fetchAll();
                 $oDatas = !$aMagasin ? [] :$aMagasin;
             } else {
                 $stmt = $pdo->prepare("SELECT * FROM magasin WHERE id=:id");
