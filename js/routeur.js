@@ -83,19 +83,20 @@ $(document).ready(function () {
   //--------------------------------------------------------- PAGE INDICE VIDEO
 
   if (location.pathname === "/game_indice_video.html") {
-    isLogged() ? (isEnableMagasin, fetch_movie(Number(localStorage.getItem('DAY_NUM')))) : goLogin();
+    isLogged() ? (fetch_movie(Number(localStorage.getItem('DAY_NUM')))) : goLogin();
   }
 
   //--------------------------------------------------------- PAGE PERDU VIDEO
 
   if (location.pathname === "/game_lose_video.html") {
-    isLogged() ? (isEnableMagasin, fetch_movie(Number(localStorage.getItem('DAY_NUM')))) : goLogin();
+    isLogged() ? (fetch_movie(Number(localStorage.getItem('DAY_NUM')))) : goLogin();
   }
 
   //--------------------------------------------------------- PAGE INDICE
 
   if (location.pathname === "/game_indice.html") {
     if (isLogged()) {
+      isEnableMagasin()
       sessionTimeOut();
       if (!gameStarted() || gameStoped()) {
         fetch_indice();
@@ -368,7 +369,6 @@ const  isEnableMagasin = async () => {
       } else if (resp[0].active === 1) {
         // OK
       } else {
-        console.log('DATA: ','nooooope')
         window.location.href = "/noactive.html";
       }
       
