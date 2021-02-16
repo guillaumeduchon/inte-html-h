@@ -19,7 +19,7 @@ const fetch_indice = async ()=> {
     await axios.post('/server/indice.php', {day_num: Number(localStorage.getItem('DAY_NUM')), indice: indice_id, magasin: Number(localStorage.getItem('magasin'))}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}
     }).then((res) => { 
-      console.info(res)
+      console.warn(`indice ${indice_id} enregistré`)
     });
   }
 
