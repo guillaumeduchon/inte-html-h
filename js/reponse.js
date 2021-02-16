@@ -281,6 +281,9 @@ const check_answer5 = async () => {
 }
 
 /* ----------------------------------- REPONSE JEU 6 ----------------------------------- */
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
 
 const fetch_reponse6 = async () => {
   await axios.post('/server/reponse.php', { day_num: Number(localStorage.getItem('DAY_NUM')) }, {
@@ -288,10 +291,16 @@ const fetch_reponse6 = async () => {
   })
     .then((res) => {
       if (res.data[0].id !== undefined) {
-        res.data.map(el => {
+        let array =[]
+        for (i=0; i < res.data.length; i++) {
+          array.push(i)
+        };
+        array = shuffle(array);  
+        console.log("farray", array)
+        array.map(index => {
           // $('.dropzone').append(`<div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )"></div>`);
-          $('.answers').append(`<div class="answer_button" id="answer_${el.id}">${el.content}</div>`);
-          $('.grid_parfums').append(`<img src="${el.reponse_url}" alt="" id="answer_${el.id}" draggable="true" class="answer_img" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">`)
+          $('.answers').append(`<div class="answer_button" id="answer_${res.data[index].id}">${res.data[index].content}</div>`);
+          $('.grid_parfums').append(`<img src="${res.data[index].reponse_url}" alt="" id="answer_${res.data[index].id}" draggable="true" class="answer_img" onDragStart="dragStart(event)" onDragEnd="dragEnd( event )">`)
         })
       } else {
         showError();
