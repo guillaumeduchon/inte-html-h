@@ -1,3 +1,22 @@
+const  isEnableMagasin = async () => {
+  await checkIsActiveMagasin().then(resp =>{
+    if (resp[0].id !== undefined) {
+      console.log('DATA: ',resp[0].done_last_game)
+      if(resp[0].active === 0 && (resp[0].done_last_game >= 1)) {
+        window.location.href = "/already.html";
+      } else if (resp[0].active === 1) {
+        // OK
+      } else {
+        window.location.href = "/noactive.html";
+      }
+      
+    } else {
+     console.log('request failed')
+    }
+  })
+}
+
+
 $(document).ready(function () {
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
@@ -112,6 +131,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_win.html") {
     if (isLogged()) {
+      isEnableMagasin();
       sessionTimeOut();
       fetch_content(); 
     } else {
@@ -123,6 +143,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_lose.html") {
     if (isLogged()) {
+      isEnableMagasin();
       sessionTimeOut();
       (fetch_content(), set_indice(0)) 
     } else {
@@ -136,6 +157,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      isEnableMagasin();
       sessionTimeOut();
       result_day(),hasWinJs();
       startGame();
@@ -151,6 +173,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      isEnableMagasin();
       sessionTimeOut();
       result_day();
       startGame();
@@ -166,6 +189,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      isEnableMagasin();
       sessionTimeOut();
       result_day();
       startGame();
@@ -181,6 +205,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      isEnableMagasin();
       sessionTimeOut();
       result_day();
       startGame();
@@ -196,6 +221,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      isEnableMagasin();
       sessionTimeOut();
       result_day();
       startGame();
@@ -211,6 +237,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      isEnableMagasin();
       sessionTimeOut();
       result_day();
       startGame();
@@ -226,6 +253,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      isEnableMagasin();
       sessionTimeOut();
       result_day();
       startGame();
@@ -241,6 +269,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      isEnableMagasin();
       sessionTimeOut();
       result_day();
       startGame();
@@ -256,6 +285,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      isEnableMagasin();
       sessionTimeOut();
       result_day();
       startGame();
@@ -270,6 +300,7 @@ $(document).ready(function () {
     notTheDayGame(location.pathname);
 
     if (isLogged()) {
+      isEnableMagasin();
       sessionTimeOut();
       result_finalday();hasWinFinalJs();
       startGame();
@@ -283,7 +314,7 @@ $(document).ready(function () {
 //--------------------------------------------------------- PAGE PERDU FINAL
 
 if (location.pathname === "/endgame_lose.html") {
-  isLogged() ? getMagasin() : goLogin();
+  isLogged() ? (isEnableMagasin(), getMagasin()) : goLogin();
 } else
 
   //----------------------------------------------------------- GO
@@ -358,22 +389,4 @@ function notTheDayGame(uri) {
 
 function cleanNbInBefore10h24 () {
   localStorage.removeItem('nbInBefore10h24');
-}
-
-const  isEnableMagasin = async () => {
-  await checkIsActiveMagasin().then(resp =>{
-    if (resp[0].id !== undefined) {
-      console.log('DATA: ',resp[0].done_last_game)
-      if(resp[0].active === 0 && (resp[0].done_last_game >= 1)) {
-        window.location.href = "/already.html";
-      } else if (resp[0].active === 1) {
-        // OK
-      } else {
-        window.location.href = "/noactive.html";
-      }
-      
-    } else {
-     console.log('request failed')
-    }
-  })
 }
