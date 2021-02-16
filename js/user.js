@@ -38,7 +38,14 @@ const try_login = async (login, pwd) => {
       .then((res)=>{
         if (res.data[0].id !== undefined) {
           logged(res.data[0].id)
-          window.location.href = "/rules.html";
+          checkIsActiveMagasin().then(resp =>{
+            if (resp.data[0].id !== undefined) {
+              window.location.href = "/rules.html";
+            } else {
+              window.location.href = "/noactive.html";
+            }
+          })
+          
         } else {
           showError();
         } 

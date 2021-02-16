@@ -16,7 +16,7 @@ try {
             $magasins = $stmt->fetchAll();
             $oDatas = !$magasins ? [] :$magasins;
         } else {
-            if ($decoded['final_winners']) {
+            if (isset($decoded['final_winners'])) {
                 $finalQuestionID = 10;
                 $stmt = $pdo->prepare("SELECT magasin.*
                 FROM magasin
@@ -25,6 +25,11 @@ try {
                 WHERE indice_magasin.indice_id =:magasin_id AND question_id =:question_id
                 GROUP BY magasin.id");
                 $stmt->execute(['magasin_id' => $decoded['magasin'] , 'question_id' => $finalQuestionID]);
+                $aMagasin = $stmt->fetch();
+                $oDatas = !$aMagasin ? [] :$aMagasin;
+            } else if(isset($decoded['active'])) {
+                $stmt = $pdo->prepare("SELECT * FROM magasin WHERE id=:id AND active=1");
+                $stmt->execute(['id' => $decoded['magasin']]);
                 $aMagasin = $stmt->fetch();
                 $oDatas = !$aMagasin ? [] :$aMagasin;
             } else {

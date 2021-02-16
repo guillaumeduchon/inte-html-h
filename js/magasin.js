@@ -21,3 +21,11 @@ const getMagasin = async () => {
     }
   });
 }
+
+const checkIsActiveMagasin = async () => {
+  return await axios.post('/server/magasin.php', {magasin: localStorage.getItem('magasin'), active:''}, {
+    headers: {'Content-Type': 'application/json','mode': 'cors'}
+  }).then((res) => {
+    return res.data
+  });
+}
