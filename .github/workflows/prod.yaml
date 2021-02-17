@@ -16,5 +16,5 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD_HERMES }}
           script: |
             cd hermes.agence.surf
-            sudo git fetch 
-            sudo git pull origin dev
+            git fetch 
+            git pull origin dev
