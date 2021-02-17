@@ -7,10 +7,19 @@ const fullfiled_magasin = async () => {
     response = res.data;
     let select = $("#magasin")
     response.forEach((item, index) => {
-      select.append('<option value="' + item.ident + '"' + (index < 1 ? 'selected ' : '') + '>' + item.name + '</option>');
+      select.append('<option value="' + item.ident + '"' + (index < 1 ? 'selected ' : '') + ' data_active=' + item.active + '>' + item.name + '</option>');
     })
   })
 }
+
+$("#magasin").on('change', (event) => {
+  var active = $( "#magasin option:selected" ).attr('data_active');
+  if (active === '0') {
+    $('.cta_diamond').addClass('inactif');
+  } else {
+    $('.cta_diamond').removeClass('inactif');
+  }
+})
 
 const getMagasin = async () => {
   await axios.post('/server/magasin.php', {magasin: localStorage.getItem('magasin')}, {

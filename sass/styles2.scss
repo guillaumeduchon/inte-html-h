@@ -444,6 +444,13 @@ main {
             background-color: $blue;
             box-shadow: 0 0 4px 4px rgba($green, 0.9);
         }
+        &.inactif {
+            a, span {cursor: not-allowed;}
+            &:after {
+                background-color: $grey;
+                box-shadow: 0 0 4px 4px rgba($grey-dark, 0.9);
+            }
+        }
     }
     #timer {
         margin: 0 auto;

@@ -36,7 +36,7 @@ const try_login = async (login, pwd) => {
             if (resp[0].id !== undefined && resp[0].active > 0 ) {
               window.location.href = "/rules.html";
             } else {
-              window.location.href = "/noactive.html";
+              $('.cta_diamond').addClass('inactif');
             }
           })
           
