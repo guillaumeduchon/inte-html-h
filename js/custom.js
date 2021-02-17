@@ -1,6 +1,4 @@
 const DATE_TAB = [
-<<<<<<< HEAD
-<<<<<<< HEAD
   { 1: '2021/02/17' },
   { 2: '2021/02/18' },
   { 3: '2021/02/19' },
@@ -11,23 +9,6 @@ const DATE_TAB = [
   { 8: '2021/02/24' },
   { 9: '2021/02/25' },
   { 10: '2021/02/26' }
-=======
-=======
->>>>>>> f2cf87f80a24d5753476778960ad3ecc01aad504
-  { 1: '2021/02/12' },
-  { 2: '2021/02/13' },
-  { 3: '2021/01/15' },
-  { 4: '2021/01/16' },
-  { 5: '2021/01/17' },
-  { 6: '2021/01/18' },
-  { 7: '2021/02/19' },
-  { 8: '2021/02/20' },
-  { 9: '2021/02/22' },
-  { 10: '2021/02/23' }
-<<<<<<< HEAD
->>>>>>> f2cf87f (launch test)
-=======
->>>>>>> f2cf87f80a24d5753476778960ad3ecc01aad504
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
@@ -37,8 +18,6 @@ localStorage.setItem('DAY_NUM', tab_day[0]);
 
 const updatePlateau = () => {
   let date_tab = [
-<<<<<<< HEAD
-<<<<<<< HEAD
     { 'status': '', 'day_num': 1, 'day_date': '2021/02/17' },
     { 'status': '', 'day_num': 2, 'day_date': '2021/02/18' },
     { 'status': '', 'day_num': 3, 'day_date': '2021/02/19' },
@@ -49,23 +28,6 @@ const updatePlateau = () => {
     { 'status': '', 'day_num': 8, 'day_date': '2021/02/24' },
     { 'status': '', 'day_num': 9, 'day_date': '2021/02/25' },
     { 'status': '', 'day_num': 10, 'day_date': '2021/02/26' },
-=======
-=======
->>>>>>> f2cf87f80a24d5753476778960ad3ecc01aad504
-    { 'status': '', 'day_num': 1, 'day_date': '2021/02/12' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/02/13' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/02/15' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/02/16' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/02/17' },
-    { 'status': '', 'day_num': 6, 'day_date': '2021/02/18' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/02/19' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/02/20' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/02/22' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/02/23' },
-<<<<<<< HEAD
->>>>>>> f2cf87f (launch test)
-=======
->>>>>>> f2cf87f80a24d5753476778960ad3ecc01aad504
   ];
 
   let today = new Date();
