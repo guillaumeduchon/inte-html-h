@@ -145,7 +145,7 @@ function compte_a_rebours() {
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
   date_evenement.setDate(date_evenement.getDate() + 1)
-  date_evenement.setHours(10, 24, 00);
+  date_evenement.setHours(11, 05, 00);
   var total_secondes = (date_evenement - date_actuelle) / 1000;
   var jours = new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
   var heures = Math.floor((total_secondes - (0 * 60 * 60 * 24)) / (60 * 60));
@@ -207,27 +207,29 @@ function before10h24(heures, minutes, secondes) {
     location.reload();
   }
 
-  if (heures > 24) {
+  if (heures >= 24 ) {
     localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24')) + 1));
-    var $carouChange = $('.carousel_plateau').flickity();
-    $carouChange.addClass('available');
-
-    $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').removeClass('available');
-    $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').addClass('unavailable');
-    $('.bg_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').attr("src", 'img/fond_plateau_unavailable.png');
-    $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').attr('aria-hidden', 'true');
-    $('.icon:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').removeClass('hide');
-    $('.carousel_cell-content:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').find('a').hide();
-    $('.statut:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').removeClass('countdown');
-
-    $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').removeClass('expired');
-    $('.carousel_cell-content-linkgame:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').addClass('');
-    $('.icon:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').addClass('hide');
-    $('.bg_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').attr("src", 'img/fond_plateau_available.png');
-
+    
     if (localStorage.getItem('nbInBefore10h24') === '1') {
+      var $carouChange = $('.carousel_plateau').flickity();
+      $carouChange.addClass('available');
+
+      $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').removeClass('available');
+      $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').addClass('unavailable');
+      $('.bg_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').attr("src", 'img/fond_plateau_unavailable.png');
+      $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').attr('aria-hidden', 'true');
+      $('.icon:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').removeClass('hide');
+      $('.carousel_cell-content:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').find('a').hide();
+      $('.statut:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').removeClass('countdown');
+
+      $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').removeClass('expired');
+      $('.carousel_cell-content-linkgame:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').addClass('');
+      $('.icon:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').addClass('hide');
+      $('.bg_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').attr("src", 'img/fond_plateau_available.png');
+
+    
       localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) - 1)
-      $carouChange.flickity('select', (Number(localStorage.getItem('DAY_NUM')) - 2));
+      $carouChange.flickity('select', (Number(localStorage.getItem('DAY_NUM')) - 1));
     }
   } else {
     if (localStorage.getItem('nbInBefore10h24') && localStorage.getItem('nbInBefore10h24') !== '0') {
