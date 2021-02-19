@@ -12,7 +12,14 @@ const DATE_TAB = [
 ];
 var date_today = get_date_today(new Date())
 var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
-localStorage.setItem('DAY_NUM', tab_day[0]);
+
+if(localStorage.getItem('DAY_NUM') !== null ){
+  if(Number(localStorage.getItem('DAY_NUM')) < tab_day[0])
+    localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')))
+}
+else{
+  localStorage.setItem('DAY_NUM', tab_day[0]);
+}
 
 //------------------------------------------------PLATEAU---------------------------------------
 
@@ -145,7 +152,7 @@ function compte_a_rebours() {
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
   date_evenement.setDate(date_evenement.getDate() + 1)
-  date_evenement.setHours(11, 11, 00);
+  date_evenement.setHours(10, 24, 00);
   var total_secondes = (date_evenement - date_actuelle) / 1000;
   var jours = new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
   var heures = Math.floor((total_secondes - (0 * 60 * 60 * 24)) / (60 * 60));
