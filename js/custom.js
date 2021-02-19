@@ -145,7 +145,7 @@ function compte_a_rebours() {
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
   date_evenement.setDate(date_evenement.getDate() + 1)
-  date_evenement.setHours(11, 05, 00);
+  date_evenement.setHours(11, 11, 00);
   var total_secondes = (date_evenement - date_actuelle) / 1000;
   var jours = new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
   var heures = Math.floor((total_secondes - (0 * 60 * 60 * 24)) / (60 * 60));
@@ -225,6 +225,7 @@ function before10h24(heures, minutes, secondes) {
       $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').removeClass('expired');
       $('.carousel_cell-content-linkgame:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').addClass('');
       $('.icon:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').addClass('hide');
+      $('.carousel_cell-content:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').find('a').removeClass('hide');
       $('.bg_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 2) + ')').attr("src", 'img/fond_plateau_available.png');
 
     
