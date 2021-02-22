@@ -26,15 +26,15 @@ $(document).ready(function () {
     } else {
       localStorage.clear();
     }
-    var today = new Date();
-    let montRaw = String(today.getUTCMonth() + 1);
-    let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
-    let dayRaw = String(today.getUTCDate());
-    let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
-    let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
-    if (today_date < '2021/02/24') {
-      notGameToday();
-    }
+    // var today = new Date();
+    // let montRaw = String(today.getUTCMonth() + 1);
+    // let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
+    // let dayRaw = String(today.getUTCDate());
+    // let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
+    // let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
+    // if (today_date < '2021/02/24') {
+    //   notGameToday();
+    // }
   }
 
   if (location.pathname === "/login.html") {
