@@ -1,5 +1,5 @@
 const DATE_TAB = [
-  { 1: '2021/02/24' },
+  { 1: '2021/02/22' },
   { 2: '2021/02/25' },
   { 3: '2021/02/26' },
   { 4: '2021/02/27' },
@@ -28,7 +28,7 @@ else{
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/02/24' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/02/22' },
     { 'status': '', 'day_num': 2, 'day_date': '2021/02/25' },
     { 'status': '', 'day_num': 3, 'day_date': '2021/02/26' },
     { 'status': '', 'day_num': 4, 'day_date': '2021/02/27' },

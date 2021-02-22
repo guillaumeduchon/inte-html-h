@@ -18,7 +18,7 @@
         }
 
         $magasin = $decoded['magasin'];
-        $stmt = $pdo->prepare("INSERT INTO winners (id, num, `name`, region) SELECT `id`, num, `name`, region
+        $stmt = $pdo->prepare("INSERT INTO winners (id, num, `name`, region, datehour) SELECT `id`, num, `name`, region, NOW()
         FROM magasin
         WHERE magasin.id = :magasin");
         $stmt->execute(['magasin'=> $magasin]);
