@@ -2,9 +2,10 @@ function isLogged() {
   return localStorage.getItem('logged') === null ? false : true;
 }
 
-function logged(magasin_id) {
+function logged(magasin_id, magasin_name) {
   localStorage.setItem('logged', 'true');
   localStorage.setItem('magasin', magasin_id);
+  localStorage.setItem('magasin_name', magasin_name);
   let expires = new Date((Date.now()  + (510000 )) ); // (510000 + 60 * 60*1000)
   localStorage.setItem('session_expire', expires )
 }
@@ -31,7 +32,7 @@ const try_login = async (login, pwd) => {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
         if (res.data[0].id !== undefined) {
-          logged(res.data[0].id)
+          logged(res.data[0].id, res.data[0].name)
           checkIsActiveMagasin().then(resp =>{
             if (resp[0].id !== undefined && resp[0].active > 0 ) {
               window.location.href = "/rules.html";
