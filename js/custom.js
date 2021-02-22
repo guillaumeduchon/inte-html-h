@@ -11,6 +11,9 @@ const DATE_TAB = [
   { 10: '2021/03/06' }
 ];
 var date_today = get_date_today(new Date())
+if(typeof DATE_TAB.filter(obj => (Object.values(obj) == date_today)[0]) !== "object" ) {
+  window.location.href = "/not_open.html"
+}
 var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
 
 if(localStorage.getItem('DAY_NUM') !== null ){
