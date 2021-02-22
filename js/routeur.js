@@ -360,6 +360,7 @@ function startGame() { localStorage.setItem('day_played', 'true') }
 function stopGame() { localStorage.setItem('has_played', 'true') }
 function gameStarted() { return localStorage.getItem('day_played') }
 function gameStoped() { return localStorage.getItem('has_played') }
+function notGameToday() { window.location.href = "not_open.html" }
 function goGame(jour) { window.location.href = "/game_day" + jour + ".html" }
 function goLogin() { window.location.href = "login.html" }
 function goPlateau() { window.location.href = "plateau.html" }
