@@ -323,7 +323,7 @@ $(document).ready(function () {
 
 if (location.pathname === "/endgame_lose.html") {
   isLogged() ? (isEnableMagasin(), getMagasin()) : goLogin();
-} else
+}
 
   //----------------------------------------------------------- GO
   function goWin() {
