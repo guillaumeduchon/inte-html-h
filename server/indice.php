@@ -36,8 +36,9 @@
             $indice = (int)$decoded['indice'];
             $magasin = (int)$decoded['magasin'];
             $magasin_name = $decoded['magasin_name'];
-            $stmt = $pdo->prepare("INSERT INTO indice_magasin(`id`,`indice_id`,`magasin_id`, `hour_participate`, `magasin_name`) VALUES (:day_num, :indice, :magasin, NOW(), :magasin_name )");
-            $stmt->execute(['day_num' => $day_num, 'indice' => $indice, 'magasin' => $magasin, 'magasin_name' => $magasin_name]);
+            $magasin_num = (int)$decoded['magasin_num'];
+            $stmt = $pdo->prepare("INSERT INTO indice_magasin(`id`,`indice_id`,`magasin_id`, `hour_participate`, `magasin_name`, `magasin_num`) VALUES (:day_num, :indice, :magasin, NOW(), :magasin_name, :magasin_num )");
+            $stmt->execute(['day_num' => $day_num, 'indice' => $indice, 'magasin' => $magasin, 'magasin_name' => $magasin_name, 'magasin_num' => $magasin_num]);
             $aIndice = $stmt->fetch();
             $oDatas = !$aIndice ? [] :$aIndice;
           }

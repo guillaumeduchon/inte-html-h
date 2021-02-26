@@ -2,10 +2,11 @@ function isLogged() {
   return localStorage.getItem('logged') === null ? false : true;
 }
 
-function logged(magasin_id, magasin_name) {
+function logged(magasin_id, magasin_name, magasin_num) {
   localStorage.setItem('logged', 'true');
   localStorage.setItem('magasin', magasin_id);
   localStorage.setItem('magasin_name', magasin_name);
+  localStorage.setItem('magasin_num', magasin_num);
   let expires = new Date((Date.now()  + (510000 )) ); // (510000 + 60 * 60*1000)
   localStorage.setItem('session_expire', expires )
 }
