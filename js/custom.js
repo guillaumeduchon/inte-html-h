@@ -215,9 +215,11 @@ localStorage.setItem('nbInBefore10h24', 0);
 function before10h24(heures, minutes, secondes) {
   if (heures === 24 && minutes === 00 && secondes === 00) {
     location.reload();
+    localStorage.removeItem('DAY_NUM_BEFORE');
   }
 
   if (heures >= 24 ) {
+    localStorage.setItem('DAY_NUM_BEFORE', (Number(localStorage.getItem('DAY_NUM'))  -1 ) )
     localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24')) + 1));
     
     if (localStorage.getItem('nbInBefore10h24') === '1') {

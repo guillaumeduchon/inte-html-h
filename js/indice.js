@@ -2,12 +2,13 @@
 //------------------------------------------------INDICE---------------------------------------
  //GET L'INDICES GAGNÉS PAR LE MAGASIN
 const fetch_indice = async ()=> {
-    await axios.post('/server/indice.php', {day_num: Number(localStorage.getItem('DAY_NUM'))}, {
+    await axios.post('/server/indice.php', {day_num: localStorage.getItem('DAY_NUM_BEFORE') !== null ? Number(localStorage.getItem('DAY_NUM_BEFORE')): Number(localStorage.getItem('DAY_NUM')) }, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}})
         .then((res)=>{
           if (res.data.id !== undefined) {
             $('.cta_diamond').html(`<span>${res.data.letter.toUpperCase()}</span>`);
-            set_indice(res.data.id)
+            set_indice(res.data.id);
+            localStorage.removeItem('DAY_NUM_BEFORE')
           } else {
             showError();
           } 
