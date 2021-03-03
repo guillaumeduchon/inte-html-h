@@ -15,9 +15,6 @@ const  isEnableMagasin = async () => {
   })
 }
 
-if(localStorage.getItem('DAY_NUM_BEFORE') !==null ) { localStorage.setItem('DAY_NUM_BEFORE_2', (Number(localStorage.getItem('DAY_NUM_BEFORE'))  +1 ) )};
-
-
 $(document).ready(function () {
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
@@ -87,6 +84,7 @@ $(document).ready(function () {
       } else {
         goGame(Number(localStorage.getItem('DAY_NUM')))
       }
+      if(localStorage.getItem('DAY_NUM_BEFORE') !==null ) { localStorage.setItem('DAY_NUM_BEFORE_2', (Number(localStorage.getItem('DAY_NUM_BEFORE'))  +1 ) )};
     } else {
       goLogin()
     }
@@ -400,4 +398,6 @@ function notTheDayGame(uri) {
 
 function cleanNbInBefore10h24 () {
   localStorage.removeItem('nbInBefore10h24');
+  localStorage.removeItem('DAY_NUM_BEFORE');
+  localStorage.removeItem('DAY_NUM_BEFORE_2');
 }
