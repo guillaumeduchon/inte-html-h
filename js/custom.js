@@ -155,7 +155,7 @@ function compte_a_rebours() {
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
   date_evenement.setDate(date_evenement.getDate() + 1)
-  date_evenement.setHours(10, 24, 00);
+  date_evenement.setHours(13, 24, 00);
   var total_secondes = (date_evenement - date_actuelle) / 1000;
   var jours = new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
   var heures = Math.floor((total_secondes - (0 * 60 * 60 * 24)) / (60 * 60));
