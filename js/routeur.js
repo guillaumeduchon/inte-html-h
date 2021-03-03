@@ -15,7 +15,7 @@ const  isEnableMagasin = async () => {
   })
 }
 
-if(localStorage.getItem('DAY_NUM_BEFORE') !==null ) { localStorage.setItem('DAY_NUM_BEFORE_2', (Number(localStorage.getItem('DAY_NUM_BEFORE'))  +1 ) );
+if(localStorage.getItem('DAY_NUM_BEFORE') !==null ) { localStorage.setItem('DAY_NUM_BEFORE_2', (Number(localStorage.getItem('DAY_NUM_BEFORE'))  +1 ) )};
 
 
 $(document).ready(function () {
