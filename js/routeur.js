@@ -76,6 +76,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/plateau.html") {
     //fetch_question_responses()
+    
     if (isLogged()) {
       isEnableMagasin()
       if (!gameStarted() || gameStoped()) {
