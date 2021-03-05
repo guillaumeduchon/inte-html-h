@@ -392,8 +392,11 @@ function hasWinFinalJs() {
 }
 
 function notTheDayGame(uri) {
-  if (localStorage.getItem('DAY_NUM') !== uri.replace('/game_day', '').replace('.html', '')) {
-    window.location.href = "/game_day" + Number(localStorage.getItem('DAY_NUM')) + ".html";
+  if (localStorage.getItem('DAY_NUM') !== '9') {
+    // if (localStorag0e.getItem('DAY_NUM') !== uri.replace('/game_day', '').replace('.html', '')) {
+      // window.location.href = "/game_day" + Number(localStorage.getItem('DAY_NUM')) + ".html";
+      window.location.href = "/game_day9.html";
+    // }
   }
 }
 
