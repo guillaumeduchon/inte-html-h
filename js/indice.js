@@ -61,7 +61,7 @@ const fetch_movie = async () => {
   var minutRaw = String(dateObj.getMinutes());
   const MINUT = (minutRaw.length < 2 ? '0' + minutRaw : minutRaw)
 
-  if(Number(HOUR) <= 10){
+  if(Number(HOUR) <= 09){
     if(Number(MINUT) <=24) {
       datetoday = YEAR+'/'+ MONTH+'/'+(Number(DAY)-1)
     } else {
