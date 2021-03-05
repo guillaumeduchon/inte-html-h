@@ -179,7 +179,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 2
 
   if (location.pathname === "/game_day2.html") {
-    // notTheDayGame(location.pathname);
+    notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -195,7 +195,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 3
 
   if (location.pathname === "/game_day3.html") {
-    // notTheDayGame(location.pathname);
+    notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -211,7 +211,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 4
 
   if (location.pathname === "/game_day4.html") {
-    // notTheDayGame(location.pathname);
+    notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -227,7 +227,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 5
 
   if (location.pathname === "/game_day5.html") {
-    // notTheDayGame(location.pathname);
+    notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -243,7 +243,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 6
 
   if (location.pathname === "/game_day6.html") {
-    // notTheDayGame(location.pathname);
+    notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -259,7 +259,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 7
 
   if (location.pathname === "/game_day7.html") {
-    // notTheDayGame(location.pathname);
+    notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -306,7 +306,7 @@ $(document).ready(function () {
 
   //--------------------------------------------------------- JOUR 10
   if (location.pathname === "/game_day10.html") {
-    // notTheDayGame(location.pathname);
+    notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
