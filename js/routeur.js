@@ -85,7 +85,6 @@ $(document).ready(function () {
       } else {
         goGame(Number(localStorage.getItem('DAY_NUM')))
       }
-      if(localStorage.getItem('DAY_NUM_BEFORE') !==null ) { localStorage.setItem('DAY_NUM_BEFORE_2', (Number(localStorage.getItem('DAY_NUM_BEFORE'))  +1 ) )};
     } else {
       goLogin()
     }
@@ -179,7 +178,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 2
 
   if (location.pathname === "/game_day2.html") {
-    notTheDayGame(location.pathname);
+    // notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -195,7 +194,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 3
 
   if (location.pathname === "/game_day3.html") {
-    notTheDayGame(location.pathname);
+    // notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -211,7 +210,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 4
 
   if (location.pathname === "/game_day4.html") {
-    notTheDayGame(location.pathname);
+    // notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -227,7 +226,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 5
 
   if (location.pathname === "/game_day5.html") {
-    notTheDayGame(location.pathname);
+    // notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -243,7 +242,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 6
 
   if (location.pathname === "/game_day6.html") {
-    notTheDayGame(location.pathname);
+    // notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -259,7 +258,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 7
 
   if (location.pathname === "/game_day7.html") {
-    notTheDayGame(location.pathname);
+    // notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -275,7 +274,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 8
 
   if (location.pathname === "/game_day8.html") {
-    notTheDayGame(location.pathname);
+    // notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -291,7 +290,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 9
 
   if (location.pathname === "/game_day9.html") {
-    notTheDayGame(location.pathname);
+    // notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -306,7 +305,7 @@ $(document).ready(function () {
 
   //--------------------------------------------------------- JOUR 10
   if (location.pathname === "/game_day10.html") {
-    notTheDayGame(location.pathname);
+    // notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -392,16 +391,14 @@ function hasWinFinalJs() {
 }
 
 function notTheDayGame(uri) {
-  if (localStorage.getItem('DAY_NUM') !== '9') {
-    // if (localStorag0e.getItem('DAY_NUM') !== uri.replace('/game_day', '').replace('.html', '')) {
-      // window.location.href = "/game_day" + Number(localStorage.getItem('DAY_NUM')) + ".html";
-      window.location.href = "/game_day9.html";
-    // }
-  }
+  // if (localStorage.getItem('DAY_NUM') !== '9') {
+  //   // if (localStorag0e.getItem('DAY_NUM') !== uri.replace('/game_day', '').replace('.html', '')) {
+  //     // window.location.href = "/game_day" + Number(localStorage.getItem('DAY_NUM')) + ".html";
+  //     window.location.href = "/game_day9.html";
+  //   // }
+  // }
 }
 
 function cleanNbInBefore10h24 () {
   localStorage.removeItem('nbInBefore10h24');
-  localStorage.removeItem('DAY_NUM_BEFORE');
-  localStorage.removeItem('DAY_NUM_BEFORE_2');
 }

@@ -8,8 +8,6 @@ const fetch_indice = async ()=> {
           if (res.data.id !== undefined) {
             $('.cta_diamond').html(`<span>${res.data.letter.toUpperCase()}</span>`);
             set_indice(res.data.id);
-            localStorage.removeItem('DAY_NUM_BEFORE')
-            localStorage.removeItem('DAY_NUM_BEFORE_2')
           } else {
             showError();
           } 
@@ -18,7 +16,7 @@ const fetch_indice = async ()=> {
 
  //SAVE L'INDICES GAGNÉS PAR LE MAGASIN
   const set_indice = async (indice_id)=> {
-    await axios.post('/server/indice.php', {day_num: localStorage.getItem('DAY_NUM_BEFORE') !== null ? Number(localStorage.getItem('DAY_NUM')): Number(localStorage.getItem('DAY_NUM')), indice: indice_id === 0 ? indice_id :  Number(localStorage.getItem('DAY_NUM')) , magasin: Number(localStorage.getItem('magasin')), magasin_name: localStorage.getItem('magasin_name')}, {
+    await axios.post('/server/indice.php', {day_num: Number(localStorage.getItem('DAY_NUM')), indice: indice_id === 0 ? indice_id :  Number(localStorage.getItem('DAY_NUM')) , magasin: Number(localStorage.getItem('magasin')), magasin_name: localStorage.getItem('magasin_name')}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}
     }).then((res) => { 
       console.warn(`indice ${indice_id} enregistré`)
@@ -49,30 +47,7 @@ const fetch_indice = async ()=> {
 
 // DISPLAY VIDEO
 const fetch_movie = async () => {
-  var dateObj = new Date();
-  var montRaw = String(dateObj.getUTCMonth() + 1);
-  const MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw)
-  var dayRaw = String(dateObj.getUTCDate());//+ 1
-  const DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw)
-  const YEAR = String(dateObj.getUTCFullYear());
-  
-  var hourRaw = String(dateObj.getHours());
-  const HOUR = (hourRaw.length < 2 ? '0' + hourRaw : hourRaw)
-  var minutRaw = String(dateObj.getMinutes());
-  const MINUT = (minutRaw.length < 2 ? '0' + minutRaw : minutRaw)
-
-  if(Number(HOUR) <= 09){
-    if(Number(MINUT) <=24) {
-      datetoday = YEAR+'/'+ MONTH+'/'+(Number(DAY)-1)
-    } else {
-      datetoday = YEAR+'/'+ MONTH+'/'+DAY
-    }
-  } else {
-    datetoday = YEAR+'/'+ MONTH+'/'+DAY
-  }
-  
-
-  await axios.post('/server/movie.php', {date_time: datetoday}, {
+  await axios.post('/server/movie.php', {date_time: GetDateToday()}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res) => {
         if (res.data.id !== undefined) {
