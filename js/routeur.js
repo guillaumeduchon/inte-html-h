@@ -275,7 +275,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 8
 
   if (location.pathname === "/game_day8.html") {
-    // notTheDayGame(location.pathname);
+    notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
@@ -291,7 +291,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 9
 
   if (location.pathname === "/game_day9.html") {
-    // notTheDayGame(location.pathname);
+    notTheDayGame(location.pathname);
 
     if (isLogged()) {
       isEnableMagasin();
