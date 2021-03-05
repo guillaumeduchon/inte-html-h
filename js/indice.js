@@ -48,6 +48,37 @@ const fetch_indice = async ()=> {
   }
 
 // DISPLAY VIDEO
-const fetch_movie = async (jour) => {
-  $('.videoreplace').html(`<source src="video/video_game_${jour}.mp4" type="video/mp4">`)
+const fetch_movie = async () => {
+  var dateObj = new Date();
+  var montRaw = String(dateObj.getUTCMonth() + 1);
+  const MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw)
+  var dayRaw = String(dateObj.getUTCDate());//+ 1
+  const DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw)
+  const YEAR = String(dateObj.getUTCFullYear());
+  
+  var hourRaw = String(dateObj.getHours());
+  const HOUR = (hourRaw.length < 2 ? '0' + hourRaw : hourRaw)
+  var minutRaw = String(dateObj.getMinutes());
+  const MINUT = (minutRaw.length < 2 ? '0' + minutRaw : minutRaw)
+
+  if(Number(HOUR) <= 10){
+    if(Number(MINUT) <=24) {
+      datetoday = YEAR+'/'+ MONTH+'/'+(Number(DAY)-1)
+    } else {
+      datetoday = YEAR+'/'+ MONTH+'/'+DAY
+    }
+  } else {
+    datetoday = YEAR+'/'+ MONTH+'/'+DAY
+  }
+  
+
+  await axios.post('/server/movie.php', {date_time: datetoday}, {
+    headers: {'Content-Type': 'application/json','mode': 'cors'}})
+      .then((res) => {
+        if (res.data.id !== undefined) {
+          $('.videoreplace').html(`<source src="video/video_game_${res.data.id}.mp4" type="video/mp4">`)
+        } else {
+          console.log("no day found")
+        }
+      });
 }

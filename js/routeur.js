@@ -111,7 +111,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- PAGE INDICE VIDEO
 
   if (location.pathname === "/game_indice_video.html") {
-    isLogged() ? (fetch_movie(Number(localStorage.getItem('DAY_NUM')))) : goLogin();
+    isLogged() ? (fetch_movie()) : goLogin();
   }
 
   //--------------------------------------------------------- PAGE PERDU VIDEO
