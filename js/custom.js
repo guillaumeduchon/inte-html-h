@@ -12,8 +12,10 @@ const GetDateToday = () => {
   const MINUT = (minutRaw.length < 2 ? '0' + minutRaw : minutRaw)
 
   if(Number(HOUR) <= 10){
-    if(Number(HOUR) === 10 && Number(MINUT) <=24) {
-      datetoday = YEAR+'/'+ MONTH+'/'+(Number(DAY)-1)
+    if(Number(HOUR) < 10) {
+        datetoday = YEAR+'/'+ MONTH+'/'+(Number(DAY)-1)
+    } else if(Number(HOUR) === 10 && Number(MINUT) <=24){
+        datetoday = YEAR+'/'+ MONTH+'/'+(Number(DAY)-1)
     } else {
       datetoday = YEAR+'/'+ MONTH+'/'+DAY
     }
