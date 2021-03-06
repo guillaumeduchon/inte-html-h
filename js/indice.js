@@ -51,7 +51,7 @@ const fetch_movie = async () => {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res) => {
         if (res.data.id !== undefined) {
-          $('.videoreplace').html(`<source src="video/video_game${res.data.id}.mp4" type="video/mp4">`)
+          $('.videoreplace').html(`<source src="video/video_game_${res.data.id}.mp4" type="video/mp4">`)
         } else {
           console.log("no day found")
         }
