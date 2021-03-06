@@ -338,6 +338,9 @@ if (location.pathname === "/endgame_lose.html") {
 function goLoose() {
   stopGame();
   localStorage.setItem("has_win", 'false');
+  localStorage.removeItem('has_played');
+  localStorage.removeItem('day_played');
+  localStorage.removeItem('has_win');
   setTimeout(() => {
     $('.game_button').remove()
     window.location.href = "game_lose.html";

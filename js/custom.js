@@ -259,6 +259,9 @@ localStorage.setItem('nbInBefore10h24', 0);
 
 function before10h24(heures, minutes, secondes) {
   if (heures === 24 && minutes === 00 && secondes === 00) {
+    localStorage.removeItem('has_played');
+    localStorage.removeItem('day_played');
+    localStorage.removeItem('has_win');
     GetGameToday();
     location.reload();
   }
