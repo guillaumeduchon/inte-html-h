@@ -259,6 +259,7 @@ localStorage.setItem('nbInBefore10h24', 0);
 
 function before10h24(heures, minutes, secondes) {
   if (heures === 24 && minutes === 00 && secondes === 00) {
+    GetGameToday();
     location.reload();
   }
   if (heures >= 24 ) {
