@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -8,10 +9,33 @@
     <link rel="stylesheet" href="css/style2.css">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" sizes="180x180" href="img/icon_manifest.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="img/icon_manifest.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/icon_manifest.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
+    <script>
+        function checkCookie() {
+            var cookieEnabled = navigator.cookieEnabled;
+            if (!cookieEnabled) {
+                document.cookie = "testcookie";
+                cookieEnabled = document.cookie.indexOf("testcookie") != -1;
+            }
+            return cookieEnabled || showCookieFail();
+        }
+
+        function showCookieFail() {
+            window.location.href = "nocookie.html"
+        }
+        // within a window load,dom ready or something like that place your:
+        setInterval(() => {
+            let res = $.get('index.html', res => {
+                if (checkCookie()) {
+                    window.location.href = "index.html"
+                }
+            });
+        }, 60000)
+    </script>
     <main>
         <div class="screen row no-gutters">
             <div class="flex_contain rules_screen">
@@ -34,5 +58,6 @@
         </div>
     </div>
     <!-- / -->
-    </body>
+</body>
+
 </html>

@@ -1,21 +1,37 @@
-const  isEnableMagasin = async () => {
-  await checkIsActiveMagasin().then(resp =>{
+const isEnableMagasin = async () => {
+  await checkIsActiveMagasin().then(resp => {
     if (resp[0].id !== undefined) {
-      if(resp[0].active === 0 && (resp[0].done_last_game >= 1)) {
+      if (resp[0].active === 0 && (resp[0].done_last_game >= 1)) {
         window.location.href = "/already.html";
       } else if (resp[0].active === 1) {
         // OK
       } else {
         window.location.href = "/noactive.html";
       }
-      
+
     } else {
-     console.log('request failed')
+      console.log('request failed')
     }
   })
 }
 
 $(document).ready(function () {
+
+  function checkCookie() {
+    var cookieEnabled = navigator.cookieEnabled;
+    if (!cookieEnabled) {
+      document.cookie = "testcookie";
+      cookieEnabled = document.cookie.indexOf("testcookie") != -1;
+    }
+    return cookieEnabled || showCookieFail();
+  }
+
+  function showCookieFail() {
+    window.location.href = "nocookie.html"
+  }
+
+  checkCookie();
+
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
     cleanNbInBefore10h24();
@@ -76,7 +92,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/plateau.html") {
     //fetch_question_responses()
-    
+
     if (isLogged()) {
       isEnableMagasin()
       if (!gameStarted() || gameStoped()) {
@@ -141,7 +157,7 @@ $(document).ready(function () {
     if (isLogged()) {
       isEnableMagasin();
       sessionTimeOut();
-      fetch_content(); 
+      fetch_content();
     } else {
       goLogin();
     }
@@ -153,21 +169,21 @@ $(document).ready(function () {
     if (isLogged()) {
       isEnableMagasin();
       sessionTimeOut();
-      (fetch_content(), set_indice(0)) 
+      (fetch_content(), set_indice(0))
     } else {
       goLogin();
-    } 
+    }
   }
 
   //--------------------------------------------------------- JOUR 1
 
   if (location.pathname === "/game_day1.html") {
-   
+
 
     if (isLogged()) {
       isEnableMagasin();
       sessionTimeOut();
-      result_day(),hasWinJs();
+      result_day(), hasWinJs();
       startGame();
       fetch_reponse();
     } else {
@@ -310,7 +326,7 @@ $(document).ready(function () {
     if (isLogged()) {
       isEnableMagasin();
       sessionTimeOut();
-      result_finalday();hasWinFinalJs();
+      result_finalday(); hasWinFinalJs();
       startGame();
       fetch_indices();
     } else {
@@ -325,15 +341,15 @@ if (location.pathname === "/endgame_lose.html") {
   isLogged() ? (isEnableMagasin(), getMagasin()) : goLogin();
 }
 
-  //----------------------------------------------------------- GO
-  function goWin() {
-    stopGame();
-    $('.game_button').remove()
-    setTimeout(() => {
-      localStorage.setItem("has_win",'true');
-      window.location.href = "game_win.html";
-    }, 3000);
-  }
+//----------------------------------------------------------- GO
+function goWin() {
+  stopGame();
+  $('.game_button').remove()
+  setTimeout(() => {
+    localStorage.setItem("has_win", 'true');
+    window.location.href = "game_win.html";
+  }, 3000);
+}
 
 function goLoose() {
   stopGame();
@@ -354,7 +370,7 @@ function goFinalWin() {
   stopGame();
   $('.game_button').remove();
   setTimeout(() => {
-    localStorage.setItem("has_win",'true');
+    localStorage.setItem("has_win", 'true');
     window.location.href = "endgame_win.html";
   }, 3000);
 }
@@ -379,16 +395,16 @@ function goPlateau() { window.location.href = "plateau.html" }
 function hasWinJs() {
   if (localStorage.getItem("has_win") === 'true') {
     window.location.href = "game_win.html";
-  } 
-  if(localStorage.getItem("has_win") === 'false') {
+  }
+  if (localStorage.getItem("has_win") === 'false') {
     window.location.href = "game_lose.html";
   }
 }
 function hasWinFinalJs() {
   if (localStorage.getItem("has_win") === 'true') {
     window.location.href = "endgame_win.html";
-  } 
-  if(localStorage.getItem("has_win") === 'false') {
+  }
+  if (localStorage.getItem("has_win") === 'false') {
     window.location.href = "endgame_lose.html";
   }
 }
@@ -402,6 +418,6 @@ function notTheDayGame(uri) {
   // }
 }
 
-function cleanNbInBefore10h24 () {
+function cleanNbInBefore10h24() {
   localStorage.removeItem('nbInBefore10h24');
 }
