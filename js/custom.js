@@ -1,64 +1,74 @@
+var DATE_SERVER = new Date(localStorage.getItem('DATE_SERVER'))
 
+const GetDateToday = async () => {
+  var dateObj = DATE_SERVER;
+  var dateObj_front = new Date();
 
-const GetDateToday = () => {
-  var dateObj = new Date();
   var montRaw = String(dateObj.getUTCMonth() + 1);
   const MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw)
+
   var dayRaw = String(dateObj.getUTCDate());//+ 1
   const DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw)
+
   const YEAR = String(dateObj.getUTCFullYear());
-  
+
   var hourRaw = String(dateObj.getHours());
   const HOUR = (hourRaw.length < 2 ? '0' + hourRaw : hourRaw)
+
   var minutRaw = String(dateObj.getMinutes());
   const MINUT = (minutRaw.length < 2 ? '0' + minutRaw : minutRaw)
 
-  if(Number(HOUR) <= 10){
-    if(Number(HOUR) < 10) {
-        datetoday = YEAR+'/'+ MONTH+'/'+(Number(DAY)-1)
-    } else if(Number(HOUR) === 10 && Number(MINUT) < 24){
-        datetoday = YEAR+'/'+ MONTH+'/'+(Number(DAY)-1)
+  if( Number(hourRaw)+13 !== dateObj_front.getHours()) {
+    window.location.href = "wrong_hour.html"
+  }
+
+  if (Number(HOUR) <= 10) {
+    if (Number(HOUR) < 10) {
+      datetoday = YEAR + '/' + MONTH + '/' + (Number(DAY) - 1)
+    } else if (Number(HOUR) === 10 && Number(MINUT) < 24) {
+      datetoday = YEAR + '/' + MONTH + '/' + (Number(DAY) - 1)
     } else {
-      datetoday = YEAR+'/'+ MONTH+'/'+DAY
+      datetoday = YEAR + '/' + MONTH + '/' + DAY
     }
   } else {
-    datetoday = YEAR+'/'+ MONTH+'/'+DAY
+    datetoday = YEAR + '/' + MONTH + '/' + DAY
   }
 
   return datetoday
 }
 
-const GetGameToday = async() => {
-  await axios.post('/server/movie.php', {date_time: GetDateToday()}, {
-    headers: {'Content-Type': 'application/json','mode': 'cors'}})
-      .then((res) => {
-        if (res.data.id !== undefined) {
-          localStorage.setItem('DAY_NUM', res.data.id);
-          return res.data.id;
-        } else {
-          console.warn('no game number  found')
-          return 0
-        }
-      });
+const GetGameToday = async () => {
+  await axios.post('/server/movie.php', { date_time: GetDateToday() }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((res) => {
+      if (res.data.id !== undefined) {
+        localStorage.setItem('DAY_NUM', res.data.id);
+        return res.data.id;
+      } else {
+        console.warn('no game number  found')
+        return 0
+      }
+    });
 }
 
 
 GetGameToday();
 
 const DATE_TAB = [
-  { 1: '2021/03/19' },
-  { 2: '2021/03/25' },
-  { 3: '2021/03/26' },
-  { 4: '2021/03/27' },
-  { 5: '2021/04/01' },
-  { 6: '2021/04/02' },
-  { 7: '2021/04/03' },
-  { 8: '2021/04/04' },
-  { 9: '2021/04/05' },
-  { 10: '2021/04/08' }
+  { 1: '2021/03/29' },
+  { 2: '2021/04/01' },
+  { 3: '2021/04/02' },
+  { 4: '2021/04/03' },
+  { 5: '2021/04/04' },
+  { 6: '2021/04/05' },
+  { 7: '2021/04/06' },
+  { 8: '2021/04/07' },
+  { 9: '2021/04/08' },
+  { 10: '2021/04/09' }
 ];
 var date_today = get_date_today(new Date())
-if( typeof DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0]  !== "object" ) {
+if (typeof DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0] !== "object") {
   window.location.href = "not_open.html"
 }
 var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
@@ -68,23 +78,23 @@ var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_tod
 //     localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')))
 // }
 // else{
-  // localStorage.setItem('DAY_NUM',tab_day[0]);
+// localStorage.setItem('DAY_NUM',tab_day[0]);
 // }
 
 //------------------------------------------------PLATEAU---------------------------------------
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/02/24' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/02/25' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/02/26' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/02/27' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/03/01' },
-    { 'status': '', 'day_num': 6, 'day_date': '2021/03/02' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/03/03' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/03/04' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/03/05' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/03/08' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/03/29' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/04/01' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/04/02' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/04/03' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/04/04' },
+    { 'status': '', 'day_num': 6, 'day_date': '2021/04/05' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/04/06' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/04/07' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/04/08' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/04/09' }
   ];
 
   let today = new Date();
@@ -267,9 +277,9 @@ function before10h24(heures, minutes, secondes) {
     GetGameToday();
     location.reload();
   }
-  if (heures >= 24 ) {
+  if (heures >= 24) {
     localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24')) + 1));
-    
+
     if (localStorage.getItem('nbInBefore10h24') === '1') {
       var $carouChange = $('.carousel_plateau').flickity();
       $carouChange.addClass('available');
@@ -288,7 +298,7 @@ function before10h24(heures, minutes, secondes) {
       $('.carousel_cell-content:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').find('a').removeClass('hide');
       $('.bg_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').attr("src", 'img/fond_plateau_available.png');
 
-    
+
       localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) - 1)
       $carouChange.flickity('select', localStorage.getItem('DAY_NUM'));
     }

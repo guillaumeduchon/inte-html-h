@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Jeu-concours Hermes</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/icon_manifest.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="img/icon_manifest.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <main>
+        <div class="screen row no-gutters">
+            <div class="flex_contain rules_screen">
+                <div class="rules_container">
+                    <div class="rules_contain">
+                        <!-- <div class="logo"><img src="img/logo_h24_thumb.png" alt=""></div> -->
+                        <h3>Bonjour</h3>
+                        <p>Il semble que votre appareil n'est pas réglé à l'heure locale .<br>Merci de régler votre fuseau horaire sur (UTC/01:00) Bruxelle, Copenhague, Madrid, Paris.</p>
+                        <p>Heure actuelle: <script>document.write(new Date(localStorage.getItem('DATE_SERVER')).getHours()+14)</script> heures</p>
+                        <p>Prenez soin de vous et à très vite !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- TURN -->
+    <div id="turn">
+        <div class="plz">
+            <img src="img/icon_turn.png" alt="Tourner votre écran">
+            <p>Pour une meilleure expérience du site nous vous invitons à tourner votre écran à l’horizontale.</p>
+        </div>
+    </div>
+    <!-- / -->
+    <script src="js/function.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/routeur.js"></script></body>
+</html>
