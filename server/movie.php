@@ -16,9 +16,11 @@
         if (!isset($decoded['date_time'])) {
             die('Missed action');
         }
-
+        
+        $date_time = str_replace('/', '-', $decoded['date_time']);
+        
         $stmt = $pdo->prepare("SELECT id FROM date_game WHERE date_time =:date_time");
-        $stmt->execute(['date_time'=> $decoded['date_time']]);
+        $stmt->execute(['date_time'=> $date_time ]);
         $aGameId = $stmt->fetch();
       }
     }

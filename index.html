@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="img/icon_manifest.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
 </head>
 
 <body>
@@ -79,12 +80,11 @@
 
         let res = $.get('home.html', res => {
             if (checkCookie()) {
-
                 $('html').html(res)
             }
         });
     </script>
-    <script src="js/toto.js"></script>
+    <script src="js/date_keeper.js"></script>
 </body>
 
 </html>

@@ -1,77 +1,78 @@
 var DATE_SERVER = new Date(localStorage.getItem('DATE_SERVER'))
 
-const GetDateToday = async () => {
-  var dateObj = DATE_SERVER;
-  var dateObj_front = new Date();
+setTimeout(() => {
+  const GetDateToday = async () => {
+    // var dateObj = DATE_SERVER;
+    var dateObj = new Date(DATE_SERVER);
 
-  var montRaw = String(dateObj.getUTCMonth() + 1);
-  const MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw)
+    var montRaw = String(dateObj.getUTCMonth() + 1);
+    const MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw)
 
-  var dayRaw = String(dateObj.getUTCDate());//+ 1
-  const DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw)
+    var dayRaw = String(dateObj.getUTCDate());//+ 1
+    const DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw)
 
-  const YEAR = String(dateObj.getUTCFullYear());
+    const YEAR = String(dateObj.getUTCFullYear());
 
-  var hourRaw = String(dateObj.getHours());
-  const HOUR = (hourRaw.length < 2 ? '0' + hourRaw : hourRaw)
+    var hourRaw = String(dateObj.getHours());
+    const HOUR = (hourRaw.length < 2 ? '0' + hourRaw : hourRaw)
 
-  var minutRaw = String(dateObj.getMinutes());
-  const MINUT = (minutRaw.length < 2 ? '0' + minutRaw : minutRaw)
+    var minutRaw = String(dateObj.getMinutes());
+    const MINUT = (minutRaw.length < 2 ? '0' + minutRaw : minutRaw)
 
-  if( Number(hourRaw)+13 !== dateObj_front.getHours()) {
-    window.location.href = "wrong_hour.html"
-  }
+    // if( Number(hourRaw)+13 !== dateObj_front.getHours()) {
+    //   window.location.href = "wrong_hour.html"
+    // }
 
-  if (Number(HOUR) <= 10) {
-    if (Number(HOUR) < 10) {
-      datetoday = YEAR + '/' + MONTH + '/' + (Number(DAY) - 1)
-    } else if (Number(HOUR) === 10 && Number(MINUT) < 24) {
-      datetoday = YEAR + '/' + MONTH + '/' + (Number(DAY) - 1)
+    if (Number(HOUR) <= 10) {
+      if (Number(HOUR) < 10) {
+        datetoday = YEAR + '/' + MONTH + '/' + (Number(DAY) - 1)
+      } else if (Number(HOUR) === 10 && Number(MINUT) < 24) {
+        datetoday = YEAR + '/' + MONTH + '/' + (Number(DAY) - 1)
+      } else {
+        datetoday = YEAR + '/' + MONTH + '/' + DAY
+      }
     } else {
       datetoday = YEAR + '/' + MONTH + '/' + DAY
     }
-  } else {
-    datetoday = YEAR + '/' + MONTH + '/' + DAY
+
+    return datetoday
   }
 
-  return datetoday
-}
+  const GetGameToday = async () => {
+    await axios.post('/server/movie.php', { date_time: await GetDateToday() }, {
+      headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+    })
+      .then((res) => {
+        if (res.data.id !== undefined) {
+          localStorage.setItem('DAY_NUM', res.data.id);
+          return res.data.id;
+        } else {
+          console.warn('no game number  found')
+          return 0
+        }
+      });
+  }
 
-const GetGameToday = async () => {
-  await axios.post('/server/movie.php', { date_time: GetDateToday() }, {
-    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-  })
-    .then((res) => {
-      if (res.data.id !== undefined) {
-        localStorage.setItem('DAY_NUM', res.data.id);
-        return res.data.id;
-      } else {
-        console.warn('no game number  found')
-        return 0
-      }
-    });
-}
+  GetGameToday();
+}, 2000)
 
-
-GetGameToday();
-
-const DATE_TAB = [
-  { 1: '2021/03/29' },
-  { 2: '2021/04/01' },
-  { 3: '2021/04/02' },
-  { 4: '2021/04/03' },
-  { 5: '2021/04/04' },
-  { 6: '2021/04/05' },
-  { 7: '2021/04/06' },
-  { 8: '2021/04/07' },
-  { 9: '2021/04/08' },
-  { 10: '2021/04/09' }
-];
-var date_today = get_date_today(new Date())
-if (typeof DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0] !== "object") {
-  window.location.href = "not_open.html"
-}
-var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
+// const DATE_TAB = [
+//   { 1: '2021/03/29' },
+//   { 2: '2021/04/01' },
+//   { 3: '2021/04/02' },
+//   { 4: '2021/04/03' },
+//   { 5: '2021/04/04' },
+//   { 6: '2021/04/05' },
+//   { 7: '2021/04/06' },
+//   { 8: '2021/04/07' },
+//   { 9: '2021/04/08' },
+//   { 10: '2021/04/09' }
+// ];
+// var date_today = get_date_today(new Date())
+// if (typeof DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0] !== "object") {
+//   // window.location.href = "not_open.html"
+// }
+// var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
 
 // if(localStorage.getItem('DAY_NUM') !== null ){
 //   if(Number(localStorage.getItem('DAY_NUM')) < tab_day[0])
@@ -97,7 +98,7 @@ const updatePlateau = () => {
     { 'status': '', 'day_num': 10, 'day_date': '2021/04/09' }
   ];
 
-  let today = new Date();
+  let today = new Date(DATE_SERVER);
   let montRaw = String(today.getUTCMonth() + 1);
   let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
   let dayRaw = String(today.getUTCDate());
@@ -209,6 +210,7 @@ function sessionTimeOut() {
 
 function compte_a_rebours() {
   sessionTimeOut();
+  console.table(['DATE_SERVER: ',DATE_SERVER, 'new Date()', new Date()])
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
   date_evenement.setDate(date_evenement.getDate() + 1)
@@ -321,19 +323,19 @@ const ShowGamePlayed = () => {
       }
     });
   } else {
-    $(document).find('.carousel_cell').each((index, elem) => {
-      if (index < Number(localStorage.getItem('DAY_NUM'))) {
-        JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
-          if ((index + 1) === game.id) {
-            if (game.indice_id > 0) {
-              $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
-            } else {
-              $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
-            }
-          }
-        })
-      }
-    });
+    // $(document).find('.carousel_cell').each((index, elem) => {
+    //   if (index < Number(localStorage.getItem('DAY_NUM'))) {
+    //     JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
+    //       if ((index + 1) === game.id) {
+    //         if (game.indice_id > 0) {
+    //           $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
+    //         } else {
+    //           $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
+    //         }
+    //       }
+    //     })
+    //   }
+    // });
   }
 }
 
