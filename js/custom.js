@@ -1,5 +1,12 @@
 var DATE_SERVER = new Date(localStorage.getItem('DATE_SERVER'))
 
+let server_date = server_date.getDay() + '/' + server_date.getMonth() + '/' + server_date.getHours() + '/' + server_date.getMinutes();
+let client_date = client_date.getDay() + '/' + client_date.getMonth() + '/' + client_date.getHours() + '/' + client_date.getMinutes();
+
+if (server_date !== client_date ) {
+  window.location.href = "not_good_date.html";
+}
+
 setTimeout(() => {
   const GetDateToday = async () => {
     // var dateObj = DATE_SERVER;

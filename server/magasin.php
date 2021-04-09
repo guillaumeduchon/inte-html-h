@@ -48,6 +48,6 @@ try {
     }
     
     return  print json_encode($oDatas);
-} catch (Exception $x) {
+} catch (Throwable $x) {
     var_dump($x);
 }
