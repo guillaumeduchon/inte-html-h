@@ -1,16 +1,26 @@
-var DATE_SERVER = new Date(localStorage.getItem('DATE_SERVER'))
 
-let server_date = server_date.getDay() + '/' + server_date.getMonth() + '/' + server_date.getHours() + '/' + server_date.getMinutes();
-let client_date = client_date.getDay() + '/' + client_date.getMonth() + '/' + client_date.getHours() + '/' + client_date.getMinutes();
+function check_date_is_paris () {
+  var DATE_SERVER = new Date(localStorage.getItem('DATE_SERVER'))
+  
+  let server_date = new Date(DATE_SERVER);
+  let client_date = new Date();
 
-if (server_date !== client_date ) {
-  window.location.href = "not_good_date.html";
+  server_date = server_date.getDay() + '/' + server_date.getUTCMonth() + '/' + server_date.getHours() ;
+  client_date = client_date.getDay() + '/' + client_date.getUTCMonth() + '/' + client_date.getHours() ;
+  
+  console.log('server_date: ', server_date, "client_date", client_date )
+  if (server_date !== client_date ) {
+    console.log('server_date: ', server_date, "client_date", client_date )
+    //window.location.href = "not_good_date.html";
+  }
 }
+
+check_date_is_paris();
 
 setTimeout(() => {
   const GetDateToday = async () => {
     // var dateObj = DATE_SERVER;
-    var dateObj = new Date(DATE_SERVER);
+    var dateObj = new Date(localStorage.getItem('DATE_SERVER'));
 
     var montRaw = String(dateObj.getUTCMonth() + 1);
     const MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw)
@@ -93,19 +103,19 @@ setTimeout(() => {
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/03/29' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/04/01' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/04/02' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/04/03' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/04/04' },
-    { 'status': '', 'day_num': 6, 'day_date': '2021/04/05' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/04/06' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/04/07' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/04/08' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/04/09' }
+    { 'status': '', 'day_num': 1, 'day_date': '2021/04/09' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/04/10' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/04/12' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/04/13' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/04/14' },
+    { 'status': '', 'day_num': 6, 'day_date': '2021/04/15' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/04/16' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/04/17' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/04/19' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/04/20' }
   ];
 
-  let today = new Date(DATE_SERVER);
+  let today = new Date();
   let montRaw = String(today.getUTCMonth() + 1);
   let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
   let dayRaw = String(today.getUTCDate());
@@ -217,7 +227,7 @@ function sessionTimeOut() {
 
 function compte_a_rebours() {
   sessionTimeOut();
-  console.table(['DATE_SERVER: ',DATE_SERVER, 'new Date()', new Date()])
+
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
   date_evenement.setDate(date_evenement.getDate() + 1)
