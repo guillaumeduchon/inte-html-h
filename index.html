@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="img/icon_manifest.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
+
 </head>
 
 <body>
@@ -62,6 +62,23 @@
         <!-- PUT HEAR HTML PAGE CONTENT BRUT IF NO JAVASCRIPT ACTIVE -->
     </noscript>
     <script>
+        //DENY ACCESS FROM INTERNET EXPLORER BROWSER
+        function msieversion() {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
+
+            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) // If Internet Explorer, return version number
+            {
+                alert("Cet outil n\'est pas compatible avec Internet Explorer \n" +
+                    "Veuillez utiliser un autre navigateur Web")
+                window.close();
+            }
+
+            return false;
+        }
+        msieversion()
+    </script>
+    <script>
         function checkCookie() {
             var cookieEnabled = navigator.cookieEnabled;
             if (!cookieEnabled) {
@@ -74,7 +91,6 @@
         function showCookieFail() {
             window.location.href = "nocookie.html"
         }
-
 
         // within a window load,dom ready or something like that place your:
 
