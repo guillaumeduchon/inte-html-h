@@ -123,8 +123,8 @@ const updatePlateau = () => {
   let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
 
   var $carousel = $('.carousel_plateau').flickity();
-  var tab_day = date_tab.filter(obj => obj.day_date == today_date)[0].day_num;
-  console.log('tab_day', tab_day)
+  var tab_day = date_tab.filter(obj => obj.day_date == today_date)
+  console.log("tab_day",tab_day.day_date ,'tab_day', tab_day)
   date_tab.map((el) => {
     console.log('TOTO',el.day_date , today_date)
     if (el.day_date === today_date) {
