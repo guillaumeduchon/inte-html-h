@@ -1,16 +1,16 @@
 
-function check_date_is_paris () {
+function check_date_is_paris() {
   var DATE_SERVER = new Date(localStorage.getItem('DATE_SERVER'))
-  
+
   let server_date = new Date(DATE_SERVER);
   let client_date = new Date();
 
-  server_date = server_date.getDay() + '/' + server_date.getUTCMonth() + '/' + server_date.getHours() ;
-  client_date = client_date.getDay() + '/' + client_date.getUTCMonth() + '/' + client_date.getHours() ;
-  
-  console.log('server_date: ', server_date, "client_date", client_date )
-  if (server_date !== client_date ) {
-    console.log('server_date: ', server_date, "client_date", client_date )
+  server_date = server_date.getDay() + '/' + server_date.getUTCMonth() + '/' + server_date.getHours();
+  client_date = client_date.getDay() + '/' + client_date.getUTCMonth() + '/' + client_date.getHours();
+
+  console.log('server_date: ', server_date, "client_date", client_date)
+  if (server_date !== client_date) {
+    console.log('server_date: ', server_date, "client_date", client_date)
     //window.location.href = "not_good_date.html";
   }
 }
@@ -121,13 +121,12 @@ const updatePlateau = () => {
   let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
   let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
+  localStorage.setItem('today_date', today_date)
 
   var $carousel = $('.carousel_plateau').flickity();
   var tab_day = date_tab.filter(obj => obj.day_date == today_date)[0];
   tab_day = tab_day.day_num;
-  console.log('tab_day', tab_day)
   date_tab.map((el) => {
-    console.log('TOTO',el.day_date , today_date)
     if (el.day_date === today_date) {
       el.highlight = '';
       var indexSlide = tab_day - 1;
@@ -140,7 +139,7 @@ const updatePlateau = () => {
       } else {
         el.status = 'available';
         el.img = 'img/fond_plateau_available_v3.png';
-        el.iconDisplay = 'hide';  
+        el.iconDisplay = 'hide';
         el.linkDisplay = '';
       }
     }

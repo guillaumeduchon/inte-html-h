@@ -47,7 +47,7 @@ const fetch_indice = async ()=> {
 
 // DISPLAY VIDEO
 const fetch_movie = async () => {
-  await axios.post('/server/movie.php', {date_time: GetDateToday()}, {
+  await axios.post('/server/movie.php', {date_time: localStorage.getItem('today_date')}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res) => {
         if (res.data.id !== undefined) {
