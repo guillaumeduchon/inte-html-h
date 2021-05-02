@@ -11,7 +11,7 @@ function check_date_is_paris() {
   console.log('server_date: ', server_date, "client_date", client_date)
   if (server_date !== client_date) {
     console.log('server_date: ', server_date, "client_date", client_date)
-    //window.location.href = "not_good_date.html";
+    window.location.href = "not_good_date.html";
   }
 }
 
@@ -73,37 +73,11 @@ setTimeout(() => {
   GetGameToday();
 }, 2000)
 
-// const DATE_TAB = [
-//   { 1: '2021/03/29' },
-//   { 2: '2021/04/01' },
-//   { 3: '2021/04/02' },
-//   { 4: '2021/04/03' },
-//   { 5: '2021/04/04' },
-//   { 6: '2021/04/05' },
-//   { 7: '2021/04/06' },
-//   { 8: '2021/04/07' },
-//   { 9: '2021/04/08' },
-//   { 10: '2021/04/09' }
-// ];
-// var date_today = get_date_today(new Date())
-// if (typeof DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0] !== "object") {
-//   // window.location.href = "not_open.html"
-// }
-// var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
-
-// if(localStorage.getItem('DAY_NUM') !== null ){
-//   if(Number(localStorage.getItem('DAY_NUM')) < tab_day[0])
-//     localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')))
-// }
-// else{
-// localStorage.setItem('DAY_NUM',tab_day[0]);
-// }
-
 //------------------------------------------------PLATEAU---------------------------------------
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/05/02' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/05/03' },
     { 'status': '', 'day_num': 2, 'day_date': '2021/05/04' },
     { 'status': '', 'day_num': 3, 'day_date': '2021/05/05' },
     { 'status': '', 'day_num': 4, 'day_date': '2021/05/06' },
