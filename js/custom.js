@@ -103,16 +103,16 @@ setTimeout(() => {
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/04/09' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/04/10' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/04/12' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/04/13' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/04/14' },
-    { 'status': '', 'day_num': 6, 'day_date': '2021/04/15' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/04/16' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/04/17' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/04/19' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/04/20' }
+    { 'status': '', 'day_num': 1, 'day_date': '2021/05/02' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/05/04' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/05/05' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/05/06' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/05/07' },
+    { 'status': '', 'day_num': 6, 'day_date': '2021/05/08' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/03/10' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/03/11' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/03/12' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/03/13' },
   ];
 
   let today = new Date();
@@ -125,6 +125,7 @@ const updatePlateau = () => {
   var $carousel = $('.carousel_plateau').flickity();
 
   date_tab.map((el) => {
+    console.log('TOTO',el.day_date , today_date)
     if (el.day_date === today_date) {
       el.highlight = '';
       var indexSlide = tab_day - 1;
