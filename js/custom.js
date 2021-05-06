@@ -83,10 +83,10 @@ const updatePlateau = () => {
     { 'status': '', 'day_num': 4, 'day_date': '2021/05/06' },
     { 'status': '', 'day_num': 5, 'day_date': '2021/05/07' },
     { 'status': '', 'day_num': 6, 'day_date': '2021/05/08' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/03/10' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/03/11' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/03/12' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/03/13' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/05/10' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/05/11' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/05/12' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/05/13' },
   ];
 
   let today = new Date();
