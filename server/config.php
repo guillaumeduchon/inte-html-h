@@ -10,14 +10,6 @@
 
     // $host= $protocol . '://' . $_SERVER['SERVER_NAME'];
 
-    // $host = '127.0.0.1';
-    // $db   = 'jeu_hermes';
-    // $user = 'hermes_surf';
-    // $pass = 'Surf2020!';
-    // $port = "3306";
-    // $charset = 'utf8mb4';
-
-
     (new DotEnv())->load();
     // echo getenv('APP_ENV');
     // dev
