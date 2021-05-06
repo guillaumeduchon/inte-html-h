@@ -1,5 +1,5 @@
 <?php
-    require_once 'DotEnv.php';
+    require_once 'dotenv.php';
 
     /**
      * Config
