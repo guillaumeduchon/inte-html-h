@@ -16,6 +16,7 @@ function check_date_is_paris() {
     window.location.href = "not_good_date.html";
   }
   date_first_game = new Date('2021/05/03');
+  console.log('server_date_copy: ',server_date_copy, 'date_first_game', date_first_game );
   if(server_date_copy < date_first_game) {
     window.location.href = "not_open.html";
   }
