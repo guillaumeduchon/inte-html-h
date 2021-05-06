@@ -3,22 +3,21 @@ function check_date_is_paris() {
   var DATE_SERVER = new Date(localStorage.getItem('DATE_SERVER'))
 
   let server_date = new Date(DATE_SERVER);
+  let server_date_copy = server_date;
   let client_date = new Date();
 
-//################################### UNCOMMENT FOR TEST SERVEUR ######################################################
   server_date = server_date.getDay() + '/' + server_date.getUTCMonth() + '/' + server_date.getHours();
   client_date = client_date.getDay() + '/' + client_date.getUTCMonth() + '/' + client_date.getHours();
-//#########################################################################################################
 
-//################################### UNCOMMENT FOR PROD SERVEUR (HEURES +2 ) ######################################################
- // server_date = server_date.getDay() + '/' + server_date.getUTCMonth() + '/' + server_date.getHours(); //##
- //client_date = client_date.getDay() + '/' + client_date.getUTCMonth() + '/' + (client_date.getHours() +2); //##
-//#########################################################################################################
 
   console.log('server_date: ', server_date, "client_date", client_date)
   if (server_date !== client_date) {
     console.log('server_date: ', server_date, "client_date", client_date)
     window.location.href = "not_good_date.html";
+  }
+  date_first_game = new Date('2021/05/03');
+  if(server_date_copy < date_first_game) {
+    window.location.href = "not_open.html";
   }
 }
 
