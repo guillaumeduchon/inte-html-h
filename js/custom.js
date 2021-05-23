@@ -15,7 +15,7 @@ function check_date_is_paris() {
     console.log('server_date: ', server_date, "client_date", client_date)
     window.location.href = "not_good_date.html";
   }
-  date_first_game = new Date('2021/05/03');
+  date_first_game = new Date('2021/05/24');
   console.log('server_date_copy: ',server_date_copy, 'date_first_game', date_first_game );
   if(server_date_copy < date_first_game) {
     window.location.href = "not_open.html";
@@ -84,16 +84,16 @@ setTimeout(() => {
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/05/03' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/05/04' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/05/05' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/05/06' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/05/07' },
-    { 'status': '', 'day_num': 6, 'day_date': '2021/05/08' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/05/10' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/05/11' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/05/12' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/05/13' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/05/24' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/05/25' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/05/26' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/05/27' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/05/28' },
+    { 'status': '', 'day_num': 6, 'day_date': '2021/05/29' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/05/31' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/06/01' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/06/02' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/06/03' },
   ];
 
   let today = new Date();
