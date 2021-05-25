@@ -323,19 +323,19 @@ const ShowGamePlayed = () => {
       }
     });
   } else {
-    // $(document).find('.carousel_cell').each((index, elem) => {
-    //   if (index < Number(localStorage.getItem('DAY_NUM'))) {
-    //     JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
-    //       if ((index + 1) === game.id) {
-    //         if (game.indice_id > 0) {
-    //           $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
-    //         } else {
-    //           $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
-    //         }
-    //       }
-    //     })
-    //   }
-    // });
+    $(document).find('.carousel_cell').each((index, elem) => {
+      if (index < Number(localStorage.getItem('DAY_NUM'))) {
+        JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
+          if ((index + 1) === game.id) {
+            if (game.indice_id > 0) {
+              $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
+            } else {
+              $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
+            }
+          }
+        })
+      }
+    });
   }
 }
 
