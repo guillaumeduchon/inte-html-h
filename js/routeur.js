@@ -149,6 +149,7 @@ $(document).ready(function () {
       isEnableMagasin();
       sessionTimeOut();
       fetch_content();
+      set_indice(Number(localStorage.getItem('DAY_NUM')))
     } else {
       goLogin();
     }
