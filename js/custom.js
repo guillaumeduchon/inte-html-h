@@ -87,7 +87,7 @@ setTimeout(() => {
 const updatePlateau = () => {
   let date_tab = [
     { 'status': '', 'day_num': 1, 'day_date': '2021/05/24' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/06/03' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/05/25' },
     { 'status': '', 'day_num': 3, 'day_date': '2021/05/26' },
     { 'status': '', 'day_num': 4, 'day_date': '2021/05/27' },
     { 'status': '', 'day_num': 5, 'day_date': '2021/05/28' },
@@ -95,7 +95,7 @@ const updatePlateau = () => {
     { 'status': '', 'day_num': 7, 'day_date': '2021/05/31' },
     { 'status': '', 'day_num': 8, 'day_date': '2021/06/01' },
     { 'status': '', 'day_num': 9, 'day_date': '2021/06/02' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/05/25' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/06/03' },
   ];
 
   let today = new Date();
