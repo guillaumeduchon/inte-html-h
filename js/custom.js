@@ -328,9 +328,9 @@ const ShowGamePlayed = () => {
         JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
           if ((index + 1) === game.id) {
             if (game.indice_id > 0) {
-              $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
+              $('.carousel_cell:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
             } else {
-              $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
+              $('.carousel_cell:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
             }
           }
         })
