@@ -149,6 +149,7 @@ $(document).ready(function () {
       isEnableMagasin();
       sessionTimeOut();
       fetch_content();
+      set_indice(Number(localStorage.getItem('DAY_NUM')))
     } else {
       goLogin();
     }
@@ -357,6 +358,7 @@ function goLoose() {
 //--------------------------------------------------------- GO FINAL
 
 function goFinalWin() {
+  set_indice(Number(localStorage.getItem('DAY_NUM')))
   set_winners();
   stopGame();
   $('.game_button').remove();
@@ -367,6 +369,7 @@ function goFinalWin() {
 }
 
 function goFinalLoose() {
+  set_indice(0);
   stopGame();
   setTimeout(() => {
     $('.game_button').remove()

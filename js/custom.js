@@ -9,16 +9,18 @@ function check_date_is_paris() {
   server_date = server_date.getDay() + '/' + server_date.getUTCMonth() + '/' + server_date.getHours();
   client_date = client_date.getDay() + '/' + client_date.getUTCMonth() + '/' + client_date.getHours();
 
-
-  console.log('server_date: ', server_date, "client_date", client_date)
-  if (server_date !== client_date) {
+  if(localStorage.getItem('DATE_SERVER') !== null) {
     console.log('server_date: ', server_date, "client_date", client_date)
-    window.location.href = "not_good_date.html";
-  }
-  date_first_game = new Date('2021/05/24');
-  console.log('server_date_copy: ',server_date_copy, 'date_first_game', date_first_game );
-  if(server_date_copy < date_first_game) {
-    window.location.href = "not_open.html";
+    if (server_date !== client_date) {
+      console.log('server_date: ', server_date, "client_date", client_date)
+      window.location.href = "not_good_date.html";
+    }
+    date_first_game = new Date('2021/05/24');
+    console.log('server_date_copy: ',server_date_copy, 'date_first_game', date_first_game );
+  
+    if(server_date_copy < date_first_game) {
+      window.location.href = "not_open.html";
+    }
   }
 }
 
@@ -323,19 +325,19 @@ const ShowGamePlayed = () => {
       }
     });
   } else {
-    // $(document).find('.carousel_cell').each((index, elem) => {
-    //   if (index < Number(localStorage.getItem('DAY_NUM'))) {
-    //     JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
-    //       if ((index + 1) === game.id) {
-    //         if (game.indice_id > 0) {
-    //           $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
-    //         } else {
-    //           $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
-    //         }
-    //       }
-    //     })
-    //   }
-    // });
+    $(document).find('.carousel_cell').each((index, elem) => {
+      if (index < Number(localStorage.getItem('DAY_NUM'))) {
+        JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
+          if ((index + 1) === game.id) {
+            if (game.indice_id > 0) {
+              $('.carousel_cell:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
+            } else {
+              $('.carousel_cell:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
+            }
+          }
+        })
+      }
+    });
   }
 }
 
