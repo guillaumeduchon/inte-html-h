@@ -338,7 +338,8 @@ function before10h24(heures, minutes, secondes) {
 }
 
 const ShowGamePlayed = () => {
-  if (!localStorage.getItem("game_played")) {
+  let regex2 = new RegExp(localStorage.getItem("DAY_NUM"));
+  if (!localStorage.getItem("game_played") || regex2.test(localStorage.getItem("game_played")) == false) {
     fetch_question_responses().then((datas) => {
       if (datas.length > 0) {
         if (datas[0].id !== undefined) {
