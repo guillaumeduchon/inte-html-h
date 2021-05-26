@@ -77,8 +77,27 @@ setTimeout(() => {
           localStorage.setItem('DAY_NUM', res.data.id);
           return res.data.id;
         } else {
-          console.warn('no game number  found')
-          return 0
+          localStorage.setItem('is_iphone6_or_less','is_iphone6_or_less')
+          console.warn('no game number found (IPhone 6 or less)')
+          let date_curr = new Date()
+          let date_format = date_curr.toLocaleDateString("en-US").split('/')
+          date_format = date_format[2]+'/'+ (date_format[0].length == 1 ? '0'+date_format[0] : date_format[0])+'/'+(date_format[1].length == 1 ? '0'+date_format[1]:date_format[1])
+          console.log('DATE_FORM',date_format)
+          let date_tab = [
+            "2021/05/26",
+            "2021/05/27",
+            "2021/05/28",
+            "2021/05/29",
+            "2021/05/31",
+            "2021/06/01",
+            "2021/06/02",
+            "2021/06/03",
+            "2021/06/04",
+            "2021/06/05",
+          ];
+          let DAY_NUM = date_tab.indexOf(date_format)
+          DAY_NUM = DAY_NUM+1
+          localStorage.setItem('DAY_NUM', DAY_NUM)
         }
       });
   }
@@ -90,16 +109,16 @@ setTimeout(() => {
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/05/24' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/05/25' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/05/26' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/05/27' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/05/28' },
-    { 'status': '', 'day_num': 6, 'day_date': '2021/05/29' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/05/31' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/06/01' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/06/02' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/06/03' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/05/26' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/05/27' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/05/28' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/05/29' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/05/31' },
+    { 'status': '', 'day_num': 6, 'day_date': '2021/06/01' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/06/02' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/06/03' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/06/04' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/06/05' },
   ];
 
   let today = new Date();
@@ -320,7 +339,8 @@ function before10h24(heures, minutes, secondes) {
 }
 
 const ShowGamePlayed = () => {
-  if (!localStorage.getItem("game_played")) {
+  let regex2 = new RegExp(localStorage.getItem("DAY_NUM"));
+  if ((!localStorage.getItem("game_played") || regex2.test(localStorage.getItem("game_played")) == false) && localStorage.getItem('is_iphone6_or_less')!==null) {
     fetch_question_responses().then((datas) => {
       if (datas.length > 0) {
         if (datas[0].id !== undefined) {

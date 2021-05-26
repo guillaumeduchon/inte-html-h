@@ -92,6 +92,7 @@ $(document).ready(function () {
       } else {
         goGame(Number(localStorage.getItem('DAY_NUM')))
       }
+      setTimeout(()=>{localStorage.removeItem('logged')}, 8000)
     } else {
       goLogin()
     }
