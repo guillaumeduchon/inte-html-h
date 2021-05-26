@@ -34,7 +34,6 @@ $(document).ready(function () {
 
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
-    localStorage.clear();
     cleanNbInBefore10h24();
     if (isLogged()) {
       sessionTimeOut();
@@ -93,6 +92,7 @@ $(document).ready(function () {
       } else {
         goGame(Number(localStorage.getItem('DAY_NUM')))
       }
+      setTimeout(()=>{localStorage.removeItem('logged')}, 4000)
     } else {
       goLogin()
     }
