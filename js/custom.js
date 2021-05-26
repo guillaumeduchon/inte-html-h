@@ -83,19 +83,20 @@ setTimeout(() => {
           date_format = date_format[2]+'/'+ (date_format[0].length == 1 ? '0'+date_format[0] : date_format[0])+'/'+(date_format[1].length == 1 ? '0'+date_format[1]:date_format[1])
           console.log('DATE_FORM',date_format)
           let date_tab = [
-            { 1: '2021/05/26' },
-            { 2: '2021/05/27' },
-            { 3: '2021/05/28' },
-            { 4: '2021/05/29' },
-            { 5: '2021/05/31' },
-            { 6: '2021/06/01' },
-            { 7: '2021/06/02' },
-            { 8: '2021/06/03' },
-            { 9: '2021/06/04' },
-            { 10: '2021/06/05' },
+            "2021/05/26" ,
+            "2021/05/27",
+            "2021/05/28",
+            "2021/05/29",
+            "2021/05/31",
+            "2021/06/01",
+            "2021/06/02",
+            "2021/06/03",
+            "2021/06/04",
+            "2021/06/05",
           ];
-          console.log("RR_DAY", date_tab.indexOf(date_format))
-          localStorage.setItem('DAY_NUM', date_tab.indexOf(date_format) )
+          let DAY_NUM = date_tab.indexOf(date_format)
+          DAY_NUM = DAY_NUM+1
+          localStorage.setItem('DAY_NUM', DAY_NUM)
         }
       });
   }
