@@ -371,6 +371,7 @@ function goFinalWin() {
 
 function goFinalLoose() {
   set_indice(0);
+  // set_loosers();
   stopGame();
   setTimeout(() => {
     $('.game_button').remove()
