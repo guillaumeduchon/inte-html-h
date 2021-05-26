@@ -340,15 +340,18 @@ function before10h24(heures, minutes, secondes) {
 
 const ShowGamePlayed = () => {
   let regex2 = new RegExp(localStorage.getItem("DAY_NUM"));
-  if ((!localStorage.getItem("game_played") || regex2.test(localStorage.getItem("game_played")) == false) && localStorage.getItem('is_iphone6_or_less')!==null) {
-    fetch_question_responses().then((datas) => {
-      if (datas.length > 0) {
-        if (datas[0].id !== undefined) {
-          localStorage.setItem('game_played', JSON.stringify(datas))
+  if (!localStorage.getItem("game_played") || regex2.test(localStorage.getItem("game_played")) == false ) {
+    if(localStorage.getItem('is_iphone6_or_less')==null) {
+      fetch_question_responses().then((datas) => {
+        if (datas.length > 0) {
+          if (datas[0].id !== undefined) {
+            localStorage.setItem('game_played', JSON.stringify(datas))
+          }
         }
-      }
-    });
-  } else {
+      });
+    }
+  }
+   else {
     $(document).find('.carousel_cell').each((index, elem) => {
       if (index < Number(localStorage.getItem('DAY_NUM'))) {
         JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
