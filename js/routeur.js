@@ -34,6 +34,7 @@ $(document).ready(function () {
 
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
+    localStorage.clear();
     cleanNbInBefore10h24();
     if (isLogged()) {
       sessionTimeOut();
