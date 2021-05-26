@@ -84,16 +84,16 @@ setTimeout(() => {
           date_format = date_format[2]+'/'+ (date_format[0].length == 1 ? '0'+date_format[0] : date_format[0])+'/'+(date_format[1].length == 1 ? '0'+date_format[1]:date_format[1])
           console.log('DATE_FORM',date_format)
           let date_tab = [
-            "2021/05/26",
-            "2021/05/27",
-            "2021/05/28",
-            "2021/05/29",
-            "2021/05/31",
-            "2021/06/01",
-            "2021/06/02",
-            "2021/06/03",
-            "2021/06/04",
-            "2021/06/05",
+            '2021/05/15',
+            '2021/05/17',
+            '2021/05/18',
+            '2021/05/19',
+            '2021/05/20',
+            '2021/05/21',
+            '2021/05/22',
+            '2021/05/24',
+            '2021/05/25',
+            '2021/05/26',
           ];
           let DAY_NUM = date_tab.indexOf(date_format)
           DAY_NUM = DAY_NUM+1
@@ -109,16 +109,16 @@ setTimeout(() => {
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/05/26' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/05/27' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/05/28' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/05/29' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/05/31' },
-    { 'status': '', 'day_num': 6, 'day_date': '2021/06/01' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/06/02' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/06/03' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/06/04' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/06/05' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/05/15' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/05/17' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/05/18' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/05/19' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/05/20' },
+    { 'status': '', 'day_num': 6, 'day_date': '2021/05/21' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/05/22' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/05/24' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/05/25' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/05/26' },
   ];
 
   let today = new Date();
