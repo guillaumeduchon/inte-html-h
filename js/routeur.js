@@ -39,12 +39,14 @@ $(document).ready(function () {
       sessionTimeOut();
       goPlateau()
     } else {
+      lastConnexion()
       localStorage.clear();
     }
   }
 
   if (location.pathname === "/login.html") {
     cleanNbInBefore10h24();
+    lastConnexion()
     if (isLogged()) {
       goPlateau()
     } else {
@@ -83,7 +85,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/plateau.html") {
     //fetch_question_responses()
-
+    lastConnexion()
     if (isLogged()) {
       isEnableMagasin()
       if (!gameStarted() || gameStoped()) {
@@ -416,4 +418,18 @@ function notTheDayGame(uri) {
 
 function cleanNbInBefore10h24() {
   localStorage.removeItem('nbInBefore10h24');
+}
+
+function lastConnexion() {
+  if(localStorage.getItem('last_connexion') == null) {
+    localStorage.setItem('last_connexion', String(new Date()))
+  } else {
+    let t1 = new Date(localStorage.getItem('last_connexion'))
+    let t2 = new Date();
+    let dif = t1.getTime() - t2.getTime();
+
+    let Seconds_from_T1_to_T2 = dif / 1000;
+    let Seconds_Between_Dates = Math.abs(Seconds_from_T1_to_T2);
+    console.warn('DATE DIFF', Seconds_Between_Dates)
+  }
 }
