@@ -82,7 +82,7 @@ setTimeout(() => {
               if(Math.abs(heures) == 11 && minutes >=59 ) {
                 //Do nothing
               } else {
-                DAY_NUM = (Number(DAY_NUM)-1)
+                DAY_NUM = (Number(res.data.id)-1)
                 localStorage.setItem('DAY_NUM', DAY_NUM)
               }
           }
