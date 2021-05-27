@@ -78,8 +78,8 @@ setTimeout(() => {
           let date_actuelle = new Date();
           let heures =  date_actuelle.getHours(); let minutes= date_actuelle.getMinutes()
           console.log('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes())
-          if(Math.abs(heures) <= 11) {
-              if(Math.abs(heures) == 11 && minutes >=59 ) {
+          if(Math.abs(heures) <= 10) {
+              if(Math.abs(heures) == 10 && minutes >=24 ) {
                 //Do nothing
               } else {
                 DAY_NUM = (Number(res.data.id)-1)
@@ -112,8 +112,8 @@ setTimeout(() => {
           let date_actuelle = new Date();
           let heures =  date_actuelle.getHours(); let minutes= date_actuelle.getMinutes()
           console.log('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes())
-          if(Math.abs(heures) <= 11) {
-              if(Math.abs(heures) == 11 && minutes >=59 ) {
+          if(Math.abs(heures) <= 10) {
+              if(Math.abs(heures) == 10 && minutes >=24 ) {
                 //Do nothing
               } else {
                 DAY_NUM = (Number(DAY_NUM)-1)
@@ -262,7 +262,7 @@ function compte_a_rebours() {
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
   date_evenement.setDate(date_evenement.getDate() + 1)
-  date_evenement.setHours(11, 59, 00);
+  date_evenement.setHours(10, 24, 00);
   var total_secondes = (date_evenement - date_actuelle) / 1000;
   var jours = new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
   var heures = Math.floor((total_secondes - (0 * 60 * 60 * 24)) / (60 * 60));
