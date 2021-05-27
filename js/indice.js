@@ -28,7 +28,7 @@ const fetch_indice = async ()=> {
     await axios.post('/server/indice_magasin.php', {magasin: localStorage.getItem('magasin')}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}})
         .then((res) => {
-            $('p').html(`Grâce aux lettres rassemblées depuis le 24 février, saurez-vous reconstituer le mot qui qualifie l’univers du nouveau parfum masculin Hermès H24 ?<br>Utilisez votre clavier pour rentrer une lettre par case.`);
+            $('p').html(`Grâce aux lettres rassemblées depuis le 03 Juin, saurez-vous reconstituer le mot qui qualifie l’univers du nouveau parfum masculin Hermès H24 ?<br>Utilisez votre clavier pour rentrer une lettre par case.`);
             
             let indices_array= [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 

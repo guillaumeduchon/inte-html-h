@@ -18,12 +18,21 @@
         }
 
         $magasin = $decoded['magasin'];
-        $stmt = $pdo->prepare("INSERT INTO winners (id, num, `name`, region, datehour) SELECT `id`, num, `name`, region, NOW()
-        FROM magasin
-        WHERE magasin.id = :magasin");
-        $stmt->execute(['magasin'=> $magasin]);
-        $aWinning = $stmt->fetchAll();
-        $oDatas = !$aWinning ? [] :$aWinning;
+        
+        // if (isset($decoded['user_answer_final'])) {
+        //   $user_answer_final = $decoded['user_answer_final'];
+        //   $stmt = $pdo->prepare("INSERT INTO loosers (magasin, word, datehour) VALUES (:magasin, :user_answer_final, NOW())");
+        //   $stmt->execute(['magasin'=> $magasin, 'user_answer_final' => $user_answer_final]);
+        //   $aLoosing = $stmt->fetch();
+        //   $oDatas = !$aLoosing ? [] :$aLoosing;
+        // } else {
+          $stmt = $pdo->prepare("INSERT INTO winners (id, num, `name`, region, datehour) SELECT `id`, num, `name`, region, NOW()
+          FROM magasin
+          WHERE magasin.id = :magasin");
+          $stmt->execute(['magasin'=> $magasin]);
+          $aWinning = $stmt->fetchAll();
+          $oDatas = !$aWinning ? [] :$aWinning;
+        // }
       }
     }
     
