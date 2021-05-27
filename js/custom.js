@@ -75,7 +75,18 @@ setTimeout(() => {
       .then((res) => {
         if (res.data.id !== undefined) {
           localStorage.setItem('DAY_NUM', res.data.id);
-          return res.data.id;
+          let date_actuelle = new Date();
+          let heures =  date_actuelle.getHours(); let minutes= date_actuelle.getMinutes()
+          console.log('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes())
+          if(Math.abs(heures) <= 11) {
+              if(Math.abs(heures) == 11 && minutes >24 ) {
+                //Do nothing
+              } else {
+                DAY_NUM = (Number(DAY_NUM)-1)
+                localStorage.setItem('DAY_NUM', DAY_NUM)
+              }
+          }
+          return  localStorage.getItem('DAY_NUM');
         } else {
           localStorage.setItem('is_iphone6_or_less','is_iphone6_or_less')
           console.warn('no game number found (IPhone 6 or less)')
@@ -98,6 +109,18 @@ setTimeout(() => {
           let DAY_NUM = date_tab.indexOf(date_format)
           DAY_NUM = DAY_NUM+1
           localStorage.setItem('DAY_NUM', DAY_NUM)
+          let date_actuelle = new Date();
+          let heures =  date_actuelle.getHours(); let minutes= date_actuelle.getMinutes()
+          console.log('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes())
+          if(Math.abs(heures) <= 11) {
+              if(Math.abs(heures) == 11 && minutes >24 ) {
+                //Do nothing
+              } else {
+                DAY_NUM = (Number(DAY_NUM)-1)
+                localStorage.setItem('DAY_NUM', DAY_NUM)
+              }
+          }
+
         }
       });
   }
