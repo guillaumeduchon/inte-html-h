@@ -105,6 +105,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- PAGE GAME RULE
 
   if (location.pathname === "/game_rule.html") {
+    lastConnexion()
     if (isLogged()) {
       isEnableMagasin()
       sessionTimeOut();
