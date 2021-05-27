@@ -94,7 +94,9 @@ $(document).ready(function () {
       } else {
         goGame(Number(localStorage.getItem('DAY_NUM')))
       }
-      setTimeout(()=>{localStorage.removeItem('logged')}, 8000)
+      // if (localStorage.getItem('has_played') !== null){
+      //   setTimeout(()=>{localStorage.removeItem('logged')}, 8000)
+      // } 
     } else {
       goLogin()
     }
@@ -430,6 +432,9 @@ function lastConnexion() {
 
     let Seconds_from_T1_to_T2 = dif / 1000;
     let Seconds_Between_Dates = Math.abs(Seconds_from_T1_to_T2);
-    console.warn('DATE DIFF', Seconds_Between_Dates)
+    console.warn('Last connexion there are ', Seconds_Between_Dates, 'seconds')
+    if( Seconds_Between_Dates > 240.000) {
+      localStorage.removeItem('logged')
+    }
   }
 }
