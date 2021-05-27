@@ -35,6 +35,7 @@ $(document).ready(function () {
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
     cleanNbInBefore10h24();
+    lastConnexion()
     if (isLogged()) {
       sessionTimeOut();
       goPlateau()
@@ -45,6 +46,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/login.html") {
     cleanNbInBefore10h24();
+    lastConnexion()
     if (isLogged()) {
       goPlateau()
     } else {
@@ -83,7 +85,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/plateau.html") {
     //fetch_question_responses()
-
+    lastConnexion()
     if (isLogged()) {
       isEnableMagasin()
       if (!gameStarted() || gameStoped()) {
@@ -92,7 +94,9 @@ $(document).ready(function () {
       } else {
         goGame(Number(localStorage.getItem('DAY_NUM')))
       }
-      setTimeout(()=>{localStorage.removeItem('logged')}, 8000)
+      // if (localStorage.getItem('has_played') !== null){
+      //   setTimeout(()=>{localStorage.removeItem('logged')}, 8000)
+      // } 
     } else {
       goLogin()
     }
@@ -101,6 +105,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- PAGE GAME RULE
 
   if (location.pathname === "/game_rule.html") {
+    lastConnexion()
     if (isLogged()) {
       isEnableMagasin()
       sessionTimeOut();
@@ -416,4 +421,23 @@ function notTheDayGame(uri) {
 
 function cleanNbInBefore10h24() {
   localStorage.removeItem('nbInBefore10h24');
+}
+
+function lastConnexion() {
+  if(localStorage.getItem('last_connexion') == null) {
+    localStorage.setItem('last_connexion', String(new Date()))
+  } else {
+    let t1 = new Date(localStorage.getItem('last_connexion'))
+    let t2 = new Date();
+    let dif = t1.getTime() - t2.getTime();
+
+    let Seconds_from_T1_to_T2 = dif / 1000;
+    let Seconds_Between_Dates = Math.abs(Seconds_from_T1_to_T2);
+    console.warn('Last connexion there are ', Seconds_Between_Dates, 'seconds')
+    if( Seconds_Between_Dates > 240.000) {
+      localStorage.removeItem('last_connexion')
+      localStorage.removeItem('logged')
+      alert("Vous avez été déconnecté")
+    }
+  }
 }
