@@ -35,11 +35,11 @@ $(document).ready(function () {
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
     cleanNbInBefore10h24();
+    lastConnexion()
     if (isLogged()) {
       sessionTimeOut();
       goPlateau()
     } else {
-      lastConnexion()
       localStorage.clear();
     }
   }
