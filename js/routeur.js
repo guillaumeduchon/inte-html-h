@@ -391,7 +391,8 @@ function gameStarted() { return localStorage.getItem('day_played') }
 function gameStoped() { return localStorage.getItem('has_played') }
 function notGameToday() { window.location.href = "not_open.html" }
 function goGame(jour) { window.location.href = "/game_day" + jour + ".html" }
-function goLogin() { window.location.href = "login.html" }
+function goLogin() { window.location.href = "index.html" }
+// function goLogin() { window.location.href = "login.html" }
 function goPlateau() { window.location.href = "plateau.html" }
 function hasWinJs() {
   if (localStorage.getItem("has_win") === 'true') {
@@ -435,6 +436,18 @@ function lastConnexion() {
     let Seconds_Between_Dates = Math.abs(Seconds_from_T1_to_T2);
     console.warn('Last connexion there are ', Seconds_Between_Dates, 'seconds')
     if( Seconds_Between_Dates > 240.000) {
+      localStorage.removeItem('DATE_SERVER')
+      localStorage.removeItem('DAY_NUM')
+      localStorage.removeItem('day_played')
+      localStorage.removeItem('has_played')
+      localStorage.removeItem('has_win')
+      localStorage.removeItem('logged')
+      localStorage.removeItem('magasin')
+      localStorage.removeItem('magasin_name')
+      localStorage.removeItem('nbInBefore10h24')
+      localStorage.removeItem('session_expire')
+      localStorage.removeItem('timeLeft')
+      localStorage.removeItem('today_date')
       localStorage.removeItem('last_connexion')
       localStorage.removeItem('logged')
       alert("Vous avez été déconnecté")
