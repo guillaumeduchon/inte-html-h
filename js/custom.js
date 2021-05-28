@@ -109,6 +109,9 @@ setTimeout(() => {
           ];
           let DAY_NUM = date_tab.indexOf(date_format)
           DAY_NUM = DAY_NUM+1
+          if(DAY_NUM === 0) {
+            window.location.href = "not_open_today.html";
+          }
           console.warn('DAY_NUM_iphone6_or_less', DAY_NUM)
           localStorage.setItem('DAY_NUM', DAY_NUM)
           let date_actuelle = new Date();
