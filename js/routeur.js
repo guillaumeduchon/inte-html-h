@@ -440,6 +440,7 @@ function lastConnexion() {
       localStorage.removeItem('DAY_NUM')
       localStorage.removeItem('day_played')
       localStorage.removeItem('has_played')
+      localStorage.removeItem('game_played')
       localStorage.removeItem('has_win')
       localStorage.removeItem('logged')
       localStorage.removeItem('magasin')
