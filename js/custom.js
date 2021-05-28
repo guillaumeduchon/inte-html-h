@@ -206,7 +206,7 @@ const updatePlateau = () => {
   })
 
   $('.carousel_cell available').find('.statut').addClass('countdown');
-  $('.countdown').html('Il vous reste encore<br><strong></strong><br>pour trouver l\'indice du jour');
+  $('.carousel_cell:not(.expired, .unavailable)').find('.countdown').html('Il vous reste encore<br><strong></strong><br>pour trouver l\'indice du jour');
 
   compte_a_rebours();
 }
@@ -272,16 +272,16 @@ function compte_a_rebours() {
   var secondes = Math.floor(total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
 
   $('.countdown').find('strong').html(`${Math.abs(heures)} H ${minutes} MIN ${secondes} S`);
-  $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong>`);
+  $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
 
   $('.expired').find('.statut').html('Challenge terminé');
 
   $('.available').find('.statut').addClass('countdown');
-  $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
+  $('.carousel_cell:not(.expired, .unavailable)').find('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
   let tomorowSamedi = 0;
   $('.unavailable').each((index, el) => {
     if (index === 0) {
-      $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
+      $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
     } else {
       var joursSuivant;
       //Si le prochain jours est Dimanche
