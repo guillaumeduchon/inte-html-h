@@ -453,5 +453,6 @@ function lastConnexion() {
       localStorage.removeItem('logged')
       alert("Vous avez été déconnecté")
     }
+    setInterval(()=>{lastConnexion()}, 120000)
   }
 }
