@@ -35,6 +35,7 @@ $(document).ready(function () {
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
     cleanNbInBefore10h24();
+    lastConnexion()
     if (isLogged()) {
       sessionTimeOut();
       goPlateau()
@@ -45,6 +46,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/login.html") {
     cleanNbInBefore10h24();
+    lastConnexion()
     if (isLogged()) {
       goPlateau()
     } else {
@@ -83,7 +85,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/plateau.html") {
     //fetch_question_responses()
-
+    lastConnexion()
     if (isLogged()) {
       isEnableMagasin()
       if (!gameStarted() || gameStoped()) {
@@ -92,7 +94,9 @@ $(document).ready(function () {
       } else {
         goGame(Number(localStorage.getItem('DAY_NUM')))
       }
-      setTimeout(()=>{localStorage.removeItem('logged')}, 8000)
+      // if (localStorage.getItem('has_played') !== null){
+      //   setTimeout(()=>{localStorage.removeItem('logged')}, 8000)
+      // } 
     } else {
       goLogin()
     }
@@ -101,6 +105,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- PAGE GAME RULE
 
   if (location.pathname === "/game_rule.html") {
+    lastConnexion()
     if (isLogged()) {
       isEnableMagasin()
       sessionTimeOut();
@@ -386,7 +391,8 @@ function gameStarted() { return localStorage.getItem('day_played') }
 function gameStoped() { return localStorage.getItem('has_played') }
 function notGameToday() { window.location.href = "not_open.html" }
 function goGame(jour) { window.location.href = "/game_day" + jour + ".html" }
-function goLogin() { window.location.href = "login.html" }
+function goLogin() { window.location.href = "index.html" }
+// function goLogin() { window.location.href = "login.html" }
 function goPlateau() { window.location.href = "plateau.html" }
 function hasWinJs() {
   if (localStorage.getItem("has_win") === 'true') {
@@ -416,4 +422,37 @@ function notTheDayGame(uri) {
 
 function cleanNbInBefore10h24() {
   localStorage.removeItem('nbInBefore10h24');
+}
+
+function lastConnexion() {
+  if(localStorage.getItem('last_connexion') == null) {
+    localStorage.setItem('last_connexion', String(new Date()))
+  } else {
+    let t1 = new Date(localStorage.getItem('last_connexion'))
+    let t2 = new Date();
+    let dif = t1.getTime() - t2.getTime();
+
+    let Seconds_from_T1_to_T2 = dif / 1000;
+    let Seconds_Between_Dates = Math.abs(Seconds_from_T1_to_T2);
+    console.warn('Last connexion there are ', Seconds_Between_Dates, 'seconds')
+    if( Seconds_Between_Dates > 240.000) {
+      localStorage.removeItem('DATE_SERVER')
+      localStorage.removeItem('DAY_NUM')
+      localStorage.removeItem('day_played')
+      localStorage.removeItem('has_played')
+      localStorage.removeItem('game_played')
+      localStorage.removeItem('has_win')
+      localStorage.removeItem('logged')
+      localStorage.removeItem('magasin')
+      localStorage.removeItem('magasin_name')
+      localStorage.removeItem('nbInBefore10h24')
+      localStorage.removeItem('session_expire')
+      localStorage.removeItem('timeLeft')
+      localStorage.removeItem('today_date')
+      localStorage.removeItem('last_connexion')
+      localStorage.removeItem('logged')
+      alert("Vous avez été déconnecté")
+    }
+    setInterval(()=>{lastConnexion()}, 120000)
+  }
 }
