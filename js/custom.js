@@ -82,6 +82,7 @@ setTimeout(() => {
               if(Math.abs(heures) == 10 && minutes >=24 ) {
                 //Do nothing
               } else {
+                console.log('Game number found')
                 DAY_NUM = (Number(res.data.id)-1)
                 localStorage.setItem('DAY_NUM', DAY_NUM)
               }
@@ -89,7 +90,7 @@ setTimeout(() => {
           return  localStorage.getItem('DAY_NUM');
         } else {
           localStorage.setItem('is_iphone6_or_less','is_iphone6_or_less')
-          console.warn('no game number found (IPhone 6 or less)')
+          console.warn('No game number found (IPhone 6 or less)')
           let date_curr = new Date()
           let date_format = date_curr.toLocaleDateString("en-US").split('/')
           date_format = date_format[2]+'/'+ (date_format[0].length == 1 ? '0'+date_format[0] : date_format[0])+'/'+(date_format[1].length == 1 ? '0'+date_format[1]:date_format[1])
@@ -108,6 +109,7 @@ setTimeout(() => {
           ];
           let DAY_NUM = date_tab.indexOf(date_format)
           DAY_NUM = DAY_NUM+1
+          console.warn('DAY_NUM_iphone6_or_less', DAY_NUM)
           localStorage.setItem('DAY_NUM', DAY_NUM)
           let date_actuelle = new Date();
           let heures =  date_actuelle.getHours(); let minutes= date_actuelle.getMinutes()
