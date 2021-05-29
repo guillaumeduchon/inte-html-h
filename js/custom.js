@@ -329,7 +329,7 @@ function before10h24(heures, minutes, secondes) {
     localStorage.removeItem('has_played');
     localStorage.removeItem('day_played');
     localStorage.removeItem('has_win');
-    localStorage.setItem('DAY_NUM', (Number(localStorage.getItem('DAY_NUM'))+1))
+    //localStorage.setItem('DAY_NUM', (Number(localStorage.getItem('DAY_NUM'))+1))
     location.reload();
     GetGameToday();
     //location.reload();
