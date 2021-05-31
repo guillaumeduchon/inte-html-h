@@ -17,10 +17,8 @@
             die('Missed action');
         }
         
-        $date_time = str_replace('/', '-', $decoded['date_time']);
-        
         $stmt = $pdo->prepare("SELECT id FROM date_game WHERE date_time =SUBSTRING(NOW(), 1,10);");
-        $stmt->execute(['date_time'=> $date_time ]);
+        $stmt->execute();
         $aGameId = $stmt->fetch();
       }
     }
