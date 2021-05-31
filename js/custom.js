@@ -1,88 +1,152 @@
-const GetDateToday = () => {
-  var dateObj = new Date();
-  var montRaw = String(dateObj.getUTCMonth() + 1);
-  const MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw)
-  var dayRaw = String(dateObj.getUTCDate());//+ 1
-  const DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw)
-  const YEAR = String(dateObj.getUTCFullYear());
-  
-  var hourRaw = String(dateObj.getHours());
-  const HOUR = (hourRaw.length < 2 ? '0' + hourRaw : hourRaw)
-  var minutRaw = String(dateObj.getMinutes());
-  const MINUT = (minutRaw.length < 2 ? '0' + minutRaw : minutRaw)
 
-  if(Number(HOUR) <= 10){
-    if(Number(HOUR) < 10) {
-        datetoday = YEAR+'/'+ MONTH+'/'+(Number(DAY)-1)
-    } else if(Number(HOUR) === 10 && Number(MINUT) < 24){
-        datetoday = YEAR+'/'+ MONTH+'/'+(Number(DAY)-1)
-    } else {
-      datetoday = YEAR+'/'+ MONTH+'/'+DAY
+function check_date_is_paris() {
+  var DATE_SERVER = new Date(localStorage.getItem('DATE_SERVER'))
+  if(DATE_SERVER != "Invalid Date") {
+    let server_date = new Date(DATE_SERVER);
+    let server_date_copy = server_date;
+    let client_date = new Date();
+  
+    server_date = server_date.getDay() + '/' + server_date.getUTCMonth() + '/' + server_date.getHours();
+    client_date = client_date.getDay() + '/' + client_date.getUTCMonth() + '/' + client_date.getHours();
+  
+    if(localStorage.getItem('DATE_SERVER') !== null) {
+      console.log('server_date: ', server_date, "client_date", client_date)
+      if (server_date !== client_date) {
+        console.log('server_date: ', server_date, "client_date", client_date)
+        window.location.href = "not_good_date.html";
+      }
+      date_first_game = new Date('2021/05/24');
+      console.log('server_date_copy: ',server_date_copy, 'date_first_game', date_first_game );
+    
+      if(server_date_copy < date_first_game) {
+        window.location.href = "not_open.html";
+      }
     }
   } else {
-    datetoday = YEAR+'/'+ MONTH+'/'+DAY
+    console.warn('It seems you are on an Iphone 6 or less, date can be guarantee')
   }
 
-  return datetoday
 }
 
-const GetGameToday = async() => {
-  await axios.post('/server/movie.php', {date_time: GetDateToday()}, {
-    headers: {'Content-Type': 'application/json','mode': 'cors'}})
+check_date_is_paris();
+
+setTimeout(() => {
+  const GetDateToday = async () => {
+    // var dateObj = DATE_SERVER;
+    var dateObj = new Date(localStorage.getItem('DATE_SERVER'));
+
+    var montRaw = String(dateObj.getUTCMonth() + 1);
+    const MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw)
+
+    var dayRaw = String(dateObj.getUTCDate());//+ 1
+    const DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw)
+
+    const YEAR = String(dateObj.getUTCFullYear());
+
+    var hourRaw = String(dateObj.getHours());
+    const HOUR = (hourRaw.length < 2 ? '0' + hourRaw : hourRaw)
+
+    var minutRaw = String(dateObj.getMinutes());
+    const MINUT = (minutRaw.length < 2 ? '0' + minutRaw : minutRaw)
+
+    // if( Number(hourRaw)+13 !== dateObj_front.getHours()) {
+    //   window.location.href = "wrong_hour.html"
+    // }
+
+    if (Number(HOUR) <= 10) {
+      if (Number(HOUR) < 10) {
+        datetoday = YEAR + '/' + MONTH + '/' + (Number(DAY) - 1)
+      } else if (Number(HOUR) === 10 && Number(MINUT) < 24) {
+        datetoday = YEAR + '/' + MONTH + '/' + (Number(DAY) - 1)
+      } else {
+        datetoday = YEAR + '/' + MONTH + '/' + DAY
+      }
+    } else {
+      datetoday = YEAR + '/' + MONTH + '/' + DAY
+    }
+
+    return datetoday
+  }
+
+  const GetGameToday = async () => {
+    await axios.post('/server/movie.php', { date_time: await GetDateToday() }, {
+      headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+    })
       .then((res) => {
         if (res.data.id !== undefined) {
           localStorage.setItem('DAY_NUM', res.data.id);
-          return res.data.id;
+          let date_actuelle = new Date();
+          let heures =  date_actuelle.getHours(); let minutes= date_actuelle.getMinutes()
+          console.log('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes())
+          if(Math.abs(heures) <= 10) {
+              if(Math.abs(heures) == 10 && minutes >=24 ) {
+                //Do nothing
+              } else {
+                console.log('Game number found')
+                DAY_NUM = (Number(res.data.id)-1)
+                localStorage.setItem('DAY_NUM', DAY_NUM)
+              }
+          }
+          return  localStorage.getItem('DAY_NUM');
         } else {
-          console.warn('no game number  found')
-          return 0
+          localStorage.setItem('is_iphone6_or_less','is_iphone6_or_less')
+          console.warn('No game number found (IPhone 6 or less)')
+          let date_curr = new Date()
+          let date_format = date_curr.toLocaleDateString("en-US").split('/')
+          date_format = date_format[2]+'/'+ (date_format[0].length == 1 ? '0'+date_format[0] : date_format[0])+'/'+(date_format[1].length == 1 ? '0'+date_format[1]:date_format[1])
+          console.log('DATE_FORM',date_format)
+          let date_tab = [
+            "2021/05/26",
+            "2021/05/27",
+            "2021/05/28",
+            "2021/05/29",
+            "2021/05/31",
+            "2021/06/01",
+            "2021/06/02",
+            "2021/06/03",
+            "2021/06/04",
+            "2021/06/05",
+          ];
+          let DAY_NUM = date_tab.indexOf(date_format)
+          DAY_NUM = DAY_NUM+1
+          if(DAY_NUM === 0) {
+            window.location.href = "not_open_today.html";
+          }
+          console.warn('DAY_NUM_iphone6_or_less', DAY_NUM)
+          localStorage.setItem('DAY_NUM', DAY_NUM)
+          let date_actuelle = new Date();
+          let heures =  date_actuelle.getHours(); let minutes= date_actuelle.getMinutes()
+          console.log('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes())
+          if(Math.abs(heures) <= 10) {
+              if(Math.abs(heures) == 10 && minutes >=24 ) {
+                //Do nothing
+              } else {
+                DAY_NUM = (Number(DAY_NUM)-1)
+                localStorage.setItem('DAY_NUM', DAY_NUM)
+              }
+          }
+
         }
       });
-}
+  }
 
-
-GetGameToday();
-
-const DATE_TAB = [
-  { 1: '2021/02/24' },
-  { 2: '2021/02/25' },
-  { 3: '2021/02/26' },
-  { 4: '2021/02/27' },
-  { 5: '2021/03/01' },
-  { 6: '2021/03/02' },
-  { 7: '2021/03/03' },
-  { 8: '2021/03/04' },
-  { 9: '2021/03/05' },
-  { 10: '2021/03/08' }
-];
-var date_today = get_date_today(new Date())
-if( typeof DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0]  !== "object" ) {
-  window.location.href = "not_open.html"
-}
-var tab_day = Object.keys(DATE_TAB.filter(obj => (Object.values(obj) == date_today))[0])
-
-// if(localStorage.getItem('DAY_NUM') !== null ){
-//   if(Number(localStorage.getItem('DAY_NUM')) < tab_day[0])
-//     localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')))
-// }
-// else{
-  // localStorage.setItem('DAY_NUM',tab_day[0]);
-// }
+  GetGameToday();
+}, 2000)
 
 //------------------------------------------------PLATEAU---------------------------------------
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/02/24' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/02/25' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/02/26' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/02/27' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/03/01' },
-    { 'status': '', 'day_num': 6, 'day_date': '2021/03/02' },
-    { 'status': '', 'day_num': 7, 'day_date': '2021/03/03' },
-    { 'status': '', 'day_num': 8, 'day_date': '2021/03/04' },
-    { 'status': '', 'day_num': 9, 'day_date': '2021/03/05' },
-    { 'status': '', 'day_num': 10, 'day_date': '2021/03/08' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/05/26' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/05/27' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/05/28' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/05/29' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/05/31' },
+    { 'status': '', 'day_num': 6, 'day_date': '2021/06/01' },
+    { 'status': '', 'day_num': 7, 'day_date': '2021/06/02' },
+    { 'status': '', 'day_num': 8, 'day_date': '2021/06/03' },
+    { 'status': '', 'day_num': 9, 'day_date': '2021/06/04' },
+    { 'status': '', 'day_num': 10, 'day_date': '2021/06/05' },
   ];
 
   let today = new Date();
@@ -91,9 +155,11 @@ const updatePlateau = () => {
   let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
   let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
+  localStorage.setItem('today_date', today_date)
 
   var $carousel = $('.carousel_plateau').flickity();
-
+  var tab_day = date_tab.filter(obj => obj.day_date == today_date)[0];
+  tab_day = tab_day.day_num;
   date_tab.map((el) => {
     if (el.day_date === today_date) {
       el.highlight = '';
@@ -143,7 +209,7 @@ const updatePlateau = () => {
   })
 
   $('.carousel_cell available').find('.statut').addClass('countdown');
-  $('.countdown').html('Il vous reste encore<br><strong></strong><br>pour trouver l\'indice du jour');
+  $('.carousel_cell:not(.expired, .unavailable)').find('.countdown').html('Il vous reste encore<br><strong></strong><br>pour trouver l\'indice du jour');
 
   compte_a_rebours();
 }
@@ -197,6 +263,7 @@ function sessionTimeOut() {
 
 function compte_a_rebours() {
   sessionTimeOut();
+
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
   date_evenement.setDate(date_evenement.getDate() + 1)
@@ -208,16 +275,16 @@ function compte_a_rebours() {
   var secondes = Math.floor(total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
 
   $('.countdown').find('strong').html(`${Math.abs(heures)} H ${minutes} MIN ${secondes} S`);
-  $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${heures} H ${minutes} MIN ${secondes} S</strong>`);
+  $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
 
   $('.expired').find('.statut').html('Challenge terminé');
 
   $('.available').find('.statut').addClass('countdown');
-  $('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
+  $('.carousel_cell:not(.expired, .unavailable)').find('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
   let tomorowSamedi = 0;
   $('.unavailable').each((index, el) => {
     if (index === 0) {
-      $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
+      $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
     } else {
       var joursSuivant;
       //Si le prochain jours est Dimanche
@@ -262,12 +329,15 @@ function before10h24(heures, minutes, secondes) {
     localStorage.removeItem('has_played');
     localStorage.removeItem('day_played');
     localStorage.removeItem('has_win');
-    GetGameToday();
+    //localStorage.setItem('DAY_NUM', (Number(localStorage.getItem('DAY_NUM'))+1))
     location.reload();
+    GetGameToday();
+    //location.reload();
+
   }
-  if (heures >= 24 ) {
+  if (heures >= 24) {
     localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24')) + 1));
-    
+
     if (localStorage.getItem('nbInBefore10h24') === '1') {
       var $carouChange = $('.carousel_plateau').flickity();
       $carouChange.addClass('available');
@@ -286,7 +356,7 @@ function before10h24(heures, minutes, secondes) {
       $('.carousel_cell-content:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').find('a').removeClass('hide');
       $('.bg_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').attr("src", 'img/fond_plateau_available.png');
 
-    
+
       localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) - 1)
       $carouChange.flickity('select', localStorage.getItem('DAY_NUM'));
     }
@@ -300,23 +370,27 @@ function before10h24(heures, minutes, secondes) {
 }
 
 const ShowGamePlayed = () => {
-  if (!localStorage.getItem("game_played")) {
-    fetch_question_responses().then((datas) => {
-      if (datas.length > 0) {
-        if (datas[0].id !== undefined) {
-          localStorage.setItem('game_played', JSON.stringify(datas))
+  let regex2 = new RegExp(localStorage.getItem("DAY_NUM"));
+  if (!localStorage.getItem("game_played") || regex2.test(localStorage.getItem("game_played")) == false ) {
+    //if(localStorage.getItem('is_iphone6_or_less')==null) {
+      fetch_question_responses().then((datas) => {
+        if (datas.length > 0) {
+          if (datas[0].id !== undefined) {
+            localStorage.setItem('game_played', JSON.stringify(datas))
+          }
         }
-      }
-    });
-  } else {
+      });
+    //}
+  }
+   else {
     $(document).find('.carousel_cell').each((index, elem) => {
       if (index < Number(localStorage.getItem('DAY_NUM'))) {
         JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
           if ((index + 1) === game.id) {
             if (game.indice_id > 0) {
-              $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
+              $('.carousel_cell:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
             } else {
-              $('.expired:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
+              $('.carousel_cell:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
             }
           }
         })

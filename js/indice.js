@@ -28,7 +28,7 @@ const fetch_indice = async ()=> {
     await axios.post('/server/indice_magasin.php', {magasin: localStorage.getItem('magasin')}, {
       headers: {'Content-Type': 'application/json','mode': 'cors'}})
         .then((res) => {
-            $('p').html(`Grâce aux lettres rassemblées depuis le 24 février, saurez-vous reconstituer le mot qui qualifie l’univers du nouveau parfum masculin Hermès H24 ?<br>Utilisez votre clavier pour rentrer une lettre par case.`);
+            $('p').html(`Grâce aux lettres rassemblées depuis le 03 Juin, saurez-vous reconstituer le mot qui qualifie l’univers du nouveau parfum masculin Hermès H24 ?<br>Utilisez votre clavier pour rentrer une lettre par case.`);
             
             let indices_array= [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
@@ -47,11 +47,15 @@ const fetch_indice = async ()=> {
 
 // DISPLAY VIDEO
 const fetch_movie = async () => {
-  await axios.post('/server/movie.php', {date_time: GetDateToday()}, {
+  await axios.post('/server/movie.php', {date_time: localStorage.getItem('today_date')}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res) => {
         if (res.data.id !== undefined) {
-          $('.videoreplace').html(`<source src="video/video_game_${res.data.id}.mp4" type="video/mp4">`)
+          let video_number = res.data.id;
+          if(localStorage.getItem('DAY_NUM')!== String(video_number)) {
+            video_number = localStorage.getItem('DAY_NUM');
+          }
+          $('.videoreplace').html(`<source src="video/video_game_${video_number}.mp4" type="video/mp4">`)
         } else {
           console.log("no day found")
         }

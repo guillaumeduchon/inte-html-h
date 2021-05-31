@@ -479,15 +479,17 @@ const check_answer10 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
+      // let user_answer_final = [];
       if (valid_resp.data[0].id !== undefined) {
         let existFalseAnswer = false;
-
+        
         $('.finalgame_answer').find('input').each((index, el) => {
+          // user_answer_final.append($(el).val().toUpperCase())
           if ($(el).val().toUpperCase() !== valid_resp.data[0].content.charAt(index).toUpperCase()) {
             existFalseAnswer = true;
           }
         });
-
+        //localStorage.setItem('user_answer_final', user_answer_final.join(','))
         handle_user_responsesFinal(existFalseAnswer, valid_resp);
 
         onTimesUp()

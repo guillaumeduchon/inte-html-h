@@ -1,43 +1,52 @@
-const  isEnableMagasin = async () => {
-  await checkIsActiveMagasin().then(resp =>{
+const isEnableMagasin = async () => {
+  await checkIsActiveMagasin().then(resp => {
     if (resp[0].id !== undefined) {
-      if(resp[0].active === 0 && (resp[0].done_last_game >= 1)) {
+      if (resp[0].active === 0 && (resp[0].done_last_game >= 1)) {
         window.location.href = "/already.html";
       } else if (resp[0].active === 1) {
         // OK
       } else {
         window.location.href = "/noactive.html";
       }
-      
+
     } else {
-     console.log('request failed')
+      console.log('request failed')
     }
   })
 }
 
 $(document).ready(function () {
+
+  function checkCookie() {
+    var cookieEnabled = navigator.cookieEnabled;
+    if (!cookieEnabled) {
+      document.cookie = "testcookie";
+      cookieEnabled = document.cookie.indexOf("testcookie") != -1;
+    }
+    return cookieEnabled || showCookieFail();
+  }
+
+  function showCookieFail() {
+    window.location.href = "nocookie.html"
+  }
+
+  checkCookie();
+
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
     cleanNbInBefore10h24();
+    lastConnexion()
     if (isLogged()) {
       sessionTimeOut();
       goPlateau()
     } else {
       localStorage.clear();
     }
-    // var today = new Date();
-    // let montRaw = String(today.getUTCMonth() + 1);
-    // let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
-    // let dayRaw = String(today.getUTCDate());
-    // let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
-    // let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
-    // if (today_date < '2021/02/24') {
-    //   notGameToday();
-    // }
   }
 
   if (location.pathname === "/login.html") {
     cleanNbInBefore10h24();
+    lastConnexion()
     if (isLogged()) {
       goPlateau()
     } else {
@@ -76,7 +85,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/plateau.html") {
     //fetch_question_responses()
-    
+    lastConnexion()
     if (isLogged()) {
       isEnableMagasin()
       if (!gameStarted() || gameStoped()) {
@@ -85,6 +94,9 @@ $(document).ready(function () {
       } else {
         goGame(Number(localStorage.getItem('DAY_NUM')))
       }
+      // if (localStorage.getItem('has_played') !== null){
+      //   setTimeout(()=>{localStorage.removeItem('logged')}, 8000)
+      // } 
     } else {
       goLogin()
     }
@@ -93,6 +105,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- PAGE GAME RULE
 
   if (location.pathname === "/game_rule.html") {
+    lastConnexion()
     if (isLogged()) {
       isEnableMagasin()
       sessionTimeOut();
@@ -141,7 +154,8 @@ $(document).ready(function () {
     if (isLogged()) {
       isEnableMagasin();
       sessionTimeOut();
-      fetch_content(); 
+      fetch_content();
+      set_indice(Number(localStorage.getItem('DAY_NUM')))
     } else {
       goLogin();
     }
@@ -153,21 +167,21 @@ $(document).ready(function () {
     if (isLogged()) {
       isEnableMagasin();
       sessionTimeOut();
-      (fetch_content(), set_indice(0)) 
+      (fetch_content(), set_indice(0))
     } else {
       goLogin();
-    } 
+    }
   }
 
   //--------------------------------------------------------- JOUR 1
 
   if (location.pathname === "/game_day1.html") {
-   
+
 
     if (isLogged()) {
       isEnableMagasin();
       sessionTimeOut();
-      result_day(),hasWinJs();
+      result_day(), hasWinJs();
       startGame();
       fetch_reponse();
     } else {
@@ -310,7 +324,7 @@ $(document).ready(function () {
     if (isLogged()) {
       isEnableMagasin();
       sessionTimeOut();
-      result_finalday();hasWinFinalJs();
+      result_finalday(); hasWinFinalJs();
       startGame();
       fetch_indices();
     } else {
@@ -325,15 +339,15 @@ if (location.pathname === "/endgame_lose.html") {
   isLogged() ? (isEnableMagasin(), getMagasin()) : goLogin();
 }
 
-  //----------------------------------------------------------- GO
-  function goWin() {
-    stopGame();
-    $('.game_button').remove()
-    setTimeout(() => {
-      localStorage.setItem("has_win",'true');
-      window.location.href = "game_win.html";
-    }, 3000);
-  }
+//----------------------------------------------------------- GO
+function goWin() {
+  stopGame();
+  $('.game_button').remove()
+  setTimeout(() => {
+    localStorage.setItem("has_win", 'true');
+    window.location.href = "game_win.html";
+  }, 3000);
+}
 
 function goLoose() {
   stopGame();
@@ -350,16 +364,19 @@ function goLoose() {
 //--------------------------------------------------------- GO FINAL
 
 function goFinalWin() {
+  set_indice(Number(localStorage.getItem('DAY_NUM')))
   set_winners();
   stopGame();
   $('.game_button').remove();
   setTimeout(() => {
-    localStorage.setItem("has_win",'true');
+    localStorage.setItem("has_win", 'true');
     window.location.href = "endgame_win.html";
   }, 3000);
 }
 
 function goFinalLoose() {
+  set_indice(0);
+  // set_loosers();
   stopGame();
   setTimeout(() => {
     $('.game_button').remove()
@@ -374,21 +391,22 @@ function gameStarted() { return localStorage.getItem('day_played') }
 function gameStoped() { return localStorage.getItem('has_played') }
 function notGameToday() { window.location.href = "not_open.html" }
 function goGame(jour) { window.location.href = "/game_day" + jour + ".html" }
-function goLogin() { window.location.href = "login.html" }
+function goLogin() { window.location.href = "index.html" }
+// function goLogin() { window.location.href = "login.html" }
 function goPlateau() { window.location.href = "plateau.html" }
 function hasWinJs() {
   if (localStorage.getItem("has_win") === 'true') {
     window.location.href = "game_win.html";
-  } 
-  if(localStorage.getItem("has_win") === 'false') {
+  }
+  if (localStorage.getItem("has_win") === 'false') {
     window.location.href = "game_lose.html";
   }
 }
 function hasWinFinalJs() {
   if (localStorage.getItem("has_win") === 'true') {
     window.location.href = "endgame_win.html";
-  } 
-  if(localStorage.getItem("has_win") === 'false') {
+  }
+  if (localStorage.getItem("has_win") === 'false') {
     window.location.href = "endgame_lose.html";
   }
 }
@@ -402,6 +420,39 @@ function notTheDayGame(uri) {
   // }
 }
 
-function cleanNbInBefore10h24 () {
+function cleanNbInBefore10h24() {
   localStorage.removeItem('nbInBefore10h24');
+}
+
+function lastConnexion() {
+  if(localStorage.getItem('last_connexion') == null) {
+    localStorage.setItem('last_connexion', String(new Date()))
+  } else {
+    let t1 = new Date(localStorage.getItem('last_connexion'))
+    let t2 = new Date();
+    let dif = t1.getTime() - t2.getTime();
+
+    let Seconds_from_T1_to_T2 = dif / 1000;
+    let Seconds_Between_Dates = Math.abs(Seconds_from_T1_to_T2);
+    console.warn('Last connexion there are ', Seconds_Between_Dates, 'seconds')
+    if( Seconds_Between_Dates > 240.000) {
+      localStorage.removeItem('DATE_SERVER')
+      localStorage.removeItem('DAY_NUM')
+      localStorage.removeItem('day_played')
+      localStorage.removeItem('has_played')
+      localStorage.removeItem('game_played')
+      localStorage.removeItem('has_win')
+      localStorage.removeItem('logged')
+      localStorage.removeItem('magasin')
+      localStorage.removeItem('magasin_name')
+      localStorage.removeItem('nbInBefore10h24')
+      localStorage.removeItem('session_expire')
+      localStorage.removeItem('timeLeft')
+      localStorage.removeItem('today_date')
+      localStorage.removeItem('last_connexion')
+      localStorage.removeItem('logged')
+      alert("Vous avez été déconnecté")
+    }
+    setInterval(()=>{lastConnexion()}, 120000)
+  }
 }
