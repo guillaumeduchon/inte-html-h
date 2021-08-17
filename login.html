@@ -64,25 +64,23 @@
         <div class="screen row no-gutters">
             <div class="flex_contain connect_screen cs--form">
                 <div class="wrongId">Point de vente et/ou code magasin incorrects. Veuillez réessayer.</div>
-                <!-- <div class="wrongConsent">Veuillez cocher les cases pour pouvoir accèder au jeu.</div> -->
                 <div class="connect_block">
-                    <div class="logo cf"><img src="img/logo_h24.png" alt="H24 Challenge"></div>
+                    <div class="logo cf"><img src="img/logo_h24.png" alt="Participez au challenge"></div>
                     <div class="connect_form">
                         <form id="formLogin">
+                            <div class="connect_form-select">
+                                <select name="enseigne" id="enseigne"></select>
+                            </div>
                             <div class="connect_form-select">
                                 <select name="magasin" id="magasin"></select>
                             </div>
                             <input type="password" name="password" id="code" class="code" placeholder="Code Magasin">
-                            <!-- <div class="connect_form-consentement">
-                                <label for="choice_accept_game" class="connect_form-consentement_label"><input type="checkbox" name="acceptGame" id="acceptGame">J'ai pris connaissance des conditions de participation au jeu, je les ai comprises et je les accepte.</label>
-                                <label for="choice_accept_data" class="connect_form-consentement_label"><input type="checkbox" name="acceptData" id="acceptData">J'accepte que mes données personnelles fassent l'objet d'un traitement de la part de la société organisatrice conformément à sa <a href="" target="_blank">politique de confidentialité</a>.</label>
-                            </div> -->
                         </form>
+                        <div class="cta_diamond">
+                            <span id="ctaLogin" onsubmit="fetch_login()" onclick="fetch_login()">JOUER</span>
+                        </div>
+                        <a href="reglement.pdf" class="reglement" target="_blank">Voir le règlement</a>
                     </div>
-                    <div class="cta_diamond">
-                        <span id="ctaLogin" onsubmit="fetch_login()" onclick="fetch_login()">JOUER</span>
-                    </div>
-                    <a href="reglement.pdf" class="reglement" target="_blank">Voir le règlement</a>
                 </div>
             </div>
         </div>
