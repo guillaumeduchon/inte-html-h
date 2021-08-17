@@ -547,10 +547,10 @@ main {
         justify-content: flex-end;
         text-align: center;
         text-transform: uppercase;
-        background: url('../img/fond_screen1.jpg') bottom left no-repeat;
-        background-size: contain;
+        background: url('../img/fond_intro1.jpg') top left no-repeat;
+        background-size: cover;
         &.cs--form {
-            background: url('../img/fond_screen_connect.jpg') bottom left no-repeat;
+            //background: url('../img/fond_screen_connect.jpg') bottom left no-repeat;
             background-size: contain;
             @media screen and (orientation:landscape) and (max-width: 920px) {background-size: 80%;}
             @media screen and (orientation:landscape) and (max-width: 720px) {background-size: 75%;}
@@ -573,7 +573,6 @@ main {
         }
         .connect_block {
             width: 65%;
-            background: url('../img/fond_border_block.png') 95% 0% no-repeat;
             background-size: 12%;
             @media screen and (orientation:landscape) and (max-width: 920px) {width: 75%;}
             @media screen and (orientation:landscape) and (min-width:1024px) {padding: 15% 0;}
