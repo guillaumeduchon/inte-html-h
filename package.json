@@ -4,10 +4,10 @@
   "description": "jeu-concours",
   "main": "index.js",
   "dependencies": {
-    "@popperjs/core": "^2.5.4",
-    "bootstrap": "^4.5.3",
-    "flickity": "^2.2.1",
-    "jquery": "^3.5.1",
+    "@popperjs/core": "^2.9.3",
+    "bootstrap": "^4.6.0",
+    "flickity": "^2.2.2",
+    "jquery": "^3.6.0",
     "jquery-touchswipe": "^1.6.19",
     "mobile-drag-drop": "^2.3.0-rc.2"
   },
