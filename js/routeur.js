@@ -129,8 +129,13 @@ $(document).ready(function () {
       let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
       let dayRaw = String(today.getUTCDate());
       let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
+      var hourRaw = String(dateObj.getHours());
+      const HOUR = (hourRaw.length < 2 ? '0' + hourRaw : hourRaw)
+      // ( ToDo  ) ADD CONDITION IF LAST DAY IS SUNDAY
+      if (Number(HOUR) < 9) {
+        DAY =  (Number(DAY) - 1)
+      }
       let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
-      console.log('DATAtoday_date: ',today_date)
       localStorage.setItem('today_date', today_date)
 
       fetch_movie() 
