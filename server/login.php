@@ -19,12 +19,16 @@
         if (!isset($decoded['pwd'])) {
             die('Missed action');
         }
+        if (!isset($decoded['enseigne'])) {
+          die('Missed action');
+        }
 
         $ident = $decoded['login'];
+        $enseigne = $decoded['enseigne'];
         $pwd = $decoded['pwd'];
         $stmt = $pdo->prepare("SELECT * FROM magasin
-        WHERE ident=:ident AND `password`=:pwd");
-        $stmt->execute(['ident' => $ident, 'pwd'=> $pwd]);
+        WHERE ident=:ident AND `password`=:pwd AND `enseigne`=:enseigne");
+        $stmt->execute(['ident' => $ident, 'pwd'=> $pwd, 'enseigne'=> $enseigne]);
         $login = $stmt->fetch();
       }
     }

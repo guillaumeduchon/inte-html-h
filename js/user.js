@@ -19,28 +19,28 @@ function disconnect() {
 const fetch_login = (e) => {
   var code = document.getElementById("code").value;
   var magasin = document.getElementById("magasin").value;
+  var enseigne = document.getElementById("enseigne").value;
 
   if(magasin !== '') {
-    try_login(magasin, code);
+    try_login(magasin, code, enseigne);
   }else{
     showError();
   }
 }
 
-const try_login = async (login, pwd) => {
-  response =  await axios.post('/server/login.php', {login:login, pwd:pwd}, {
+const try_login = async (login, pwd, enseigne) => {
+  response =  await axios.post('/server/login.php', {login:login, pwd:pwd, enseigne:enseigne}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
         if (res.data[0].id !== undefined) {
           logged(res.data[0].id, res.data[0].name)
           checkIsActiveMagasin().then(resp =>{
-            if (resp[0].id !== undefined && resp[0].active > 0 ) {
+            if (resp[0].id !== undefined && resp[0].active > 0) {
               window.location.href = "/rules.html";
             } else {
               $('.cta_diamond').addClass('inactif');
             }
           })
-          
         } else {
           showError();
         } 
