@@ -37,7 +37,7 @@ const try_login = async (login, pwd, enseigne) => {
           logged(res.data[0].id, res.data[0].name, res.data[0].enseigne)
           checkIsActiveMagasin().then(resp =>{
             if (resp[0].id !== undefined && resp[0].active > 0) {
-              window.location.href = "/rules.html";
+              window.location.href = "game_indice_video.html";
             } else {
               $('.cta_diamond').addClass('inactif');
             }
