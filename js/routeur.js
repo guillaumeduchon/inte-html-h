@@ -123,7 +123,20 @@ $(document).ready(function () {
   //--------------------------------------------------------- PAGE INDICE VIDEO
 
   if (location.pathname === "/game_indice_video.html") {
-    isLogged() ? (fetch_movie()) : goLogin();
+    if( isLogged() ) {
+      let today = new Date();
+      let montRaw = String(today.getUTCMonth() + 1);
+      let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
+      let dayRaw = String(today.getUTCDate());
+      let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
+      let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
+      console.log('DATAtoday_date: ',today_date)
+      localStorage.setItem('today_date', today_date)
+
+      fetch_movie() 
+    } else {
+      goLogin();
+    }
   }
 
   //--------------------------------------------------------- PAGE PERDU VIDEO

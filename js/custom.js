@@ -53,10 +53,10 @@ setTimeout(() => {
     //   window.location.href = "wrong_hour.html"
     // }
 
-    if (Number(HOUR) <= 10) {
-      if (Number(HOUR) < 10) {
+    if (Number(HOUR) <= 9) {
+      if (Number(HOUR) < 9) {
         datetoday = YEAR + '/' + MONTH + '/' + (Number(DAY) - 1)
-      } else if (Number(HOUR) === 10 && Number(MINUT) < 24) {
+      } else if (Number(HOUR) === 9 && Number(MINUT) < 00) {
         datetoday = YEAR + '/' + MONTH + '/' + (Number(DAY) - 1)
       } else {
         datetoday = YEAR + '/' + MONTH + '/' + DAY
@@ -77,9 +77,9 @@ setTimeout(() => {
           localStorage.setItem('DAY_NUM', res.data.id);
           let date_actuelle = new Date();
           let heures =  date_actuelle.getHours(); let minutes= date_actuelle.getMinutes()
-          console.log('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes())
-          if(Math.abs(heures) <= 10) {
-              if(Math.abs(heures) == 10 && minutes >=24 ) {
+          console.log('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes(), "Math.abs(heures) => ", Math.abs(heures) )
+          if(Math.abs(heures) <= 9) {
+              if(Math.abs(heures) == 9 && minutes >=00 ) {
                 //Do nothing
               } else {
                 console.log('Game number found')
@@ -112,8 +112,8 @@ setTimeout(() => {
           let date_actuelle = new Date();
           let heures =  date_actuelle.getHours(); let minutes= date_actuelle.getMinutes()
           console.log('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes())
-          if(Math.abs(heures) <= 10) {
-              if(Math.abs(heures) == 10 && minutes >=24 ) {
+          if(Math.abs(heures) <= 9) {
+              if(Math.abs(heures) == 9 && minutes >=00 ) {
                 //Do nothing
               } else {
                 DAY_NUM = (Number(DAY_NUM)-1)
@@ -145,6 +145,7 @@ const updatePlateau = () => {
   let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
   let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
+  console.log('DATAtoday_date: ',today_date)
   localStorage.setItem('today_date', today_date)
 
   var $carousel = $('.carousel_plateau').flickity();
@@ -257,7 +258,7 @@ function compte_a_rebours() {
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
   date_evenement.setDate(date_evenement.getDate() + 1)
-  date_evenement.setHours(10, 24, 00);
+  date_evenement.setHours(9, 00, 00);
   var total_secondes = (date_evenement - date_actuelle) / 1000;
   var jours = new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
   var heures = Math.floor((total_secondes - (0 * 60 * 60 * 24)) / (60 * 60));
