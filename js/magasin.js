@@ -22,6 +22,14 @@ $("#magasin").on('change', (event) => {
     $('.cta_diamond').removeClass('inactif');
   }
 })
+$("#enseigne").on('change', (event) => {
+  var active = $( "#enseigne option:selected" ).attr('data_active');
+  if (active === '0') {
+    $('.cta_diamond').addClass('inactif');
+  } else {
+    $('.cta_diamond').removeClass('inactif');
+  }
+})
 
 const getMagasin = async () => {
   await axios.post('/server/magasin.php', {magasin: localStorage.getItem('magasin')}, {

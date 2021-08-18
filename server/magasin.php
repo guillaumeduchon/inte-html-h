@@ -28,10 +28,10 @@ try {
                 $aMagasin = $stmt->fetch();
                 $oDatas = !$aMagasin ? [] :$aMagasin;
             } else if(isset($decoded['active'])) {
-                $stmt = $pdo->prepare("SELECT magasin.*, indice_magasin.id as 'done_last_game'
+                $stmt = $pdo->prepare("SELECT magasin.*, reponse.id as 'done_last_game'
                 FROM magasin 
-                LEFT JOIN indice_magasin 
-                ON indice_magasin.magasin_id = magasin.id
+                LEFT JOIN reponse 
+                ON reponse.magasin_id = magasin.id
                 WHERE magasin.id=:id 
                 ORDER BY 'done_last_game' DESC");
                 $stmt->execute(['id' => $decoded['magasin']]);
