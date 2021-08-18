@@ -24,24 +24,10 @@
         
         if($aQuestion) {
           //GET
-          if (!isset($decoded['indice']) && !isset($decoded['magasin'])) {
-            $stmt = $pdo->prepare("SELECT * FROM indice
+          if (!isset($decoded['response']) && !isset($decoded['magasin'])) {
+            $stmt = $pdo->prepare("SELECT * FROM response
             WHERE question_id=:id");
             $stmt->execute(['id' => $aQuestion['id']]);
-            $aIndice = $stmt->fetch();
-            $oDatas = !$aIndice ? [] :$aIndice;
-          }
-          //SET
-          else{
-            $indice = (int)$decoded['indice'];
-            $magasin = (int)$decoded['magasin'];
-            $magasin_name = $decoded['magasin_name'];
-            $stmt = $pdo->prepare("SELECT num FROM magasin
-            WHERE id=:id");
-            $stmt->execute(['id' => $magasin]);
-            $magasin_num = $stmt->fetch();
-            $stmt = $pdo->prepare("INSERT INTO indice_magasin(`id`,`indice_id`,`magasin_id`, `hour_participate`, `magasin_name`, `magasin_num`) VALUES (:day_num, :indice, :magasin, NOW(), :magasin_name, :magasin_num )");
-            $stmt->execute(['day_num' => $day_num, 'indice' => $indice, 'magasin' => $magasin, 'magasin_name' => $magasin_name, 'magasin_num' => $magasin_num['num']]);
             $aIndice = $stmt->fetch();
             $oDatas = !$aIndice ? [] :$aIndice;
           }

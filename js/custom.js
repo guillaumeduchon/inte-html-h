@@ -378,7 +378,7 @@ const ShowGamePlayed = () => {
       if (index < Number(localStorage.getItem('DAY_NUM'))) {
         JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
           if ((index + 1) === game.id) {
-            if (game.indice_id > 0) {
+            if (game.question_id > 0) {
               $('.carousel_cell:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
             } else {
               $('.carousel_cell:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');

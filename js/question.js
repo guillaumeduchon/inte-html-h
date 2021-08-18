@@ -45,9 +45,6 @@ const result_day = async () => {
         if (resp.data.indice_id !== 0) {
           localStorage.setItem("has_win",'true');
           window.location.href = '/game_win.html'
-        } else {
-          localStorage.setItem("has_win",'false');
-          window.location.href = '/game_lose.html'
         }
       }
     });
@@ -62,10 +59,11 @@ const result_finalday = async () => {
         if (resp.data.indice_id !== 0) {
           localStorage.setItem("has_win",'true');
           window.location.href = '/endgame_win.html'
-        } else {
-          localStorage.setItem("has_win",'false');
-          window.location.href = '/endgame_lose.html'
         }
+        //  else {
+        //   localStorage.setItem("has_win",'false');
+        //   window.location.href = '/endgame_lose.html'
+        // }
       }
     });
 }

@@ -20,9 +20,9 @@ if ($contentType === "application/json") {
         if (isset($decoded['type']) && isset($decoded['magasin'])) {
             $magasin = htmlentities($decoded['magasin']);
             $stmt = $pdo->prepare("
-            SELECT id, indice_id
-            FROM indice_magasin
-            WHERE indice_magasin.magasin_id = :magasin
+            SELECT id, question_id
+            FROM reponse
+            WHERE reponse.magasin_id = :magasin
             ORDER BY id ASC");
             $stmt->execute(['magasin' => $magasin]);
             $aIndices = $stmt->fetchAll();
