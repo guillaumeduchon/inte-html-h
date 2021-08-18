@@ -2,7 +2,7 @@ function isLogged() {
   return localStorage.getItem('logged') === null ? false : true;
 }
 
-function logged(magasin_id, magasin_name) {
+function logged(magasin_id, magasin_name, enseigne) {
   localStorage.setItem('logged', 'true');
   localStorage.setItem('magasin', magasin_id);
   localStorage.setItem('enseigne', enseigne);
