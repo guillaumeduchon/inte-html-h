@@ -124,6 +124,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_indice_video.html") {
     if( isLogged() ) {
+      var dateObj = new Date(localStorage.getItem('DATE_SERVER'));
       let today = new Date();
       let montRaw = String(today.getUTCMonth() + 1);
       let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
