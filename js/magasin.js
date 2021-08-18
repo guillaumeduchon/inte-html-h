@@ -6,8 +6,10 @@ const fullfiled_magasin = async () => {
   }).then((res) => {
     response = res.data;
     let select = $("#magasin")
+    let enseigne = $("#enseigne")
     response.forEach((item, index) => {
-      select.append('<option value="' + item.ident + '"' + (index < 1 ? 'selected ' : '') + ' data_active=' + item.active + '>' + item.name + '</option>');
+      select.append('<option value="' + item.ident + '"' + (index < 1 ? 'selected ' : '') + ' data_active=' + item.active + '>' + item.region + '</option>');
+      enseigne.append('<option value="' + item.enseigne + '"' + (index < 1 ? 'selected ' : '') + ' data_active=' + item.active + '>' + item.enseigne + '</option>');
     })
   })
 }
