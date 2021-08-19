@@ -17,9 +17,9 @@
         <div class="screen row no-gutters">
             <div class="flex_contain game_screen">
                 <div class="game_container flex_contain">
-                    <div class="game_space">
-                        <div class="tryagain">dommage, mauvaise réponse, il vous reste une tentative !</div>
-                        <div class="question">Une lettre et un nombre se cachent derrière le nom du nouveau parfum masculin Hermès. <strong>En 24 secondes, retrouvez leur signification.</strong><br><i class="rule">(4 bonnes réponses à trouver)</i></div>
+                    <div class="game_space q1">
+                        <div class="title_game"><strong>My Way</strong> est le parfum qui <strong>vous connecte aux autres</strong> !</div>
+                        <div class="rules_game">Réalisez le e-learning <strong>My Way</strong> en cliquant sur ce lien : <a href="http://" target="_blank">LIEN</a><br>Puis, <strong>racontez votre plus belle rencontre avec un client.</strong></div>
                         <div class="game_quizz flex_contain q1 dragdrop">
                             <div class="dropzone">
                                 <div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )">
@@ -28,15 +28,8 @@
                             </div>
                             <div class="dropdiv answers" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )">
                             </div>
+                            <div class="game_button" onclick="check_answer1()" id="valide"><span>VALIDER</span></div>
                         </div>
-                    </div>
-                    <div class="game_infos">
-                        <div id="timer"></div>
-                        <div class="try">
-                            <span class="title">Essais restants</span>
-                            <span class="trial"><img src="img/essai_2.png" alt="Essais restants"></span>
-                        </div>
-                        <div class="game_button" onclick="check_answer1()" id="valide"><span>VALIDER</span></div>
                     </div>
                 </div>
             </div>
@@ -59,7 +52,7 @@
     <script src="js/routeur.js"></script>
     <script src="js/question.js"></script>
     <script src="js/reponse.js"></script>
-    <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/index.min.js"></script>
+    <!-- <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/index.min.js"></script>
     <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/scroll-behaviour.min.js"></script>
     <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/hold-to-drag-issue/release/index.js"></script>
     <script>
@@ -73,6 +66,6 @@
           holdToDrag: 100,
           dragImageTranslateOverride: MobileDragDrop.scrollBehaviourDragImageTranslateOverride
         });
-      </script>
+      </script> -->
 </body>
 </html>
