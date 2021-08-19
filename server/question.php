@@ -14,18 +14,19 @@
         if(!is_array($decoded)) {
             die('Missed action');
         } else {
-            if (!isset($decoded['day_num'])) {
+            if (!isset($decoded['game_num'])) {
                 die('Missed action');
             }
             if (!isset($decoded['type'])) {
                 die('Missed action');
             }
-            
-            $day_num = (int)$decoded['day_num'];
+
+            $game_num = (int)$decoded['game_num'];
+
             $type = htmlentities($decoded['type']);
 
             $stmt = $pdo->prepare("SELECT id FROM question WHERE jour=:jour");
-            $stmt->execute(['jour'=> $day_num]);
+            $stmt->execute(['jour'=>  $game_num ]);
             $aQuestion = $stmt->fetch();
            
             if($aQuestion) {
@@ -36,9 +37,9 @@
                         $aDatas = $stmt->fetch();
                         break;
                     case 'content':
-                        $stmt = $pdo->prepare("SELECT content FROM question WHERE id=:id");
+                        $stmt = $pdo->prepare("SELECT content FROM reponse WHERE question_id=:id AND content != '' ORDER BY RAND() LIMIT 2;" );
                         $stmt->execute(['id'=> $aQuestion['id']]);
-                        $aDatas = $stmt->fetch();
+                        $aDatas = $stmt->fetchAll();
                         break;
                 }
             }

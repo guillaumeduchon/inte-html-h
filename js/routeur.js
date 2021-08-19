@@ -179,10 +179,11 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_day1.html") {
     if (isLogged()) {
-      isEnableMagasin();
-      sessionTimeOut();
-      result_day(), hasWinJs();
-      startGame();
+      //isEnableMagasin();
+      fetch_content(1);
+      //sessionTimeOut();
+      //result_day(), hasWinJs();
+      //startGame();
     } else {
       goLogin();
     }
@@ -195,7 +196,7 @@ $(document).ready(function () {
 
     if (isLogged()) {
       isEnableMagasin();
-      sessionTimeOut();
+      //sessionTimeOut();
       result_day();
       startGame();
     } else {
@@ -210,7 +211,7 @@ $(document).ready(function () {
 
     if (isLogged()) {
       isEnableMagasin();
-      sessionTimeOut();
+      //sessionTimeOut();
       result_day();
       startGame();
     } else {
@@ -225,7 +226,7 @@ $(document).ready(function () {
 
     if (isLogged()) {
       isEnableMagasin();
-      sessionTimeOut();
+      //sessionTimeOut();
       result_day();
       startGame();
     } else {
@@ -240,7 +241,7 @@ $(document).ready(function () {
 
     if (isLogged()) {
       isEnableMagasin();
-      sessionTimeOut();
+      //sessionTimeOut();
       result_day();
       startGame();
     } else {

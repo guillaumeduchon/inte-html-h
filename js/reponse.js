@@ -16,7 +16,7 @@ const check_answer2 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      alert("WHOUHOUW")
+      window.location.href = 'game_end.html'
     });
 }
 
@@ -50,14 +50,16 @@ const check_answer5 = async () => {
     });
 }
 
-var fileInput = document.getElementById('files');
-fileInput.addEventListener('change', function (evnt) {
-  fileList = [];
-  for (var i = 0; i < fileInput.files.length; i++) {
-    fileList.push(fileInput.files[i]);
-  }
-  //renderFileList();
-});
+if (/game_day2|game_day4/.test(location.pathname)) {
+  var fileInput = document.getElementById('files');
+  fileInput.addEventListener('change', function (evnt) {
+    fileList = [];
+    for (var i = 0; i < fileInput.files.length; i++) {
+      fileList.push(fileInput.files[i]);
+    }
+    //renderFileList();
+  });
+}
 
 function fetchSaveFiles(game_num) {
   fileList.forEach(function (file) {

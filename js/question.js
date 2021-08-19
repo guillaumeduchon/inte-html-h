@@ -24,14 +24,15 @@ const fetch_rules = async () => {
     })
 }
 
-const fetch_content = async () => {
-  await axios.post('/server/question.php', { day_num: Number(localStorage.getItem('DAY_NUM')), type: 'content' }, {
+const fetch_content = async (game_num) => {
+  await axios.post('/server/question.php', { 'game_num': game_num, type: 'content' }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((resp) => {
       //if there are at least one good answer return by api
-      if (resp.data.content !== undefined) {
-        $('.explicgame').html(`<p>${resp.data.content}</p>`)
+      if (resp.data[0].content !== undefined) {
+        $('.citation:eq(0)').html(`<p>${resp.data[0].content}</p>`)
+        $('.citation:eq(1)').html(`<p>${resp.data[1].content}</p>`)
       }
     });
 }
@@ -44,7 +45,7 @@ const result_day = async () => {
       if (resp.data.indice_id !== undefined) {
         if (resp.data.indice_id !== 0) {
           localStorage.setItem("has_win",'true');
-          window.location.href = '/game_win.html'
+          //window.location.href = '/game_win.html'
         }
       }
     });
