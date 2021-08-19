@@ -753,6 +753,7 @@ main {
             align-items: stretch;
             & > * {margin-left: 20px; width: calc(20% - 20px);}
             a {
+                &:hover {color: $blue; text-decoration: none;}
                 &.game_box {
                     border-radius: 20px;
                     background: rgba(#c9d6e1, 0.4);
@@ -2241,7 +2242,7 @@ main {
                 height:5px;
                 margin-top:0;
                 border:none;
-                color:$green;
+                color:$blue;
                 background: transparent;
                 z-index: 5;
                 &[data-state="fake"] {
@@ -2252,7 +2253,7 @@ main {
                     width: 0%;
                     height: 100%;
                     display: inline-block;
-                    background-color: $green;
+                    background-color: $blue;
                 }
                 &::-webkit-progress-bar {
                     background-color: transparent;
