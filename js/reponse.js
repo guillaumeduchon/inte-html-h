@@ -11,7 +11,7 @@ const check_answer1 = async () => {
 /* ----------------------------------- REPONSE JEU 2 ----------------------------------- */
 
 const check_answer2 = async () => {
-  saveFiles()
+  fetchSaveFiles('2')
   await axios.post('/server/set_reponse.php', { day_num: '2', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
@@ -32,8 +32,7 @@ const check_answer3 = async () => {
 /* ----------------------------------- REPONSE JEU 4 ----------------------------------- */
 
 const check_answer4 = async () => {
-  //HERE SAVE FILE
-  saveFiles()
+  fetchSaveFiles('4')
   await axios.post('/server/set_reponse.php', { day_num: '4', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
@@ -57,12 +56,14 @@ fileInput.addEventListener('change', function (evnt) {
   for (var i = 0; i < fileInput.files.length; i++) {
     fileList.push(fileInput.files[i]);
   }
-  fileList.forEach(function (file) {
-    saveFiles(file);
-  });
   //renderFileList();
-
 });
+
+function fetchSaveFiles(game_num) {
+  fileList.forEach(function (file) {
+    saveFiles(file, game_num);
+  });
+}
 
 // renderFileList = function () {
 //   //fileListDisplay.innerHTML = '';
@@ -73,11 +74,12 @@ fileInput.addEventListener('change', function (evnt) {
 //   });
 // };
 
-function saveFiles(file) {
+function saveFiles(file, game_num) {
   var formData = new FormData();
   formData.set('file', file);
-  formData.set('magasin_name', 1798);
-  formData.set('game_num', 4);
+  formData.set('magasin_name', localStorage.getItem("magasin_name") + "_" + localStorage.getItem("magasin"));
+  formData.set('game_num', game_num);
+  formData.set('product_salt_name', "PArfumTOTO"); // HEre the name in the input .anwser
 
   $.ajax({
     url: '/server/image.php',
@@ -93,7 +95,6 @@ function saveFiles(file) {
 
       if (response.error !== undefined) {
         $("#danger").empty().append('Une erreur s\'est produite').fadeIn().delay(2000).fadeOut();
-
         return false;
       }
 
