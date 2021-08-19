@@ -77,7 +77,12 @@
             // Switched to Page Indice
             video.addEventListener('ended', switchIndice, false);
             function switchIndice(e) {
-				history.go(-1);
+				if(localStorage.getItem('day_played') === 'true') {
+					history.go(-1);
+				}
+				if(localStorage.getItem('day_played') !== 'true') {
+					window.location.href = "plateau.html";
+				} 
             }
 		}
 	 }
