@@ -509,6 +509,15 @@ main {
             padding: 0 20px;
             .logo img {width: 55%; display: inline-block; margin-bottom: 15px;}
         }
+        &.endgame {
+            background: url('../img/fond_finalgame.jpg') center no-repeat;
+            background-size: cover;
+            justify-content: flex-end;
+            padding: 0 20px;
+            .connect_block.page .connect_form.page {
+                padding: 20px 30px;
+            }
+        }
         .wrongId, .wrongConsent {
             animation: displayblock 0.5s linear, hideblock 0.5s linear forwards 5s;
             position: absolute;
@@ -605,10 +614,12 @@ main {
                     padding: 40px 30px;
                     line-height: initial;
                     .merci img {max-width: 65%; padding-bottom: 10px;}
-                    .countdown, .next {
+                    .bravo img {max-width: 35%; padding-bottom: 10px;}
+                    .countdown, .next, .title {
                         font-size: 20px; line-height: initial; padding-bottom: 30px;
                         .hour {font-size: 23px;}
                     }
+                    .title {padding-bottom: 10px;}
                     p {text-transform: initial;}
                 }
                 form {margin-bottom: 25px;}
