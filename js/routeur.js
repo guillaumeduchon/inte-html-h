@@ -89,10 +89,9 @@ $(document).ready(function () {
     if (isLogged()) {
       isEnableMagasin()
       if (!gameStarted() || gameStoped()) {
-        clear_counter();
         updatePlateau()
       } else {
-        goGame(Number(localStorage.getItem('DAY_NUM')))
+        //goGame(Number(localStorage.getItem('DAY_NUM')))
       }
       // if (localStorage.getItem('has_played') !== null){
       //   setTimeout(()=>{localStorage.removeItem('logged')}, 8000)
