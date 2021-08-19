@@ -5,7 +5,7 @@ const check_answer1 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((response) => {
-      alert(response)
+      alert("WHOUHOUW")
     });
 }
 /* ----------------------------------- REPONSE JEU 2 ----------------------------------- */
@@ -16,7 +16,7 @@ const check_answer2 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      alert(valid_resp)
+      alert("WHOUHOUW")
     });
 }
 
@@ -26,7 +26,7 @@ const check_answer3 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      alert(valid_resp)
+      alert("WHOUHOUW")
     });
 }
 /* ----------------------------------- REPONSE JEU 4 ----------------------------------- */
@@ -37,7 +37,7 @@ const check_answer4 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      alert(valid_resp)
+      alert("WHOUHOUW")
     });
 }
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
