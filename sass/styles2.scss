@@ -619,8 +619,17 @@ main {
                         font-size: 20px; line-height: initial; padding-bottom: 30px;
                         .hour {font-size: 23px;}
                     }
-                    .title {padding-bottom: 10px;}
-                    p {text-transform: initial;}
+                    .title {padding-bottom: 10px; &.win{font-size: 18px;}}
+                    p {text-transform: initial; &.win{font-size: 14px;}}
+                    .winner {
+                        width: 80%;
+                        border: 1px solid $blue;
+                        font-size: 16px;
+                        padding: 5px 0;
+                        border-radius: 10px;
+                        margin: 0 auto;
+                        margin-bottom: 5px;
+                    }
                 }
                 form {margin-bottom: 25px;}
                 .connect_form-select {
