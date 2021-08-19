@@ -529,6 +529,9 @@ main {
         .connect_block {
             width: 45%;
             @media screen and (orientation:landscape) and (max-width: 670px) {width: 50%}
+            &.page {
+                width: 55%;
+            }
             .cb_rules {
                 background: rgba($white, 0.7);
                 border-radius: 30px 30px 0 0;
@@ -598,6 +601,14 @@ main {
                 }
                 margin: 0 auto;
                 position: relative;
+                &.page {
+                    padding: 40px 30px;
+                    .merci img {max-width: 65%; padding-bottom: 10px;}
+                    .countdown, .next {
+                        font-size: 20px; line-height: initial; padding-bottom: 30px;
+                        .hour {font-size: 23px;}
+                    }
+                }
                 form {margin-bottom: 25px;}
                 .connect_form-select {
                     position: relative;
@@ -813,16 +824,14 @@ main {
     }
     .rules_screen {
         width: 100vw;
-        background-color: $grey;
-        color: $white;
-        margin: 0 auto;
-        position: relative;
+        height: 100%;
         justify-content: center;
+        align-content: flex-end;
         text-align: center;
+        text-transform: uppercase;
+        background: url('../img/fond_login.jpg') center no-repeat;
+        background-size: cover;
         &.rules_quizz {
-            background: url('../img/fond_question.jpg') no-repeat right;
-            background-size: cover;
-            background-color: $blue;
             .rules_contain {
                 width: 85%;
                 .rules_challenge {margin: 15px 0 30px;}
@@ -891,57 +900,10 @@ main {
             }
         }
         &.rules_endgame {
-            background: url('../img/fond_end_game.jpg') no-repeat right;
-            background-size: cover;
-            background-color: $blue;
             .rules_contain {
-                h3 {
-                    color: $green;
-                    margin-bottom: 0;
-                    font-weight: bold;
-                    text-transform: uppercase;
-                    font-size: 25px;
-                    @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 23px;}
-                }
-                h4 {
-                    font-size: 21px;
-                    text-transform: uppercase;
-                    margin-bottom: 13px;
-                    @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 20px;}
-                }
-                p, .explicgame {
-                    font-size: 15px;
-                    line-height: 19px;
-                    // @media screen and (orientation:landscape) and (max-width: 920px) {
-                    //     font-size: 14px;
-                    //     line-height: 18px;
-                    // }
-                    &:nth-child(2n+1) {margin-top: 15px;}
-                    @media screen and (orientation:landscape) and (min-width:1024px) {
-                        font-size: 17px;
-                        line-height: 21px;
-                        &:nth-child(2n) {margin-top: 25px;}
-                    }
-                }
-                .cta_diamond {
-                    height: 130px;
-                    width: 130px;
-                    a, span {font-size: 16px; line-height: 80px;}
-                    @media screen and (orientation:landscape) and (max-width: 920px) {
-                        height: 110px;
-                        width: 110px;
-                        a, span {font-size: 13px; line-height: 60px;}
-                    }
-                    @media screen and (orientation:landscape) and (min-width:1024px) {
-                        height: 150px;
-                        width: 150px;
-                        a {font-size: 18px; line-height: 100px;}
-                    }
-                    &:after {
-                        background-color: $green;
-                        box-shadow: 0 0 0 0;
-                    }
-                }
+                background: rgba($white, 0.7);
+                padding: 20px;
+                border-radius: 30px 30px 0 0;
             }
         }
         .rules_container {
@@ -950,15 +912,18 @@ main {
             margin:0 auto;
             display: flex;
             align-items: center;
-            background: url('../img/fond_border_block.png') 97% 25px no-repeat;
-            @media screen and (orientation:landscape) and (max-width: 640px) {background-position: 97% 20px;}
-            background-size: 9%;
-            &.lose {background: none;}
         }
         .rules_contain {
+            align-self: flex-end;
             width: 80%;
-            padding: 0;
-            margin: 0 auto;
+            background: rgba($white, 0.7);
+                border-radius: 30px 30px 0 0;
+                padding: 20px 30px;
+                @media screen and (orientation:landscape) and (max-width: 580px) {
+                    font-size: 14px;
+                }
+                margin: 0 auto;
+                position: relative;
             .logo {
                 position: absolute;
                 top: 25px;
