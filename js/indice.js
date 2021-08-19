@@ -20,7 +20,6 @@ const fetch_movie = async () => {
           if(localStorage.getItem('DAY_NUM')!== String(video_number)) {
             video_number = localStorage.getItem('DAY_NUM');
           }
-          console.log("video/video_game_${video_number}",${video_number} )
           $('.videoreplace').html(`<source src="video/video_game_${video_number}.mp4" type="video/mp4">`)
         } else {
           console.log("no day found")
