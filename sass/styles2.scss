@@ -41,6 +41,7 @@ $grey-bg: #f0f2f1;
 /** GENERAL **/
 body {
     font-family: 'Neutra Text', sans-serif;
+    color: $blue;
     a {color: $blue;}
 }
 
@@ -1013,39 +1014,40 @@ main {
     }
     .game_screen {
         width: 100vw;
+        height: 100%;
         position: relative;
-        align-items: center;
+        align-content: flex-end;
+        justify-content: center;
+        &.q1 {
+            background: url('../img/fond_q1.jpg') no-repeat right;
+            background-size: cover;
+        }
+        &.q2 {
+            background: url('../img/fond_q2.jpg') no-repeat center;
+            background-size: cover;
+        }
+        &.q3 {
+            background: url('../img/fond_q3.jpg') no-repeat right;
+            background-size: cover;
+        }
+        &.q4 {
+            background: url('../img/fond_q4.jpg') no-repeat center;
+            background-size: cover;
+        }
+        &.q5 {
+            background: url('../img/fond_q5.jpg') no-repeat center;
+            background-size: cover;
+        }
         .game_container {
             width: 100vw;
-            height: 100%;
             .game_space {
                 width: 100vw;
                 height: 100%;
-                padding: 20px;
+                padding: 20px 20px 0;
                 @media screen and (orientation:landscape) and (min-width:1024px) {padding: 40px;}
                 position: relative;
                 // overflow: hidden;
                 text-align: center;
-                &.q1 {
-                    background: url('../img/fond_q1.jpg') no-repeat right;
-                    background-size: cover;
-                }
-                &.q2 {
-                    background: url('../img/fond_q2.jpg') no-repeat center;
-                    background-size: cover;
-                }
-                &.q3 {
-                    background: url('../img/fond_q3.jpg') no-repeat right;
-                    background-size: cover;
-                }
-                &.q4 {
-                    background: url('../img/fond_q4.jpg') no-repeat center;
-                    background-size: cover;
-                }
-                &.q5 {
-                    background: url('../img/fond_q5.jpg') no-repeat center;
-                    background-size: cover;
-                }
                 .title_game {
                     font-size: 22px;
                     line-height: 26px;
@@ -1056,152 +1058,84 @@ main {
                 }
                 .rules_game {
                     line-height: initial;
+                    padding-bottom: 20px;
                 }
-                // &.finalgame {
-                //     background: url('../img/fond_finalgame.jpg') no-repeat;
-                //     background-size: cover;
-                //     color: $white;
-                //     margin:0 auto;
-                //     display: flex;
-                //     align-items: center;
-                //     padding: 20px 0;
-                //     .finalgame_contain {
-                //         width: 80%;
-                //         @media screen and (orientation:landscape) and (max-width: 640px) {width: 90%;}
-                //         padding: 0;
-                //         margin: 0 auto;
-                //         text-align: center;
-                //         #timer {
-                //             @media screen and (orientation:landscape) and (max-width: 600px) {
-                //                 .timer_new {
-                //                     width: 50px;
-                //                     height: 50px;
-                //                 }
-                //                 .timer_new__label {
-                //                         width: 50px;
-                //                         top: 11px;
-                //                         font-size: 17px;
-                //                     .label {
-                //                             font-size: 10px;
-                //                             line-height: 10px;
-                //                     }
-                //                     .timer_new__seconds {
-                //                             font-size: 17px;
-                //                             line-height: 18px;
-                //                     }
-                //                 }
-                //             }
-                //         }
-                //         h2 {
-                //             text-transform: uppercase;
-                //             @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 21px;}
-                //             @media screen and (orientation:landscape) and (min-width: 1024px) {font-size: 30px; margin-bottom: 12px;}
-                //         }
-                //         p {
-                //             font-weight: bold;
-                //             text-transform: uppercase;
-                //             font-size: 15px;
-                //             line-height: 19px;
-                //             @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 13px; line-height: 17px;}
-                //             @media screen and (orientation:landscape) and (min-width: 1024px) {font-size: 19px; line-height: 23px;}
-                //         }
-                //         .finalgame_indice {
-                //             font-weight: bold;
-                //             text-transform: uppercase;
-                //             color: $green;
-                //             font-size: 21px;
-                //             padding-bottom: 10px;
-                //             @media screen and (orientation:landscape) and (max-width: 920px) {font-size: 16px;}
-                //             @media screen and (orientation:landscape) and (min-width: 1024px) {font-size: 27px;}
-                //         }
-                //         form {
-                //             input[type="text"]{
-                //                 display: inline-block;
-                //                 width: 40px;
-                //                 height: 40px;
-                //                 font-size: 22px;
-                //                 line-height: 40px;
-                //                 text-align: center;
-                //                 text-transform: uppercase;
-                //                 position: relative;
-                //                 box-shadow: 0 0 0 0;
-                //                 border-radius: 0;
-                //                 border-style: initial;
-                //                 padding: 3px;
-                //                 -webkit-appearance: none;
-                //                 @media screen and (orientation:landscape) and (min-width: 1024px) {
-                //                     width: 65px;
-                //                     height: 65px;
-                //                     font-size: 30px;
-                //                     line-height: 65px;
-                //                     margin: 0 3px;
-                //                 }
-                //                 &.win {
-                //                     border: 2px solid $green;
-                //                     color: $green;
-                //                     background-color: $green-light;
-                //                 }
-                //                 &.lose {
-                //                     border: 2px solid $red;
-                //                     color: $red;
-                //                 }
-                //             }
-                //             margin-bottom: 30px;
-                //             @media screen and (orientation:landscape) and (min-width: 1024px) {margin-bottom: 45px;}
-                //         }
-                //         .cta_diamond {
-                //             @media screen and (orientation:landscape) and (max-width: 920px) {
-                //                 height: 110px;
-                //                 width: 110px;
-                //                 a, span {font-size: 14px; line-height: 60px;}
-                //             }
-                //             &:after {
-                //                 background-color: $green;
-                //                 box-shadow: 0 0 0 0;
-                //             }
-                //         }
-                //         #timer {
-                //             position: absolute;
-                //             top: 10px;
-                //             right: 10px;
-                //             .label {
-                //                 color: $white;
-                //             }
-                //         }
-                //     }
-                // }
                 .game_quizz {
-                    align-items: center;
                     flex-wrap: nowrap;
                     justify-content: center;
-                    height: 75%;
-                    @media screen and (orientation:landscape) and (min-width:1024px) {height: 90%;}
-                    &.q1 {
-                        .dropzone {padding-right: 10px;}
-                        .dz {
-                            width: 20vw;
-                            min-height: 50vh;
-                            background: url('../img/fond_drag_q1.jpg') no-repeat center;
-                            background-size: contain;
-                            .rule {
-                                bottom: 0;
-                                left: 0;
-                                display: block;
-                                &.hide {display: none;}
+                    margin-left: -30px;
+                    & > * {margin-left: 30px; width: calc(50% - 30px);}
+                    .game_quizz_challenge {
+                        background:rgba($white, 0.7);
+                        border-radius: 30px 30px 0 0;
+                        padding: 20px;
+                        .title {
+                            text-transform: uppercase;
+                            line-height: initial;
+                            padding-bottom: 15px;
+                        }
+                        form {
+                            display: block;
+                            textarea {
+                                background: none;
+                                border: 1px solid $blue;
+                                border-radius: 15px;
+                                resize: none;
+                                padding: 6px 10px;
+                                height: 100px;
+                                width: 100%;
+                                margin-bottom: 15px;
                             }
-                            @media screen and (orientation:landscape) and (max-width: 920px) {
-                                .answer_button {
-                                    height: auto;
-                                    font-size: 11px;
+                            .buttons {
+                                display: flex;
+                                flex-wrap: nowrap;
+                                margin-left: -10px;
+                                & > * {margin-left: 10px; width: calc(50% - 10px);}
+                                a.display {
+                                    font-weight: bold;
+                                    text-decoration: none;
+                                    cursor: pointer;
+                                    padding: 7px 30px;
+                                    background-color: transparent;
+                                    border-radius: 10px;
+                                    display: inline-block;
+                                    line-height: initial;
+                                    border: 1px solid rgba($blue, 0.6);
+                                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+                                }
+                                .cta_diamond {
+                                    margin-bottom: 0;
+                                    a, span {width: 100%; padding: 7px 10px;}
+                                    &.invers {
+                                        a {background: transparent; color: $blue; border: 1px solid rgba($blue, 0.6);}
+                                    }
                                 }
                             }
                         }
-                        .answers {
-                            width: 80vw;
-                            height: 158px;
-                        }
-                        .answer_button {
-                            align-self: center;
+                    }
+                    .game_quizz_divers {
+                        .q1 {
+                            text-align: left;
+                            margin-right: 20px;
+                            .title {text-transform: uppercase; padding-bottom: 20px;}
+                            .citation {
+                                padding-bottom: 30px;
+                                line-height: initial;
+                                &:last-child {padding-bottom: 0; &::after {bottom: -15px;}}
+                                font-size: 14px;
+                                position: relative;
+                                &::after {
+                                    content: "";
+                                    background: url('../img/citation.png') no-repeat;
+                                    background-size: 25px;
+                                    width: 25px;
+                                    height: 18px;
+                                    display: inline-block;
+                                    position: absolute;
+                                    bottom: 20px;
+                                    right: 0;
+                                }
+                            }
                         }
                     }
                     &.q2 {

@@ -15,20 +15,41 @@
 <body>
     <main>
         <div class="screen row no-gutters">
-            <div class="flex_contain game_screen">
+            <div class="flex_contain game_screen q1">
                 <div class="game_container flex_contain">
-                    <div class="game_space q1">
+                    <div class="game_space">
                         <div class="title_game"><strong>My Way</strong> est le parfum qui <strong>vous connecte aux autres</strong> !</div>
                         <div class="rules_game">Réalisez le e-learning <strong>My Way</strong> en cliquant sur ce lien : <a href="http://" target="_blank">LIEN</a><br>Puis, <strong>racontez votre plus belle rencontre avec un client.</strong></div>
-                        <div class="game_quizz flex_contain q1 dragdrop">
-                            <div class="dropzone">
+                        <div class="game_quizz flex_contain">
+                            <div class="game_quizz_challenge">
+                                <div class="title">Racontez ici votre <strong>plus belle<br>rencontre avec un client :</strong></div>
+                                <form action="">
+                                    <textarea name="" id=""></textarea>
+                                    <div class="buttons">
+                                        <div class="cta_diamond invers">
+                                            <a href="">RELIRE LA VIDÉO</a>
+                                        </div>
+                                        <div class="cta_diamond">
+                                            <span id="ctaLogin" id="valide" onclick="check_answer1()">VALIDER</span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="game_quizz_divers">
+                                <div class="q1">
+                                    <div class="title">Vous nous avez raconté :</div>
+                                    <div class="citation">Un papa venant demander de l’aide pour sa fille complexée par son acné … il est reparti avec tout un sac de maquillage et est revenu me remercier quelques jours après, sa détresse et son amour m’ont tellement touchés.</div>
+                                    <div class="citation">Un client complètement perdu à la Saint-Valentin car c’était la premiere fois qu’il faisait un cadeau à sa copine !!!</div>
+                                </div>
+                            </div>
+                            <!-- <div class="dropzone">
                                 <div class="dropdiv dz" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )">
                                     <div class="rule" id="rule" onDrop="dragDrop( event )">Glissez &amp; déposez les bonnes réponses ici</div>
                                 </div>
                             </div>
                             <div class="dropdiv answers" onDragEnter="dragEnter( event )" onDragOver="dragOver( event )" onDragLeave="dragLeave( event )" onDrop="dragDrop( event )">
                             </div>
-                            <div class="game_button" onclick="check_answer1()" id="valide"><span>VALIDER</span></div>
+                            <div class="game_button" onclick="check_answer1()" id="valide"><span>VALIDER</span></div> -->
                         </div>
                     </div>
                 </div>
