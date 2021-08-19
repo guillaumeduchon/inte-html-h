@@ -603,11 +603,13 @@ main {
                 position: relative;
                 &.page {
                     padding: 40px 30px;
+                    line-height: initial;
                     .merci img {max-width: 65%; padding-bottom: 10px;}
                     .countdown, .next {
                         font-size: 20px; line-height: initial; padding-bottom: 30px;
                         .hour {font-size: 23px;}
                     }
+                    p {text-transform: initial;}
                 }
                 form {margin-bottom: 25px;}
                 .connect_form-select {
