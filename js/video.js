@@ -77,7 +77,7 @@
             // Switched to Page Indice
             video.addEventListener('ended', switchIndice, false);
             function switchIndice(e) {
-                window.location.href = "plateau.html";
+				history.go(-1);
             }
 		}
 	 }
