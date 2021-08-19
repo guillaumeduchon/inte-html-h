@@ -7,15 +7,14 @@ window.addEventListener('resize', () => {
 
 // CHANGE COLOR SELECT OPTION
 $(document).ready(function() {
-  $('#magasin').css('color','#b3b5b4');
+  $('#magasin').css('color','#323864');
   $('#magasin').change(function() {
      var current = $('#magasin').val();
      if (current != 'null') {
-         $('#magasin').css('color','#305c67');
-         $('#magasin').css('border-bottom','2px solid #305c67');
+         $('#magasin').css('color','#323864');
          $('.connect_form-select').toggleClass('changed');
      } else {
-         $('#magasin').css('color','#b3b5b4');
+         $('#magasin').css('color','#323864');
      }
   }); 
 });

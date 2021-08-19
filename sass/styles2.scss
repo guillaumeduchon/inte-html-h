@@ -41,6 +41,7 @@ $grey-bg: #f0f2f1;
 /** GENERAL **/
 body {
     font-family: 'Neutra Text', sans-serif;
+    a {color: $blue;}
 }
 
 /*** MESSAGE PAYSAGE + SPLASHSCREEN ***/
@@ -617,13 +618,8 @@ main {
                         padding: 2px 20px;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        text-transform: uppercase;
                         color: $blue;
                         background: transparent;
-                        .option {
-                            &:disabled {color: $grey;}
-                            &:checked {color: $blue;}
-                        }
                     }
                     &::after {
                         content: url(../img/angle-down.svg);
@@ -640,7 +636,6 @@ main {
                         fill: $blue;
                     }
                     &.changed {
-                        &::after {content: url(../img/angle-down_blue.svg); fill: $blue;}
                     }
                     &:valid {color: $blue; border-color: $blue;}
                 }
@@ -649,7 +644,6 @@ main {
                     padding: 2px 20px;
                     border: 1px solid $blue;
                     border-radius: 25px; 
-                    text-transform: uppercase;
                     color: $blue;
                     background: transparent;
                     // @media screen and (orientation:landscape) and (max-width: 920px) {
@@ -729,232 +723,73 @@ main {
     }
     .plateau_screen {
         width: 100vw;
-        border-bottom: 2px solid $green;
-        border-right: 2px solid $green;
+        height: 100%;
         position: relative;
+        display: flex;
         justify-content: center;
-        background: url('../img/fond_screen_plateau.jpg') no-repeat bottom right;
-        background-size: contain;
+        align-content: flex-end;
+        background: url('../img/fond_generic.jpg') no-repeat center;
+        background-size: cover;
         overflow: hidden;
-        .logo {
-            position: absolute;
-            top: 25px;
-            left: 25px;
-            img {width: 75px;}
-        }
-        .reglement {
-            position: absolute;
-            bottom: 16px;
+        .plateau__title {
             text-align: center;
-            color: $blue;
-            text-decoration: underline;
-            font-size: 14px;
-        }
-        .carousel_plateau {
-            width: 100%;
-            height: 100%;
-            .flickity-button {
-                background: transparent;
-            }
-            .flickity-prev-next-button {
-                width: 16vw;
-                height: 40%;
-                border-radius: 0;
-                &.previous {left: 0;}
-                &.next {right: 0;}
-                .flickity-button-icon {
-                    fill: transparent;
-                }
-            }
-            .carousel_cell {
-                width: 60%;
-                // height: 65%;
-                padding: 10px;
-                // background-color: $blue;
-                transition: 0.2s linear all;
-                @media screen and (orientation:landscape) and (max-height: 335px) {
-                    top: 3px;
-                }
-                img.bg_cell {
-                    max-width: 100%;
-                    height: auto;
-                    position: relative;
-                }
-                .carousel_cell-content {
-                    height: 100%;
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                }
-                .carousel_cell-content-container {
-                    width: 100%;
-                    display: none;
-                    align-items: center;
-                    justify-content: center;
-                    justify-items: center;
-                    flex-wrap: wrap;
-                    text-transform: uppercase;
-                    color: $white;
-                    text-align: center;
-                    .title, .jour, .statut {display: block; width: 100%;}
-                    .title {
-                        font-size: 18px;
-                        line-height: 22px;
-                        font-weight: bold;
-                        @media screen and (orientation:landscape) and (max-width: 760px) {
-                            font-size: 16px;
-                            line-height: 20px;
-                        }
-                        @media screen and (orientation:landscape) and (max-width: 640px) {
-                            font-size: 14px;
-                            line-height: 18px;
-                        }
-                    }
-                    .jour {
-                        font-size: 31px;
-                        line-height: 36px;
-                        font-weight: bold;
-                        margin: 0 0 10px 0;
-                        @media screen and (orientation:landscape) and (max-width: 760px) {
-                            font-size: 27px;
-                            line-height: 31px;
-                            margin-bottom: 5px;
-                        }
-                        @media screen and (orientation:landscape) and (max-width: 640px) {
-                            font-size: 22px;
-                            line-height: 25px;
-                            margin-bottom: 5px;
-                        }
-                    }
-                    .statut {
-                        font-size: 17px;
-                        line-height: 22px;
-                        &.countdown {
-                            font-size: 14px;
-                            line-height: 18px;
-                        }
-                        @media screen and (orientation:landscape) and (max-width: 920px) {
-                            font-size: 15px;
-                            line-height: 19px;
-                            &.countdown {
-                                font-size: 12px;
-                                line-height: 16px;
-                            }
-                        }
-                        @media screen and (orientation:landscape) and (max-width: 640px) {
-                            font-size: 12px;
-                            line-height: 15px;
-                            &.countdown {
-                                font-size: 9px;
-                                line-height: 12px;
-                            }
-                        }
-                    }
-                    img {
-                        &.icon {
-                            width: 30px;
-                            display: block;
-                            margin: 0 auto;
-                            @media screen and (orientation:landscape) and (max-width: 760px) {width: 25px;}
-                            @media screen and (orientation:landscape) and (max-width: 640px) {width: 20px; margin-bottom: 7px;}
-                            margin-bottom: 10px;
-                        }
-                    }
-                }
-                .carousel_cell-content-resume {
-                    display: flex;
-                    flex-wrap: nowrap;
-                    align-items: center;
-                    position: absolute;
-                    top: 50%; /* poussé de la moitié de hauteur du référent */
-                    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
-                    color: $white;
-                    font-size: 25px;
-                    font-weight: bold;
-                    padding: 0 10px;
-                    text-align: left;
-                    img {
-                        &.icon {
-                            width: 20px;
-                            &.hide {display: none;}
-                        }
-                    }
-                    @media screen and (orientation:landscape) and (max-width: 720px) {
-                        font-size: 17px;
-                        padding: 0;
-                        img {&.icon{width: 10px;}}
-                    }
-                    @media screen and (orientation:landscape) and (max-width: 760px) and (min-width: 720px) {
-                        font-size: 21px;
-                        padding: 0;
-                        img {&.icon{width: 12px;}}
-                    }
-                    .challenge_day {
-                        padding: 0 5px;
-                        @media screen and (orientation:landscape) and (min-width: 1024px) {padding: 0 10px}
-                    }
-                }
-                .carousel_cell-content-linkgame {
-                    position: absolute;
-                    display: block;
-                    bottom: 0;
-                    height: 100%;
-                    width: 100%;
-                    cursor: pointer;
-                    &.hide {display: none;}
-                }
-                &.expired {
-                    // background-color: $grey-dark;
-                    .carousel_cell-content-container, .carousel_cell-content-resume {
-                        color: $grey-light;
-                    }
-                }
-                &.available {
-                    // background-color: $green-light2;
-                    .statut {color: $blue;}
-                }
-                // &.unavailable {background-color: $blue;}
-                &.is-selected {
-                    filter: drop-shadow(0 0 7px rgba($black, 0.6));
-                    // box-shadow: 0 0 9px rgba($black, 0.6);
-                    .carousel_cell-content-container {display: flex;}
-                    .carousel_cell-content-resume {display: none;}
-                    @media screen and (orientation:landscape) and (max-width: 920px) {
-                        &.available {
-                            .carousel_cell-content-container {margin-bottom: 25px;}
-                        }
-                    }
-                    @media screen and (orientation:landscape) and (min-width: 1024px) {
-                        &.available {
-                            .carousel_cell-content-container {margin-bottom: 20px;}
-                        }
-                    }
-                }
-                &.is-previous {
-                    .carousel_cell-content-resume {
-                        right: 5vw;
-                        @media screen and (orientation:landscape) and (max-width: 760px) {right: 7vw;}
-                        text-align: right;
-                        flex-direction: row-reverse;
-                    }
-                }
-                &.is-next {
-                    .carousel_cell-content-resume {
-                        left: 5vw;
-                        @media screen and (orientation:landscape) and (max-width: 760px) {left: 7vw;}
-                    }
-                }
+            text-transform: uppercase;
+            font-size: 20px;
+            line-height: 24px;
+            padding-bottom: 25px;
+            display: block;
+            img {
+                display: inline;
+                max-height: 30px;
+                vertical-align: middle;
             }
         }
-        .flickity-slider {
+        .plateau__games {
+            width: 95%;
             display: flex;
-            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            margin-left: -20px;
+            & > * {margin-left: 20px;}
+            a {color: $blue;}
+            .game {
+                &.active {background: $white;}
+                padding: 10px;
+                background: rgba($white, 0.4);
+                border-radius: 20px;
+                text-align: center;
+                .title_game {
+                    text-transform: uppercase;
+                    line-height: 20px;
+                }
+                .date_game {
+                    font-size: 14px;
+                }
+            }
         }
-        .flickity-viewport {
-            transition: height 0.2s;
+        .plateau__movie {
+            width: 75%;
+            margin-top: 30px;
+            background: rgba($white, 0.7);
+            border-radius: 30px 30px 0 0;
+            padding: 15px 30px 13px;
+            text-transform: initial;
+            text-align: center;
+            p {
+                font-size: 16px;
+                line-height: 20px;
+                margin-bottom: 12px;
+                a {font-size: 14px; line-height: 18px; text-decoration: underline;}
+            }
+            .cta_diamond {text-transform: uppercase;}
+            .link a {
+                color: $blue;
+                font-size: 15px;
+                line-height: initial;
+                text-transform: initial;
+                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+            }
+            .link {line-height: initial;}
         }
     }
     .rules_screen {
