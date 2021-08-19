@@ -84,6 +84,8 @@ $(document).ready(function () {
   //---------------------------------------------------------PAGE PLATEAU
 
   if (location.pathname === "/plateau.html") {
+    var toto = document.referrer
+    console.log('FFFFF', toto)
     //fetch_question_responses()
     lastConnexion()
     if (isLogged()) {
@@ -183,7 +185,7 @@ $(document).ready(function () {
       fetch_content(1);
       //sessionTimeOut();
       //result_day(), hasWinJs();
-      //startGame();
+      startGame();
     } else {
       goLogin();
     }
@@ -195,10 +197,10 @@ $(document).ready(function () {
     // notTheDayGame(location.pathname);
 
     if (isLogged()) {
-      isEnableMagasin();
+      //isEnableMagasin();
       //sessionTimeOut();
-      result_day();
-      startGame();
+      //result_day();
+      //startGame();
     } else {
       goLogin();
     }
@@ -210,10 +212,10 @@ $(document).ready(function () {
     // notTheDayGame(location.pathname);
 
     if (isLogged()) {
-      isEnableMagasin();
+      //isEnableMagasin();
       //sessionTimeOut();
-      result_day();
-      startGame();
+      //result_day();
+      //startGame();
     } else {
       goLogin();
     }
@@ -225,10 +227,10 @@ $(document).ready(function () {
     // notTheDayGame(location.pathname);
 
     if (isLogged()) {
-      isEnableMagasin();
+      //isEnableMagasin();
       //sessionTimeOut();
-      result_day();
-      startGame();
+      //result_day();
+      //startGame();
     } else {
       goLogin();
     }
@@ -240,10 +242,10 @@ $(document).ready(function () {
     // notTheDayGame(location.pathname);
 
     if (isLogged()) {
-      isEnableMagasin();
+      //isEnableMagasin();
       //sessionTimeOut();
-      result_day();
-      startGame();
+      //result_day();
+      //startGame();
     } else {
       goLogin();
     }
