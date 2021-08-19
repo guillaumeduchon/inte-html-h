@@ -10,15 +10,14 @@ const check_answer1 = async () => {
 }
 /* ----------------------------------- REPONSE JEU 2 ----------------------------------- */
 
-const check_answer2 = () => {
-  saveFiles().then(function () {
-    await axios.post('/server/set_reponse.php', { day_num: '2', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
-      headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-    })
-      .then((valid_resp) => {
-        alert(valid_resp)
-      });
-  });
+const check_answer2 = async () => {
+  saveFiles()
+  await axios.post('/server/set_reponse.php', { day_num: '2', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((valid_resp) => {
+      alert(valid_resp)
+    });
 }
 
 /* ----------------------------------- REPONSE JEU 3 ----------------------------------- */
@@ -32,16 +31,15 @@ const check_answer3 = async () => {
 }
 /* ----------------------------------- REPONSE JEU 4 ----------------------------------- */
 
-const check_answer4 = () => {
+const check_answer4 = async () => {
   //HERE SAVE FILE
-  saveFiles().then(function () {
-    await axios.post('/server/set_reponse.php', { day_num: '4', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
-      headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-    })
-      .then((valid_resp) => {
-        alert(valid_resp)
-      });
-  });
+  saveFiles()
+  await axios.post('/server/set_reponse.php', { day_num: '4', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((valid_resp) => {
+      alert(valid_resp)
+    });
 }
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
 const check_answer5 = async () => {
@@ -53,24 +51,49 @@ const check_answer5 = async () => {
     });
 }
 
-function saveFiles() {
-  var file_data = $('#file-1').prop('files')[0];
-  form_data.append('file', file_data);
+var fileInput = document.getElementById('files');
+fileInput.addEventListener('change', function (evnt) {
+  fileList = [];
+  for (var i = 0; i < fileInput.files.length; i++) {
+    fileList.push(fileInput.files[i]);
+  }
+  fileList.forEach(function (file) {
+    saveFiles(file);
+  });
+  //renderFileList();
+
+});
+
+// renderFileList = function () {
+//   //fileListDisplay.innerHTML = '';
+//   fileList.forEach(function (file, index) {
+//     var fileDisplayEl = document.createElement('p');
+//     fileDisplayEl.innerHTML = (index + 1) + ': ' + file.name;
+//     //fileListDisplay.appendChild(fileDisplayEl);
+//   });
+// };
+
+function saveFiles(file) {
+  var formData = new FormData();
+  formData.set('file', file);
+  formData.set('magasin_name', 1798);
+  formData.set('game_num', 4);
 
   $.ajax({
-    url: 'image.php',
+    url: '/server/image.php',
     dataType: 'text',
     cache: false,
     contentType: false,
     processData: false,
-    data: form_data,
+    data: formData,
     type: 'post',
     success: function (response) {
+      console.log(response)
       response = JSON.parse(response);
 
       if (response.error !== undefined) {
         $("#danger").empty().append('Une erreur s\'est produite').fadeIn().delay(2000).fadeOut();
-        
+
         return false;
       }
 
