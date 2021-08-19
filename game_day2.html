@@ -15,26 +15,34 @@
 <body>
     <main>
         <div class="screen row no-gutters">
-            <div class="flex_contain game_screen">
+            <div class="flex_contain game_screen q2">
                 <div class="game_container flex_contain">
                     <div class="game_space">
-                        <div class="tryagain">dommage, mauvaise réponse, il vous reste une tentative !</div>
-                        <div class="question">H24 exprime une nouvelle facette de la masculinité Hermès.<br><strong>Comment se caractérise l'homme 24 ?</strong><br><i class="rule">(3 bonnes réponses à trouver)</i></div>
-                        <div class="game_quizz flex_contain q2">
-                            <div class="answers">
-                                <form></form>
+                        <div class="title_game">La franchise <strong>My Way</strong> est un <strong>bouquet lumineux de fleurs blanches</strong> !</div>
+                        <div class="rules_game"><strong>My Way</strong> : Fleur d’Oranger, Tubéreuse et Jasmin.<br><strong>My Way Intense</strong> : Duo de Tubéreuse, Bois de Santal et Vanille.</div>
+                        <div class="game_quizz flex_contain flex_end">
+                            <div class="game_quizz_divers">
+                                <div class="q2">
+                                    <div class="cta_diamond invers">
+                                        <a href="">RELIRE LA VIDÉO</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="game_quizz_challenge">
+                                <div class="title">VENDEZ <strong>UN MAXIMUM<br>DE MY WAY INTENSE</strong></div>
+                                <div class="rules">À la fin de votre journée, <strong>prenez une photo du nombre de My Way Intense vendus</strong> dans votre magasin et <strong>partagez vos résultats</strong> pour tenter de remporter les lots généreux.</div>
+                                <form id="files-game-2" action="/action_page.php">
+                                    <label for="files">Select files:</label>
+                                    <input type="file" id="files" name="files[]" multiple><br><br>
+                                    <!-- <input type="submit">  -->
+                                    <div class="cta_diamond">
+                                        <span id="ctaLogin" id="valide" onclick="check_answer2()">VALIDER</span>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <div id="answer"></div>
-                    <div class="game_infos">
-                        <form id="files-game-2" action="/action_page.php">
-                            <label for="files">Select files:</label>
-                            <input type="file" id="files" name="files[]" multiple><br><br>
-                            <!-- <input type="submit">  -->
-                          </form>
-                        <div class="game_button" onclick="check_answer2()" id="valide"><span>VALIDER</span></div>
-                    </div>
                 </div>
             </div>
         </div>
