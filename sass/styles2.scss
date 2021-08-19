@@ -750,20 +750,34 @@ main {
             flex-direction: row;
             flex-wrap: nowrap;
             margin-left: -20px;
-            & > * {margin-left: 20px;}
-            a {color: $blue;}
-            .game {
-                &.active {background: $white;}
-                padding: 10px;
-                background: rgba($white, 0.4);
-                border-radius: 20px;
-                text-align: center;
-                .title_game {
-                    text-transform: uppercase;
-                    line-height: 20px;
-                }
-                .date_game {
-                    font-size: 14px;
+            align-items: stretch;
+            & > * {margin-left: 20px; width: calc(20% - 20px);}
+            a {
+                &.game_box {
+                    border-radius: 20px;
+                    background: rgba(#c9d6e1, 0.4);
+                    &.active {background: $white;}
+                    align-items: center;
+                    justify-content: center;
+                    line-height: initial;
+                    display: flex;
+                    .game {
+                        padding: 10px;
+                        text-align: center;
+                        width: 100%;
+                        .title_game {
+                            text-transform: uppercase;
+                            height: 70px;
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            justify-content: center;
+                            span {display: inline-block; vertical-align: middle;}
+                        }
+                        .date_game {
+                            font-size: 14px;
+                        }
+                    }
                 }
             }
         }
