@@ -27,17 +27,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="game_quizz_challenge" id="answer">
+                            <div class="game_quizz_challenge">
                                 <div class="title">VENDEZ <strong>UN MAXIMUM DE RECHARGES !</strong></div>
                                 <div class="rules">Dès la fin de votre journée, <strong>prenez une photo du nombre de recharges My Way vendues</strong> dans votre magasin 
                                     et <strong>partagez vos résultats</strong> pour valider le challenge.</div>
                                 <form id="files-game-2" action="/action_page.php">
+                                    <input type="text" id="answer" class="download" placeholder="Produits vendus...(À SAISIR)" />
                                     <div class="files">
                                         <input type="file" id="files" name="files[]" multiple class="inputfile">
-                                        <label for="files">Produits vendus</label>
+                                        <label for="files">Je télécharge ma preuve de vente</label>
                                         <img id="img_down" src="" alt="">
                                     </div>
-                                    <button class="download">Je télécharge ma preuve de vente</button>
                                     <!-- <input type="submit">  -->
                                     <div class="cta_diamond">
                                         <span id="ctaLogin" id="valide" onclick="check_answer2()">VALIDER</span>
