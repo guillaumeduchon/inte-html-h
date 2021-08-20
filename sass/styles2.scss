@@ -1056,6 +1056,10 @@ main {
         &.q5 {
             background: url('../img/fond_q5.jpg') no-repeat center;
             background-size: cover;
+            .title_game {padding-bottom: 20px;}
+            .game_quizz_challenge {
+                .title, .rules {padding-bottom: 10px!important;}
+            }
         }
         .game_container {
             width: 100vw;
@@ -1115,6 +1119,21 @@ main {
                                 height: 100px;
                                 width: 100%;
                                 margin-bottom: 15px;
+                            }
+                            input[type=text] {
+                                background: none;
+                                border: 1px solid $blue;
+                                border-radius: 15px;
+                                padding: 6px 10px;
+                                width: 100%;
+                                margin-bottom: 25px;
+                            }
+                            label {
+                                text-align: left;
+                                text-transform: uppercase;
+                                width: 100%;
+                                margin-bottom: 5px;
+                                margin-top: 5px;
                             }
                             .buttons {
                                 display: flex;
