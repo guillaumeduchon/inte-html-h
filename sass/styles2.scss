@@ -502,7 +502,7 @@ main {
         text-transform: uppercase;
         background: url('../img/fond_intro1.jpg') center no-repeat;
         background-size: cover;
-        &.cs--form {
+        &.cs--form, &.g3end {
             background: url('../img/fond_login.jpg') center no-repeat;
             background-size: cover;
             justify-content: flex-end;
@@ -516,6 +516,15 @@ main {
             padding: 0 20px;
             .connect_block.page .connect_form.page {
                 padding: 20px 30px;
+            }
+        }
+        &.g3end {
+            .connect_block.page .connect_form.page {
+                padding: 20px 30px;
+                .countdown, .next, .title {
+                    font-size: 16px; line-height: initial; padding-bottom: 15px;
+                    .hour {font-size: 18px;}
+                }
             }
         }
         .wrongId, .wrongConsent {
@@ -614,7 +623,7 @@ main {
                     padding: 40px 30px;
                     line-height: initial;
                     .merci img {max-width: 65%; padding-bottom: 10px;}
-                    .merci.final img {max-width: 35%; padding-bottom: 0;}
+                    .merci.final img, .merci.g3 img {max-width: 35%; padding-bottom: 0;}
                     .bravo img {max-width: 35%; padding-bottom: 10px;}
                     .countdown, .next, .title {
                         font-size: 20px; line-height: initial; padding-bottom: 30px;
@@ -630,6 +639,28 @@ main {
                         border-radius: 10px;
                         margin: 0 auto;
                         margin-bottom: 5px;
+                    }
+                    .sondages {
+                        display: flex;
+                        flex-wrap: wrap;
+                        .rep1, .rep2, .rep3 {
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
+                            border: 1px solid $blue;
+                            border-radius: 15px;
+                            margin-bottom: 10px;
+                            font-size: 15px;
+                            &:last-child {margin-bottom: 20px;}
+                            .name {overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 10px;}
+                            .pc {
+                                background: rgba(#c9d6e1, 0.3);
+                                font-weight: bold;
+                                border-radius: 0 15px 15px 15px;
+                                padding: 10px;
+                                width: 50px;
+                            }
+                        }
                     }
                 }
                 form {margin-bottom: 25px;}
