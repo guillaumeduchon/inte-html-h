@@ -403,89 +403,6 @@ main {
             }
         }
     }
-    #timer {
-        margin: 0 auto;
-        .timer_new {
-            position: relative;
-            width: 70px;
-            height: 70px;
-            margin: 0 auto;
-            @media screen and (orientation:landscape) and (min-width:1024px) {
-                width: 100px;
-                height: 100px;
-            }
-        }
-          .timer_new__svg {
-            transform: scaleX(-1);
-            filter: drop-shadow(0 0 2px rgba($green, 0));
-            animation: 1s pulse 4 21s;
-          }
-          @keyframes pulse {
-              0% {
-                filter: drop-shadow(0 0 2px rgba($green, 0.9));
-              }
-              100% {
-                filter: drop-shadow(0 0 2px rgba($green, 0));
-              }
-          }
-          .timer_new__circle {
-            fill: none;
-            stroke: none;
-          }
-          .timer_new__path-elapsed {
-            stroke-width: 3px;
-            stroke: $grey-dark;
-            stroke-dasharray: 1 5;
-            stroke-linecap: round;
-          }
-          .timer_new__path-remaining {
-            stroke-width: 7px;
-            stroke-linecap: round;
-            transform: rotate(90deg);
-            transform-origin: center;
-            transition: 1s linear all;
-            fill-rule: nonzero;
-            stroke: currentColor;
-            &.green, &.orange, &.red {color: $green;}
-          }
-          .timer_new__label {
-            position: absolute;
-            width: 70px;
-            top: 17px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            font-size: 21px;
-            @media screen and (orientation:landscape) and (min-width:1024px) {
-                width: 100px;
-                top: 29px;
-                font-size: 25px;
-            }
-            .label {
-                font-size: 11px;
-                line-height: 11px;
-                color: $blue;
-                flex-basis: 100%;
-                font-weight: bold;
-                text-align: center;
-                @media screen and (orientation:landscape) and (min-width:1024px) {
-                    font-size: 15px;
-                    line-height: 15px;
-                }
-            }
-            .timer_new__seconds {
-                font-weight: bold;
-                color: $green;
-                font-size: 24px;
-                line-height: 26px;
-                @media screen and (orientation:landscape) and (min-width:1024px) {
-                    font-size: 29px;
-                    line-height: 30px;
-                }
-            }
-        }
-    }
     .link {
         text-transform: uppercase;
         color: $blue;
@@ -505,9 +422,13 @@ main {
         &.cs--form, &.g3end {
             background: url('../img/fond_login.jpg') center no-repeat;
             background-size: cover;
+            @media screen and (orientation:landscape) and (max-width: 670px) {background-position: 43%;}
             justify-content: flex-end;
             padding: 0 20px;
-            .logo img {width: 55%; display: inline-block; margin-bottom: 15px;}
+            .logo img {
+                width: 55%; display: inline-block; margin-bottom: 15px;
+                @media screen and (orientation:landscape) and (max-width: 670px) {width: 45%;}
+            }
         }
         &.endgame {
             background: url('../img/fond_finalgame.jpg') center no-repeat;
@@ -542,13 +463,18 @@ main {
             padding: 5px 0;
         }
         .cb_logo {
-            img {max-width: 55%; display: inline-block; margin-bottom: 15px;}
+            img {
+                max-width: 45%; display: inline-block; margin-bottom: 15px;
+                @media screen and (orientation:landscape) and (max-width:768px) {max-width: 40%;}
+                @media screen and (orientation:landscape) and (max-width: 670px) {margin-bottom: 10px;}
+            }
         }
         .connect_block {
             width: 45%;
-            @media screen and (orientation:landscape) and (max-width: 670px) {width: 50%}
+            @media screen and (orientation:landscape) and (max-width: 670px) {width: 60%}
             &.page {
                 width: 55%;
+                @media screen and (orientation:landscape) and (max-width: 670px) {width: 60%}
             }
             .cb_rules {
                 background: rgba($white, 0.7);
@@ -562,11 +488,17 @@ main {
                     &:first-of-type {padding: 13px 0 10px;}
                     margin: 0;
                     font-size: 15px;
-                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
                     line-height: initial;
                     &.accroche {
                         font-size: 17px; font-weight: bold; text-transform: uppercase;
-                        @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 15px;}
+                        @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+                    }
+                }
+                .cta_diamond {
+                    @media screen and (orientation:landscape) and (max-width: 670px) {margin-bottom: 5px;}
+                    a {
+                        @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px 30px; font-size: 13px;}
                     }
                 }
                 .link a {
@@ -663,7 +595,9 @@ main {
                         }
                     }
                 }
-                form {margin-bottom: 25px;}
+                form {margin-bottom: 25px;
+                    @media screen and (orientation:landscape) and (max-width: 670px) {margin-bottom: 15px;}
+                }
                 .connect_form-select {
                     position: relative;
                     margin: 0 0 20px;
@@ -804,10 +738,12 @@ main {
             line-height: 22px;
             padding-bottom: 25px;
             display: block;
+            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 16px; line-height: 20px; padding-bottom: 13px;}
             img {
                 display: inline;
                 max-height: 22px;
                 vertical-align: middle;
+                @media screen and (orientation:landscape) and (max-width: 670px) {max-height: 19px;}
             }
         }
         .plateau__games {
@@ -816,8 +752,12 @@ main {
             flex-direction: row;
             flex-wrap: nowrap;
             margin-left: -20px;
+            @media screen and (orientation:landscape) and (max-width: 670px) {width: 97%; margin-left: -10px;}
             align-items: stretch;
-            & > * {margin-left: 20px; width: calc(20% - 20px);}
+            & > * {
+                margin-left: 20px; width: calc(20% - 20px);
+                @media screen and (orientation:landscape) and (max-width: 670px) {margin-left: 10px; width: calc(20% - 10px);}
+            }
             a {
                 &:hover {color: $blue; text-decoration: none;}
                 &.game_box {
@@ -840,9 +780,11 @@ main {
                             align-items: center;
                             justify-content: center;
                             span {display: inline-block; vertical-align: middle;}
+                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                         }
                         .date_game {
                             font-size: 14px;
+                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
                         }
                     }
                 }
@@ -856,15 +798,24 @@ main {
             padding: 15px 30px 13px;
             text-transform: initial;
             text-align: center;
+            @media screen and (orientation:landscape) and (max-width: 670px) {width: 87%; margin-top: 15px; padding: 10px 20px;}
             p {
                 font-size: 16px;
                 line-height: 20px;
                 margin-bottom: 12px;
-                a {font-size: 14px; line-height: 18px; text-decoration: underline;}
+                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px; line-height: 18px; margin-bottom: 8px;}
+                a {
+                    font-size: 14px; line-height: 18px; text-decoration: underline;
+                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px; line-height: 16px;}
+                }
             }
             .cta_diamond {
                 text-transform: uppercase;
-                a {padding: 5px 30px;}
+                a {
+                    padding: 5px 30px;
+                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+                }
+                @media screen and (orientation:landscape) and (max-width: 670px) {margin-bottom: 4px;}
             }
             .link a {
                 color: $blue;
@@ -1074,6 +1025,7 @@ main {
                 height: 100%;
                 padding: 20px 20px 0;
                 @media screen and (orientation:landscape) and (min-width:1024px) {padding: 40px;}
+                @media screen and (orientation:landscape) and (max-width: 670px) {padding: 20px 10px 0;}
                 position: relative;
                 // overflow: hidden;
                 text-align: center;
@@ -1081,6 +1033,7 @@ main {
                     font-size: 20px;
                     line-height: 24px;
                     text-transform: uppercase;
+                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 17px; line-height: 21px;}
                 }
                 .title_game + .rules_game {
                     padding-top: 8px;
@@ -1088,12 +1041,17 @@ main {
                 .rules_game {
                     line-height: initial;
                     padding-bottom: 20px;
+                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                 }
                 .game_quizz {
                     flex-wrap: nowrap;
                     justify-content: center;
                     margin-left: -30px;
-                    & > * {margin-left: 30px; width: calc(50% - 30px);}
+                    @media screen and (orientation:landscape) and (max-width: 670px) {margin-left: -15px;}
+                    & > * {
+                        margin-left: 30px; width: calc(50% - 30px);
+                        @media screen and (orientation:landscape) and (max-width: 670px) {margin-left: 15px; width: calc(50% - 15px);}
+                    }
                     &.flex_end {
                         align-items: flex-end;
                     }
@@ -1105,14 +1063,17 @@ main {
                         background:rgba($white, 0.7);
                         border-radius: 30px 30px 0 0;
                         padding: 20px;
+                        @media screen and (orientation:landscape) and (max-width: 670px) {padding: 10px 15px; border-radius: 15px 15px 0 0;}
                         .title {
                             text-transform: uppercase;
                             line-height: initial;
                             padding-bottom: 15px;
+                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px; padding-bottom: 10px;}
                         }
                         .rules {
                             font-size: 14px;
                             line-height: initial;
+                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
                         }
                         form {
                             display: block;
@@ -1125,6 +1086,7 @@ main {
                                 height: 100px;
                                 width: 100%;
                                 margin-bottom: 15px;
+                                @media screen and (orientation:landscape) and (max-width: 670px) {border-radius: 10px; height: 90px; font-size: 14px; margin-bottom: 10px;}
                             }
                             input[type=text] {
                                 background: none;
@@ -1198,11 +1160,14 @@ main {
                                     display: inline-block;
                                     line-height: initial;
                                     border: 1px solid rgba($blue, 0.6);
-                                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+                                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
                                 }
                                 .cta_diamond {
                                     margin-bottom: 0;
-                                    a, span {width: 100%; padding: 7px 10px;}
+                                    a, span {
+                                        width: 100%; padding: 7px 10px;
+                                        @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px 1px; font-size: 13px;}
+                                    }
                                     &.invers {
                                         a {background: transparent; color: $blue; border: 1px solid rgba($blue, 0.6);}
                                     }
@@ -1240,13 +1205,21 @@ main {
                         .q1 {
                             text-align: left;
                             margin-right: 20px;
-                            .title {text-transform: uppercase; padding-bottom: 20px;}
+                            @media screen and (orientation:landscape) and (max-width: 670px) {margin-right: 10px;}
+                            .title {
+                                text-transform: uppercase; padding-bottom: 20px;
+                                @media screen and (orientation:landscape) and (max-width: 670px) {padding-bottom: 10px; font-size: 14px;}
+                            }
                             .citation {
                                 padding-bottom: 30px;
                                 line-height: initial;
                                 &:last-child {padding-bottom: 0; &::after {bottom: -15px;}}
                                 font-size: 14px;
                                 position: relative;
+                                @media screen and (orientation:landscape) and (max-width: 670px) {
+                                    padding-bottom: 10px; font-size: 12px;
+                                    p {margin-bottom: 5px;}
+                                }
                                 &::after {
                                     content: "";
                                     background: url('../img/citation.png') no-repeat;
@@ -1257,6 +1230,12 @@ main {
                                     position: absolute;
                                     bottom: 20px;
                                     right: 0;
+                                    @media screen and (orientation:landscape) and (max-width: 670px) {
+                                        background-size: 19px;
+                                        width: 19px;
+                                        height: 12px;
+                                        bottom: 10px;
+                                    }
                                 }
                             }
                         }
