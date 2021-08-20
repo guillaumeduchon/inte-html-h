@@ -561,7 +561,13 @@ main {
                         font-size: 20px; line-height: initial; padding-bottom: 30px;
                         .hour {font-size: 23px;}
                     }
-                    .title {padding-bottom: 10px; &.win{font-size: 18px;}}
+                    .title {padding-bottom: 10px;
+                        @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px}
+                        &.win{
+                            font-size: 18px;
+                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 15px;}
+                        }
+                    }
                     p {text-transform: initial; &.win{font-size: 14px;}}
                     .winner {
                         width: 80%;
@@ -571,6 +577,7 @@ main {
                         border-radius: 10px;
                         margin: 0 auto;
                         margin-bottom: 5px;
+                        @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
                     }
                     .sondages {
                         display: flex;
@@ -583,14 +590,19 @@ main {
                             border-radius: 15px;
                             margin-bottom: 10px;
                             font-size: 15px;
+                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px; margin-bottom: 7px;}
                             &:last-child {margin-bottom: 20px;}
-                            .name {overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 10px;}
+                            .name {
+                                overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 10px;
+                                @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px}
+                            }
                             .pc {
                                 background: rgba(#c9d6e1, 0.3);
                                 font-weight: bold;
                                 border-radius: 0 15px 15px 15px;
                                 padding: 10px;
                                 width: 50px;
+                                @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px}
                             }
                         }
                     }
@@ -1057,7 +1069,10 @@ main {
                     }
                     &.solo {
                         margin-left: 0;
-                        & > * {margin-left: 0; width: 85%;}
+                        & > * {
+                            margin-left: 0; width: 85%;
+                            @media screen and (orientation:landscape) and (max-width: 670px) {width: 97%;}
+                        }
                     }
                     .game_quizz_challenge {
                         background:rgba($white, 0.7);
@@ -1095,6 +1110,7 @@ main {
                                 padding: 6px 10px;
                                 width: 100%;
                                 margin-bottom: 25px;
+                                @media screen and (orientation:landscape) and (max-width: 670px) {border-radius: 10px; font-size: 14px; margin-bottom: 10px;}
                             }
                             label {
                                 text-align: left;
@@ -1102,6 +1118,7 @@ main {
                                 width: 100%;
                                 margin-bottom: 5px;
                                 margin-top: 5px;
+                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                             }
                             .files {
                                 position: relative;
@@ -1122,6 +1139,7 @@ main {
                                     margin-top: 10px;
                                     margin-bottom: 10px;
                                     cursor: pointer;
+                                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                                 }
                                 img#img_down {
                                     position: absolute;
@@ -1144,6 +1162,7 @@ main {
                                 background: none;
                                 width: 100%;
                                 text-align: left;
+                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                             }
                             .buttons {
                                 display: flex;
@@ -1181,6 +1200,7 @@ main {
                                 cursor: pointer;
                                 padding-bottom: 10px;
                                 font-size: 15px;
+                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
                                 &.answer_button {
                                     input[type="checkbox"], input[type="radio"] {
                                         &:checked {background-color: $grey-bg;border-color: $blue;}
@@ -1197,6 +1217,11 @@ main {
                                     &:checked ~ .answer_button, &:checked ~ .answer_block .answer_button {
                                         background-color: $white;
                                     }
+                                }
+                            }
+                            .cta_diamond {
+                                a, span {
+                                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
                                 }
                             }
                         }
