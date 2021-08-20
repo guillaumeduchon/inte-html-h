@@ -1044,6 +1044,11 @@ main {
         &.q2 {
             background: url('../img/fond_q2.jpg') no-repeat center;
             background-size: cover;
+            .rules_game {padding-bottom: 15px!important;}
+            .game_quizz_challenge {
+                padding: 10px 20px 20px!important;
+                .title {padding-bottom: 7px!important;}
+            }
         }
         &.q3 {
             background: url('../img/fond_q3.jpg') no-repeat right;
@@ -1134,6 +1139,48 @@ main {
                                 width: 100%;
                                 margin-bottom: 5px;
                                 margin-top: 5px;
+                            }
+                            .files {
+                                position: relative;
+                                display: block;
+                                .inputfile {
+                                    width: 0.1px;
+                                    height: 0.1px;
+                                    opacity: 0;
+                                    overflow: hidden;
+                                    position: absolute;
+                                    z-index: -1;
+                                }
+                                .inputfile + label {
+                                    text-transform: none;
+                                    border: 1px solid $blue;
+                                    border-radius: 10px;
+                                    padding: 3px 10px;
+                                    margin-top: 10px;
+                                    margin-bottom: 10px;
+                                    cursor: pointer;
+                                }
+                                img#img_down {
+                                    position: absolute;
+                                    display: none;
+                                    top: 11px;
+                                    right: 0;
+                                    width: 30px;
+                                    height: 30px;
+                                    object-fit: cover;
+                                    border-radius: 0 10px 10px 0;
+                                }
+                            }
+                            .download {
+                                border: 1px solid $blue;
+                                border-radius: 10px;
+                                padding: 3px 10px;
+                                margin-top: 0;
+                                margin-bottom: 10px;
+                                cursor: pointer;
+                                background: none;
+                                width: 100%;
+                                text-align: left;
                             }
                             .buttons {
                                 display: flex;

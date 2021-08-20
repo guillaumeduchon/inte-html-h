@@ -42,7 +42,7 @@ const check_answer4 = async () => {
 }
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
 const check_answer5 = async () => {
-  await axios.post('/server/set_reponse.php', { day_num: '5', response: document.getElementsByClassName('answer-selected').value, magasin_num: localStorage.getItem('magasin') }, {
+  await axios.post('/server/set_reponse.php', { day_num: '5', response: document.getElementsById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
