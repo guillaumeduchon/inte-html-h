@@ -5,7 +5,7 @@ const check_answer1 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((response) => {
-      alert("WHOUHOUW")
+      window.location.href = "game_end.html"
     });
 }
 /* ----------------------------------- REPONSE JEU 2 ----------------------------------- */
@@ -26,7 +26,7 @@ const check_answer3 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      alert("WHOUHOUW")
+      window.location.href = 'game_end_day3.html'
     });
 }
 /* ----------------------------------- REPONSE JEU 4 ----------------------------------- */
@@ -37,7 +37,7 @@ const check_answer4 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      alert("WHOUHOUW")
+      window.location.href = 'game_end.html'
     });
 }
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
@@ -46,7 +46,7 @@ const check_answer5 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      alert(valid_resp)
+      window.location.href = 'game_end_day5.html'
     });
 }
 

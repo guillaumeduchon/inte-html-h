@@ -121,27 +121,23 @@ $(document).ready(function () {
     }
   }
 
+  
+  //--------------------------------------------------------- PAGE INTRO VIDEO
+
+  if (location.pathname === "/game_intro_video.html") {
+    if (isLogged()) {
+      set_has_read_video()
+      fetch_movie_intro()
+    } else {
+      goLogin();
+    }
+  }
   //--------------------------------------------------------- PAGE INDICE VIDEO
 
   if (location.pathname === "/game_indice_video.html") {
     if (isLogged()) {
-      set_has_read_video()
-      var dateObj = new Date(localStorage.getItem('DATE_SERVER'));
-      let today = new Date();
-      let montRaw = String(today.getUTCMonth() + 1);
-      let MONTH = (montRaw.length < 2 ? '0' + montRaw : montRaw);
-      let dayRaw = String(today.getUTCDate());
-      let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
-      var hourRaw = String(dateObj.getHours());
-      const HOUR = (hourRaw.length < 2 ? '0' + hourRaw : hourRaw)
-      // ( ToDo  ) ADD CONDITION IF LAST DAY IS SUNDAY
-      if (Number(HOUR) < 9) {
-        DAY = (Number(DAY) - 1)
-      }
-      let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
-      localStorage.setItem('today_date', today_date)
-
-      fetch_movie()
+      let day = getUrlParam('day','1')
+      fetch_movie(day)
     } else {
       goLogin();
     }
@@ -365,5 +361,20 @@ $(document).ready(function () {
       }
       setInterval(() => { lastConnexion() }, 120000)
     }
+  }
+
+  function getUrlParam(parameter, defaultvalue){
+    var urlparameter = defaultvalue;
+    if(window.location.href.indexOf(parameter) > -1){
+        urlparameter = getUrlVars()[parameter];
+        }
+    return urlparameter;
+  }
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
   }
 })

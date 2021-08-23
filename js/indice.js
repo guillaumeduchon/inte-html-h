@@ -11,18 +11,11 @@
   // }
 
 // DISPLAY VIDEO
-const fetch_movie = async () => {
-  await axios.post('/server/movie.php', {date_time: localStorage.getItem('today_date')}, {
-    headers: {'Content-Type': 'application/json','mode': 'cors'}})
-      .then((res) => {
-        if (res.data.id !== undefined) {
-          let video_number = res.data.id;
-          if(localStorage.getItem('DAY_NUM')!== String(video_number)) {
-            video_number = localStorage.getItem('DAY_NUM');
-          }
-          $('.videoreplace').html(`<source src="video/video_game_${video_number}.mp4" type="video/mp4">`)
-        } else {
-          console.log("no day found")
-        }
-      });
+const fetch_movie =  (number) => {
+  $('.videoreplace').html(`<source src="video/video_game_${number}.mp4" type="video/mp4">`)   
+  $('.videoreplace').data('number' , number)
 }
+const fetch_movie_intro = () => {
+  $('.videoreplace').html(`<source src="video/video_game_intro.mp4" type="video/mp4">`)   
+}
+

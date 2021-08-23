@@ -10,13 +10,13 @@ function check_date_is_paris() {
     client_date = client_date.getDay() + '/' + client_date.getUTCMonth() + '/' + client_date.getHours();
   
     if(localStorage.getItem('DATE_SERVER') !== null) {
-      console.log('server_date: ', server_date, "client_date", client_date)
+      console.warn('server_date: ', server_date, "client_date", client_date)
       if (server_date !== client_date) {
-        console.log('server_date: ', server_date, "client_date", client_date)
+        console.warn('server_date: ', server_date, "client_date", client_date)
         window.location.href = "not_good_date.html";
       }
       date_first_game = new Date('2021/08/18');
-      console.log('server_date_copy: ',server_date_copy, 'date_first_game', date_first_game );
+      console.warn('server_date_copy: ',server_date_copy, 'date_first_game', date_first_game );
     
       if(server_date_copy < date_first_game) {
         window.location.href = "not_open.html";
@@ -94,7 +94,7 @@ setTimeout(() => {
           let date_curr = new Date()
           let date_format = date_curr.toLocaleDateString("en-US").split('/')
           date_format = date_format[2]+'/'+ (date_format[0].length == 1 ? '0'+date_format[0] : date_format[0])+'/'+(date_format[1].length == 1 ? '0'+date_format[1]:date_format[1])
-          console.log('DATE_FORM',date_format)
+          console.warn('DATE_FORM',date_format)
           let date_tab = [
             "2021/08/23",
             "2021/08/24",
@@ -111,7 +111,7 @@ setTimeout(() => {
           localStorage.setItem('DAY_NUM', DAY_NUM)
           let date_actuelle = new Date();
           let heures =  date_actuelle.getHours(); let minutes= date_actuelle.getMinutes()
-          console.log('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes())
+          console.warn('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes())
           if(Math.abs(heures) <= 9) {
               if(Math.abs(heures) == 9 && minutes >=00 ) {
                 //Do nothing

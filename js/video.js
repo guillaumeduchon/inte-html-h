@@ -81,7 +81,7 @@
 					history.go(-1);
 				}
 				if(localStorage.getItem('day_played') !== 'true') {
-					window.location.href = "plateau.html";
+					window.location.href = "game_day"+ $('.videoreplace').data('number') +".html";
 				} 
             }
 		}
