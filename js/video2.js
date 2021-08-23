@@ -77,7 +77,6 @@
             // Switched to Page Indice
             video.addEventListener('ended', switchIndice, false);
             function switchIndice(e) {
-				alert('TOTO')
 				if(localStorage.getItem('day_played') === 'true') {
 					history.go(-1);
 				}
