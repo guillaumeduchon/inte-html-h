@@ -96,11 +96,11 @@ setTimeout(() => {
           date_format = date_format[2]+'/'+ (date_format[0].length == 1 ? '0'+date_format[0] : date_format[0])+'/'+(date_format[1].length == 1 ? '0'+date_format[1]:date_format[1])
           console.log('DATE_FORM',date_format)
           let date_tab = [
-            "2021/08/18",
-            "2021/08/19",
-            "2021/08/20",
-            "2021/08/21",
             "2021/08/23",
+            "2021/08/24",
+            "2021/08/25",
+            "2021/08/26",
+            "2021/08/27",
           ];
           let DAY_NUM = date_tab.indexOf(date_format)
           DAY_NUM = DAY_NUM+1
@@ -132,11 +132,11 @@ setTimeout(() => {
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/08/18' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/08/19' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/08/20' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/08/21' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/08/23' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/08/23' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/08/24' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/08/25' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/08/26' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/08/27' },
   ];
 
   let today = new Date();

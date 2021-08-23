@@ -37,7 +37,11 @@ const try_login = async (login, pwd, enseigne) => {
           logged(res.data[0].id, res.data[0].name, res.data[0].enseigne)
           checkIsActiveMagasin().then(resp =>{
             if (resp[0].id !== undefined && resp[0].active > 0) {
-              window.location.href = "game_indice_video.html";
+              if (res.data[0].has_read_video === 0) {
+                window.location.href = "game_indice_video.html";
+                return ;
+              } 
+              window.location.href = "plateau.html";
             } else {
               $('.cta_diamond').addClass('inactif');
             }
@@ -45,6 +49,15 @@ const try_login = async (login, pwd, enseigne) => {
         } else {
           showError();
         } 
+      });
+  return response
+}
+
+const set_has_read_video = async () => {
+  response =  await axios.post('/server/movie.php', {magasin_num: localStorage.getItem('magasin')}, {
+    headers: {'Content-Type': 'application/json','mode': 'cors'}})
+      .then((res)=>{
+        console.log("set_has_read", res)
       });
   return response
 }
