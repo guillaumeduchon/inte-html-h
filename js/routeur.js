@@ -355,7 +355,7 @@ $(document).ready(function () {
       let Seconds_from_T1_to_T2 = dif / 1000;
       let Seconds_Between_Dates = Math.abs(Seconds_from_T1_to_T2);
       console.warn('Last connexion there are ', Seconds_Between_Dates, 'seconds')
-      if (Seconds_Between_Dates > 240.000) {
+      if (Seconds_Between_Dates > 3600.000) {
         localStorage.removeItem('DATE_SERVER')
         localStorage.removeItem('DAY_NUM')
         localStorage.removeItem('day_played')
