@@ -111,7 +111,8 @@ const get_answer3_stats = async () => {
     .then((valid_resp) => {
       if(valid_resp.data['1']) {
         $('.pc').each((i,e) => {
-          $(e).html(valid_resp.data[i+1]+' %')
+          let value = valid_resp.data[i+1] === undefined ? 0 : valid_resp.data[i+1];
+          $(e).html(value+' %');
         });
       }
     });
