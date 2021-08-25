@@ -23,8 +23,7 @@ const check_answer2 = async () => {
 
 /* ----------------------------------- REPONSE JEU 3 ----------------------------------- */
 const check_answer3 = async () => {
-  let response_id = $('.answer_selected').data('id') 
-  if (response_id.trim() === "") return false;
+  let response_id = $('.answer_selected').data('id')
   await axios.post('/server/set_reponse.php', { day_num: '3', response: response_id, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
