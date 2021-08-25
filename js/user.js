@@ -7,7 +7,7 @@ function logged(magasin_id, magasin_name, enseigne) {
   localStorage.setItem('magasin', magasin_id);
   localStorage.setItem('enseigne', enseigne);
   localStorage.setItem('magasin_name', magasin_name);
-  let expires = new Date((Date.now()  + (610000 )) ); // (510000 + 60 * 60*1000)
+  let expires = new Date((Date.now()  + (2890000 )) ); // ~1H de session
   localStorage.setItem('session_expire', expires )
 }
 
