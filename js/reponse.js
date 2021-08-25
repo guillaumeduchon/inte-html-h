@@ -1,6 +1,6 @@
 /* ----------------------------------- REPONSE JEU 1 ----------------------------------- */
 const check_answer1 = async () => {
-
+  if(document.getElementById('answer').value.trim() === "") return false;
   await axios.post('/server/set_reponse.php', { day_num: '1', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
@@ -11,6 +11,7 @@ const check_answer1 = async () => {
 /* ----------------------------------- REPONSE JEU 2 ----------------------------------- */
 
 const check_answer2 = async () => {
+  if(document.getElementById('answer').value.trim() === "") return false;
   fetchSaveFiles('2')
   await axios.post('/server/set_reponse.php', { day_num: '2', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
@@ -23,6 +24,7 @@ const check_answer2 = async () => {
 /* ----------------------------------- REPONSE JEU 3 ----------------------------------- */
 const check_answer3 = async () => {
   let response_id = $('.answer_selected').data('id') 
+  if (response_id.trim() === "") return false;
   await axios.post('/server/set_reponse.php', { day_num: '3', response: response_id, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
@@ -33,6 +35,7 @@ const check_answer3 = async () => {
 /* ----------------------------------- REPONSE JEU 4 ----------------------------------- */
 
 const check_answer4 = async () => {
+  if(document.getElementById('answer').value.trim() === "") return false;
   fetchSaveFiles('4')
   await axios.post('/server/set_reponse.php', { day_num: '4', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
@@ -43,7 +46,8 @@ const check_answer4 = async () => {
 }
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
 const check_answer5 = async () => {
-  await axios.post('/server/set_reponse.php', { day_num: '5', response: document.getElementsById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
+  if(document.getElementById('answer').value.trim() === "") return false;
+  await axios.post('/server/set_reponse.php', { day_num: '5', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
