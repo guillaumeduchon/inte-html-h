@@ -57,7 +57,7 @@ const set_has_read_video = async () => {
   response =  await axios.post('/server/movie.php', {magasin_num: Number(localStorage.getItem('magasin'))}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
-        console.warn("set_has_read", res)
+        console.warn("set_has_read", res.status)
       });
   return response
 }

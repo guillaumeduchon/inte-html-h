@@ -182,7 +182,7 @@ $(document).ready(function () {
       fetch_content(1);
       //sessionTimeOut();
       //result_day(), hasWinJs();
-      startGame();
+      startGame(1);
     } else {
       goLogin();
     }
@@ -197,7 +197,7 @@ $(document).ready(function () {
       //isEnableMagasin();
       //sessionTimeOut();
       //result_day();
-      //startGame();
+      startGame(2);
     } else {
       goLogin();
     }
@@ -212,7 +212,7 @@ $(document).ready(function () {
       //isEnableMagasin();
       //sessionTimeOut();
       //result_day();
-      //startGame();
+      startGame(3);
     } else {
       goLogin();
     }
@@ -227,7 +227,7 @@ $(document).ready(function () {
       //isEnableMagasin();
       //sessionTimeOut();
       //result_day();
-      //startGame();
+      startGame(4);
     } else {
       goLogin();
     }
@@ -242,7 +242,7 @@ $(document).ready(function () {
       //isEnableMagasin();
       //sessionTimeOut();
       //result_day();
-      //startGame();
+      startGame(5);
     } else {
       goLogin();
     }
@@ -314,7 +314,7 @@ $(document).ready(function () {
     }, 3000)
   }
 
-  function startGame() { localStorage.setItem('day_played', 'true') }
+  function startGame(day_num) { localStorage.setItem('day_played', day_num) }
   function stopGame() { localStorage.setItem('has_played', 'true') }
   function gameStarted() { return localStorage.getItem('day_played') }
   function gameStoped() { return localStorage.getItem('has_played') }

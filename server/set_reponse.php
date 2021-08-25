@@ -18,8 +18,8 @@
         }
 
         $day_num = $decoded['day_num'];
-        $response = $decoded['response'];
-        $magasin_num = $decoded['magasin_num'];
+        $response = htmlspecialchars($decoded['response'], ENT_QUOTES);
+        $magasin_num = htmlspecialchars($decoded['magasin_num'], ENT_QUOTES);
 
         $stmt = $pdo->prepare("SELECT id FROM magasin WHERE num=:magasin_num");
         $stmt->execute(['magasin_num'=> $magasin_num]);

@@ -77,12 +77,7 @@
             // Switched to Page Indice
             video.addEventListener('ended', switchIndice, false);
             function switchIndice(e) {
-				if(localStorage.getItem('day_played') === 'true') {
-					history.go(-1);
-				}
-				if(localStorage.getItem('day_played') !== 'true') {
-					window.location.href = "game_day"+ $('.videoreplace').data('number') +".html";
-				} 
+				window.location.href = "game_day"+ $('.videoreplace').data('number') +".html";	
             }
 		}
 	 }
