@@ -22,7 +22,8 @@ const check_answer2 = async () => {
 
 /* ----------------------------------- REPONSE JEU 3 ----------------------------------- */
 const check_answer3 = async () => {
-  await axios.post('/server/set_reponse.php', { day_num: '3', response: document.getElementsByClassName('answer-selected').value, magasin_num: localStorage.getItem('magasin') }, {
+  let response_id = $('.answer_selected').data('id') 
+  await axios.post('/server/set_reponse.php', { day_num: '3', response: response_id, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
@@ -99,9 +100,19 @@ function saveFiles(file, game_num) {
         $("#danger").empty().append('Une erreur s\'est produite').fadeIn().delay(2000).fadeOut();
         return false;
       }
-
-      //$('#' + img_url + '_link').attr('href', url);
-      //$("#succes").empty().append(response).fadeIn().delay(2000).fadeOut();
     }
   });
+}
+
+const get_answer3_stats = async () => {
+  await axios.get('/server/answer3_stats.php', {
+    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+  })
+    .then((valid_resp) => {
+      if(valid_resp.data['1']) {
+        $('.pc').each((i,e) => {
+          $(e).html(valid_resp.data[i+1]+' %')
+        });
+      }
+    });
 }

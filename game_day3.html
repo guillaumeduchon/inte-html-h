@@ -24,15 +24,15 @@
                                 <form id="files-game-3" action="/action_page.php" class="answer-selected">
                                     <label>
                                         <input type="radio" id="huey" name="drone">
-                                        <div class="answer_button">1. <strong>Êtes-vous à la recherche d’un parfum à la fois tendance et engagé ?</strong> Les parfums My Way et My Way Intense sont des cadeaux parfaits pour vous ou votre entourage.</div>
+                                        <div class="answer_button" data-id="1">1. <strong>Êtes-vous à la recherche d’un parfum à la fois tendance et engagé ?</strong> Les parfums My Way et My Way Intense sont des cadeaux parfaits pour vous ou votre entourage.</div>
                                     </label>
                                     <label>
                                         <input type="radio" id="huey" name="drone">
-                                        <div class="answer_button">2. <strong>Connaissez-vous la nouveauté My Way Intense, un bouquet lumineux de fleurs blanches proposé sur un sillage boisé addictif ?</strong></div>
+                                        <div class="answer_button" data-id="2">2. <strong>Connaissez-vous la nouveauté My Way Intense, un bouquet lumineux de fleurs blanches proposé sur un sillage boisé addictif ?</strong></div>
                                     </label>
                                     <label>
                                         <input type="radio" id="huey" name="drone">
-                                        <div class="answer_button">3. <strong>Souhaitez-vous faire un geste pour la planète ?</strong> My Way est un parfum engagé qui s’exprime à la fois par son choix d’ingrédients responsables et son flacon rechargeable.</div>
+                                        <div class="answer_button" data-id="3">3. <strong>Souhaitez-vous faire un geste pour la planète ?</strong> My Way est un parfum engagé qui s’exprime à la fois par son choix d’ingrédients responsables et son flacon rechargeable.</div>
                                     </label>
                                     <div class="cta_diamond">
                                         <span id="ctaLogin" id="valide" onclick="check_answer3()">VALIDER</span>
@@ -61,5 +61,17 @@
     <script src="js/routeur.js"></script>
     <script src="js/question.js"></script>
     <script src="js/reponse.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', function(e) {
+                //$(document).find(".answer_selected").removeClass("answer_selected");
+                let response_line = $(e.target).closest('label').find('.answer_button')
+                if(response_line.html()) {
+                    $(document).find(".answer_selected").removeClass("answer_selected");
+                    response_line.addClass("answer_selected")
+                }
+            })
+        })
+    </script>
 </body>
 </html>

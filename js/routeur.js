@@ -247,6 +247,20 @@ $(document).ready(function () {
       goLogin();
     }
   }
+  //--------------------------------------------------------- Game end day 3
+
+  if (location.pathname === "/game_end_day3.html") {
+    // notTheDayGame(location.pathname);
+
+    if (isLogged()) {
+      //isEnableMagasin();
+      //sessionTimeOut();
+      //result_day();
+      //startGame();
+    } else {
+      goLogin();
+    }
+  }
 
   //--------------------------------------------------------- PAGE PERDU FINAL
 

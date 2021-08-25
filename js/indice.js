@@ -18,4 +18,3 @@ const fetch_movie =  (number) => {
 const fetch_movie_intro = () => {
   $('.videoreplace').html(`<source src="video/video_game_intro.mp4" type="video/mp4">`)   
 }
-
