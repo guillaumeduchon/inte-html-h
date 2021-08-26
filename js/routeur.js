@@ -84,8 +84,6 @@ $(document).ready(function () {
   //---------------------------------------------------------PAGE PLATEAU
 
   if (location.pathname === "/plateau.html") {
-    var toto = document.referrer
-    console.log('FFFFF', toto)
     //fetch_question_responses()
     lastConnexion()
     if (isLogged()) {

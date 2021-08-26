@@ -145,7 +145,6 @@ const updatePlateau = () => {
   let dayRaw = String(today.getUTCDate());
   let DAY = (dayRaw.length < 2 ? '0' + dayRaw : dayRaw);
   let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
-  console.log('DATAtoday_date: ',today_date)
   localStorage.setItem('today_date', today_date)
 
   var $carousel = $('.carousel_plateau').flickity();
@@ -254,7 +253,6 @@ function sessionTimeOut() {
 
 function compte_a_rebours() {
   sessionTimeOut();
-
   var date_actuelle = new Date();
   const date_evenement = new Date(date_actuelle)
   date_evenement.setDate(date_evenement.getDate() + 1)
@@ -264,8 +262,8 @@ function compte_a_rebours() {
   var heures = Math.floor((total_secondes - (0 * 60 * 60 * 24)) / (60 * 60));
   var minutes = Math.floor((total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60))) / 60);
   var secondes = Math.floor(total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
-
-  $('.countdown').find('strong').html(`${Math.abs(heures)} H ${minutes} MIN ${secondes} S`);
+  $('.countdown > .hour').find("strong:eq(0)").html(`${Math.abs(heures)} HEURES`)
+  //$('.countdown').find('strong').html(`${Math.abs(heures)} H ${minutes} MIN ${secondes} S`);
   $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
 
   $('.expired').find('.statut').html('Challenge terminé');
@@ -388,6 +386,10 @@ const ShowGamePlayed = () => {
       }
     });
   }
+}
+
+function cleanNbInBefore10h24() {
+  localStorage.removeItem('nbInBefore10h24');
 }
 
 
