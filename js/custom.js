@@ -371,8 +371,16 @@ const ShowGamePlayed = () => {
   }
   else {
     let aGame_played = [];
-    localStorage.getItem("game_played").replace(']', '').replace('[', '').split(',').reduce((n) => (aGame_played.push(Number(n))))
-    if (Math.max(aGame_played).toString().match(regex2) < Number(localStorage.getItem("DAY_NUM"))) {
+    let sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
+    if(/,/.test(sGame_played)) {
+      sGame_played = sGame_played.split(',');
+     
+      sGame_played.reduce((n) => (aGame_played.push(Number(n))));
+    } else {
+      aGame_played.push(Number(sGame_played))
+    }
+    console.log('DATA: ',sGame_played)
+    if ( Math.max(aGame_played).toString().match(regex2) < Number(localStorage.getItem("DAY_NUM"))) {
       fetch_question_responses().then((datas) => {
         if (datas.length > 0) {
           if (datas[0] !== undefined) {
@@ -385,7 +393,7 @@ const ShowGamePlayed = () => {
       $('.game').each((i, e) => {
         if( (i+1) > Math.max(aGame_played) && !plateau_has_treated) {
           $('.title_game:eq('+i+')').remove();
-          $(e).prepend('<div class="title_game"><span>Challenge <strong>'+ i +'</strong></span></div>')
+          $(e).prepend('<div class="title_game"><span>Challenge <strong>'+ (i+1) +'</strong></span></div>')
         }
       })
       plateau_has_treated = true;
@@ -409,5 +417,6 @@ const ShowGamePlayed = () => {
 function cleanNbInBefore10h24() {
   localStorage.removeItem('nbInBefore10h24');
 }
+function goLogin() { window.location.href = "index.html" }
 
 
