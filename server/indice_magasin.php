@@ -2,13 +2,11 @@
 require_once 'config.php';
 
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
-
+$oDatas = [];
 if ($contentType === "application/json") {
     //Receive the RAW post data.
     $content = trim(file_get_contents("php://input"));
-
     $decoded = json_decode($content, true);
-    $oDatas = [];
     //If json_decode failed, the JSON is invalid.
     if (!is_array($decoded)) {
         die('Missed action');
@@ -19,14 +17,27 @@ if ($contentType === "application/json") {
 
         if (isset($decoded['type']) && isset($decoded['magasin'])) {
             $magasin = htmlentities($decoded['magasin']);
-            $stmt = $pdo->prepare("
-            SELECT id, question_id
-            FROM reponse
-            WHERE reponse.magasin_id = :magasin
-            ORDER BY id ASC");
-            $stmt->execute(['magasin' => $magasin]);
-            $aIndices = $stmt->fetchAll();
-            $oDatas = !$aIndices ? [] : $aIndices;
+
+            $stmt = $pdo->prepare("SELECT id FROM magasin WHERE num=:magasin_num");
+            $stmt->execute(['magasin_num'=> $magasin]);
+            $aId = $stmt->fetch();
+
+            if($aId) {
+                $stmt = $pdo->prepare("
+                SELECT id, question_id
+                FROM reponse
+                WHERE reponse.magasin_id = :magasin
+                ORDER BY id ASC");
+                $stmt->execute(['magasin' => $aId["id"]]);
+                $aIndices = $stmt->fetchAll();
+                $result = [];
+                if($aIndices) {
+                    foreach ($aIndices as $value) {
+                        array_push($result, $value['question_id']);
+                    }
+                }
+                $oDatas = !$result ? [] : $result;
+            }
         } else if(!isset($decoded['day_num']) && !isset($decoded['type'])) {
             $magasin = htmlentities($decoded['magasin']);
             $stmt = $pdo->prepare("

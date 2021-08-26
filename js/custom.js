@@ -1,24 +1,24 @@
 
 function check_date_is_paris() {
   var DATE_SERVER = new Date(localStorage.getItem('DATE_SERVER'))
-  if(DATE_SERVER != "Invalid Date") {
+  if (DATE_SERVER != "Invalid Date") {
     let server_date = new Date(DATE_SERVER);
     let server_date_copy = server_date;
     let client_date = new Date();
-  
+
     server_date = server_date.getDay() + '/' + server_date.getUTCMonth() + '/' + server_date.getHours();
     client_date = client_date.getDay() + '/' + client_date.getUTCMonth() + '/' + client_date.getHours();
-  
-    if(localStorage.getItem('DATE_SERVER') !== null) {
+
+    if (localStorage.getItem('DATE_SERVER') !== null) {
       console.warn('server_date: ', server_date, "client_date", client_date)
       if (server_date !== client_date) {
         console.warn('server_date: ', server_date, "client_date", client_date)
         window.location.href = "not_good_date.html";
       }
       date_first_game = new Date('2021/08/18');
-      console.warn('server_date_copy: ',server_date_copy, 'date_first_game', date_first_game );
-    
-      if(server_date_copy < date_first_game) {
+      console.warn('server_date_copy: ', server_date_copy, 'date_first_game', date_first_game);
+
+      if (server_date_copy < date_first_game) {
         window.location.href = "not_open.html";
       }
     }
@@ -76,49 +76,49 @@ setTimeout(() => {
         if (res.data.id !== undefined) {
           localStorage.setItem('DAY_NUM', res.data.id);
           let date_actuelle = new Date();
-          let heures =  date_actuelle.getHours(); let minutes= date_actuelle.getMinutes()
-          console.log('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes(), "Math.abs(heures) => ", Math.abs(heures) )
-          if(Math.abs(heures) <= 9) {
-              if(Math.abs(heures) == 9 && minutes >=00 ) {
-                //Do nothing
-              } else {
-                console.log('Game number found')
-                DAY_NUM = (Number(res.data.id)-1)
-                localStorage.setItem('DAY_NUM', DAY_NUM)
-              }
+          let heures = date_actuelle.getHours(); let minutes = date_actuelle.getMinutes()
+          console.log('heures', date_actuelle.getHours(), 'minutes', date_actuelle.getMinutes(), "Math.abs(heures) => ", Math.abs(heures))
+          if (Math.abs(heures) <= 9) {
+            if (Math.abs(heures) == 9 && minutes >= 00) {
+              //Do nothing
+            } else {
+              console.log('Game number found')
+              DAY_NUM = (Number(res.data.id) - 1)
+              localStorage.setItem('DAY_NUM', DAY_NUM)
+            }
           }
-          return  localStorage.getItem('DAY_NUM');
+          return localStorage.getItem('DAY_NUM');
         } else {
-          localStorage.setItem('is_iphone6_or_less','is_iphone6_or_less')
+          localStorage.setItem('is_iphone6_or_less', 'is_iphone6_or_less')
           console.warn('No game number found (IPhone 6 or less)')
           let date_curr = new Date()
           let date_format = date_curr.toLocaleDateString("en-US").split('/')
-          date_format = date_format[2]+'/'+ (date_format[0].length == 1 ? '0'+date_format[0] : date_format[0])+'/'+(date_format[1].length == 1 ? '0'+date_format[1]:date_format[1])
-          console.warn('DATE_FORM',date_format)
+          date_format = date_format[2] + '/' + (date_format[0].length == 1 ? '0' + date_format[0] : date_format[0]) + '/' + (date_format[1].length == 1 ? '0' + date_format[1] : date_format[1])
+          console.warn('DATE_FORM', date_format)
           let date_tab = [
-            "2021/08/23",
-            "2021/08/24",
-            "2021/08/25",
             "2021/08/26",
             "2021/08/27",
+            "2021/08/28",
+            "2021/08/30",
+            "2021/08/31",
           ];
           let DAY_NUM = date_tab.indexOf(date_format)
-          DAY_NUM = DAY_NUM+1
-          if(DAY_NUM === 0) {
+          DAY_NUM = DAY_NUM + 1
+          if (DAY_NUM === 0) {
             window.location.href = "not_open_today.html";
           }
           console.warn('DAY_NUM_iphone6_or_less', DAY_NUM)
           localStorage.setItem('DAY_NUM', DAY_NUM)
           let date_actuelle = new Date();
-          let heures =  date_actuelle.getHours(); let minutes= date_actuelle.getMinutes()
-          console.warn('heures', date_actuelle.getHours(),'minutes', date_actuelle.getMinutes())
-          if(Math.abs(heures) <= 9) {
-              if(Math.abs(heures) == 9 && minutes >=00 ) {
-                //Do nothing
-              } else {
-                DAY_NUM = (Number(DAY_NUM)-1)
-                localStorage.setItem('DAY_NUM', DAY_NUM)
-              }
+          let heures = date_actuelle.getHours(); let minutes = date_actuelle.getMinutes()
+          console.warn('heures', date_actuelle.getHours(), 'minutes', date_actuelle.getMinutes())
+          if (Math.abs(heures) <= 9) {
+            if (Math.abs(heures) == 9 && minutes >= 00) {
+              //Do nothing
+            } else {
+              DAY_NUM = (Number(DAY_NUM) - 1)
+              localStorage.setItem('DAY_NUM', DAY_NUM)
+            }
           }
 
         }
@@ -132,11 +132,11 @@ setTimeout(() => {
 
 const updatePlateau = () => {
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/08/23' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/08/24' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/08/25' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/08/26' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/08/27' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/08/26' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/08/27' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/08/28' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/08/30' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/08/31' },
   ];
 
   let today = new Date();
@@ -357,21 +357,39 @@ function before10h24(heures, minutes, secondes) {
     cleanNbInBefore10h24();
   }
 }
-
+var plateau_has_treated = false;
 const ShowGamePlayed = () => {
-  let regex2 = new RegExp(localStorage.getItem("DAY_NUM"));
-  if (!localStorage.getItem("game_played") || regex2.test(localStorage.getItem("game_played")) == false ) {
-    //if(localStorage.getItem('is_iphone6_or_less')==null) {
+  let regex2 = new RegExp(/1|2|3|4|5/);
+  if (!localStorage.getItem("game_played")) {
+    fetch_question_responses().then((datas) => {
+      if (datas.length > 0) {
+        if (datas[0] !== undefined) {
+          localStorage.setItem('game_played', JSON.stringify(datas))
+        }
+      }
+    });
+  }
+  else {
+    let aGame_played = [];
+    localStorage.getItem("game_played").replace(']', '').replace('[', '').split(',').reduce((n) => (aGame_played.push(Number(n))))
+    if (Math.max(aGame_played).toString().match(regex2) < Number(localStorage.getItem("DAY_NUM"))) {
       fetch_question_responses().then((datas) => {
         if (datas.length > 0) {
-          if (datas[0].id !== undefined) {
+          if (datas[0] !== undefined) {
             localStorage.setItem('game_played', JSON.stringify(datas))
           }
         }
       });
-    //}
-  }
-   else {
+    }
+    else{
+      $('.game').each((i, e) => {
+        if( (i+1) > Math.max(aGame_played) && !plateau_has_treated) {
+          $('.title_game:eq('+i+')').remove();
+          $(e).prepend('<div class="title_game"><span>Challenge <strong>'+ i +'</strong></span></div>')
+        }
+      })
+      plateau_has_treated = true;
+    }
     $(document).find('.carousel_cell').each((index, elem) => {
       if (index < Number(localStorage.getItem('DAY_NUM'))) {
         JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
