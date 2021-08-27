@@ -13,14 +13,20 @@
       if(! is_array($decoded)) {
             die('Missed action');
       } else {
-        if (!isset($decoded['magasin_num']) ) {
+        if (!isset($decoded['magasin_num']) && !isset($decoded['date_time']) ) {
             die('Missed action');
         }
+        if (isset($decoded['date_time'])){
+          $stmt = $pdo->prepare("SELECT id FROM date_game WHERE date_time =SUBSTRING(NOW(), 1,10);");
+          $stmt->execute();
+          $aResponse = $stmt->fetch();
+        } else { 
           $magasin_num = (int)$decoded['magasin_num'];
           $stmt = $pdo->prepare("UPDATE magasin
           SET has_read_video=1 WHERE id=:id");
           $stmt->execute(['id' => $magasin_num]);
           $aResponse = $stmt->fetch();
+        }
       }
     }
     
