@@ -115,7 +115,7 @@ $(document).ready(function () {
     }
   }
 
-  
+
   //--------------------------------------------------------- PAGE INTRO VIDEO
 
   if (location.pathname === "/game_intro_video.html") {
@@ -130,8 +130,11 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_indice_video.html") {
     if (isLogged()) {
-      let day = getUrlParam('day','1')
-      notTheDayGame(day);
+      let day = getUrlParam('day', '1')
+      console.log('day: ',day)
+      let valid_num_game = notTheDayGame(day);
+      day = valid_num_game
+      console.log('day: ',day)
       fetch_movie(day)
     } else {
       goLogin();
@@ -173,7 +176,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_day1.html") {
     if (isLogged()) {
-      if(gameValidate()) {
+      if (gameValidate()) {
         window.location.href = "game_end.html" // L'autre page de fin je crois
       }
       //isEnableMagasin();
@@ -202,7 +205,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 3
 
   if (location.pathname === "/game_day3.html") {
-    
+
     if (isLogged()) {
       //isEnableMagasin();
       //sessionTimeOut();
@@ -216,7 +219,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 4
 
   if (location.pathname === "/game_day4.html") {
-    
+
     if (isLogged()) {
       //isEnableMagasin();
       //sessionTimeOut();
@@ -230,7 +233,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- JOUR 5
 
   if (location.pathname === "/game_day5.html") {
-    
+
     if (isLogged()) {
       //isEnableMagasin();
       //sessionTimeOut();
@@ -317,7 +320,7 @@ $(document).ready(function () {
   function startGame(day_num) { localStorage.setItem('day_played', day_num) }
   function stopGame() { localStorage.setItem('has_played', 'true') }
   function gameStarted() { return localStorage.getItem('day_played') }
-  function gameValidate() { 
+  function gameValidate() {
     return RegExp(location.pathname.replace('/game_day', '').replace('.html', '')).test(localStorage.getItem('game_played'))
   }
   function notGameToday() { window.location.href = "not_open.html" }
@@ -379,22 +382,44 @@ $(document).ready(function () {
   }
 
   function notTheDayGame(n) {
-    if (  Number(localStorage.getItem('DAY_NUM')) < Number(n) ) {
+    if (Number(localStorage.getItem('DAY_NUM')) < Number(n)) {
+      console.log("OOOOOO")
       window.location.href = "game_indice_video.html?day=" + Number(localStorage.getItem('DAY_NUM'));
+    } else {
+      console.log('DATA: ','data')
+      return getGoodGame()
+    }
+  }
+  function getGoodGame() {
+    if (localStorage.getItem("game_played")) {
+      let aGame_played = [];
+      let sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
+      if (/,/.test(sGame_played)) {
+        sGame_played = sGame_played.split(',');
+        
+        sGame_played.reduce((num) => (aGame_played.push(Number(num))));
+      } else {
+        aGame_played.push(Number(sGame_played));
+      }
+      
+      return Number(Math.max(aGame_played).toString().match(regex2)) + 1;
+    }
+    if (!localStorage.getItem("game_played")) {
+      return 1;
     }
   }
 
-  function getUrlParam(parameter, defaultvalue){
+  function getUrlParam(parameter, defaultvalue) {
     var urlparameter = defaultvalue;
-    if(window.location.href.indexOf(parameter) > -1){
-        urlparameter = getUrlVars()[parameter];
-        }
+    if (window.location.href.indexOf(parameter) > -1) {
+      urlparameter = getUrlVars()[parameter];
+    }
     return urlparameter;
   }
   function getUrlVars() {
     var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+      vars[key] = value;
     });
     return vars;
   }
