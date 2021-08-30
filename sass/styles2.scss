@@ -394,7 +394,7 @@ main {
             border-radius: 10px;
             display: inline-block;
             font-size: 14px;
-            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
         }
         &.inactif {
             a, span {cursor: not-allowed;}
@@ -1011,7 +1011,7 @@ main {
             background-size: cover;
             .rules_game {padding-bottom: 15px!important;}
             .game_quizz_challenge {
-                padding: 10px 20px 20px!important;
+                padding: 10px 20px!important;
                 .title {padding-bottom: 7px!important;}
             }
         }
@@ -1252,7 +1252,7 @@ main {
                             }
                             .cta_diamond {
                                 a, span {
-                                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+                                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
                                 }
                             }
                         }
@@ -1296,7 +1296,7 @@ main {
                             }
                         }
                         .q2 {
-                            padding-bottom: 20px;
+                            padding-bottom: 10px;
                             .cta_diamond {
                                 &.invers {
                                     a {background: rgba($white, 0.6); color: $blue; border: none;}
@@ -1711,6 +1711,7 @@ main {
                         padding: 5px;
                         text-align: left;
                         line-height: initial;
+                        text-transform: initial;
                         strong {text-transform: uppercase;}
                     }
                     .answer_diamond {
