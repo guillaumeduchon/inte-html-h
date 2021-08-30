@@ -775,7 +775,7 @@ main {
                 &.game_box {
                     border-radius: 20px;
                     background: rgba(#c9d6e1, 0.4);
-                    &.active {background: $white;}
+                    &.done {background: $white;}
                     align-items: center;
                     justify-content: center;
                     line-height: initial;
