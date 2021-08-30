@@ -584,26 +584,39 @@ main {
                         display: flex;
                         flex-wrap: wrap;
                         .rep1, .rep2, .rep3 {
-                            display: flex;
-                            align-items: center;
+                            position: relative;
                             width: 100%;
                             border: 1px solid $blue;
                             border-radius: 15px;
                             margin-bottom: 10px;
                             font-size: 15px;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px; margin-bottom: 7px;}
-                            &:last-child {margin-bottom: 20px;}
-                            .name {
-                                overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 10px;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px}
-                            }
-                            .pc {
+                            overflow: hidden;
+                            .progress {
+                                position: absolute;
+                                z-index: 1;
+                                border: none;
                                 background: rgba(#c9d6e1, 0.3);
-                                font-weight: bold;
+                                height: 100%;
                                 border-radius: 0 15px 15px 15px;
-                                padding: 10px;
-                                width: 50px;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px}
+                                right: 0;
+                                width: 80%;
+                                progress {border: none; background: rgba(#c9d6e1, 0.3); height: 0;}
+                            }
+                            .rep-infos {
+                                display: flex;
+                                align-items: center;
+                                z-index: 2;
+                                .name {
+                                    overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 10px;
+                                    @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px}
+                                }
+                                .pc {
+                                    font-weight: bold;
+                                    border-radius: 0 15px 15px 15px;
+                                    padding: 10px;
+                                    width: 50px;
+                                    @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px}
+                                }
                             }
                         }
                     }
