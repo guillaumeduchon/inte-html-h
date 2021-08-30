@@ -376,7 +376,7 @@ const ShowGamePlayed = () => {
             console.log('DATA: ','TRTTRTTR')
             //addGameDoneClass(i)
             $('.title_game:eq('+i+')').remove();
-            $(e).prepend('<div class="title_game"><span>Challenge <strong>'+ (i+1) +'</strong></span></div>')
+            $(e).prepend('<div class="title_game"><span>Challenge <div class="number">'+ (i+1) +'</div></span></div>')
           }
         })
         plateau_has_treated = true;

@@ -792,6 +792,7 @@ main {
                             align-items: center;
                             justify-content: center;
                             span {display: inline-block; vertical-align: middle;}
+                            .number {display: block; font-size: 22px; font-weight: bold;}
                             @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                         }
                         .date_game {
@@ -1116,10 +1117,10 @@ main {
                             input[type=text] {
                                 background: none;
                                 border: 1px solid $blue;
-                                border-radius: 15px;
+                                border-radius: 10px;
                                 padding: 6px 10px;
                                 width: 100%;
-                                margin-bottom: 25px;
+                                margin-bottom: 15px;
                                 &::placeholder {
                                     color: $blue;
                                 }
@@ -1154,7 +1155,16 @@ main {
                                     margin-bottom: 10px;
                                     cursor: pointer;
                                     color: $blue;
+                                    position: relative;
                                     @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+                                    img {
+                                        position: absolute;
+                                        z-index: 2;
+                                        width: 18px;
+                                        height: 18px;
+                                        right: 3px;
+                                        top: 5px;
+                                    }
                                 }
                                 img#img_down {
                                     position: absolute;
@@ -1165,6 +1175,7 @@ main {
                                     height: 29px;
                                     object-fit: cover;
                                     border-radius: 0 10px 10px 0;
+                                    z-index: 3;
                                 }
                             }
                             .download {
