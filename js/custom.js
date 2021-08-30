@@ -380,7 +380,7 @@ const ShowGamePlayed = () => {
     } else {
       aGame_played.push(Number(sGame_played))
     }
-    console.log('DATA: ',sGame_played)
+
     if ( Math.max(aGame_played).toString().match(regex2) < Number(localStorage.getItem("DAY_NUM"))) {
       fetch_question_responses().then((datas) => {
         if (datas.length > 0) {
@@ -392,7 +392,7 @@ const ShowGamePlayed = () => {
     }
     else{
       $('.game').each((i, e) => {
-        if( (i+1) > Math.max(aGame_played) && !plateau_has_treated) {
+        if( ((i+1) > Math.max(aGame_played) && !plateau_has_treated) || i+1 > Number(localStorage.getItem('DAY_NUM'))) {
           $('.title_game:eq('+i+')').remove();
           $(e).prepend('<div class="title_game"><span>Challenge <strong>'+ (i+1) +'</strong></span></div>')
         }
