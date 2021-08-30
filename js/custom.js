@@ -148,59 +148,13 @@ const updatePlateau = () => {
   let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
   localStorage.setItem('today_date', today_date)
 
-  var $carousel = $('.carousel_plateau').flickity();
   var tab_day = date_tab.filter(obj => obj.day_date == today_date)[0];
   tab_day = tab_day.day_num;
-  date_tab.map((el) => {
-    if (el.day_date === today_date) {
-      el.highlight = '';
-      var indexSlide = tab_day - 1;
-      $carousel.flickity('select', indexSlide);
-      if (localStorage.getItem("has_win") === 'false') {
-        el.status = 'expired';
-        el.img = 'img/fond_plateau_expired.png';
-        el.iconDisplay = 'hide';
-        el.linkDisplay = 'hide';
-      } else {
-        el.status = 'available';
-        el.img = 'img/fond_plateau_available_v3.png';
-        el.iconDisplay = 'hide';
-        el.linkDisplay = '';
-      }
-    }
-    if (el.day_date > today_date) {
-      el.highlight = '';
-      el.status = 'unavailable';
-      el.img = 'img/fond_plateau_unavailable.png';
-      el.iconDisplay = '';
-      el.linkDisplay = 'hide';
-    }
-    if (el.day_date < today_date) {
-      el.highlight = '';
-      el.status = 'expired';
-      el.img = 'img/fond_plateau_expired.png';
-      el.iconDisplay = 'hide';
-      el.linkDisplay = 'hide';
+  date_tab.map((el, i) => {
+    if( (i+1) > Number(localStorage.getItem('DAY_NUM'))) {
+      $('.game_box:eq('+i+')').attr('href', '#')
     }
   })
-
-  $('.carousel_cell').each((index, el) => {
-    $(el).addClass(date_tab[index].highlight);
-    $(el).addClass(date_tab[index].status);
-    // var index = $(date_tab[index]).index();
-    $('.icon').each((index, el) => {
-      $(el).addClass(date_tab[index].iconDisplay);
-    })
-    $('.carousel_cell-content-linkgame').each((index, el) => {
-      $(el).addClass(date_tab[index].linkDisplay);
-    })
-  })
-  $('.bg_cell').each((index, el) => {
-    $(el).attr("src", date_tab[index].img);
-  })
-
-  $('.carousel_cell available').find('.statut').addClass('countdown');
-  $('.carousel_cell:not(.expired, .unavailable)').find('.countdown').html('Il vous reste encore<br><strong></strong><br>pour trouver l\'indice du jour');
 
   compte_a_rebours();
 }
@@ -327,7 +281,6 @@ function before10h24(heures, minutes, secondes) {
   }
   if (heures >= 24) {
     localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24')) + 1));
-
     if (localStorage.getItem('nbInBefore10h24') === '1') {
       var $carouChange = $('.carousel_plateau').flickity();
       $carouChange.addClass('available');
