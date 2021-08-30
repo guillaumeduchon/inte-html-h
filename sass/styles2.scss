@@ -792,6 +792,7 @@ main {
                             align-items: center;
                             justify-content: center;
                             span {display: inline-block; vertical-align: middle;}
+                            .number {display: block; font-size: 22px; font-weight: bold;}
                             @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                         }
                         .date_game {
