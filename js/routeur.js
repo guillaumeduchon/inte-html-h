@@ -373,7 +373,6 @@ $(document).ready(function () {
         localStorage.removeItem('today_date')
         localStorage.removeItem('last_connexion')
         localStorage.removeItem('logged')
-        alert("Vous avez été déconnecté")
       }
       setInterval(() => { lastConnexion() }, 120000)
     }
