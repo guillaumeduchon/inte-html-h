@@ -366,6 +366,7 @@ const ShowGamePlayed = () => {
       if (datas.length > 0) {
         if (datas[0] !== undefined) {
           localStorage.setItem('game_played', JSON.stringify(datas))
+          $('.game').each((i, e) => {addGameDoneClass(i); $('.game_box:eq('+i+')').addClass('done');})
         }
       }
       if (datas.length === 0) {
@@ -396,6 +397,7 @@ const ShowGamePlayed = () => {
         if (datas.length > 0) {
           if (datas[0] !== undefined) {
             localStorage.setItem('game_played', JSON.stringify(datas))
+            $('.game').each((i, e) => {addGameDoneClass(i); $('.game_box:eq('+i+')').addClass('done');})
           }
         }
       });
@@ -434,7 +436,7 @@ function toggleGameEndClass() {
 }
 
 function addGameDoneClass(i) {
-  var regex3 = new RegExp((i+1));
+  let regex3 = new RegExp((i+1));
   if (regex3.test(localStorage.getItem('game_played'))) {
     $('.game_box:eq('+i+')').addClass('done');
   }
