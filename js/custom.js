@@ -374,7 +374,7 @@ const ShowGamePlayed = () => {
         $('.game').each((i, e) => {
           if( (i+1) >  Number(localStorage.getItem('DAY_NUM'))) {
             console.log('DATA: ','TRTTRTTR')
-            //addGameDoneClass(i)
+            addGameDoneClass(i)
             $('.title_game:eq('+i+')').remove();
             $(e).prepend('<div class="title_game"><span>Challenge <div class="number">'+ (i+1) +'</div></span></div>')
           }
@@ -399,16 +399,17 @@ const ShowGamePlayed = () => {
         if (datas.length > 0) {
           if (datas[0] !== undefined) {
             localStorage.setItem('game_played', JSON.stringify(datas))
-            console.log('DATA: ','TEEZZZZZTR')
             $('.game').each((i, e) => {addGameDoneClass(i); $('.game_box:eq('+i+')').addClass('done');})
           }
         }
       });
     }
     else{
+      console.log('DATA: ','YYYY')
       $('.game').each((i, e) => {
         if( ((i+1) > Math.max(aGame_played) ) || (i+1) > Number(localStorage.getItem('DAY_NUM'))) {
           if(!plateau_has_treated)  {
+            $('.title_game:eq('+i+')').remove();
             addGameDoneClass(i)
             $(e).prepend('<div class="title_game"><span>Challenge <strong>'+ (i+1) +'</strong></span></div>')
           }
