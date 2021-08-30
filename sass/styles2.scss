@@ -159,6 +159,7 @@ main {
             border-radius: 10px;
             display: inline-block;
             font-size: 14px;
+            border: 1px solid $blue;
             @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
         }
         &.inactif {
@@ -707,7 +708,10 @@ main {
         &.q2 {
             background: url('../img/fond_q2.jpg') no-repeat center;
             background-size: cover;
-            .rules_game {padding-bottom: 15px!important;}
+            @media screen and (orientation:landscape) and (max-width: 670px) {
+                .title_game {font-size: 15px!important; line-height: 19px!important;}
+            }
+            .rules_game {padding-bottom: 10px!important;}
             .game_quizz_challenge {
                 padding: 10px 20px!important;
                 .title {padding-bottom: 7px!important;}
@@ -763,7 +767,35 @@ main {
                     flex-wrap: nowrap;
                     justify-content: center;
                     margin-left: -30px;
-                    @media screen and (orientation:landscape) and (max-width: 670px) {margin-left: -15px;}
+                    &.q2 {
+                        form .buttons {
+                            & > * {margin-bottom: 7px!important; margin-left: auto!important;}
+                        }
+                        .buttons {
+                            .cta_diamond {
+                                &:first-child {display: none;}
+                            }
+                        }
+                    }
+                    @media screen and (orientation:landscape) and (max-width: 670px) {
+                        margin-left: -15px;
+                        &.q2 {
+                            .game_quizz_divers {display: none;}
+                            .game_quizz_challenge {width: 95%;}
+                            form .buttons {
+                                & > * {margin-bottom: 0!important; margin-left: 10px!important;}
+                            }
+                            .buttons {
+                                .cta_diamond {
+                                    &:first-child {display: block;}
+                                }
+                            }
+                        }
+                        &.q5 {
+                            .game_quizz_divers {display: none;}
+                            .game_quizz_challenge {width: 95%;}
+                        }
+                    }
                     & > * {
                         margin-left: 30px; width: calc(50% - 30px);
                         @media screen and (orientation:landscape) and (max-width: 670px) {margin-left: 15px; width: calc(50% - 15px);}
