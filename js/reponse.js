@@ -16,7 +16,7 @@ const check_answer2 = async () => {
   await axios.post('/server/set_reponse.php', { day_num: '2', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
-    .then((valid_resp) => {
+    .then((valid_resp, status) => {
       window.location.href = 'game_end.html'
     });
 }
@@ -27,7 +27,8 @@ const check_answer3 = async () => {
   await axios.post('/server/set_reponse.php', { day_num: '3', response: response_id, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
-    .then((valid_resp) => {
+    .then((valid_resp, status) => {
+      console.log('status', status);
       window.location.href = 'game_end_day3.html'
     });
 }
