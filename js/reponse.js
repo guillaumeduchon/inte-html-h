@@ -112,9 +112,10 @@ const get_answer3_stats = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp) => {
-      if(valid_resp.data['1']) {
+      if(valid_resp.data) {
         $('.pc').each((i,e) => {
           let value = valid_resp.data[i+1] === undefined ? 0 : valid_resp.data[i+1];
+          $(e).parent().parent().find('.progress').attr('style','width:'+value+'%;')
           $(e).html(value+' %');
         });
       }
