@@ -240,6 +240,15 @@ $(document).ready(function () {
       goLogin();
     }
   }
+  //--------------------------------------------------------- Game end
+
+  if (location.pathname === "/game_end.html") {
+    if (isLogged()) {
+      toggleGameEndClass();
+    } else {
+      goLogin();
+    }
+  }
   //--------------------------------------------------------- Game end day 3
 
   if (location.pathname === "/game_end_day3.html") {
