@@ -132,6 +132,11 @@ setTimeout(() => {
 //------------------------------------------------PLATEAU---------------------------------------
 
 const updatePlateau = () => {
+  fetch_question_responses().then( function(datas) {
+    if(datas.length  === 5) {
+      window.location.href = "endgame.html";
+    }
+  })
   let date_tab = [
     { 'status': '', 'day_num': 1, 'day_date': '2021/08/30' },
     { 'status': '', 'day_num': 2, 'day_date': '2021/08/31' },
@@ -351,12 +356,12 @@ const ShowGamePlayed = () => {
     if (/,/.test(sGame_played)) {
       sGame_played = sGame_played.split(',');
 
-      sGame_played.reduce((n) => (aGame_played.push(Number(n))));
+      sGame_played.forEach((n) => (aGame_played.push(Number(n))));
     } else {
       aGame_played.push(Number(sGame_played))
     }
 
-    if (Math.max(aGame_played).toString().match(regex2) < Number(localStorage.getItem("DAY_NUM"))) {
+    if (Math.max.apply(Math, aGame_played).toString().match(regex2) < Number(localStorage.getItem("DAY_NUM"))) {
       fetch_question_responses().then((datas) => {
         if (datas.length > 0) {
           if (datas[0] !== undefined) {
@@ -376,7 +381,7 @@ const ShowGamePlayed = () => {
     else {
       console.log('DATA: ', "BBBB")
       $('.game').each((i, e) => {
-        if (((i + 1) > Math.max(aGame_played)) || (i + 1) > Number(localStorage.getItem('DAY_NUM'))) {
+        if (((i + 1) > Math.max.apply(Math, aGame_played)) || (i + 1) > Number(localStorage.getItem('DAY_NUM'))) {
           if (!plateau_has_treated) {
             $('.title_game:eq(' + i + ')').remove();
             addGameDoneClass(i)

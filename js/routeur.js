@@ -179,6 +179,9 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_day2.html") {
     if (isLogged()) {
+      if (gameValidate()) {
+        window.location.href = "game_end.html"
+      }
       //isEnableMagasin();
       startGame(2);
     } else {
@@ -191,6 +194,9 @@ $(document).ready(function () {
   if (location.pathname === "/game_day3.html") {
 
     if (isLogged()) {
+      if (gameValidate()) {
+        window.location.href = "game_end_day3.html"
+      }
       //isEnableMagasin();
       startGame(3);
     } else {
@@ -203,6 +209,9 @@ $(document).ready(function () {
   if (location.pathname === "/game_day4.html") {
 
     if (isLogged()) {
+      // if (gameValidate()) {
+      //   window.location.href = "game_end.html"
+      // }
       //isEnableMagasin();
       startGame(4);
     } else {
@@ -215,6 +224,9 @@ $(document).ready(function () {
   if (location.pathname === "/game_day5.html") {
 
     if (isLogged()) {
+      if (gameValidate()) {
+        window.location.href = "game_end_day5.html"
+      }
       //isEnableMagasin();
       startGame(5);
     } else {
@@ -370,15 +382,18 @@ $(document).ready(function () {
       let sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
       if (/,/.test(sGame_played)) {
         sGame_played = sGame_played.split(',');
-        
-        sGame_played.reduce((num) => (aGame_played.push(Number(num))));
+        sGame_played.forEach(element => {
+          element = parseInt(element, 10)
+          aGame_played.push(element)
+        });
       } else {
         aGame_played.push(Number(sGame_played));
       }
-      
-      return Number(Math.max(aGame_played).toString().match(regex2)) + 1;
+
+      return Number(Math.max.apply(Math, aGame_played).toString().match(regex2)) + 1;
     }
     if (!localStorage.getItem("game_played")) {
+      console.log('DATA: ','RRRRRR')
       return 1;
     }
   }
