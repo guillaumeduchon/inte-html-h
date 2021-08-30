@@ -28,7 +28,7 @@ const check_answer3 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((valid_resp, status) => {
-      console.log('status', status);
+      console.log('valid_resp', valid_resp);
       window.location.href = 'game_end_day3.html'
     });
 }
