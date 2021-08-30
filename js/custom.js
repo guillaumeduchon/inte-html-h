@@ -174,6 +174,8 @@ const updatePlateau = () => {
             console.log('Math: ',Math.max.apply(Math, aGame_played))
             $('.game_box:eq(' + i + ')').attr('href', '#')
           }
+        } else {
+          $('.game_box:eq(' + i + ')').attr('href', '#')
         }
       }
     }
