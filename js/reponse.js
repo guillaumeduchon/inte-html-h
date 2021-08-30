@@ -39,7 +39,7 @@ const check_answer4 = async () => {
   await axios.post('/server/set_reponse.php', { day_num: '4', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
-    .then((valid_resp) => {
+  .then((valid_resp) => {
       window.location.href = 'game_end.html'
     });
 }

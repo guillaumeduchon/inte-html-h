@@ -882,7 +882,7 @@ main {
                         form {
                             display: block;
                             &#files-game-2 {
-                                input[type=text] {
+                                input[type=text], input[type=number] {
                                     padding: 3px 10px;
                                     margin-top: 10px;
                                     color: $blue;
@@ -902,7 +902,7 @@ main {
                                 margin-bottom: 15px;
                                 @media screen and (orientation:landscape) and (max-width: 670px) {border-radius: 10px; height: 90px; font-size: 14px; margin-bottom: 10px;}
                             }
-                            input[type=text] {
+                            input[type=text], input[type=number] {
                                 background: none;
                                 border: 1px solid $blue;
                                 border-radius: 10px;
