@@ -1092,6 +1092,16 @@ main {
                         }
                         form {
                             display: block;
+                            &#files-game-2 {
+                                input[type=text] {
+                                    padding: 3px 10px;
+                                    margin-top: 10px;
+                                    color: $blue;
+                                    &::placeholder {
+                                        color: $blue;
+                                    }
+                                }
+                            }
                             textarea {
                                 background: none;
                                 border: 1px solid $blue;
@@ -1110,6 +1120,9 @@ main {
                                 padding: 6px 10px;
                                 width: 100%;
                                 margin-bottom: 25px;
+                                &::placeholder {
+                                    color: $blue;
+                                }
                                 @media screen and (orientation:landscape) and (max-width: 670px) {border-radius: 10px; font-size: 14px; margin-bottom: 10px;}
                             }
                             label {
@@ -1118,6 +1131,7 @@ main {
                                 width: 100%;
                                 margin-bottom: 5px;
                                 margin-top: 5px;
+                                color: $blue;
                                 @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                             }
                             .files {
@@ -1136,18 +1150,19 @@ main {
                                     border: 1px solid $blue;
                                     border-radius: 10px;
                                     padding: 3px 10px;
-                                    margin-top: 10px;
+                                    margin-top: 0;
                                     margin-bottom: 10px;
                                     cursor: pointer;
+                                    color: $blue;
                                     @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                                 }
                                 img#img_down {
                                     position: absolute;
                                     display: none;
-                                    top: 11px;
+                                    top: 0;
                                     right: 0;
-                                    width: 30px;
-                                    height: 30px;
+                                    width: 29px;
+                                    height: 29px;
                                     object-fit: cover;
                                     border-radius: 0 10px 10px 0;
                                 }
