@@ -373,7 +373,7 @@ const ShowGamePlayed = () => {
                 addGameDoneClass( (i+1) )
               } else if((i+1) >  Number(localStorage.getItem("DAY_NUM"))) {
                 $('.title_game:eq(' + i + ')').remove();
-                $(e).prepend('<div class="title_game"><span>Challenge <strong>' + (i + 1) + '</strong></span></div>')
+                $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
               }
             }
           })
@@ -413,7 +413,7 @@ const ShowGamePlayed = () => {
                 addGameDoneClass((i +1));
               } else if( (i+1) >  Number(localStorage.getItem("DAY_NUM"))) {
                 $('.title_game:eq(' + i + ')').remove();
-                $(e).prepend('<div class="title_game"><span>Challenge <strong>' + (i + 1) + '</strong></span></div>')
+                $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
               }
             })
           }
@@ -427,7 +427,7 @@ const ShowGamePlayed = () => {
           if (!plateau_has_treated) {
             $('.title_game:eq(' + i + ')').remove();
             addGameDoneClass(i)
-            $(e).prepend('<div class="title_game"><span>Challenge <strong>' + (i + 1) + '</strong></span></div>')
+            $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
           }
         }
       })
