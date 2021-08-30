@@ -161,17 +161,19 @@ const updatePlateau = () => {
     } else {
       if (i > 0) {
         let aGame_played = [];
-        let sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
-        if (/,/.test(sGame_played)) {
-          sGame_played = sGame_played.split(',');
-    
-          sGame_played.forEach((n) => (aGame_played.push(Number(n))));
-        } else {
-          aGame_played.push(Number(sGame_played))
-        }
-        if ( !RegExp((i).toString()).test(localStorage.getItem('game_played')) && i > Math.max.apply(Math, aGame_played)) {
-          console.log('Math: ',Math.max.apply(Math, aGame_played))
-          $('.game_box:eq(' + i + ')').attr('href', '#')
+        if(localStorage.getItem("game_played")) {
+          let sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
+          if (/,/.test(sGame_played)) {
+            sGame_played = sGame_played.split(',');
+      
+            sGame_played.forEach((n) => (aGame_played.push(Number(n))));
+          } else {
+            aGame_played.push(Number(sGame_played))
+          }
+          if ( !RegExp((i).toString()).test(localStorage.getItem('game_played')) && i > Math.max.apply(Math, aGame_played)) {
+            console.log('Math: ',Math.max.apply(Math, aGame_played))
+            $('.game_box:eq(' + i + ')').attr('href', '#')
+          }
         }
       }
     }
