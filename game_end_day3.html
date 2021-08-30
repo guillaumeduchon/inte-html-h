@@ -10,6 +10,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="img/icon_manifest.png">
     <link rel="icon" type="image/png" sizes="192x192"  href="img/icon_manifest.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
@@ -76,7 +77,8 @@
     <script src="js/indice.js"></script>
     <script>
         $(document).ready(function () {
-            get_answer3_stats()
+            get_answer3_stats();
+            updatePlateau();
         })
     </script>
 </body>

@@ -160,29 +160,15 @@ $(document).ready(function () {
     }
   }
 
-  //--------------------------------------------------------- PAGE PERDU
-
-  // if (location.pathname === "/game_lose.html") {
-  //   if (isLogged()) {
-  //     isEnableMagasin();
-  //     sessionTimeOut();
-  //     (fetch_content(), set_indice(0))
-  //   } else {
-  //     goLogin();
-  //   }
-  // }
-
   //--------------------------------------------------------- JOUR 1
 
   if (location.pathname === "/game_day1.html") {
     if (isLogged()) {
       if (gameValidate()) {
-        window.location.href = "game_end.html" // L'autre page de fin je crois
+        window.location.href = "game_end.html"
       }
       //isEnableMagasin();
       fetch_content(1);
-      //sessionTimeOut();
-      //result_day(), hasWinJs();
       startGame(1);
     } else {
       goLogin();
@@ -194,8 +180,6 @@ $(document).ready(function () {
   if (location.pathname === "/game_day2.html") {
     if (isLogged()) {
       //isEnableMagasin();
-      //sessionTimeOut();
-      //result_day();
       startGame(2);
     } else {
       goLogin();
@@ -208,8 +192,6 @@ $(document).ready(function () {
 
     if (isLogged()) {
       //isEnableMagasin();
-      //sessionTimeOut();
-      //result_day();
       startGame(3);
     } else {
       goLogin();
@@ -222,8 +204,6 @@ $(document).ready(function () {
 
     if (isLogged()) {
       //isEnableMagasin();
-      //sessionTimeOut();
-      //result_day();
       startGame(4);
     } else {
       goLogin();
@@ -236,8 +216,6 @@ $(document).ready(function () {
 
     if (isLogged()) {
       //isEnableMagasin();
-      //sessionTimeOut();
-      //result_day();
       startGame(5);
     } else {
       goLogin();
@@ -257,9 +235,6 @@ $(document).ready(function () {
   if (location.pathname === "/game_end_day3.html") {
     if (isLogged()) {
       //isEnableMagasin();
-      //sessionTimeOut();
-      //result_day();
-      //startGame();
     } else {
       goLogin();
     }
@@ -386,7 +361,6 @@ $(document).ready(function () {
       console.log("OOOOOO")
       window.location.href = "game_indice_video.html?day=" + Number(localStorage.getItem('DAY_NUM'));
     } else {
-      console.log('DATA: ','data')
       return getGoodGame()
     }
   }
