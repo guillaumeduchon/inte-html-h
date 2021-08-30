@@ -116,7 +116,7 @@ const get_answer3_stats = async () => {
         $('.pc').each((i,e) => {
           let value = valid_resp.data[i+1] === undefined ? 0 : valid_resp.data[i+1];
           $(e).parent().parent().find('.progress').attr('style','width:'+value+'%;')
-          $(e).html(value+' %');
+          $(e).html(value+'%');
         });
       }
     });
