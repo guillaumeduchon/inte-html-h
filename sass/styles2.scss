@@ -1022,6 +1022,10 @@ main {
             background: url('../img/fond_q4.jpg') no-repeat center;
             background-size: cover;
             .title_game {padding-bottom: 20px;}
+            .game_quizz_challenge {
+                padding: 10px 20px 20px!important;
+                .title {padding-bottom: 7px!important;}
+            }
         }
         &.q5 {
             background: url('../img/fond_q5.jpg') no-repeat center;
