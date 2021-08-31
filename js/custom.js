@@ -242,7 +242,7 @@ function compte_a_rebours() {
   var heures = Math.floor((total_secondes - (0 * 60 * 60 * 24)) / (60 * 60));
   var minutes = Math.floor((total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60))) / 60);
   var secondes = Math.floor(total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
-  $('.countdown > .hour').find("strong:eq(0)").html(`${Math.abs(heures)} HEURES`)
+  $('.countdown > .hour').find("strong:eq(0)").html(`${ Math.abs(heures) > 24 ?( Math.abs(heures)-24) : Math.abs(heures)} HEURES`)
   //$('.countdown').find('strong').html(`${Math.abs(heures)} H ${minutes} MIN ${secondes} S`);
   $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
 
