@@ -7,7 +7,7 @@ const fullfiled_enseigne = async () => {
     response = res.data;
     let enseigne = $("#enseigne")
     response.forEach((item, index) => {
-      enseigne.append('<option value="' + item.enseigne + '" data_active=' + item.active + '>' + item.enseigne + '</option>');
+      enseigne.append('<option value="' + item.enseigne + '" data_active="' + item.active + '">' + item.enseigne + '</option>');
     })
   })
 }
