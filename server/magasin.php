@@ -12,7 +12,7 @@ try {
         $oDatas = [];
         //If json_decode failed, the JSON is invalid.
         if (!isset($decoded['magasin'])) {
-            $stmt = $pdo->query("SELECT active, DISTINCT enseigne FROM magasin ORDER BY magasin.name ASC");
+            $stmt = $pdo->query("SELECT DISTINCT enseigne, active FROM magasin ORDER BY magasin.name ASC");
             $aEnseigne = $stmt->fetchAll();
             $oDatas = !$aEnseigne ? [] : $aEnseigne;
         } else {
