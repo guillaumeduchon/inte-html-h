@@ -19,10 +19,11 @@ const fullfiled_magasin = async () => {
   }).then((res) => {
     let select = $("#magasin")
     response = res.data;
-    console.log("FFFFF", response)
-    response.forEach((item, index) => {
+    for (const [index, item] of Object.entries(response)) {
+      console.log(index, item)
       select.append('<option value="' + item.region + '"' + (index < 1 ? 'selected ' : '') + ' data_active=' + item.active + '>' + item.region + '</option>');
-    })
+    
+    }
   })
 }
 
