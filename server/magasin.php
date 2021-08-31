@@ -41,6 +41,7 @@ try {
                 $enseigne = $decoded['enseigne'];
                 $stmt = $pdo->prepare("SELECT DISTINCT region FROM magasin WHERE enseigne=:enseigne");
                 $stmt->execute(['enseigne' => $enseigne]);
+                var_dump($stmt); die('tutu');
                 $aRegion = $stmt->fetch();
                 $oDatas = !$aRegion ? [] :$aRegion;
             } else{
