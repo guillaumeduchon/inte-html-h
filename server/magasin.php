@@ -12,9 +12,9 @@ try {
         $oDatas = [];
         //If json_decode failed, the JSON is invalid.
         if (!isset($decoded['magasin'])) {
-            $stmt = $pdo->query("SELECT active, enseigne FROM magasin ORDER BY magasin.name ASC");
-            $magasins = $stmt->fetchAll();
-            $oDatas = !$magasins ? [] : $magasins;
+            $stmt = $pdo->query("SELECT active, DISTINCT enseigne FROM magasin ORDER BY magasin.name ASC");
+            $aEnseigne = $stmt->fetchAll();
+            $oDatas = !$aEnseigne ? [] : $aEnseigne;
         } else {
             if (isset($decoded['final_winners'])) {
                 $finalQuestionID = 10;
