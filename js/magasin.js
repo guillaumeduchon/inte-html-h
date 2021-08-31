@@ -14,7 +14,7 @@ const fullfiled_enseigne = async () => {
 //Remplir la liste des magasins (page login)
 const fullfiled_magasin = async () => {
   let enseigne = $("#enseigne").val();
-  await axios.post('/server/magasin.php', {'enseigne': enseigne }, {
+  await axios.post('/server/magasin.php', {'enseigne': enseigne , magasin:''}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}
   }).then((res) => {
     let select = $("#magasin")
