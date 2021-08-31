@@ -13,22 +13,22 @@
       if(! is_array($decoded)) {
             die('Missed action');
       } else {
-        if (!isset($decoded['login'])) {
+        if (!isset($decoded['magasin'])) {
             die('Missed action');
         }
-        if (!isset($decoded['pwd'])) {
+        if (!isset($decoded['code'])) {
             die('Missed action');
         }
         if (!isset($decoded['enseigne'])) {
           die('Missed action');
         }
 
-        $ident = $decoded['login'];
+        $magasin = $decoded['magasin'];
         $enseigne = $decoded['enseigne'];
-        $pwd = $decoded['pwd'];
+        $code = $decoded['code'];
         $stmt = $pdo->prepare("SELECT * FROM magasin
-        WHERE ident=:ident AND `password`=:pwd AND `enseigne`=:enseigne");
-        $stmt->execute(['ident' => $ident, 'pwd'=> $pwd, 'enseigne'=> $enseigne]);
+        WHERE enseigne=:enseigne AND `password`=:code AND `magasin`=:magasin");
+        $stmt->execute(['enseigne' => $enseigne, 'code'=> $code, 'magasin'=> $magasin]);
         $login = $stmt->fetch();
       }
     }

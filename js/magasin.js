@@ -1,15 +1,26 @@
 
-//Remplir la liste des magasins (page login)
-const fullfiled_magasin = async () => {
+//Remplir la liste des enseigne (page login)
+const fullfiled_enseigne = async () => {
   await axios.post('/server/magasin.php', {}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}
   }).then((res) => {
     response = res.data;
-    let select = $("#magasin")
     let enseigne = $("#enseigne")
     response.forEach((item, index) => {
-      select.append('<option value="' + item.ident + '"' + (index < 1 ? 'selected ' : '') + ' data_active=' + item.active + '>' + item.region + '</option>');
       enseigne.append('<option value="' + item.enseigne + '"' + (index < 1 ? 'selected ' : '') + ' data_active=' + item.active + '>' + item.enseigne + '</option>');
+    })
+  })
+}
+//Remplir la liste des magasins (page login)
+const fullfiled_magasin = async () => {
+  let enseigne = $("#enseigne").val();
+  await axios.post('/server/magasin.php', {'enseigne': enseigne }, {
+    headers: {'Content-Type': 'application/json','mode': 'cors'}
+  }).then((res) => {
+    let select = $("#magasin")
+    response = res.data;
+    response.forEach((item, index) => {
+      select.append('<option value="' + item.region + '"' + (index < 1 ? 'selected ' : '') + ' data_active=' + item.active + '>' + item.region + '</option>');
     })
   })
 }

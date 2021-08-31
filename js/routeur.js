@@ -53,7 +53,7 @@ $(document).ready(function () {
       clear_counter();
       localStorage.removeItem('day_played');
 
-      fullfiled_magasin();
+      fullfiled_enseigne();
       let formEmploiModal = $('#formLogin')
       formEmploiModal.submit(evt => {
         evt.preventDefault();
@@ -67,6 +67,11 @@ $(document).ready(function () {
           }
         }
       });
+
+      $('#enseigne').on('change', function() {
+        fullfiled_magasin()
+      })
+
       $("#magasin").on('click', () => {
         hideError();
       })

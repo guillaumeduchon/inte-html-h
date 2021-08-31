@@ -29,8 +29,8 @@ const fetch_login = (e) => {
   }
 }
 
-const try_login = async (login, pwd, enseigne) => {
-  response =  await axios.post('/server/login.php', {login:login, pwd:pwd, enseigne:enseigne}, {
+const try_login = async (magasin, code, enseigne) => {
+  response =  await axios.post('/server/login.php', {magasin:magasin, code:code, enseigne:enseigne}, {
     headers: {'Content-Type': 'application/json','mode': 'cors'}})
       .then((res)=>{
         if (res.data[0].id !== undefined) {

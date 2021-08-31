@@ -32,17 +32,26 @@ try {
                 FROM magasin 
                 LEFT JOIN reponse 
                 ON reponse.magasin_id = magasin.id
-                WHERE magasin.id=:id 
+                WHERE magasin.id=:id
                 ORDER BY 'done_last_game' DESC");
                 $stmt->execute(['id' => $decoded['magasin']]);
                 $aMagasin = $stmt->fetchAll();
                 $oDatas = !$aMagasin ? [] :$aMagasin;
-            } else {
-                $stmt = $pdo->prepare("SELECT * FROM magasin WHERE id=:id");
-                $stmt->execute(['id' => $decoded['magasin']]);
-                $aMagasin = $stmt->fetch();
-                $oDatas = !$aMagasin ? [] :$aMagasin;
+            } else if(isset($decoded['enseigne'])) {
+                $enseigne = $decoded['enseigne'];
+                $stmt = $pdo->prepare("SELECT DISTINCT region FROM magasin WHERE enseigne=:enseigne");
+                $stmt->execute(['enseigne' => $enseigne]);
+                $aRegion = $stmt->fetch();
+                $oDatas = !$aRegion ? [] :$aRegion;
+            } else{
+                $stmt = $pdo->prepare("SELECT DISTINCT enseigne, active FROM magasin");
+                $aEnseigne = $stmt->fetch();
+                $oDatas = !$aEnseigne ? [] :$aEnseigne;
             }
+            // $stmt = $pdo->prepare("SELECT DISTINCT * FROM magasin WHERE id=:id");
+            // $stmt->execute(['id' => $decoded['magasin']]);
+            // $aMagasin = $stmt->fetch();
+            // $oDatas = !$aMagasin ? [] :$aMagasin;
         }
         
     }
