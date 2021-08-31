@@ -12,7 +12,7 @@ try {
         $oDatas = [];
         //If json_decode failed, the JSON is invalid.
         if (!isset($decoded['magasin'])) {
-            $stmt = $pdo->query("SELECT * FROM magasin ORDER BY magasin.name ASC");
+            $stmt = $pdo->query("SELECT active, enseigne FROM magasin ORDER BY magasin.name ASC");
             $magasins = $stmt->fetchAll();
             $oDatas = !$magasins ? [] : $magasins;
         } else {
@@ -39,19 +39,17 @@ try {
                 $oDatas = !$aMagasin ? [] : $aMagasin;
             } else if (isset($decoded['enseigne'])) {
                 $enseigne = $decoded['enseigne'];
-                $stmt = $pdo->prepare("SELECT DISTINCT region FROM magasin WHERE enseigne=:enseigne");
+                $stmt = $pdo->prepare("SELECT DISTINCT region, active FROM magasin WHERE enseigne=:enseigne");
                 $stmt->execute(['enseigne' => $enseigne]);
                 $aRegion = $stmt->fetch();
                 $oDatas = !$aRegion ? [] : $aRegion;
             } else {
-                $stmt = $pdo->prepare("SELECT DISTINCT enseigne, active FROM magasin");
-                $aEnseigne = $stmt->fetch();
-                $oDatas = !$aEnseigne ? [] : $aEnseigne;
+                $stmt = $pdo->prepare("SELECT DISTINCT * FROM magasin WHERE id=:id");
+                $stmt->execute(['id' => $decoded['magasin']]);
+                $aMagasin = $stmt->fetch();
+                $oDatas = !$aMagasin ? [] :$aMagasin;
             }
-            // $stmt = $pdo->prepare("SELECT DISTINCT * FROM magasin WHERE id=:id");
-            // $stmt->execute(['id' => $decoded['magasin']]);
-            // $aMagasin = $stmt->fetch();
-            // $oDatas = !$aMagasin ? [] :$aMagasin;
+           
         }
     }
 
