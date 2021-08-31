@@ -23,12 +23,12 @@
           die('Missed action');
         }
 
-        $magasin = $decoded['magasin'];
+        $region = $decoded['magasin'];
         $enseigne = $decoded['enseigne'];
         $code = $decoded['code'];
         $stmt = $pdo->prepare("SELECT * FROM magasin
-        WHERE enseigne=:enseigne AND `password`=:code AND `magasin`=:magasin");
-        $stmt->execute(['enseigne' => $enseigne, 'code'=> $code, 'magasin'=> $magasin]);
+        WHERE enseigne=:enseigne AND `password`=:code AND `region`=:region");
+        $stmt->execute(['enseigne' => $enseigne, 'code'=> $code, 'region'=> $region]);
         $login = $stmt->fetch();
       }
     }
