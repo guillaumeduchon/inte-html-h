@@ -316,11 +316,10 @@ const ShowGamePlayed = () => {
                   $('.game_box:eq(' + (i+2) + ')').attr('href', '#')
                 }
               } else if ((i + 1) > Number(localStorage.getItem("DAY_NUM"))) {
-                console.log('TATA: ')
                 $('.title_game:eq(' + i + ')').remove();
                 $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
               } else {
-                console.log('(i + 1): ', (i + 1))
+                console.warn('NO TASK')
               }
             }
           })
@@ -328,11 +327,14 @@ const ShowGamePlayed = () => {
         }
       }
       if (datas.length === 0) {
-        console.log('TUTU: ')
         $('.game').each((i, e) => {
           if ((i + 1) > Number(localStorage.getItem('DAY_NUM')) && !plateau_has_treated) {
             $('.title_game:eq(' + i + ')').remove();
             $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
+          } else {
+            if (!plateau_has_treated) {
+              $('.game_box:eq(' + (i+1) + ')').attr('href', '#')
+            }
           }
         })
         plateau_has_treated = true;
