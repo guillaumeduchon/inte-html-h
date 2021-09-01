@@ -97,11 +97,11 @@ setTimeout(() => {
           date_format = date_format[2] + '/' + (date_format[0].length == 1 ? '0' + date_format[0] : date_format[0]) + '/' + (date_format[1].length == 1 ? '0' + date_format[1] : date_format[1])
           console.warn('DATE_FORM', date_format)
           let date_tab = [
+            "2021/08/31",
+            "2021/08/30",
             "2021/09/01",
             "2021/09/02",
             "2021/09/03",
-            "2021/09/04",
-            "2021/09/05",
           ];
           let DAY_NUM = date_tab.indexOf(date_format)
           DAY_NUM = DAY_NUM + 1
@@ -138,11 +138,11 @@ const updatePlateau = () => {
     }
   })
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/09/01' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/09/02' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/09/03' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/09/04' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/09/05' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/08/30' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/08/31' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/09/01' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/09/02' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/09/03' },
   ];
 
   let today = new Date();
@@ -159,23 +159,29 @@ const updatePlateau = () => {
     if ((i + 1) > Number(localStorage.getItem('DAY_NUM'))) {
       $('.game_box:eq(' + i + ')').attr('href', '#')
     } else {
-      if (i > 0) {
-        let aGame_played = [];
-        if(localStorage.getItem("game_played")) {
+      if (i > -1) {
+        if (localStorage.getItem("game_played")) {
           let sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
-          if (/,/.test(sGame_played)) {
-            sGame_played = sGame_played.split(',');
-      
-            sGame_played.forEach((n) => (aGame_played.push(Number(n))));
-          } else {
-            aGame_played.push(Number(sGame_played))
+          let aGame_played = getFormatedAnswersId(sGame_played)
+
+          if ( !RegExp(((i+1)).toString()).test(localStorage.getItem('game_played'))) {
+            if((i+1) > Math.max.apply(Math, aGame_played) && (i+1) > Number(localStorage.getItem('DAY_NUM'))){
+              $('.game_box:eq(' + i + ')').attr('href', '#')
+            } else {
+              if (! RegExp((i + 2)).test(localStorage.getItem('game_played'))) {
+                $('.game_box:eq(' + (i+1) + ')').attr('href', '#')
+              }
+            }
           }
-          if ( !RegExp((i).toString()).test(localStorage.getItem('game_played')) && i > Math.max.apply(Math, aGame_played)) {
-            console.log('Math: ',Math.max.apply(Math, aGame_played))
+
+          if (RegExp(((i + 1)).toString()).test(localStorage.getItem('game_played'))) {
+            $('.game_box:eq(' + i + ')').attr('href', '/game_end.html')
+          }
+
+        } else {
+          if ((i + 1) > Number(localStorage.getItem('DAY_NUM'))) {
             $('.game_box:eq(' + i + ')').attr('href', '#')
           }
-        } else {
-          $('.game_box:eq(' + i + ')').attr('href', '#')
         }
       }
     }
@@ -185,7 +191,16 @@ const updatePlateau = () => {
 }
 
 //---------------------------------------------Utils
-
+function getFormatedAnswersId(sGame_played) {
+  let result = [];
+  if (/,/.test(sGame_played)) {
+    sGame_played = sGame_played.split(',');
+    sGame_played.forEach((n) => (result.push(Number(n))));
+  } else {
+    result.push(Number(sGame_played))
+  }
+  return result
+}
 function hideError() {
   $('.wrongId').attr('style', 'display:none');
 }
@@ -227,6 +242,7 @@ function sessionTimeOut() {
       localStorage.removeItem('magasin'),
       localStorage.removeItem('has_played'),
       localStorage.removeItem('has_win'),
+      localStorage.removeItem('game_played'),
       alert("Vous avez été déconnecté"),
       goLogin()) : null;
 }
@@ -238,44 +254,12 @@ function compte_a_rebours() {
   date_evenement.setDate(date_evenement.getDate() + 1)
   date_evenement.setHours(9, 00, 00);
   var total_secondes = (date_evenement - date_actuelle) / 1000;
-  var jours = new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
+
   var heures = Math.floor((total_secondes - (0 * 60 * 60 * 24)) / (60 * 60));
   var minutes = Math.floor((total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60))) / 60);
   var secondes = Math.floor(total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
-  $('.countdown > .hour').find("strong:eq(0)").html(`${ Math.abs(heures) > 24 ?( Math.abs(heures)-24) : Math.abs(heures)} HEURES`)
-  //$('.countdown').find('strong').html(`${Math.abs(heures)} H ${minutes} MIN ${secondes} S`);
-  $('.unavailable:eq(0)').find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
-
-  $('.expired').find('.statut').html('Challenge terminé');
-
-  $('.available').find('.statut').addClass('countdown');
-  $('.carousel_cell:not(.expired, .unavailable)').find('.countdown').html(`Il vous reste encore<br><strong>${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong><br>pour trouver l\'indice du jour`);
-  let tomorowSamedi = 0;
-  $('.unavailable').each((index, el) => {
-    if (index === 0) {
-      $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible dans<br><strong> ${Math.abs(heures) >= 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} H ${minutes} MIN ${secondes} S</strong>`);
-    } else {
-      var joursSuivant;
-      //Si le prochain jours est Dimanche
-      if (jours[date_evenement.getDay() + index] === undefined) {
-        //Je creer un tableau contenant uniquement les jours de lundi à  samedi
-        let jours_ouvre = jours.slice(1);
-
-        if (index === 1 && date_evenement.getDay() === 6) {
-          joursSuivant = jours_ouvre[0];
-          tomorowSamedi = 1;
-        } else {
-          if (index > 7) { index = 2 + index - 8 }
-          joursSuivant = jours_ouvre[(index - 2 + tomorowSamedi)];
-        }
-      } else {
-        joursSuivant = jours[date_evenement.getDay() + index]
-      }
-
-      $(el).find('.statut').html(`<img class="icon" src="img/icon_cadenas.png" alt="">Disponible<br><strong>${joursSuivant}</strong>`);
-    }
-  })
-
+  $('.countdown > .hour').find("strong:eq(0)").html(`${Math.abs(heures) > 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} HEURES`)
+  
   before10h24(Math.abs(heures), minutes, secondes);
   ShowGamePlayed();
   var actualisation = setTimeout("compte_a_rebours();", 1000);
@@ -307,32 +291,10 @@ function before10h24(heures, minutes, secondes) {
   if (heures >= 24) {
     localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24')) + 1));
     if (localStorage.getItem('nbInBefore10h24') === '1') {
-      var $carouChange = $('.carousel_plateau').flickity();
-      $carouChange.addClass('available');
-
-      $('.carousel_cell:eq(' + localStorage.getItem('DAY_NUM') + ')').removeClass('available');
-      $('.carousel_cell:eq(' + localStorage.getItem('DAY_NUM') + ')').addClass('unavailable');
-      $('.bg_cell:eq(' + localStorage.getItem('DAY_NUM') + ')').attr("src", 'img/fond_plateau_unavailable.png');
-      $('.carousel_cell:eq(' + localStorage.getItem('DAY_NUM') + ')').attr('aria-hidden', 'true');
-      $('.icon:eq(' + localStorage.getItem('DAY_NUM') + ')').removeClass('hide');
-      $('.carousel_cell-content:eq(' + localStorage.getItem('DAY_NUM') + ')').find('a').hide();
-      $('.statut:eq(' + localStorage.getItem('DAY_NUM') + ')').removeClass('countdown');
-
-      $('.carousel_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').removeClass('expired');
-      $('.carousel_cell-content-linkgame:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').addClass('');
-      $('.icon:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').addClass('hide');
-      $('.carousel_cell-content:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').find('a').removeClass('hide');
-      $('.bg_cell:eq(' + (Number(localStorage.getItem('DAY_NUM')) - 1) + ')').attr("src", 'img/fond_plateau_available.png');
-
-
       localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) - 1)
-      $carouChange.flickity('select', localStorage.getItem('DAY_NUM'));
+      
     }
   } else {
-    // if (localStorage.getItem('nbInBefore10h24') && localStorage.getItem('nbInBefore10h24') !== '0') {
-    //   localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) + 1)
-    // }
-
     cleanNbInBefore10h24();
   }
 }
@@ -342,16 +304,22 @@ const ShowGamePlayed = () => {
   if (!localStorage.getItem("game_played")) {
     fetch_question_responses().then((datas) => {
       if (datas.length > 0) {
-        console.log('e: ', 'data')
         if (datas[0] !== undefined) {
           localStorage.setItem('game_played', JSON.stringify(datas))
           $('.game').each((i, e) => {
             if (!plateau_has_treated) {
-              if (matchDay((i + 1))) {
+              if (dayHasResult((i + 1))) {
                 addGameDoneClass((i + 1))
+                $('.game_box:eq(' + i + ')').attr('href', '/game_end.html')
+                if (! RegExp((i + 2)).test(localStorage.getItem('game_played'))) {
+                  $('.game_box:eq(' + (i+2) + ')').attr('href', '#')
+                }
               } else if ((i + 1) > Number(localStorage.getItem("DAY_NUM"))) {
+                console.log('TATA: ')
                 $('.title_game:eq(' + i + ')').remove();
                 $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
+              } else {
+                console.log('(i + 1): ', (i + 1))
               }
             }
           })
@@ -359,7 +327,7 @@ const ShowGamePlayed = () => {
         }
       }
       if (datas.length === 0) {
-        console.log('DATZZZZZA: ', 'data')
+        console.log('TUTU: ')
         $('.game').each((i, e) => {
           if ((i + 1) > Number(localStorage.getItem('DAY_NUM')) && !plateau_has_treated) {
             $('.title_game:eq(' + i + ')').remove();
@@ -371,34 +339,29 @@ const ShowGamePlayed = () => {
     });
   }
   else {
-    let aGame_played = [];
+    console.log('TITI: ')
     let sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
-    if (/,/.test(sGame_played)) {
-      sGame_played = sGame_played.split(',');
-
-      sGame_played.forEach((n) => (aGame_played.push(Number(n))));
-    } else {
-      aGame_played.push(Number(sGame_played))
-    }
-
+    let aGame_played = getFormatedAnswersId(sGame_played)
+    
     if (Math.max.apply(Math, aGame_played).toString().match(regex2) < Number(localStorage.getItem("DAY_NUM"))) {
       fetch_question_responses().then((datas) => {
         if (datas.length > 0) {
           if (datas[0] !== undefined) {
             localStorage.setItem('game_played', JSON.stringify(datas))
             $('.game').each((i, e) => {
-              if (matchDay((i + 1))) {
+              if (dayHasResult((i + 1))) {
+                console.log('FANEN: ')
                 addGameDoneClass((i + 1));
               } else if ((i + 1) > Number(localStorage.getItem("DAY_NUM"))) {
                 $('.title_game:eq(' + i + ')').remove();
                 $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
               }
+              console.log('DDDDDDD: ')
             })
           }
         }
       });
-    }
-    else {
+    } else {
       $('.game').each((i, e) => {
         if (((i + 1) > Math.max.apply(Math, aGame_played)) || (i + 1) > Number(localStorage.getItem('DAY_NUM'))) {
           if (!plateau_has_treated) {
@@ -406,23 +369,12 @@ const ShowGamePlayed = () => {
             addGameDoneClass(i)
             $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
           }
+        }else {
+            addGameDoneClass((i+1))
         }
       })
       plateau_has_treated = true;
     }
-    $(document).find('.carousel_cell').each((index, elem) => {
-      if (index < Number(localStorage.getItem('DAY_NUM'))) {
-        JSON.parse(localStorage.getItem('game_played')).forEach((game, i) => {
-          if ((index + 1) === game.id) {
-            if (game.question_id > 0) {
-              $('.carousel_cell:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge gagné');
-            } else {
-              $('.carousel_cell:eq(' + (game.id - 1) + ')').find('.statut').html('Challenge perdu');
-            }
-          }
-        })
-      }
-    });
   }
 }
 
@@ -434,12 +386,12 @@ function toggleGameEndClass() {
 }
 
 function addGameDoneClass(i) {
-  if (matchDay(i)) {
+  if (dayHasResult(i)) {
     $('.game_box:eq(' + (i - 1) + ')').addClass('done');
   }
 }
 
-function matchDay(i) {
+function dayHasResult(i) {
   let re = new RegExp((i));
   return re.test(localStorage.getItem('game_played'))
 }

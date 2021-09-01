@@ -375,7 +375,6 @@ $(document).ready(function () {
 
   function notTheDayGame(n) {
     if (Number(localStorage.getItem('DAY_NUM')) < Number(n)) {
-      console.log("OOOOOO")
       window.location.href = "game_indice_video.html?day=" + Number(localStorage.getItem('DAY_NUM'));
     } else {
       return getGoodGame()
@@ -398,7 +397,6 @@ $(document).ready(function () {
       return Number(Math.max.apply(Math, aGame_played).toString().match(regex2)) + 1;
     }
     if (!localStorage.getItem("game_played")) {
-      console.log('DATA: ','RRRRRR')
       return 1;
     }
   }
