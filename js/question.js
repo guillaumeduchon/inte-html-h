@@ -31,8 +31,8 @@ const fetch_content = async (game_num) => {
     .then((resp) => {
       //if there are at least one good answer return by api
       if (resp.data[0].content !== undefined) {
-        $('.citation:eq(0)').html(`<p>${resp.data[0].content}</p>`)
-        $('.citation:eq(1)').html(`<p>${resp.data[1].content}</p>`)
+        resp.data[0] && $('.citation:eq(0)').html(`<p>${resp.data[0].content}</p>`)
+        resp.data[1] && $('.citation:eq(1)').html(`<p>${resp.data[1].content}</p>`)
       }
     });
 }

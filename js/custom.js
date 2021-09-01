@@ -11,6 +11,7 @@ function check_date_is_paris() {
 
     if (localStorage.getItem('DATE_SERVER') !== null) {
       console.warn('server_date: ', server_date, "client_date", client_date)
+      console.warn('server_date.Zzz: ', new Date(DATE_SERVER).getMinutes(), "client_TTTTdate", new Date().getMinutes())
       if (server_date !== client_date) {
         console.warn('server_date: ', server_date, "client_date", client_date)
         window.location.href = "not_good_date.html";
@@ -175,6 +176,14 @@ const updatePlateau = () => {
           }
 
           if (RegExp(((i + 1)).toString()).test(localStorage.getItem('game_played'))) {
+            if (i === 2) {
+              $('.game_box:eq(' + i + ')').attr('href', '/game_end_day3.html')
+              return;
+            }
+            if (i === 4) {
+              $('.game_box:eq(' + i + ')').attr('href', '/game_end_day5.html')
+              return;
+            }
             $('.game_box:eq(' + i + ')').attr('href', '/game_end.html')
           }
 

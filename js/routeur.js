@@ -214,9 +214,9 @@ $(document).ready(function () {
   if (location.pathname === "/game_day4.html") {
 
     if (isLogged()) {
-      // if (gameValidate()) {
-      //   window.location.href = "game_end.html"
-      // }
+       if (gameValidate()) {
+          window.location.href = "game_end.html"
+        }
       //isEnableMagasin();
       startGame(4);
     } else {
