@@ -785,7 +785,7 @@ main {
         &.q5 {
             background: url('../img/fond_q5.jpg') no-repeat center;
             background-size: cover;
-            .title_game {padding-bottom: 20px;}
+            .title_game {padding-bottom: 15px;}
             .game_quizz_challenge {
                 .title, .rules {padding-bottom: 10px!important;}
             }
@@ -861,7 +861,7 @@ main {
                     &.solo {
                         margin-left: 0;
                         & > * {
-                            margin-left: 0; width: 85%;
+                            margin-left: 0; width: 95%;
                             @media screen and (orientation:landscape) and (max-width: 670px) {width: 97%;}
                         }
                     }
