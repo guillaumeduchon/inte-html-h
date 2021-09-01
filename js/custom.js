@@ -303,6 +303,7 @@ var regex2 = new RegExp(/1|2|3|4|5/);
 const ShowGamePlayed = () => {
   if (!localStorage.getItem("game_played")) {
     fetch_question_responses().then((datas) => {
+      console.log("datas.length", datas.length)
       if (datas.length > 0) {
         if (datas[0] !== undefined) {
           localStorage.setItem('game_played', JSON.stringify(datas))
