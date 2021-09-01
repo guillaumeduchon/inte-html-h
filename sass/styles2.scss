@@ -348,7 +348,14 @@ main {
                             @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 15px;}
                         }
                     }
-                    p {text-transform: initial; &.win{font-size: 14px;}}
+                    p {
+                        text-transform: initial;
+                        &.win{font-size: 14px;}
+                        &.q5 {
+                            font-size: 15px;
+                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px; line-height: 15px;}
+                        }
+                    }
                     .winner {
                         width: 80%;
                         border: 1px solid $blue;
