@@ -163,6 +163,10 @@ main {
             border: 1px solid $blue;
             @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
             @media screen and (min-width: 1024px) {font-size: 17px; padding: 10px 30px;}
+            .arrow {
+                height: 14px; vertical-align: top; margin-top: 1px;
+                @media screen and (orientation:landscape) and (max-width: 670px) {height: 10px; margin-top: 3px;}
+            }
         }
         &.inactif {
             a, span {cursor: not-allowed;}
@@ -392,6 +396,7 @@ main {
                                 display: flex;
                                 align-items: center;
                                 z-index: 2;
+                                position: relative;
                                 .name {
                                     overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 10px;
                                     @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px}
