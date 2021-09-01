@@ -10,11 +10,12 @@ function check_date_is_paris() {
     client_date = client_date.getDay() + '/' + client_date.getUTCMonth() + '/' + client_date.getHours();
 
     if (localStorage.getItem('DATE_SERVER') !== null) {
-      console.warn('server_date: ', server_date, "client_date", client_date)
       console.warn('server_date.Zzz: ', new Date(DATE_SERVER).getMinutes(), "client_TTTTdate", new Date().getMinutes())
       if (server_date !== client_date) {
-        console.warn('server_date: ', server_date, "client_date", client_date)
-        window.location.href = "not_good_date.html";
+        let calculDiffMinut = (((new Date(DATE_SERVER).getMinutes()) * 60) + ((Date().getMinutes()) *60)) / 60;
+        if (calculDiffMinut !== 7) {
+          window.location.href = "not_good_date.html";
+        }
       }
       date_first_game = new Date('2021/08/18');
       console.warn('server_date_copy: ', server_date_copy, 'date_first_game', date_first_game);
