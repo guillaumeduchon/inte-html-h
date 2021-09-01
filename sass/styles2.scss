@@ -802,8 +802,8 @@ main {
                 // overflow: hidden;
                 text-align: center;
                 .title_game {
-                    font-size: 20px;
-                    line-height: 24px;
+                    font-size: 19px;
+                    line-height: 23px;
                     text-transform: uppercase;
                     @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 17px; line-height: 21px;}
                     @media screen and (min-width: 1024px) {font-size: 24px; line-height: 28px;}
@@ -814,6 +814,7 @@ main {
                 .rules_game {
                     line-height: initial;
                     padding-bottom: 20px;
+                    font-size: 15px;
                     @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                     @media screen and (min-width: 1024px) {font-size: 18px; padding-bottom: 25px;}
                 }
