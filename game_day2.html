@@ -72,5 +72,14 @@
     <script src="js/question.js"></script>
     <script src="js/reponse.js"></script>
     <script src="js/files.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('#answer').on('keyup', function () {
+                if (!/[0-9]{1,9}/.test($(this).val()) ) {
+                    $(this).val('')
+                }
+            });
+        });
+    </script>
 </body>
 </html>
