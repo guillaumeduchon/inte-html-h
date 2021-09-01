@@ -161,11 +161,11 @@ main {
             display: inline-block;
             font-size: 14px;
             border: 1px solid $blue;
-            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
+            @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 12px;}
             @media screen and (min-width: 1024px) {font-size: 17px; padding: 10px 30px;}
             .arrow {
                 height: 14px; vertical-align: top; margin-top: 1px;
-                @media screen and (orientation:landscape) and (max-width: 670px) {height: 10px; margin-top: 3px;}
+                @media screen and (orientation:landscape) and (max-width: 640px) {height: 10px; margin-top: 3px;}
             }
         }
         &.inactif {
@@ -198,12 +198,12 @@ main {
         &.cs--form, &.g3end {
             background: url('../img/fond_login.jpg') center no-repeat;
             background-size: cover;
-            @media screen and (orientation:landscape) and (max-width: 670px) {background-position: 43%;}
+            @media screen and (orientation:landscape) and (max-width: 640px) {background-position: 43%;}
             justify-content: flex-end;
             padding: 0 20px;
             .logo img {
                 width: 55%; display: inline-block; margin-bottom: 15px;
-                @media screen and (orientation:landscape) and (max-width: 670px) {width: 45%;}
+                @media screen and (orientation:landscape) and (max-width: 640px) {width: 45%;}
             }
         }
         &.endgame {
@@ -222,7 +222,7 @@ main {
             padding: 0 20px;
             .connect_block.page .connect_form.page {
                 padding: 15px 20px;
-                @media screen and (orientation:landscape) and (max-width: 670px) {
+                @media screen and (orientation:landscape) and (max-width: 640px) {
                     p.win {margin-bottom: 5px; font-size: 12px; line-height: 14px;}
                 .title.win {font-size: 14px;}
                 }
@@ -256,16 +256,16 @@ main {
             img {
                 max-width: 45%; display: inline-block; margin-bottom: 15px;
                 @media screen and (orientation:landscape) and (max-width:768px) {max-width: 40%;}
-                @media screen and (orientation:landscape) and (max-width: 670px) {margin-bottom: 10px;}
+                @media screen and (orientation:landscape) and (max-width: 640px) {margin-bottom: 10px;}
                 @media screen and (min-width: 1024px) {margin-bottom: 25px;}
             }
         }
         .connect_block {
             width: 45%;
-            @media screen and (orientation:landscape) and (max-width: 670px) {width: 60%}
+            @media screen and (orientation:landscape) and (max-width: 640px) {width: 60%}
             &.page {
                 width: 55%;
-                @media screen and (orientation:landscape) and (max-width: 670px) {width: 60%}
+                @media screen and (orientation:landscape) and (max-width: 640px) {width: 60%}
             }
             .cb_rules {
                 background: rgba($white, 0.7);
@@ -275,7 +275,7 @@ main {
                     border-radius: 30px;
                     padding: 0 30px 20px;
                 }
-                @media screen and (orientation:landscape) and (max-width: 670px) {padding: 0 15px 10px;}
+                @media screen and (orientation:landscape) and (max-width: 640px) {padding: 0 15px 10px;}
                 text-transform: none;
                 p {
                     padding-top: 0;
@@ -283,7 +283,7 @@ main {
                     &:first-of-type {padding: 13px 0 10px;}
                     margin: 0;
                     font-size: 14px;
-                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+                    @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 13px;}
                     @media screen and (min-width: 1024px) {
                         &:first-of-type {padding: 20px 0 15px;}
                         font-size: 20px; padding-bottom: 15px;
@@ -291,14 +291,14 @@ main {
                     line-height: initial;
                     &.accroche {
                         font-size: 17px; font-weight: bold; text-transform: uppercase;
-                        @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+                        @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 14px;}
                         @media screen and (min-width: 1024px) {font-size: 22px;}
                     }
                 }
                 .cta_diamond {
-                    @media screen and (orientation:landscape) and (max-width: 670px) {margin-bottom: 5px;}
+                    @media screen and (orientation:landscape) and (max-width: 640px) {margin-bottom: 5px;}
                     a {
-                        @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px 30px; font-size: 13px;}
+                        @media screen and (orientation:landscape) and (max-width: 640px) {padding: 5px 30px; font-size: 13px;}
                         @media screen and (min-width: 1024px) {font-size: 17px;}
                     }
                 }
@@ -307,7 +307,7 @@ main {
                     font-size: 14px;
                     line-height: initial;
                     text-transform: initial;
-                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+                    @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 13px;}
                     @media screen and (min-width: 1024px) {font-size: 17px;}
                 }
                 .link {line-height: initial;}
@@ -319,7 +319,7 @@ main {
                     line-height: initial;
                     text-transform: initial;
                     text-decoration: underline;
-                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+                    @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 13px;}
                     @media screen and (min-width: 1024px) {font-size: 18px;}
                 }
             }
@@ -346,10 +346,10 @@ main {
                         .hour {font-size: 23px;}
                     }
                     .title {padding-bottom: 10px;
-                        @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px}
+                        @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 14px}
                         &.win{
                             font-size: 18px;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 15px;}
+                            @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 15px;}
                         }
                     }
                     p {
@@ -357,7 +357,7 @@ main {
                         &.win{font-size: 14px;}
                         &.q5 {
                             font-size: 15px;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px; line-height: 15px;}
+                            @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 12px; line-height: 15px;}
                         }
                     }
                     .winner {
@@ -368,7 +368,7 @@ main {
                         border-radius: 10px;
                         margin: 0 auto;
                         margin-bottom: 5px;
-                        @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+                        @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 13px;}
                     }
                     .sondages {
                         display: flex;
@@ -399,21 +399,21 @@ main {
                                 position: relative;
                                 .name {
                                     overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 10px;
-                                    @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px}
+                                    @media screen and (orientation:landscape) and (max-width: 640px) {padding: 5px}
                                 }
                                 .pc {
                                     font-weight: bold;
                                     border-radius: 0 15px 15px 15px;
                                     padding: 10px;
                                     width: 50px;
-                                    @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px}
+                                    @media screen and (orientation:landscape) and (max-width: 640px) {padding: 5px}
                                 }
                             }
                         }
                     }
                 }
                 form {margin-bottom: 20px;
-                    @media screen and (orientation:landscape) and (max-width: 670px) {margin-bottom: 15px;}
+                    @media screen and (orientation:landscape) and (max-width: 640px) {margin-bottom: 15px;}
                 }
                 .connect_form-select {
                     position: relative;
@@ -504,13 +504,13 @@ main {
             line-height: 21px;
             padding-bottom: 20px;
             display: block;
-            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 16px; line-height: 20px; padding-bottom: 13px;}
+            @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 16px; line-height: 20px; padding-bottom: 13px;}
             @media screen and (min-width: 1024px) {font-size: 21px; line-height: 25px; padding-bottom: 25px;}
             img {
                 display: inline;
                 max-height: 22px;
                 vertical-align: middle;
-                @media screen and (orientation:landscape) and (max-width: 670px) {max-height: 19px;}
+                @media screen and (orientation:landscape) and (max-width: 640px) {max-height: 19px;}
             }
         }
         .plateau__games {
@@ -519,11 +519,11 @@ main {
             flex-direction: row;
             flex-wrap: nowrap;
             margin-left: -20px;
-            @media screen and (orientation:landscape) and (max-width: 670px) {width: 99%; margin-left: -10px;}
+            @media screen and (orientation:landscape) and (max-width: 640px) {width: 99%; margin-left: -10px;}
             align-items: stretch;
             & > * {
                 margin-left: 20px; width: calc(20% - 20px);
-                @media screen and (orientation:landscape) and (max-width: 670px) {margin-left: 10px; width: calc(20% - 10px);}
+                @media screen and (orientation:landscape) and (max-width: 640px) {margin-left: 10px; width: calc(20% - 10px);}
             }
             a {
                 &:hover {color: $blue; text-decoration: none;}
@@ -551,12 +551,12 @@ main {
                                 display: block; font-size: 22px; font-weight: bold;
                                 @media screen and (min-width: 1024px) {font-size: 26px;}
                             }
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+                            @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 14px;}
                             @media screen and (min-width: 1024px) {font-size: 18px; height: 100px;}
                         }
                         .date_game {
                             font-size: 14px;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
+                            @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 12px;}
                             @media screen and (min-width: 1024px) {font-size: 17px;}
                         }
                     }
@@ -571,17 +571,17 @@ main {
             padding: 15px 30px 13px;
             text-transform: initial;
             text-align: center;
-            @media screen and (orientation:landscape) and (max-width: 670px) {width: 87%; margin-top: 15px; padding: 10px 20px;}
+            @media screen and (orientation:landscape) and (max-width: 640px) {width: 87%; margin-top: 15px; padding: 10px 20px;}
             @media screen and (min-width: 1024px) {margin-top: 30px; border-radius: 30px; padding: 20px 30px;}
             p {
                 font-size: 16px;
                 line-height: 20px;
                 margin-bottom: 12px;
-                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px; line-height: 17px; margin-bottom: 8px;}
+                @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 13px; line-height: 17px; margin-bottom: 8px;}
                 @media screen and (min-width: 1024px) {font-size: 19px; line-height: 23px; margin-bottom: 16px;}
                 a {
                     font-size: 14px; line-height: 18px; text-decoration: underline;
-                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px; line-height: 16px;}
+                    @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 12px; line-height: 16px;}
                     @media screen and (min-width: 1024px) {font-size: 18px;}
                 }
             }
@@ -589,16 +589,16 @@ main {
                 text-transform: uppercase;
                 a {
                     padding: 5px 30px;
-                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+                    @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 13px;}
                 }
-                @media screen and (orientation:landscape) and (max-width: 670px) {margin-bottom: 4px;}
+                @media screen and (orientation:landscape) and (max-width: 640px) {margin-bottom: 4px;}
             }
             .link a {
                 color: $blue;
                 font-size: 15px;
                 line-height: initial;
                 text-transform: initial;
-                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
+                @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 12px;}
             }
             .link {line-height: initial;}
         }
@@ -772,7 +772,7 @@ main {
         &.q2 {
             background: url('../img/fond_q2.jpg') no-repeat center;
             background-size: cover;
-            @media screen and (orientation:landscape) and (max-width: 670px) {
+            @media screen and (orientation:landscape) and (max-width: 640px) {
                 .title_game {font-size: 15px!important; line-height: 19px!important;}
             }
             .rules_game {padding-bottom: 10px!important;}
@@ -809,7 +809,7 @@ main {
                 height: 100%;
                 padding: 20px 20px 0;
                 @media screen and (orientation:landscape) and (min-width:1024px) {padding: 40px;}
-                @media screen and (orientation:landscape) and (max-width: 670px) {padding: 20px 10px 0;}
+                @media screen and (orientation:landscape) and (max-width: 640px) {padding: 20px 10px 0;}
                 position: relative;
                 // overflow: hidden;
                 text-align: center;
@@ -817,7 +817,7 @@ main {
                     font-size: 19px;
                     line-height: 23px;
                     text-transform: uppercase;
-                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 17px; line-height: 21px;}
+                    @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 17px; line-height: 21px;}
                     @media screen and (min-width: 1024px) {font-size: 24px; line-height: 28px;}
                 }
                 .title_game + .rules_game {
@@ -827,7 +827,7 @@ main {
                     line-height: initial;
                     padding-bottom: 20px;
                     font-size: 15px;
-                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+                    @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 14px;}
                     @media screen and (min-width: 1024px) {font-size: 18px; padding-bottom: 25px;}
                 }
                 .game_quizz {
@@ -844,7 +844,7 @@ main {
                             }
                         }
                     }
-                    @media screen and (orientation:landscape) and (max-width: 670px) {
+                    @media screen and (orientation:landscape) and (max-width: 640px) {
                         margin-left: -15px;
                         &.q2 {
                             .game_quizz_divers {display: none;}
@@ -865,7 +865,7 @@ main {
                     }
                     & > * {
                         margin-left: 30px; width: calc(50% - 30px);
-                        @media screen and (orientation:landscape) and (max-width: 670px) {margin-left: 15px; width: calc(50% - 15px);}
+                        @media screen and (orientation:landscape) and (max-width: 640px) {margin-left: 15px; width: calc(50% - 15px);}
                     }
                     &.flex_end {
                         align-items: flex-end;
@@ -874,26 +874,26 @@ main {
                         margin-left: 0;
                         & > * {
                             margin-left: 0; width: 95%;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {width: 97%;}
+                            @media screen and (orientation:landscape) and (max-width: 640px) {width: 97%;}
                         }
                     }
                     .game_quizz_challenge {
                         background:rgba($white, 0.7);
                         border-radius: 30px 30px 0 0;
                         padding: 20px;
-                        @media screen and (orientation:landscape) and (max-width: 670px) {padding: 10px 15px; border-radius: 15px 15px 0 0;}
+                        @media screen and (orientation:landscape) and (max-width: 640px) {padding: 10px 15px; border-radius: 15px 15px 0 0;}
                         @media screen and (min-width: 1024px) {border-radius: 30px;}
                         .title {
                             text-transform: uppercase;
                             line-height: initial;
                             padding-bottom: 15px;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px; padding-bottom: 10px;}
+                            @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 14px; padding-bottom: 10px;}
                             @media screen and (min-width: 1024px) {font-size: 17px;}
                         }
                         .rules {
                             font-size: 14px;
                             line-height: initial;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+                            @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 13px;}
                             @media screen and (min-width: 1024px) {font-size: 15px;}
                         }
                         form {
@@ -924,7 +924,7 @@ main {
                                 -webkit-appearance: none;
                                 -moz-appearance: none;
                                 appearance: none;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {border-radius: 10px; height: 90px; font-size: 14px; margin-bottom: 10px;}
+                                @media screen and (orientation:landscape) and (max-width: 640px) {border-radius: 10px; height: 90px; font-size: 14px; margin-bottom: 10px;}
                             }
                             input[type=text], input[type=number] {
                                 background: none;
@@ -939,7 +939,7 @@ main {
                                 &::placeholder {
                                     color: $blue;
                                 }
-                                @media screen and (orientation:landscape) and (max-width: 670px) {border-radius: 10px; font-size: 14px; margin-bottom: 10px;}
+                                @media screen and (orientation:landscape) and (max-width: 640px) {border-radius: 10px; font-size: 14px; margin-bottom: 10px;}
                             }
                             label {
                                 text-align: left;
@@ -948,7 +948,7 @@ main {
                                 margin-bottom: 5px;
                                 margin-top: 5px;
                                 color: $blue;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+                                @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 14px;}
                             }
                             .files {
                                 position: relative;
@@ -971,7 +971,7 @@ main {
                                     cursor: pointer;
                                     color: $blue;
                                     position: relative;
-                                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+                                    @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 14px;}
                                     img {
                                         position: absolute;
                                         z-index: 2;
@@ -1003,7 +1003,7 @@ main {
                                 background: none;
                                 width: 100%;
                                 text-align: left;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+                                @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 14px;}
                             }
                             .buttons {
                                 display: flex;
@@ -1020,13 +1020,13 @@ main {
                                     display: inline-block;
                                     line-height: initial;
                                     border: 1px solid rgba($blue, 0.6);
-                                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+                                    @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 13px;}
                                 }
                                 .cta_diamond {
                                     margin-bottom: 0;
                                     a, span {
                                         width: 100%; padding: 7px 10px;
-                                        @media screen and (orientation:landscape) and (max-width: 670px) {padding: 5px 1px; font-size: 13px;}
+                                        @media screen and (orientation:landscape) and (max-width: 640px) {padding: 5px 1px; font-size: 13px;}
                                     }
                                     &.invers {
                                         a {background: transparent; color: $blue; border: 1px solid rgba($blue, 0.6);}
@@ -1041,7 +1041,7 @@ main {
                                 cursor: pointer;
                                 padding-bottom: 10px;
                                 font-size: 15px;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
+                                @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 12px;}
                                 @media screen and (min-width: 1024px) {font-size: 17px; padding-bottom: 20px;}
                                 &.answer_button {
                                     input[type="checkbox"], input[type="radio"] {
@@ -1063,7 +1063,7 @@ main {
                             }
                             .cta_diamond {
                                 a, span {
-                                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
+                                    @media screen and (orientation:landscape) and (max-width: 640px) {font-size: 12px;}
                                 }
                             }
                         }
@@ -1072,10 +1072,10 @@ main {
                         .q1 {
                             text-align: left;
                             margin-right: 20px;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {margin-right: 10px;}
+                            @media screen and (orientation:landscape) and (max-width: 640px) {margin-right: 10px;}
                             .title {
                                 text-transform: uppercase; padding-bottom: 20px;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {padding-bottom: 10px; font-size: 14px;}
+                                @media screen and (orientation:landscape) and (max-width: 640px) {padding-bottom: 10px; font-size: 14px;}
                                 @media screen and (min-width: 1024px) {font-size: 17px;}
                             }
                             .citation {
@@ -1084,7 +1084,7 @@ main {
                                 &:last-child {padding-bottom: 0; &::after {bottom: -15px;}}
                                 font-size: 14px;
                                 position: relative;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {
+                                @media screen and (orientation:landscape) and (max-width: 640px) {
                                     padding-bottom: 10px; font-size: 12px;
                                     p {margin-bottom: 5px;}
                                 }
@@ -1099,7 +1099,7 @@ main {
                                     position: absolute;
                                     bottom: 20px;
                                     right: 0;
-                                    @media screen and (orientation:landscape) and (max-width: 670px) {
+                                    @media screen and (orientation:landscape) and (max-width: 640px) {
                                         background-size: 19px;
                                         width: 19px;
                                         height: 12px;
