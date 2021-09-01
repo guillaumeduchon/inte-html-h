@@ -452,6 +452,9 @@ main {
                     border-radius: 25px; 
                     color: $blue;
                     background: transparent;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
                     // @media screen and (orientation:landscape) and (max-width: 920px) {
                     //     font-size: 14px;
                     // }
@@ -887,10 +890,14 @@ main {
                                     padding: 3px 10px;
                                     margin-top: 10px;
                                     color: $blue;
+                                    -webkit-appearance: none;
+                                    -moz-appearance: none;
+                                    appearance: none;
                                     &::placeholder {
                                         color: $blue;
                                     }
                                 }
+                                input[type=number] {margin-bottom: 5px;}
                             }
                             textarea {
                                 background: none;
@@ -901,6 +908,9 @@ main {
                                 height: 100px;
                                 width: 100%;
                                 margin-bottom: 15px;
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                appearance: none;
                                 @media screen and (orientation:landscape) and (max-width: 670px) {border-radius: 10px; height: 90px; font-size: 14px; margin-bottom: 10px;}
                             }
                             input[type=text], input[type=number] {
@@ -910,6 +920,9 @@ main {
                                 padding: 6px 10px;
                                 width: 100%;
                                 margin-bottom: 15px;
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                appearance: none;
                                 &::placeholder {
                                     color: $blue;
                                 }
