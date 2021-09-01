@@ -168,7 +168,7 @@ const updatePlateau = () => {
             if((i+1) > Math.max.apply(Math, aGame_played) && (i+1) > Number(localStorage.getItem('DAY_NUM'))){
               $('.game_box:eq(' + i + ')').attr('href', '#')
             } else {
-              if (! RegExp((i + 2)).test(localStorage.getItem('game_played'))) {
+              if (! RegExp((i + 1)).test(localStorage.getItem('game_played'))) {
                 $('.game_box:eq(' + (i+1) + ')').attr('href', '#')
               }
             }
