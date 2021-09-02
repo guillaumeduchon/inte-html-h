@@ -70,8 +70,11 @@ if (/game_day2|game_day4/.test(location.pathname)) {
   });
 }
 
+
+
 function fetchSaveFiles(game_num) {
   fileList.forEach(function (file) {
+    console.log('file.type', file.type) 
     saveFiles(file, game_num);
   });
 }

@@ -156,7 +156,7 @@ $(document).ready(function () {
     if (isLogged()) {
       isEnableMagasin();
       sessionTimeOut();
-      fetch_content();
+
       set_indice(Number(localStorage.getItem('DAY_NUM')))
     } else {
       goLogin();
@@ -171,7 +171,6 @@ $(document).ready(function () {
         window.location.href = "game_end.html"
       }
       //isEnableMagasin();
-      fetch_content(1);
       startGame(1);
     } else {
       goLogin();

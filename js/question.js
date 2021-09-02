@@ -24,18 +24,6 @@ const fetch_rules = async () => {
     })
 }
 
-const fetch_content = async (game_num) => {
-  await axios.post('/server/question.php', { 'game_num': game_num, type: 'content' }, {
-    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-  })
-    .then((resp) => {
-      //if there are at least one good answer return by api
-      if (resp.data[0].content !== undefined) {
-        resp.data[0] && $('.citation:eq(0)').html(`<p>${resp.data[0].content}</p>`)
-        resp.data[1] && $('.citation:eq(1)').html(`<p>${resp.data[1].content}</p>`)
-      }
-    });
-}
 
 const result_day = async () => {
   await axios.post('/server/indice_magasin.php', { day_num: Number(localStorage.getItem('DAY_NUM')), magasin: Number(localStorage.getItem('magasin')) }, {
