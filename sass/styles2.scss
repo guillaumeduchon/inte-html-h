@@ -169,9 +169,7 @@ main {
             @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
             @media screen and (min-width: 1024px) {font-size: 17px; padding: 10px 30px;}
             .arrow {
-                height: 14px; vertical-align: top; margin-top: 1px;
-                @media screen and (orientation:landscape) and (max-width: 670px),
-                screen and (orientation:landscape) and (max-height: 350px) {height: 10px; margin-top: 3px;}
+                height: 12px; vertical-align: top; margin-top: 13px;
             }
         }
         &.inactif {
@@ -213,6 +211,12 @@ main {
             }
             .connect_block {
                 width: 50%;
+                height: 85vh;
+            }
+        }
+        &.g3end {
+            .connect_block {
+                height: 90vh;
             }
         }
         &.endgame {
@@ -238,11 +242,20 @@ main {
             }
         }
         &.g3end {
-            .connect_block.page .connect_form.page {
+            .connect_block .connect_form.page {
                 padding: 20px 30px;
+                @media screen and (orientation:landscape) and (max-width: 670px) {
+                    padding: 20px 15px;
+                }
                 .countdown, .next, .title {
-                    font-size: 16px; line-height: initial; padding-bottom: 15px;
-                    .hour {font-size: 18px;}
+                    font-size: 15px; line-height: initial; padding-bottom: 15px;
+                    .hour {font-size: 17px;}
+                }
+                .sondages {
+                    @media screen and (orientation:landscape) and (max-width: 670px) {
+                        .rep1, .rep2, .rep3 {margin-bottom: 10px;}
+                        .name, .pc {padding-top: 5px!important; padding-bottom: 5px!important; font-size: 13px;}
+                    }
                 }
             }
         }
@@ -336,7 +349,7 @@ main {
             }
             .connect_form {
                 background: rgba($white, 0.7);
-                border-radius: 20px 20px 0 0;
+                border-radius: 10px 10px 0 0;
                 padding: 20px 30px;
                 @media screen and (orientation:landscape) and (max-width: 670px) {
                     border-radius: 15px 15px 0 0;
@@ -352,12 +365,21 @@ main {
                 &.page {
                     padding: 40px 30px;
                     line-height: initial;
-                    .merci img {max-width: 65%; padding-bottom: 10px;}
+                    height: 100%;
+                    .merci img {
+                        max-width: 55%; padding-bottom: 20px;
+                        @media screen and (orientation:landscape) and (max-width: 670px) {max-width: 70%;}
+                    }
                     .merci.final img, .merci.g3 img {max-width: 35%; padding-bottom: 0;}
                     .bravo img {max-width: 35%; padding-bottom: 10px;}
                     .countdown, .next, .title {
                         font-size: 20px; line-height: initial; padding-bottom: 30px;
                         .hour {font-size: 23px;}
+                        @media screen and (orientation:landscape) and (max-width: 670px) {
+                            font-size: 17px;
+                            .hour {font-size: 20px;}
+                            padding-bottom: 20px;
+                        }
                     }
                     .title {padding-bottom: 10px;
                         @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px}
@@ -391,17 +413,17 @@ main {
                             position: relative;
                             width: 100%;
                             border: 1px solid $blue;
-                            border-radius: 15px;
-                            margin-bottom: 10px;
+                            border-radius: 10px;
+                            margin-bottom: 15px;
                             font-size: 15px;
                             overflow: hidden;
                             .progress {
                                 position: absolute;
                                 z-index: 1;
                                 border: none;
-                                background: rgba(#c9d6e1, 0.3);
+                                background: rgba(#c9d6e1, 0.8);
                                 height: 100%;
-                                border-radius: 0 15px 15px 15px;
+                                border-radius: 0 10px 10px 15px;
                                 right: 0;
                                 width: 80%;
                                 progress {border: none; background: rgba(#c9d6e1, 0.3); height: 0;}
@@ -1163,7 +1185,7 @@ main {
                                 }
                             }
                         }
-                        .q2 {
+                        .q2, .q4 {
                             padding-bottom: 10px;
                             .cta_diamond {
                                 &.invers {
@@ -1171,6 +1193,7 @@ main {
                                 }
                             }
                         }
+                        .q4 {padding-bottom: 20px;}
                     }
                     &.q2 {
                         .answers {
