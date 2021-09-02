@@ -407,9 +407,10 @@ function toggleGameEndClass(day_num) {
   const nbr_total_game = 5;
   let last_day_answered = Math.max.apply(Math, aGame_played);
   if (((last_day_answered+1) === (Number(localStorage.getItem('DAY_NUM')) + 1))) {
-    if((Number(localStorage.getItem('DAY_NUM')) + 1) <= nbr_total_game )
-    $('.countdown').css('display', 'none')
-    $('.next').css('display', 'block')
+    if((Number(localStorage.getItem('DAY_NUM')) + 1) <= nbr_total_game ) {
+      $('.countdown').css('display', 'none')
+      $('.next').css('display', 'block')
+    }
   }
 }
 
