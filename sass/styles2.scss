@@ -49,6 +49,7 @@ body {
 
 /*** MESSAGE PAYSAGE + SPLASHSCREEN ***/
 #turn {
+    font-family: 'Neutra Text', sans-serif;
     @media screen and (orientation:landscape) {
         display: none;
     }
@@ -131,6 +132,7 @@ main {
     overflow: hidden;
     touch-action: none;
     -ms-touch-action: none;
+    font-family: 'Neutra Text', sans-serif;
     // @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
     .screen {
         width: 100vw;
