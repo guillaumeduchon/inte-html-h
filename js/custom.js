@@ -146,11 +146,11 @@ const updatePlateau = () => {
     }
   })
   // let date_tab = [
-  //   { 'status': '', 'day_num': 1, 'day_date': '2021/08/30' },
-  //   { 'status': '', 'day_num': 2, 'day_date': '2021/08/31' },
-  //   { 'status': '', 'day_num': 3, 'day_date': '2021/09/01' },
-  //   { 'status': '', 'day_num': 4, 'day_date': '2021/09/02' },
-  //   { 'status': '', 'day_num': 5, 'day_date': '2021/09/03' },
+  //   { 'status': '', 'day_num': 1, 'day_date': '2021/09/20' },
+  //   { 'status': '', 'day_num': 2, 'day_date': '2021/09/21' },
+  //   { 'status': '', 'day_num': 3, 'day_date': '2021/09/22' },    // UNCOMMENT END  DELETE THE NEXT ARRAY FOR START 20 September 2021
+  //   { 'status': '', 'day_num': 4, 'day_date': '2021/09/23' },
+  //   { 'status': '', 'day_num': 5, 'day_date': '2021/09/24' },
   // ];
   let date_tab = [
     { 'status': '', 'day_num': 1, 'day_date': '2021/08/30' },
