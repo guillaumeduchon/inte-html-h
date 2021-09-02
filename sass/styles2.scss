@@ -766,7 +766,7 @@ main {
         width: 100vw;
         height: 100%;
         position: relative;
-        align-content: flex-end;
+        align-content: space-between;
         justify-content: center;
         @media screen and (min-width: 1024px) {align-content: center;}
         &.q1 {
@@ -822,6 +822,7 @@ main {
         }
         .game_container {
             width: 100vw;
+            height: 100%;
             .game_space {
                 width: 100vw;
                 height: 100%;
@@ -831,6 +832,10 @@ main {
                 position: relative;
                 // overflow: hidden;
                 text-align: center;
+                align-content: space-between;
+                justify-content: center;
+                display: flex;
+                flex-wrap: wrap;
                 .title_game {
                     font-size: 19px;
                     line-height: 23px;
@@ -866,7 +871,7 @@ main {
                         margin-left: -15px;
                         &.q2 {
                             .game_quizz_divers {display: none;}
-                            .game_quizz_challenge {width: 95%;}
+                            .game_quizz_challenge {width: 95%; height: 75vh; display: flex; flex-wrap: wrap; justify-content: center; align-content: flex-start;}
                             form .buttons {
                                 & > * {margin-bottom: 0!important; margin-left: 10px!important;}
                             }
@@ -905,18 +910,19 @@ main {
                             text-transform: uppercase;
                             line-height: initial;
                             padding-bottom: 15px;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px; padding-bottom: 10px;}
+                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px; padding-bottom: 10px; width: 100%;}
                             @media screen and (min-width: 1024px) {font-size: 17px;}
                         }
                         .rules {
                             font-size: 14px;
                             line-height: initial;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px; width: 100%;}
                             @media screen and (min-width: 1024px) {font-size: 15px;}
                         }
                         form {
                             display: block;
                             &#files-game-2 {
+                                width: 100%;
                                 input[type=text], input[type=number] {
                                     padding: 3px 10px;
                                     margin-top: 10px;
@@ -1136,7 +1142,6 @@ main {
                         }
                     }
                     &.q2 {
-                        @media screen and (orientation:landscape) and (min-width:680px) {height: 85%;}
                         .answers {
                             display: block;
                         }
