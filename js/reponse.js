@@ -6,7 +6,7 @@ const check_answer1 = async () => {
   })
     .then((response) => {
       console.warn("response_game-1: ", response.data)
-      window.location.href = "game_end.html"
+      window.location.href = "game_end.html?day="+1
     });
 }
 /* ----------------------------------- REPONSE JEU 2 ----------------------------------- */
@@ -19,7 +19,7 @@ const check_answer2 = async () => {
   })
     .then((response) => {
       console.warn("response_game-2: ", response.data)
-      window.location.href = 'game_end.html'
+      window.location.href = "game_end.html?day="+2
     });
 }
 
@@ -44,7 +44,7 @@ const check_answer4 = async () => {
   })
     .then((response) => {
       console.warn("response_game-4: ", response.data)
-      window.location.href = 'game_end.html'
+      window.location.href = "game_end.html?day="+4
     });
 }
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
