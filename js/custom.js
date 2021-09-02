@@ -314,7 +314,7 @@ function before10h24(heures, minutes, secondes) {
   if (heures >= 24) {
     localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24')) + 1));
     if (localStorage.getItem('nbInBefore10h24') === '1') {
-      localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) - 1)
+      //localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) - 1)
       
     }
   } else {
