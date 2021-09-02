@@ -12,7 +12,7 @@ function check_date_is_paris() {
     if (localStorage.getItem('DATE_SERVER') !== null) {
       console.warn('server_date.Zzz: ', new Date(DATE_SERVER).getMinutes(), "client_TTTTdate", new Date().getMinutes())
       if (server_date !== client_date) {
-        let calculDiffMinut = (((new Date(DATE_SERVER).getMinutes()) * 60) + ((Date().getMinutes()) *60)) / 60;
+        let calculDiffMinut = (((new Date(DATE_SERVER).getMinutes()) * 60) + ((Date().getMinutes()) * 60)) / 60;
         if (calculDiffMinut !== 7) {
           window.location.href = "not_good_date.html";
         }
@@ -180,12 +180,12 @@ const updatePlateau = () => {
           let sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
           let aGame_played = getFormatedAnswersId(sGame_played)
 
-          if ( !RegExp(((i+1)).toString()).test(localStorage.getItem('game_played'))) {
-            if((i+1) > Math.max.apply(Math, aGame_played) && (i+1) > Number(localStorage.getItem('DAY_NUM'))){
+          if (!RegExp(((i + 1)).toString()).test(localStorage.getItem('game_played'))) {
+            if ((i + 1) > Math.max.apply(Math, aGame_played) && (i + 1) > Number(localStorage.getItem('DAY_NUM'))) {
               $('.game_box:eq(' + i + ')').attr('href', '#')
             } else {
-              if (! RegExp((i + 1)).test(localStorage.getItem('game_played'))) {
-                $('.game_box:eq(' + (i+1) + ')').attr('href', '#')
+              if (!RegExp((i + 1)).test(localStorage.getItem('game_played'))) {
+                $('.game_box:eq(' + (i + 1) + ')').attr('href', '#')
               }
             }
           }
@@ -199,7 +199,7 @@ const updatePlateau = () => {
               $('.game_box:eq(' + i + ')').attr('href', '/game_end_day5.html')
               return;
             }
-            $('.game_box:eq(' + i + ')').attr('href', '/game_end.html')
+            $('.game_box:eq(' + i + ')').attr('href', '/game_end.html?day=' + (i + 1))
           }
 
         } else {
@@ -283,7 +283,7 @@ function compte_a_rebours() {
   var minutes = Math.floor((total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60))) / 60);
   var secondes = Math.floor(total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
   $('.countdown > .hour').find("strong:eq(0)").html(`${Math.abs(heures) > 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} HEURES`)
-  
+
   before10h24(Math.abs(heures), minutes, secondes);
   ShowGamePlayed();
   var actualisation = setTimeout("compte_a_rebours();", 1000);
@@ -316,7 +316,7 @@ function before10h24(heures, minutes, secondes) {
     localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24')) + 1));
     if (localStorage.getItem('nbInBefore10h24') === '1') {
       //localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) - 1)
-      
+
     }
   } else {
     cleanNbInBefore10h24();
@@ -339,9 +339,9 @@ const ShowGamePlayed = () => {
             if (!plateau_has_treated) {
               if (dayHasResult((i + 1))) {
                 addGameDoneClass((i + 1))
-                $('.game_box:eq(' + i + ')').attr('href', '/game_end.html')
-                if (! RegExp((i + 2)).test(localStorage.getItem('game_played'))) {
-                  $('.game_box:eq(' + (i+2) + ')').attr('href', '#')
+                $('.game_box:eq(' + i + ')').attr('href', '/game_end.html?day=' + (i + 1))
+                if (!RegExp((i + 2)).test(localStorage.getItem('game_played'))) {
+                  $('.game_box:eq(' + (i + 2) + ')').attr('href', '#')
                 }
               } else if ((i + 1) > Number(localStorage.getItem("DAY_NUM"))) {
                 $('.title_game:eq(' + i + ')').remove();
@@ -361,7 +361,7 @@ const ShowGamePlayed = () => {
             $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
           } else {
             if (!plateau_has_treated) {
-              $('.game_box:eq(' + (i+1) + ')').attr('href', '#')
+              $('.game_box:eq(' + (i + 1) + ')').attr('href', '#')
             }
           }
         })
@@ -397,8 +397,8 @@ const ShowGamePlayed = () => {
             addGameDoneClass(i)
             $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
           }
-        }else {
-            addGameDoneClass((i+1))
+        } else {
+          addGameDoneClass((i + 1))
         }
       })
       plateau_has_treated = true;
@@ -411,9 +411,9 @@ function toggleGameEndClass(day_num) {
   const nbr_total_game = 5;
   let last_day_answered = Math.max.apply(Math, aGame_played);
   console.log('last_day_answered', last_day_answered)
-  if (((last_day_answered+1) === (Number(localStorage.getItem('DAY_NUM')) + 1))) {
-    console.log('(last_day_answered+1)', (last_day_answered+1), "(Number(localStorage.getItem('DAY_NUM')) + 1))", (Number(localStorage.getItem('DAY_NUM')) + 1))
-    if((Number(localStorage.getItem('DAY_NUM')) + 1) <= nbr_total_game ) {
+  if (((last_day_answered + 1) === (Number(localStorage.getItem('DAY_NUM')) + 1))) {
+    console.log('(last_day_answered+1)', (last_day_answered + 1), "(Number(localStorage.getItem('DAY_NUM')) + 1))", (Number(localStorage.getItem('DAY_NUM')) + 1))
+    if ((Number(localStorage.getItem('DAY_NUM')) + 1) <= nbr_total_game) {
       $('.countdown').css('display', 'none')
       $('.next').css('display', 'block')
     }
