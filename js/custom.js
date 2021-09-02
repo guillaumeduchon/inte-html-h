@@ -309,6 +309,8 @@ function before10h24(heures, minutes, secondes) {
 }
 var plateau_has_treated = false;
 var regex2 = new RegExp(/1|2|3|4|5/);
+var sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
+var aGame_played = getFormatedAnswersId(sGame_played)
 const ShowGamePlayed = () => {
   if (!localStorage.getItem("game_played")) {
     fetch_question_responses().then((datas) => {
@@ -351,9 +353,7 @@ const ShowGamePlayed = () => {
     });
   }
   else {
-    let sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
-    let aGame_played = getFormatedAnswersId(sGame_played)
-    
+
     if (Math.max.apply(Math, aGame_played).toString().match(regex2) < Number(localStorage.getItem("DAY_NUM"))) {
       fetch_question_responses().then((datas) => {
         if (datas.length > 0) {
@@ -389,8 +389,11 @@ const ShowGamePlayed = () => {
   }
 }
 
-function toggleGameEndClass() {
-  if (regex2.test(localStorage.getItem('game_played'))) {
+function toggleGameEndClass(day_num) {
+  const nbr_total_game = 5;
+  let last_day_answered = Math.max.apply(Math, aGame_played);
+  if (((last_day_answered+1) === (Number(localStorage.getItem('DAY_NUM')) + 1))) {
+    if((Number(localStorage.getItem('DAY_NUM')) + 1) <= nbr_total_game )
     $('.countdown').css('display', 'none')
     $('.next').css('display', 'block')
   }

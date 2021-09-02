@@ -68,7 +68,7 @@ $(document).ready(function () {
         }
       });
 
-      $('#enseigne').on('change', function() {
+      $('#enseigne').on('change', function () {
         fullfiled_magasin()
       })
 
@@ -211,9 +211,9 @@ $(document).ready(function () {
   if (location.pathname === "/game_day4.html") {
 
     if (isLogged()) {
-       if (gameValidate()) {
-          window.location.href = "game_end.html"
-        }
+      if (gameValidate()) {
+        window.location.href = "game_end.html"
+      }
       //isEnableMagasin();
       startGame(4);
     } else {
@@ -239,7 +239,8 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_end.html") {
     if (isLogged()) {
-      toggleGameEndClass();
+      let day = getUrlParam('day', '1')
+      toggleGameEndClass(day);
     } else {
       goLogin();
     }
@@ -248,6 +249,17 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_end_day3.html") {
     if (isLogged()) {
+      toggleGameEndClass(3);
+      //isEnableMagasin();
+    } else {
+      goLogin();
+    }
+  }
+  //--------------------------------------------------------- Game end day 5
+
+  if (location.pathname === "/game_end_day3.html") {
+    if (isLogged()) {
+      toggleGameEndClass(5);
       //isEnableMagasin();
     } else {
       goLogin();
