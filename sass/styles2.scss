@@ -801,7 +801,7 @@ main {
                 padding: 10px 20px 20px!important;
                 .title {padding-bottom: 7px!important;}
             }
-            @media screen and (orientation:landscape) and (max-width: 670px) {
+            @media screen and (orientation:landscape) and (max-width: 650px) {
                 background: url('../img/fond_generic_q2-4.jpg') no-repeat center;
                 background-size: cover;
             }
@@ -809,11 +809,12 @@ main {
         &.q5 {
             background: url('../img/fond_q5.jpg') no-repeat center;
             background-size: cover;
+            background-position: 23%;
             .title_game {padding-bottom: 15px;}
             .game_quizz_challenge {
                 .title, .rules {padding-bottom: 10px!important;}
             }
-            @media screen and (orientation:landscape) and (max-width: 670px) {
+            @media screen and (orientation:landscape) and (max-width: 650px) {
                 background: url('../img/fond_generic.jpg') no-repeat center;
                 background-size: cover;
             }
@@ -856,6 +857,7 @@ main {
                     flex-wrap: nowrap;
                     justify-content: center;
                     margin-left: -30px;
+                    @media screen and (orientation:landscape) and (max-width: 670px) {margin-left: -15px;}
                     &.q2 {
                         form .buttons {
                             & > * {margin-bottom: 7px!important; margin-left: auto!important;}
@@ -866,8 +868,8 @@ main {
                             }
                         }
                     }
+                    &.q5 {width: 100%;}
                     @media screen and (orientation:landscape) and (max-width: 650px) {
-                        margin-left: -15px;
                         &.q2 {
                             .game_quizz_divers {display: none;}
                             .game_quizz_challenge {width: 95%; height: 75vh; display: flex; flex-wrap: wrap; justify-content: center; align-content: flex-start;}
@@ -1064,7 +1066,8 @@ main {
                                 cursor: pointer;
                                 padding-bottom: 10px;
                                 font-size: 15px;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
+                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;} 
+                                @media screen and (orientation:landscape) and (max-width: 650px) {font-size: 12px;}
                                 @media screen and (min-width: 1024px) {font-size: 17px; padding-bottom: 20px;}
                                 &.answer_button {
                                     input[type="checkbox"], input[type="radio"] {
