@@ -1,4 +1,3 @@
-alert(location.pathname)
 const isEnableMagasin = async () => {
   await checkIsActiveMagasin().then(resp => {
     if (resp[0].id !== undefined) {
