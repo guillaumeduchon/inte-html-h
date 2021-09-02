@@ -240,6 +240,7 @@ $(document).ready(function () {
   if (location.pathname === "/game_end.html") {
     if (isLogged()) {
       let day = getUrlParam('day', '1')
+      console.log("day", day)
       toggleGameEndClass(day);
     } else {
       goLogin();
