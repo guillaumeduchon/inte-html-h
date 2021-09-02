@@ -51,7 +51,7 @@ const check_answer4 = async () => {
 const check_answer5 = async () => {
   const goodAnswer = "sourcingsolidaire"
   
-  let answerFormated = document.getElementById('answer').value.trim().replace(" ", "").toLowerCase()
+  let answerFormated = document.getElementById('answer').value.trim().toLowerCase().replace(/\ /g, "")
   console.log("answerFormated: ", answerFormated)
   if (answerFormated === "") return false;
   if (new RegExp(goodAnswer).test(answerFormated)) {
