@@ -53,7 +53,7 @@ const check_answer5 = async () => {
   
   let answerFormated = document.getElementById('answer').value.trim().replace(" ", "").toLowerCase()
   answerFormated = document.getElementById('answer').value.trim()
-
+  console.log("answerFormated: ", answerFormated)
   if (answerFormated === "") return false;
   if (new RegExp(goodAnswer).test(answerFormated)) {
     await axios.post('/server/set_reponse.php', { day_num: '5', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
@@ -64,6 +64,7 @@ const check_answer5 = async () => {
         window.location.href = 'game_end_day5.html'
       });
   } else {
+    console.log("answerFormated5: ", answerFormated)
     showError();
   }
 }
