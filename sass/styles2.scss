@@ -777,11 +777,9 @@ main {
             background: url('../img/fond_q2.jpg') no-repeat center;
             background-size: cover;
             @media screen and (orientation:landscape) and (max-width: 670px) {
-                .title_game {font-size: 15px!important; line-height: 19px!important;}
-                background: url('../img/fond_generic_q2-4.jpg') no-repeat center;
-                background-size: cover;
+                // .title_game {font-size: 15px!important; line-height: 19px!important;}
             }
-            @media screen and (orientation:landscape) and (max-width: 670px) {
+            @media screen and (orientation:landscape) and (max-width: 650px) {
                 background: url('../img/fond_generic_q2-4.jpg') no-repeat center;
                 background-size: cover;
             }
@@ -852,6 +850,7 @@ main {
                     font-size: 15px;
                     @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                     @media screen and (min-width: 1024px) {font-size: 18px; padding-bottom: 25px;}
+                    a {color: $blue; text-decoration: none;}
                 }
                 .game_quizz {
                     flex-wrap: nowrap;
@@ -867,7 +866,7 @@ main {
                             }
                         }
                     }
-                    @media screen and (orientation:landscape) and (max-width: 670px) {
+                    @media screen and (orientation:landscape) and (max-width: 650px) {
                         margin-left: -15px;
                         &.q2 {
                             .game_quizz_divers {display: none;}
