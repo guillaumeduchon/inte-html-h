@@ -18,7 +18,7 @@ if ($contentType === "application/json") {
         if (isset($decoded['type']) && isset($decoded['magasin'])) {
             $magasin = htmlentities($decoded['magasin']);
 
-            $stmt = $pdo->prepare("SELECT id FROM magasin WHERE num=:magasin_num");
+            $stmt = $pdo->prepare("SELECT id FROM magasin WHERE id=:magasin_num");
             $stmt->execute(['magasin_num'=> $magasin]);
             $aId = $stmt->fetch();
 

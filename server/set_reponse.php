@@ -23,21 +23,21 @@
         // $response = htmlspecialchars($decoded['response'], ENT_QUOTES);
         // $magasin_num = htmlspecialchars($decoded['magasin_num'], ENT_QUOTES);
 
-        $stmt = $pdo->prepare("SELECT id FROM magasin WHERE num=:magasin_num");
+        $stmt = $pdo->prepare("SELECT id FROM magasin WHERE id=:magasin_num");
         $stmt->execute(['magasin_num'=> $magasin_num]);
         $aId = $stmt->fetch();
         
         if( $day_num === '2') { /*TREAT RESPONSE HERE */ }
         if( $day_num === '4') { /*TREAT RESPONSE HERE */ }
-
+        
         if($aId) {
-          $stmt = $pdo->prepare("INSERT INTO reponse(`question_id`, `magasin_id`, `datehour`, `content`) VALUES (:day_num, :magasin_id,  NOW(), :response  )");
+          $stmt = $pdo->prepare("INSERT INTO reponse(`question_id`, `magasin_id`, `datehour`, `content`) VALUES (:day_num, :magasin_id,  NOW(), :response)");
           $stmt->execute(['day_num' => $day_num, 'magasin_id' => $aId['id'], 'response' => $response]);
-          $aIndice = $stmt->fetch();
-          $oDatas = !$aIndice ? [] :$aIndice;
+          $result = $stmt->fetch();
+          $oDatas = $result  === "" ? "Record answer server succefully": "error on server record";
         }
       }
     }
     
-    return  print json_encode($oDatas);
+    return  json_encode($oDatas);
 ?>

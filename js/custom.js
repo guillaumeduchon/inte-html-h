@@ -79,7 +79,6 @@ setTimeout(() => {
           localStorage.setItem('DAY_NUM', res.data.id);
           let date_actuelle = new Date();
           let heures = date_actuelle.getHours(); let minutes = date_actuelle.getMinutes()
-          console.log('heures', date_actuelle.getHours(), 'minutes', date_actuelle.getMinutes(), "Math.abs(heures) => ", Math.abs(heures))
           if (Math.abs(heures) <= 9) {
             if (Math.abs(heures) == 9 && minutes >= 00) {
               //Do nothing
@@ -313,8 +312,8 @@ var regex2 = new RegExp(/1|2|3|4|5/);
 const ShowGamePlayed = () => {
   if (!localStorage.getItem("game_played")) {
     fetch_question_responses().then((datas) => {
-      console.log("datas.length", datas.length)
       if (datas.length > 0) {
+        console.log("datas.length1", datas.length)
         if (datas[0] !== undefined) {
           localStorage.setItem('game_played', JSON.stringify(datas))
           $('.game').each((i, e) => {
@@ -352,7 +351,6 @@ const ShowGamePlayed = () => {
     });
   }
   else {
-    console.log('TITI: ')
     let sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
     let aGame_played = getFormatedAnswersId(sGame_played)
     
@@ -363,7 +361,7 @@ const ShowGamePlayed = () => {
             localStorage.setItem('game_played', JSON.stringify(datas))
             $('.game').each((i, e) => {
               if (dayHasResult((i + 1))) {
-                console.log('FANEN: ')
+
                 addGameDoneClass((i + 1));
               } else if ((i + 1) > Number(localStorage.getItem("DAY_NUM"))) {
                 $('.title_game:eq(' + i + ')').remove();

@@ -136,10 +136,8 @@ $(document).ready(function () {
   if (location.pathname === "/game_indice_video.html") {
     if (isLogged()) {
       let day = getUrlParam('day', '1')
-      console.log('day: ',day)
       let valid_num_game = notTheDayGame(day);
       day = valid_num_game
-      console.log('day: ',day)
       fetch_movie(day)
     } else {
       goLogin();

@@ -4,7 +4,8 @@ const check_answer1 = async () => {
   await axios.post('/server/set_reponse.php', { day_num: '1', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
-    .then((response) => {
+  .then((response) => {
+      console.warn("response_game-1: ", response.data)
       window.location.href = "game_end.html"
     });
 }
@@ -16,32 +17,35 @@ const check_answer2 = async () => {
   await axios.post('/server/set_reponse.php', { day_num: '2', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
-    .then((valid_resp, status) => {
+    .then((response) => {
+      console.warn("response_game-2: ", response.data)
       window.location.href = 'game_end.html'
     });
-}
-
-/* ----------------------------------- REPONSE JEU 3 ----------------------------------- */
-const check_answer3 = async () => {
-  let response_id = $('.answer_selected').data('id')
-  await axios.post('/server/set_reponse.php', { day_num: '3', response: response_id, magasin_num: localStorage.getItem('magasin') }, {
-    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-  })
-    .then((valid_resp) => {
+  }
+  
+  /* ----------------------------------- REPONSE JEU 3 ----------------------------------- */
+  const check_answer3 = async () => {
+    let response_id = $('.answer_selected').data('id')
+    await axios.post('/server/set_reponse.php', { day_num: '3', response: response_id, magasin_num: localStorage.getItem('magasin') }, {
+      headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+    })
+    .then((response) => {
+      console.warn("response_game-3: ", response.data)
       window.location.href = 'game_end_day3.html'
     });
-}
-/* ----------------------------------- REPONSE JEU 4 ----------------------------------- */
-
-const check_answer4 = async () => {
-  if(document.getElementById('answer').value.trim() === "") return false;
-  fetchSaveFiles('4')
-  await axios.post('/server/set_reponse.php', { day_num: '4', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
-    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-  })
-  .then((valid_resp) => {
-      window.location.href = 'game_end.html'
-    });
+  }
+  /* ----------------------------------- REPONSE JEU 4 ----------------------------------- */
+  
+  const check_answer4 = async () => {
+    if(document.getElementById('answer').value.trim() === "") return false;
+    fetchSaveFiles('4')
+    await axios.post('/server/set_reponse.php', { day_num: '4', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
+      headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+    })
+    .then((response) => {
+    console.warn("response_game-4: ", response.data)
+    window.location.href = 'game_end.html'
+  });
 }
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
 const check_answer5 = async () => {
@@ -49,8 +53,9 @@ const check_answer5 = async () => {
   await axios.post('/server/set_reponse.php', { day_num: '5', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
-    .then((valid_resp) => {
-      window.location.href = 'game_end_day5.html'
+  .then((response) => {
+    console.warn("response_game-5: ", response.data)
+    window.location.href = 'game_end_day5.html'
     });
 }
 
