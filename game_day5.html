@@ -16,6 +16,7 @@
     <main>
         <div class="screen row no-gutters">
             <div class="flex_contain game_screen q5">
+                <div class="wrongId">Reponse incorrect. Veuillez réessayer.</div>
                 <div class="game_container flex_contain">
                     <div class="game_space">
                         <div class="title_game"><strong>My Way est le premier parfum</strong> à avoir atteint la <strong>neutralité carbone !</strong></div>
@@ -60,5 +61,12 @@
     <script src="js/routeur.js"></script>
     <script src="js/question.js"></script>
     <script src="js/reponse.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $("#answer").on('click', () => {
+                hideError();
+            })
+        });
+    </script>
 </body>
 </html>

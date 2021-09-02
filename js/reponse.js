@@ -49,14 +49,23 @@ const check_answer4 = async () => {
 }
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
 const check_answer5 = async () => {
-  if (document.getElementById('answer').value.trim() === "") return false;
-  await axios.post('/server/set_reponse.php', { day_num: '5', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
-    headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
-  })
-    .then((response) => {
-      console.warn("response_game-5: ", response.data)
-      window.location.href = 'game_end_day5.html'
-    });
+  const goodAnswer = "sourcingsolidaire"
+  
+  let answerFormated = document.getElementById('answer').value.trim().replace(" ", "").toLowerCase()
+  answerFormated = document.getElementById('answer').value.trim()
+
+  if (answerFormated === "") return false;
+  if (new RegExp(goodAnswer).test(answerFormated)) {
+    await axios.post('/server/set_reponse.php', { day_num: '5', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
+      headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
+    })
+      .then((response) => {
+        console.warn("response_game-5: ", response.data)
+        window.location.href = 'game_end_day5.html'
+      });
+  } else {
+    showError();
+  }
 }
 
 if (/game_day2|game_day4/.test(location.pathname)) {
@@ -79,22 +88,11 @@ const authorized_format_file = ["image/jpeg", "image/gif",
 "image/x-portable-pixmap"]
 function fetchSaveFiles(game_num) {
   fileList.forEach(function (file) {
-    console.log(file.type, 'file.type');
     if (authorized_format_file.includes(file.type)) {
-      console.log('Ech fannen');
         saveFiles(file, game_num);
     } 
   });
 }
-
-// renderFileList = function () {
-//   //fileListDisplay.innerHTML = '';
-//   fileList.forEach(function (file, index) {
-//     var fileDisplayEl = document.createElement('p');
-//     fileDisplayEl.innerHTML = (index + 1) + ': ' + file.name;
-//     //fileListDisplay.appendChild(fileDisplayEl);
-//   });
-// };
 
 function saveFiles(file, game_num) {
   var formData = new FormData();

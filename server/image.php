@@ -44,7 +44,7 @@ if ($reponses['error'] = 'false') {
 	unset($reponses['error']);
 }
 
-echo json_encode($reponses);
+print json_encode($reponses);
 
 function _addError()
 {
