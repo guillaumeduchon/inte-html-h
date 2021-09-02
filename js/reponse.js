@@ -80,7 +80,10 @@ const authorized_format_file = ["image/jpeg", "image/gif",
 function fetchSaveFiles(game_num) {
   fileList.forEach(function (file) {
     console.log(file.type, 'file.type');
-    authorized_format_file.includes(file.type) && saveFiles(file, game_num);
+    if (authorized_format_file.includes(file.type)) {
+      console.log('Ech fannen');
+        saveFiles(file, game_num);
+    } 
   });
 }
 
