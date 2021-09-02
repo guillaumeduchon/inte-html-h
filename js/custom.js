@@ -84,7 +84,7 @@ setTimeout(() => {
               //Do nothing
             } else {
               console.log('Game number found')
-              DAY_NUM = (Number(res.data.id) - 1)
+              //DAY_NUM = (Number(res.data.id) - 1)
               DAY_NUM = DAY_NUM === 0 ? 1 : DAY_NUM;
               localStorage.setItem('DAY_NUM', DAY_NUM)
             }
@@ -125,7 +125,7 @@ setTimeout(() => {
             if (Math.abs(heures) == 9 && minutes >= 00) {
               //Do nothing
             } else {
-              //DAY_NUM = (Number(DAY_NUM) - 1)
+              DAY_NUM = (Number(DAY_NUM) - 1)
               localStorage.setItem('DAY_NUM', DAY_NUM)
             }
           }
