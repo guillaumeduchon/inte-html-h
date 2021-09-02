@@ -99,9 +99,8 @@ function fetchSaveFiles(game_num) {
 function saveFiles(file, game_num) {
   var formData = new FormData();
   formData.set('file', file);
-  formData.set('magasin_name', localStorage.getItem("magasin_name") + "_" + localStorage.getItem("magasin"));
+  formData.set('magasin_name', localStorage.getItem("magasin_name").replace(' ', '_') + "-" + localStorage.getItem("magasin"));
   formData.set('game_num', game_num);
-  formData.set('product_salt_name', "PArfumTOTO"); // HEre the name in the input .anwser
 
   $.ajax({
     url: '/server/image.php',
