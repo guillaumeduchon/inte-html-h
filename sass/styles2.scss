@@ -772,6 +772,15 @@ main {
         &.q1 {
             background: url('../img/fond_q1.jpg') no-repeat right;
             background-size: cover;
+            @media screen and (orientation:landscape) and (min-width: 650px) {
+                .game_quizz_challenge {
+                    height: 70vh;
+                    .title {font-size: 16px!important;}
+                    form {
+                        textarea {height: 100px!important;}
+                    }
+                }
+            }
         }
         &.q2 {
             background: url('../img/fond_q2.jpg') no-repeat center;
@@ -792,6 +801,9 @@ main {
         &.q3 {
             background: url('../img/fond_q3.jpg') no-repeat right;
             background-size: cover;
+            @media screen and (orientation:landscape) and (max-width: 670px) {
+                .rules_game {font-size: 15px!important;}
+            }
         }
         &.q4 {
             background: url('../img/fond_q4.jpg') no-repeat center;
@@ -813,6 +825,9 @@ main {
             .title_game {padding-bottom: 15px;}
             .game_quizz_challenge {
                 .title, .rules {padding-bottom: 10px!important;}
+            }
+            @media screen and (orientation:landscape) and (max-width: 670px) {
+                .game_quizz_challenge {padding: 20px!important;}
             }
             @media screen and (orientation:landscape) and (max-width: 650px) {
                 background: url('../img/fond_generic.jpg') no-repeat center;
@@ -1065,8 +1080,7 @@ main {
                                 margin: 0;
                                 cursor: pointer;
                                 padding-bottom: 10px;
-                                font-size: 15px;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;} 
+                                font-size: 15px; 
                                 @media screen and (orientation:landscape) and (max-width: 650px) {font-size: 12px;}
                                 @media screen and (min-width: 1024px) {font-size: 17px; padding-bottom: 20px;}
                                 &.answer_button {
@@ -1101,7 +1115,7 @@ main {
                             @media screen and (orientation:landscape) and (max-width: 670px) {margin-right: 10px;}
                             .title {
                                 text-transform: uppercase; padding-bottom: 20px;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {padding-bottom: 10px; font-size: 14px;}
+                                @media screen and (orientation:landscape) and (max-width: 650px) {padding-bottom: 10px; font-size: 14px;}
                                 @media screen and (min-width: 1024px) {font-size: 17px;}
                             }
                             .citation {
