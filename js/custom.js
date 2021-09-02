@@ -324,8 +324,10 @@ function before10h24(heures, minutes, secondes) {
 }
 var plateau_has_treated = false;
 var regex2 = new RegExp(/1|2|3|4|5/);
-var sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
-var aGame_played = getFormatedAnswersId(sGame_played)
+if (!localStorage.getItem("game_played")) {
+  var sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
+  var aGame_played = getFormatedAnswersId(sGame_played)
+}
 const ShowGamePlayed = () => {
   if (!localStorage.getItem("game_played")) {
     fetch_question_responses().then((datas) => {
