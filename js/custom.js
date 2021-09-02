@@ -324,7 +324,7 @@ function before10h24(heures, minutes, secondes) {
 }
 var plateau_has_treated = false;
 var regex2 = new RegExp(/1|2|3|4|5/);
-if (!localStorage.getItem("game_played")) {
+if (localStorage.getItem("game_played")) {
   var sGame_played = localStorage.getItem("game_played").replace(']', '').replace('[', '');
   var aGame_played = getFormatedAnswersId(sGame_played)
 }
