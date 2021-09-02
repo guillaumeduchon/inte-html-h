@@ -133,6 +133,7 @@ main {
     touch-action: none;
     -ms-touch-action: none;
     font-family: 'Neutra Text', sans-serif;
+    color: $blue;
     // @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
     .screen {
         width: 100vw;
