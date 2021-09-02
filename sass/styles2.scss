@@ -49,6 +49,7 @@ body {
 
 /*** MESSAGE PAYSAGE + SPLASHSCREEN ***/
 #turn {
+    font-family: 'Neutra Text', sans-serif;
     @media screen and (orientation:landscape) {
         display: none;
     }
@@ -131,6 +132,8 @@ main {
     overflow: hidden;
     touch-action: none;
     -ms-touch-action: none;
+    font-family: 'Neutra Text', sans-serif;
+    color: $blue;
     // @media screen and (orientation:landscape) and (min-width: 1024px) {overflow: hidden;}
     .screen {
         width: 100vw;
@@ -165,7 +168,8 @@ main {
             @media screen and (min-width: 1024px) {font-size: 17px; padding: 10px 30px;}
             .arrow {
                 height: 14px; vertical-align: top; margin-top: 1px;
-                @media screen and (orientation:landscape) and (max-width: 670px) {height: 10px; margin-top: 3px;}
+                @media screen and (orientation:landscape) and (max-width: 670px),
+                screen and (orientation:landscape) and (max-height: 350px) {height: 10px; margin-top: 3px;}
             }
         }
         &.inactif {
@@ -492,7 +496,7 @@ main {
         position: relative;
         display: flex;
         justify-content: center;
-        align-content: flex-end;
+        align-content: space-between;
         background: url('../img/fond_generic.jpg') no-repeat center;
         background-size: cover;
         overflow: hidden;
@@ -502,7 +506,7 @@ main {
             text-transform: uppercase;
             font-size: 17px;
             line-height: 21px;
-            padding-bottom: 20px;
+            padding: 20px 0;
             display: block;
             @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 16px; line-height: 20px; padding-bottom: 13px;}
             @media screen and (min-width: 1024px) {font-size: 21px; line-height: 25px; padding-bottom: 25px;}
@@ -551,12 +555,12 @@ main {
                                 display: block; font-size: 22px; font-weight: bold;
                                 @media screen and (min-width: 1024px) {font-size: 26px;}
                             }
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
+                            @media screen and (orientation:landscape) and (max-width: 650px) {font-size: 14px;}
                             @media screen and (min-width: 1024px) {font-size: 18px; height: 100px;}
                         }
                         .date_game {
                             font-size: 14px;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
+                            @media screen and (orientation:landscape) and (max-width: 650px) {font-size: 12px;}
                             @media screen and (min-width: 1024px) {font-size: 17px;}
                         }
                     }
@@ -762,18 +766,29 @@ main {
         width: 100vw;
         height: 100%;
         position: relative;
-        align-content: flex-end;
+        align-content: space-between;
         justify-content: center;
         @media screen and (min-width: 1024px) {align-content: center;}
         &.q1 {
             background: url('../img/fond_q1.jpg') no-repeat right;
             background-size: cover;
+            @media screen and (orientation:landscape) and (min-width: 650px) {
+                .game_quizz_challenge {
+                    height: 70vh;
+                    .title {font-size: 16px!important;}
+                    form {
+                        textarea {height: 100px!important;}
+                    }
+                }
+            }
         }
         &.q2 {
             background: url('../img/fond_q2.jpg') no-repeat center;
             background-size: cover;
             @media screen and (orientation:landscape) and (max-width: 670px) {
-                .title_game {font-size: 15px!important; line-height: 19px!important;}
+                // .title_game {font-size: 15px!important; line-height: 19px!important;}
+            }
+            @media screen and (orientation:landscape) and (max-width: 650px) {
                 background: url('../img/fond_generic_q2-4.jpg') no-repeat center;
                 background-size: cover;
             }
@@ -786,6 +801,9 @@ main {
         &.q3 {
             background: url('../img/fond_q3.jpg') no-repeat right;
             background-size: cover;
+            @media screen and (orientation:landscape) and (max-width: 670px) {
+                .rules_game {font-size: 15px!important;}
+            }
         }
         &.q4 {
             background: url('../img/fond_q4.jpg') no-repeat center;
@@ -795,7 +813,7 @@ main {
                 padding: 10px 20px 20px!important;
                 .title {padding-bottom: 7px!important;}
             }
-            @media screen and (orientation:landscape) and (max-width: 670px) {
+            @media screen and (orientation:landscape) and (max-width: 650px) {
                 background: url('../img/fond_generic_q2-4.jpg') no-repeat center;
                 background-size: cover;
             }
@@ -803,17 +821,22 @@ main {
         &.q5 {
             background: url('../img/fond_q5.jpg') no-repeat center;
             background-size: cover;
+            background-position: 23%;
             .title_game {padding-bottom: 15px;}
             .game_quizz_challenge {
                 .title, .rules {padding-bottom: 10px!important;}
             }
             @media screen and (orientation:landscape) and (max-width: 670px) {
+                .game_quizz_challenge {padding: 20px!important;}
+            }
+            @media screen and (orientation:landscape) and (max-width: 650px) {
                 background: url('../img/fond_generic.jpg') no-repeat center;
                 background-size: cover;
             }
         }
         .game_container {
             width: 100vw;
+            height: 100%;
             .game_space {
                 width: 100vw;
                 height: 100%;
@@ -823,6 +846,10 @@ main {
                 position: relative;
                 // overflow: hidden;
                 text-align: center;
+                align-content: space-between;
+                justify-content: center;
+                display: flex;
+                flex-wrap: wrap;
                 .title_game {
                     font-size: 19px;
                     line-height: 23px;
@@ -839,11 +866,13 @@ main {
                     font-size: 15px;
                     @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                     @media screen and (min-width: 1024px) {font-size: 18px; padding-bottom: 25px;}
+                    a {color: $blue; text-decoration: none;}
                 }
                 .game_quizz {
                     flex-wrap: nowrap;
                     justify-content: center;
                     margin-left: -30px;
+                    @media screen and (orientation:landscape) and (max-width: 670px) {margin-left: -15px;}
                     &.q2 {
                         form .buttons {
                             & > * {margin-bottom: 7px!important; margin-left: auto!important;}
@@ -854,11 +883,11 @@ main {
                             }
                         }
                     }
-                    @media screen and (orientation:landscape) and (max-width: 670px) {
-                        margin-left: -15px;
+                    &.q5 {width: 100%;}
+                    @media screen and (orientation:landscape) and (max-width: 650px) {
                         &.q2 {
                             .game_quizz_divers {display: none;}
-                            .game_quizz_challenge {width: 95%;}
+                            .game_quizz_challenge {width: 95%; height: 75vh; display: flex; flex-wrap: wrap; justify-content: center; align-content: flex-start;}
                             form .buttons {
                                 & > * {margin-bottom: 0!important; margin-left: 10px!important;}
                             }
@@ -897,18 +926,19 @@ main {
                             text-transform: uppercase;
                             line-height: initial;
                             padding-bottom: 15px;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px; padding-bottom: 10px;}
+                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px; padding-bottom: 10px; width: 100%;}
                             @media screen and (min-width: 1024px) {font-size: 17px;}
                         }
                         .rules {
                             font-size: 14px;
                             line-height: initial;
-                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+                            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px; width: 100%;}
                             @media screen and (min-width: 1024px) {font-size: 15px;}
                         }
                         form {
                             display: block;
                             &#files-game-2 {
+                                width: 100%;
                                 input[type=text], input[type=number] {
                                     padding: 3px 10px;
                                     margin-top: 10px;
@@ -1050,8 +1080,8 @@ main {
                                 margin: 0;
                                 cursor: pointer;
                                 padding-bottom: 10px;
-                                font-size: 15px;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
+                                font-size: 15px; 
+                                @media screen and (orientation:landscape) and (max-width: 650px) {font-size: 12px;}
                                 @media screen and (min-width: 1024px) {font-size: 17px; padding-bottom: 20px;}
                                 &.answer_button {
                                     input[type="checkbox"], input[type="radio"] {
@@ -1085,7 +1115,7 @@ main {
                             @media screen and (orientation:landscape) and (max-width: 670px) {margin-right: 10px;}
                             .title {
                                 text-transform: uppercase; padding-bottom: 20px;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {padding-bottom: 10px; font-size: 14px;}
+                                @media screen and (orientation:landscape) and (max-width: 650px) {padding-bottom: 10px; font-size: 14px;}
                                 @media screen and (min-width: 1024px) {font-size: 17px;}
                             }
                             .citation {
@@ -1128,7 +1158,6 @@ main {
                         }
                     }
                     &.q2 {
-                        @media screen and (orientation:landscape) and (min-width:680px) {height: 85%;}
                         .answers {
                             display: block;
                         }
