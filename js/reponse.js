@@ -5,7 +5,6 @@ const check_answer1 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((response) => {
-      console.warn("response_game-1: ", response.data)
       window.location.href = "game_end.html?day=" + 1
     });
 }
@@ -18,7 +17,6 @@ const check_answer2 = async () => {
       headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
     })
       .then((response) => {
-        console.warn("response_game-2: ", response.data)
         window.location.href = "game_end.html?day=" + 2
       });
   }
@@ -31,7 +29,6 @@ const check_answer3 = async () => {
     headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
   })
     .then((response) => {
-      console.warn("response_game-3: ", response.data)
       window.location.href = 'game_end_day3.html'
     });
 }
@@ -44,7 +41,6 @@ const check_answer4 = async () => {
       headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
     })
       .then((response) => {
-        console.warn("response_game-4: ", response.data)
         window.location.href = "game_end.html?day=" + 4
       });
   }
@@ -56,16 +52,15 @@ const check_answer5 = async () => {
   let answerFormated = document.getElementById('answer').value.trim().toLowerCase().replace(/\ /g, "")
   console.log("answerFormated: ", answerFormated)
   if (answerFormated === "") return false;
-  if (new RegExp(goodAnswer).test(answerFormated)) {
+  if (new RegExp(goodAnswer).test(answerFormated) && answerFormated.length === 17) {
     await axios.post('/server/set_reponse.php', { day_num: '5', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
       headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
     })
       .then((response) => {
-        console.warn("response_game-5: ", response.data)
         window.location.href = 'game_end_day5.html'
       });
   } else {
-    console.log("answerFormated5: ", answerFormated)
+    console.log("answerFormated5: FALSE ", answerFormated)
     showError();
   }
 }
@@ -77,7 +72,6 @@ if (/game_day2|game_day4/.test(location.pathname)) {
     for (var i = 0; i < fileInput.files.length; i++) {
       fileList.push(fileInput.files[i]);
     }
-    //renderFileList();
   });
 }
 
