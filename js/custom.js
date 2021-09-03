@@ -284,7 +284,7 @@ function compte_a_rebours() {
   var secondes = Math.floor(total_secondes - ((0 * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
   $('.countdown > .hour').find("strong:eq(0)").html(`${Math.abs(heures) > 24 ? (Math.abs(heures) - 24) : Math.abs(heures)} HEURES`)
 
-  before10h24(Math.abs(heures), minutes, secondes);
+  before09h00(Math.abs(heures), minutes, secondes);
   ShowGamePlayed();
   var actualisation = setTimeout("compte_a_rebours();", 1000);
 }
@@ -299,9 +299,9 @@ function get_date_today(d) {
   return `${today.getFullYear()}/${MONTH}/${DAY}`;
 }
 
-localStorage.setItem('nbInBefore10h24', 0);
+localStorage.setItem('nbInBefore09h00', 0);
 
-function before10h24(heures, minutes, secondes) {
+function before09h00(heures, minutes, secondes) {
   if (heures === 24 && minutes === 00 && secondes === 00) {
     localStorage.removeItem('has_played');
     localStorage.removeItem('day_played');
@@ -313,13 +313,13 @@ function before10h24(heures, minutes, secondes) {
 
   }
   if (heures >= 24) {
-    localStorage.setItem('nbInBefore10h24', (Number(localStorage.getItem('nbInBefore10h24')) + 1));
-    if (localStorage.getItem('nbInBefore10h24') === '1') {
+    localStorage.setItem('nbInBefore09h00', (Number(localStorage.getItem('nbInBefore09h00')) + 1));
+    if (localStorage.getItem('nbInBefore09h00') === '1') {
       //localStorage.setItem('DAY_NUM', Number(localStorage.getItem('DAY_NUM')) - 1)
 
     }
   } else {
-    cleanNbInBefore10h24();
+    cleanNbInBefore09h00();
   }
 }
 var plateau_has_treated = false;
@@ -432,8 +432,8 @@ function dayHasResult(i) {
 }
 
 
-function cleanNbInBefore10h24() {
-  localStorage.removeItem('nbInBefore10h24');
+function cleanNbInBefore09h00() {
+  localStorage.removeItem('nbInBefore09h00');
 }
 function goLogin() { window.location.href = "index.html" }
 

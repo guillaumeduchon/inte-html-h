@@ -34,7 +34,7 @@ $(document).ready(function () {
 
   //---------------------------------------------------------PAGE LOGIN 
   if (location.pathname === '/') {
-    cleanNbInBefore10h24();
+    cleanNbInBefore09h00();
     lastConnexion()
     if (isLogged()) {
       sessionTimeOut();
@@ -45,7 +45,7 @@ $(document).ready(function () {
   }
 
   if (location.pathname === "/login.html") {
-    cleanNbInBefore10h24();
+    cleanNbInBefore09h00();
     lastConnexion()
     if (isLogged()) {
       goPlateau()
@@ -347,8 +347,8 @@ $(document).ready(function () {
     }
   }
 
-  function cleanNbInBefore10h24() {
-    localStorage.removeItem('nbInBefore10h24');
+  function cleanNbInBefore09h00() {
+    localStorage.removeItem('nbInBefore09h00');
   }
 
   function lastConnexion() {
@@ -372,7 +372,7 @@ $(document).ready(function () {
         localStorage.removeItem('logged')
         localStorage.removeItem('magasin')
         localStorage.removeItem('magasin_name')
-        localStorage.removeItem('nbInBefore10h24')
+        localStorage.removeItem('nbInBefore09h00')
         localStorage.removeItem('session_expire')
         localStorage.removeItem('timeLeft')
         localStorage.removeItem('today_date')
