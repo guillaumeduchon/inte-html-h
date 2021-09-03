@@ -35,17 +35,11 @@ const try_login = async (magasin, code, enseigne) => {
       .then((res)=>{
         if (res.data[0].id !== undefined) {
           logged(res.data[0].id, res.data[0].name, res.data[0].enseigne)
-          checkIsActiveMagasin().then(resp =>{
-            if (resp[0].id !== undefined && resp[0].active > 0) {
-              if (res.data[0].has_read_video === 0) {
-                window.location.href = "game_intro_video.html";
-                return ;
-              } 
-              window.location.href = "plateau.html";
-            } else {
-              $('.cta_diamond').addClass('inactif');
-            }
-          })
+          if (res.data[0].has_read_video === 0) {
+            window.location.href = "game_intro_video.html";
+            return ;
+          } 
+          window.location.href = "plateau.html";
         } else {
           showError();
         } 

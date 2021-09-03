@@ -19,6 +19,8 @@ const check_answer2 = async () => {
       .then((response) => {
         window.location.href = "game_end.html?day=" + 2
       });
+  } else {
+    showError();
   }
 }
 
@@ -43,6 +45,8 @@ const check_answer4 = async () => {
       .then((response) => {
         window.location.href = "game_end.html?day=" + 4
       });
+  } else {
+    showError();
   }
 }
 /* ----------------------------------- REPONSE JEU 5 ----------------------------------- */
@@ -50,9 +54,8 @@ const check_answer5 = async () => {
   const goodAnswer = "sourcingsolidaire"
 
   let answerFormated = document.getElementById('answer').value.trim().toLowerCase().replace(/\ /g, "")
-  console.log("answerFormated: ", answerFormated)
   if (answerFormated === "") return false;
-  if (new RegExp(goodAnswer).test(answerFormated) && answerFormated.length === 17) {
+  if (new RegExp(goodAnswer).test(answerFormated)) {
     await axios.post('/server/set_reponse.php', { day_num: '5', response: document.getElementById('answer').value, magasin_num: localStorage.getItem('magasin') }, {
       headers: { 'Content-Type': 'application/json', 'mode': 'cors' }
     })
@@ -97,7 +100,6 @@ function fetchSaveFiles(game_num) {
 
 function saveFiles(file, game_num) {
   var formData = new FormData();
-  console.log(file)
   formData.set('file', file);
   formData.set('file_name', file.name);
   formData.set('magasin_name', localStorage.getItem("magasin_name").replace(' ', '_') + "-" + localStorage.getItem("magasin"));
@@ -112,7 +114,6 @@ function saveFiles(file, game_num) {
     data: formData,
     type: 'post',
     success: function (response) {
-      console.log(response)
       response = JSON.parse(response);
 
       if (response.error !== undefined) {

@@ -41,13 +41,13 @@ function attachCheckboxHandlers () {
   } 
 }
 
-const checkIsActiveMagasin = async () => {
-  return await axios.post('/server/magasin.php', {magasin: localStorage.getItem('magasin'), active:''}, {
-    headers: {'Content-Type': 'application/json','mode': 'cors'}
-  }).then((res) => {
-    return res.data
-  });
-}
+// const checkIsActiveMagasin = async () => {
+//   return await axios.post('/server/magasin.php', {magasin: localStorage.getItem('magasin'), active:''}, {
+//     headers: {'Content-Type': 'application/json','mode': 'cors'}
+//   }).then((res) => {
+//     return res.data
+//   });
+// }
 
 // function update(e) {
 //   var form = this.form;

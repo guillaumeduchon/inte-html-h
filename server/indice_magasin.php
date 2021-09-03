@@ -18,8 +18,8 @@ if ($contentType === "application/json") {
         if (isset($decoded['type']) && isset($decoded['magasin'])) {
             $magasin = htmlentities($decoded['magasin']);
 
-            $stmt = $pdo->prepare("SELECT id FROM magasin WHERE id=:magasin_num");
-            $stmt->execute(['magasin_num'=> $magasin]);
+            $stmt = $pdo->prepare("SELECT id FROM magasin WHERE id=:magasin_id");
+            $stmt->execute(['magasin_id'=> $magasin]);
             $aId = $stmt->fetch();
 
             if($aId) {

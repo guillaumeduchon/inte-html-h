@@ -1,19 +1,19 @@
-const isEnableMagasin = async () => {
-  await checkIsActiveMagasin().then(resp => {
-    if (resp[0].id !== undefined) {
-      if (resp[0].active === 0 && (resp[0].done_last_game >= 1)) {
-        window.location.href = "/already.html";
-      } else if (resp[0].active === 1) {
-        // OK
-      } else {
-        window.location.href = "/noactive.html";
-      }
+// const isEnableMagasin = async () => {
+//   await checkIsActiveMagasin().then(resp => {
+//     if (resp[0].id !== undefined) {
+//       if (resp[0].active === 0 && (resp[0].done_last_game >= 1)) {
+//         window.location.href = "/already.html";
+//       } else if (resp[0].active === 1) {
+//         // OK
+//       } else {
+//         window.location.href = "/noactive.html";
+//       }
 
-    } else {
-      console.log('request failed')
-    }
-  })
-}
+//     } else {
+//       console.log('request failed')
+//     }
+//   })
+// }
 
 $(document).ready(function () {
 
@@ -92,7 +92,7 @@ $(document).ready(function () {
     //fetch_question_responses()
     lastConnexion()
     if (isLogged()) {
-      isEnableMagasin()
+      // isEnableMagasin()
       updatePlateau()
       // if (localStorage.getItem('has_played') !== null){
       //   setTimeout(()=>{localStorage.removeItem('logged')}, 8000)
@@ -107,7 +107,7 @@ $(document).ready(function () {
   if (location.pathname === "/game_rule.html") {
     lastConnexion()
     if (isLogged()) {
-      isEnableMagasin()
+      // isEnableMagasin()
       sessionTimeOut();
       if (!gameStarted()) {
         result_day();
@@ -154,7 +154,7 @@ $(document).ready(function () {
 
   if (location.pathname === "/game_win.html") {
     if (isLogged()) {
-      isEnableMagasin();
+      // isEnableMagasin();
       sessionTimeOut();
 
       set_indice(Number(localStorage.getItem('DAY_NUM')))
@@ -240,7 +240,6 @@ $(document).ready(function () {
   if (location.pathname === "/game_end.html") {
     if (isLogged()) {
       let day = getUrlParam('day', '1')
-      console.log("day", day)
       toggleGameEndClass(day);
     } else {
       goLogin();
@@ -258,7 +257,7 @@ $(document).ready(function () {
   }
   //--------------------------------------------------------- Game end day 5
 
-  if (location.pathname === "/game_end_day3.html") {
+  if (location.pathname === "/game_end_day5.html") {
     if (isLogged()) {
       toggleGameEndClass(5);
       //isEnableMagasin();
@@ -270,7 +269,7 @@ $(document).ready(function () {
   //--------------------------------------------------------- PAGE PERDU FINAL
 
   if (location.pathname === "/endgame_lose.html") {
-    isLogged() ? (isEnableMagasin(), getMagasin()) : goLogin();
+    isLogged() ? (getMagasin()) : goLogin();
   }
 
   //----------------------------------------------------------- GO
