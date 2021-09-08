@@ -865,9 +865,12 @@ main {
             .title_game {padding-bottom: 15px;}
             .game_quizz_challenge {
                 .title, .rules {padding-bottom: 10px!important;}
+                .rules {
+                    a {text-decoration: underline; font-size: 13px;}
+                }
             }
             @media screen and (orientation:landscape) and (max-width: 670px) {
-                .game_quizz_challenge {padding: 20px!important;}
+                .game_quizz_challenge {padding: 10px!important;}
             }
             @media screen and (orientation:landscape) and (max-width: 650px) {
                 background: url('../img/fond_generic.jpg') no-repeat center;
