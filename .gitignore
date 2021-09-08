@@ -1,1 +1,4 @@
 #video/
+node_modules/
+yarn.lock
+
