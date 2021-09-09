@@ -153,7 +153,6 @@ main {
         margin-bottom: 7px;
         font-weight: bold;
         color: $white;
-        @media screen and (min-width: 1024px) {margin-bottom: 12px;}
         a, span {
             color: $white;
             text-decoration: none;
@@ -211,7 +210,11 @@ main {
             .connect_block {
                 width: 50%;
                 height: 90vh;
-                .connect_form {height: 100%;}
+                @media screen and (min-width: 1024px) {height: auto!important;}
+                .connect_form {
+                    height: 100%;
+                    @media screen and (min-width: 1024px) {height: auto!important;}
+                }
             }
         }
         &.endgame {
@@ -829,6 +832,8 @@ main {
         &.q2 {
             background: url('../img/fond_q2.jpg') no-repeat center;
             background-size: cover;
+            @media screen and (min-width: 1024px) {background: url('../img/fond_generic_q2-4.jpg') no-repeat center;
+                background-size: cover;}
             @media screen and (orientation:landscape) and (max-width: 670px) {
                 // .title_game {font-size: 15px!important; line-height: 19px!important;}
             }
@@ -866,6 +871,10 @@ main {
                 }
                 .rules {text-transform: initial;}
             }
+            @media screen and (min-width: 1024px) {
+                background: url('../img/fond_generic_q2-4.jpg') no-repeat center;
+                background-size: cover;
+            }
             @media screen and (orientation:landscape) and (max-width: 650px) {
                 background: url('../img/fond_generic_q2-4.jpg') no-repeat center;
                 background-size: cover;
@@ -897,7 +906,6 @@ main {
                 width: 100vw;
                 height: 100%;
                 padding: 20px 20px 0;
-                @media screen and (orientation:landscape) and (min-width:1024px) {padding: 40px;}
                 @media screen and (orientation:landscape) and (max-width: 670px) {padding: 20px 10px 0;}
                 position: relative;
                 // overflow: hidden;
@@ -906,6 +914,7 @@ main {
                 justify-content: center;
                 display: flex;
                 flex-wrap: wrap;
+                @media screen and (orientation:landscape) and (min-width:1024px) {padding: 40px; align-content: center;}
                 .title_game {
                     font-size: 19px;
                     line-height: 23px;
