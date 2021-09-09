@@ -382,6 +382,7 @@ const ShowGamePlayed = () => {
                 if (dayHasResult((i + 1))) {
                   addGameDoneClass((i + 1));
                 } else if ((i + 1) > Number(localStorage.getItem("DAY_NUM"))) {
+                  $('.game_box:eq(' + i + ')').addClass('lock');
                   $('.title_game:eq(' + i + ')').remove();
                   $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
                 }
@@ -395,6 +396,7 @@ const ShowGamePlayed = () => {
         $('.game').each((i, e) => {
           if (((i + 1) > Math.max.apply(Math, aGame_played)) || (i + 1) > Number(localStorage.getItem('DAY_NUM'))) {
             if (!plateau_has_treated) {
+              $('.game_box:eq(' + i + ')').addClass('lock');
               $('.title_game:eq(' + i + ')').remove();
               addGameDoneClass(i)
               $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
