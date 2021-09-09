@@ -166,7 +166,7 @@ main {
             display: inline-block;
             font-size: 14px;
             border: 1px solid $blue;
-            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px; height: 30px; line-height: 28px;}
+            @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px; height: 30px; line-height: 28px; border-radius: 7px;}
             @media screen and (min-width: 1024px) {font-size: 17px;}
             .arrow {
                 height: 9px; vertical-align: inherit; margin-right: 3px;
@@ -305,11 +305,11 @@ main {
                 text-transform: none;
                 p {
                     padding-top: 0;
-                    padding-bottom: 10px;
-                    &:first-of-type {padding: 13px 0 10px;}
+                    padding-bottom: 12px;
+                    &:first-of-type {padding: 13px 0 12px;}
                     margin: 0;
-                    font-size: 14px;
-                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
+                    font-size: 15px;
+                    @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                     @media screen and (min-width: 1024px) {
                         &:first-of-type {padding: 20px 0 15px;}
                         font-size: 20px; padding-bottom: 15px;
@@ -820,18 +820,13 @@ main {
         &.q1 {
             background: url('../img/fond_q1.jpg') no-repeat right;
             background-size: cover;
-            @media screen and (orientation:landscape) and (max-width: 670px) {
-                .game_quizz_divers {
-                    align-self: flex-start;
-                }
+            .game_quizz_divers {
+                align-self: flex-start;
             }
             @media screen and (orientation:landscape) and (min-width: 650px) {
                 .game_quizz_challenge {
                     height: 70vh;
                     .title {font-size: 16px!important;}
-                    form {
-                        textarea {height: 100px!important;}
-                    }
                 }
             }
         }
@@ -1014,16 +1009,16 @@ main {
                             textarea {
                                 background: none;
                                 border: 1px solid $blue;
-                                border-radius: 15px;
+                                border-radius: 10px;
                                 resize: none;
                                 padding: 6px 10px;
-                                height: 100px;
+                                height: 150px;
                                 width: 100%;
                                 margin-bottom: 15px;
                                 -webkit-appearance: none;
                                 -moz-appearance: none;
                                 appearance: none;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {border-radius: 10px; height: 90px; font-size: 14px; margin-bottom: 10px;}
+                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px; margin-bottom: 10px;}
                             }
                             input[type=text], input[type=number] {
                                 background: none;
@@ -1124,7 +1119,7 @@ main {
                                 .cta_diamond {
                                     margin-bottom: 0;
                                     a, span {
-                                        width: 100%; padding: 0 5px;
+                                        width: 100%; padding: 0 1px;
                                         @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
                                     }
                                     &.invers {
@@ -1178,9 +1173,40 @@ main {
                             @media screen and (orientation:landscape) and (max-width: 670px) {margin-right: 10px;}
                             align-self: flex-start;
                             .title {
-                                text-transform: uppercase; padding-bottom: 20px;
+                                text-transform: uppercase; padding-bottom: 15px;
+                                font-weight: bold;
                                 @media screen and (orientation:landscape) and (max-width: 650px) {padding-bottom: 10px; font-size: 14px;}
                                 @media screen and (min-width: 1024px) {font-size: 17px;}
+                            }
+                            .carousel-citation {
+                                .carousel-cell {
+                                    width: 100%;
+                                    line-height: initial;
+                                    font-size: 15px;
+                                    height: 100px;
+                                    @media screen and (orientation:landscape) and (max-width: 670px) {height: auto; padding-bottom: 10px;}
+                                    &::before {
+                                        position: absolute;
+                                        display: inline-block;
+                                        content: "“";
+                                        font-size: 44px;
+                                        font-weight: bold;
+                                        top: -8px;
+                                        left: 0;
+                                    }
+                                    .txt-carou {
+                                        text-indent: 25px; padding-top: 5px; display: inline-block;
+                                        &::after {
+                                            display: inline-block;
+                                            content: "„";
+                                            font-size: 44px;
+                                            font-weight: bold;
+                                            line-height: 0;
+                                            bottom: 0;
+                                            margin-left: -20px;
+                                        }
+                                    }
+                                }
                             }
                             .citation {
                                 padding-bottom: 30px;

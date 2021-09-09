@@ -6,9 +6,11 @@
     <meta name="robots" content="noindex, nofollow">
     <title>ARMANI - My Way</title>
     <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" sizes="180x180" href="img/icon_manifest.png">
     <link rel="icon" type="image/png" sizes="192x192"  href="img/icon_manifest.png">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
@@ -39,8 +41,10 @@
                             <div class="game_quizz_divers">
                                 <div class="q1">
                                     <div class="title">Vous nous avez raconté :</div>
-                                    <div class="citation">Un papa venant demander de l’aide pour sa fille complexée par son acné… il est reparti avec tout un sac de maquillage et est revenu me remercier quelques jours après, sa détresse et son amour m’ont tellement touchés.</div>
-                                    <div class="citation">Un client complètement perdu à la Saint-Valentin car c’était la premiere fois qu’il faisait un cadeau à sa copine !!!</div>
+                                    <div class="carousel-citation" data-flickity='{"cellAlign": "left", "contain": true, "draggable": false, "prevNextButtons": false, "pageDots": false, "autoPlay": 6000}'>
+                                        <div class="carousel-cell"><div class="txt-carou">Un papa venant demander de l’aide pour sa fille complexée par son acné… il est reparti avec tout un sac de maquillage et est revenu me remercier quelques jours après, sa détresse et son amour m’ont tellement touchés.</div></div>
+                                        <div class="carousel-cell"><div class="txt-carou">Un client complètement perdu à la Saint-Valentin car c’était la premiere fois qu’il faisait un cadeau à sa copine !!!</div></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -63,20 +67,6 @@
     <script src="js/routeur.js"></script>
     <script src="js/question.js"></script>
     <script src="js/reponse.js"></script>
-    <!-- <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/index.min.js"></script>
-    <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/master/release/scroll-behaviour.min.js"></script>
-    <script src="https://rawgit.com/timruffles/ios-html5-drag-drop-shim/hold-to-drag-issue/release/index.js"></script>
-    <script>
-        // options are optional ;)
-        MobileDragDrop.polyfill({
-          // use this to make use of the scroll behaviour
-          // dragStartConditionOverride: false,
-          // dragImageCenterOnTouch: true,
-          // iterationInterval: 1000,
-          forceApply: true,
-          holdToDrag: 100,
-          dragImageTranslateOverride: MobileDragDrop.scrollBehaviourDragImageTranslateOverride
-        });
-      </script> -->
+    <script src="js/game_slide.js"></script>
 </body>
 </html>
