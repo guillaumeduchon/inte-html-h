@@ -267,7 +267,9 @@ main {
             background-color: $red;
             top: 0;
             padding: 5px 0;
-            margin-right: -20px;
+            margin-right: 0;
+            z-index: 3;
+            &.login {margin-right: -20px;}
         }
         .cb_logo {
             img {
@@ -836,14 +838,18 @@ main {
             }
             .rules_game {padding-bottom: 10px!important;}
             .game_quizz_challenge {
-                padding: 10px 20px!important;
-                .title {padding-bottom: 7px!important;}
+                // padding: 10px 20px!important;
+                .title {
+                    padding-bottom: 10px!important;
+                    @media screen and (orientation:landscape) and (max-width: 670px) {padding-bottom: 6px!important;}
+                }
                 .rules {text-transform: initial;}
             }
         }
         &.q3 {
             background: url('../img/fond_q3.jpg') no-repeat right;
             background-size: cover;
+            .rules_game {font-size: 18px!important;}
             @media screen and (orientation:landscape) and (max-width: 670px) {
                 .rules_game {font-size: 15px!important;}
             }
@@ -854,7 +860,10 @@ main {
             .title_game {padding-bottom: 20px;}
             .game_quizz_challenge {
                 padding: 10px 20px 20px!important;
-                .title {padding-bottom: 7px!important;}
+                .title {
+                    padding-bottom: 10px!important;
+                    @media screen and (orientation:landscape) and (max-width: 670px) {padding-bottom: 6px!important;}
+                }
                 .rules {text-transform: initial;}
             }
             @media screen and (orientation:landscape) and (max-width: 650px) {
@@ -998,7 +1007,10 @@ main {
                                         color: $blue;
                                     }
                                 }
-                                input[type=number] {margin-bottom: 5px;}
+                                input[type=number] {
+                                    margin-bottom: 10px;
+                                    @media screen and (orientation:landscape) and (max-width: 670px) {margin-bottom: 5px;}
+                                }
                             }
                             textarea {
                                 background: none;
@@ -1017,17 +1029,18 @@ main {
                             input[type=text], input[type=number] {
                                 background: none;
                                 border: 1px solid $blue;
-                                border-radius: 10px;
+                                border-radius: 7px;
                                 padding: 6px 10px;
                                 width: 100%;
-                                margin-bottom: 15px;
+                                margin-bottom: 10px;
                                 -webkit-appearance: none;
                                 -moz-appearance: none;
                                 appearance: none;
+                                font-size: 14px;
                                 &::placeholder {
                                     color: $blue;
                                 }
-                                @media screen and (orientation:landscape) and (max-width: 670px) {border-radius: 10px; font-size: 14px; margin-bottom: 10px;}
+                                @media screen and (orientation:landscape) and (max-width: 670px) {margin-bottom: 10px;}
                             }
                             label {
                                 text-align: left;
@@ -1052,13 +1065,14 @@ main {
                                 .inputfile + label {
                                     text-transform: none;
                                     border: 1px solid $blue;
-                                    border-radius: 10px;
+                                    border-radius: 7px;
                                     padding: 3px 10px;
                                     margin-top: 0;
                                     margin-bottom: 10px;
                                     cursor: pointer;
                                     color: $blue;
                                     position: relative;
+                                    font-size: 14px;
                                     @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
                                     img {
                                         position: absolute;
@@ -1077,8 +1091,9 @@ main {
                                     width: 29px;
                                     height: 29px;
                                     object-fit: cover;
-                                    border-radius: 0 10px 10px 0;
+                                    border-radius: 0 7px 7px 0;
                                     z-index: 3;
+                                    background: rgba($blue, 1);
                                 }
                             }
                             .download {
@@ -1233,7 +1248,7 @@ main {
                             }
                         }
                         .q2, .q4 {
-                            padding-bottom: 10px;
+                            padding-bottom: 20px;
                             .cta_diamond {
                                 &.invers {
                                     a {background: rgba($white, 0.6); color: $blue; border: none;}
@@ -1405,7 +1420,7 @@ main {
                     .answer_button {
                         display: block;
                         border: 1px solid $blue;
-                        border-radius: 15px;
+                        border-radius: 10px;
                         color: $blue;
                         transition: 0.2s linear all;
                         background-color: transparent;
@@ -1415,6 +1430,7 @@ main {
                         line-height: initial;
                         text-transform: initial;
                         strong {text-transform: uppercase;}
+                        @media screen and (orientation:landscape) and (max-width: 670px) {border-radius: 7px;}
                     }
                     .answer_diamond {
                         position: relative;
