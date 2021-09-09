@@ -1,4 +1,4 @@
-#video/
+video/
 node_modules/
 yarn.lock
 
