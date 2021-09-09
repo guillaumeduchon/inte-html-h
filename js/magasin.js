@@ -18,11 +18,11 @@ const fullfiled_magasin = async () => {
     headers: {'Content-Type': 'application/json','mode': 'cors'}
   }).then((res) => {
     let select = $("#magasin")
+    select.empty();
     response = res.data;
-    for (const [key, region] of Object.entries(response)) {
-      select.append('<option value="' + region + '">' + region + '</option>');
-    
-    }
+    response.forEach(el => {
+      select.append('<option value="' + el.region + '">' + el.region.replace(enseigne, '') + '</option>');
+    })
   })
 }
 

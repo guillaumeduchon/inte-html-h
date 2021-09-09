@@ -1,4 +1,3 @@
-
 function check_date_is_paris() {
   var DATE_SERVER = new Date(localStorage.getItem('DATE_SERVER'))
   if (DATE_SERVER != "Invalid Date") {
@@ -31,6 +30,19 @@ function check_date_is_paris() {
 }
 
 check_date_is_paris();
+
+/* INIT DATE HERE */
+const init_date = Date.parse('2021-09-05')
+const global_date_tab = Array(5).fill(0).map((_, i) => {
+  let date = new Date(init_date);
+  date.setDate(date.getDate() + i);
+
+  return {
+      'status': '',
+      'day_num': i + 1,
+      'day_date': date.toISOString().substring(0, 10).replaceAll('-', '/')
+  };
+});
 
 setTimeout(() => {
   const GetDateToday = async () => {
@@ -98,20 +110,7 @@ setTimeout(() => {
           let date_format = date_curr.toLocaleDateString("en-US").split('/')
           date_format = date_format[2] + '/' + (date_format[0].length == 1 ? '0' + date_format[0] : date_format[0]) + '/' + (date_format[1].length == 1 ? '0' + date_format[1] : date_format[1])
           console.warn('DATE_FORM', date_format)
-          // let date_tab = [
-          //   "2021/09/20",
-          //   "2021/09/21",
-          //   "2021/09/22",          // UNCOMMENT END  DELETE THE NEXT ARRAY FOR START 20 September 2021
-          //   "2021/09/23",
-          //   "2021/09/24",
-          // ];
-          let date_tab = [
-            "2021/09/08",
-            "2021/09/09",
-            "2021/09/10",
-            "2021/09/11",
-            "2021/09/12",
-          ];
+          const date_tab = global_date_tab.map(el => el.day_date)
           let DAY_NUM = date_tab.indexOf(date_format)
           DAY_NUM = DAY_NUM + 1
           if (DAY_NUM === 0) {
@@ -146,20 +145,6 @@ const updatePlateau = () => {
       window.location.href = "endgame.html";
     }
   })
-  // let date_tab = [
-  //   { 'status': '', 'day_num': 1, 'day_date': '2021/09/20' },
-  //   { 'status': '', 'day_num': 2, 'day_date': '2021/09/21' },
-  //   { 'status': '', 'day_num': 3, 'day_date': '2021/09/22' },    // UNCOMMENT END  DELETE THE NEXT ARRAY FOR START 20 September 2021
-  //   { 'status': '', 'day_num': 4, 'day_date': '2021/09/23' },
-  //   { 'status': '', 'day_num': 5, 'day_date': '2021/09/24' },
-  // ];
-  let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/09/08' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/09/09' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/09/10' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/09/11' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/09/12' },
-  ];
 
   let today = new Date();
   let montRaw = String(today.getUTCMonth() + 1);
@@ -169,9 +154,9 @@ const updatePlateau = () => {
   let today_date = `${today.getFullYear()}/${MONTH}/${DAY}`;
   localStorage.setItem('today_date', today_date)
 
-  var tab_day = date_tab.filter(obj => obj.day_date == today_date)[0];
+  var tab_day = global_date_tab.filter(obj => obj.day_date == today_date)[0];
   tab_day = tab_day.day_num;
-  date_tab.map((el, i) => {
+  global_date_tab.map((el, i) => {
     if ((i + 1) > Number(localStorage.getItem('DAY_NUM'))) {
       $('.game_box:eq(' + i + ')').attr('href', '#')
     } else {
@@ -450,5 +435,3 @@ function cleanNbInBefore09h00() {
   localStorage.removeItem('nbInBefore09h00');
 }
 function goLogin() { window.location.href = "index.html" }
-
-

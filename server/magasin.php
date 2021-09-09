@@ -39,17 +39,16 @@ try {
                 $oDatas = !$aMagasin ? [] : $aMagasin;
             } else if (isset($decoded['enseigne'])) {
                 $enseigne = $decoded['enseigne'];
-                $stmt = $pdo->prepare("SELECT DISTINCT region  FROM magasin WHERE enseigne=:enseigne");
-                $stmt->execute(['enseigne' => $enseigne]);
-                $aRegion = $stmt->fetch();
-                $oDatas = !$aRegion ? [] : $aRegion;
+                $stmt = $pdo->prepare("SELECT DISTINCT region  FROM magasin WHERE enseigne='{$enseigne}'");
+                $stmt->execute();
+                $aRegion = $stmt->fetchAll();
+                $oDatas = $aRegion;
             } else {
                 $stmt = $pdo->prepare("SELECT DISTINCT * FROM magasin WHERE id=:id");
                 $stmt->execute(['id' => $decoded['magasin']]);
                 $aMagasin = $stmt->fetch();
                 $oDatas = !$aMagasin ? [] :$aMagasin;
             }
-           
         }
     }
 

@@ -27,7 +27,7 @@
         $enseigne = $decoded['enseigne'];
         $code = $decoded['code'];
         $stmt = $pdo->prepare("SELECT * FROM magasin
-        WHERE enseigne=:enseigne AND `password`=:code AND `region`=:region");
+        WHERE enseigne=:enseigne AND `password`=:code AND `region`=:region ORDER BY `id`");
         $stmt->execute(['enseigne' => $enseigne, 'code'=> $code, 'region'=> $region]);
         $login = $stmt->fetch();
       }

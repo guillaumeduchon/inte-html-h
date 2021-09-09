@@ -95,7 +95,7 @@
 
         let res = $.get('home.html', res => {
             if (checkCookie()) {
-                $('html').html(res)
+                $('body').html(res)
             }
         });
     </script>
