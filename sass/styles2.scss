@@ -162,7 +162,7 @@ main {
             height: 35px;
             line-height: 34px;
             background-color: $blue;
-            border-radius: 10px;
+            border-radius: 7px;
             display: inline-block;
             font-size: 14px;
             border: 1px solid $blue;
@@ -210,12 +210,8 @@ main {
             }
             .connect_block {
                 width: 50%;
-                height: 85vh;
-            }
-        }
-        &.g3end {
-            .connect_block {
                 height: 90vh;
+                .connect_form {height: 100%;}
             }
         }
         &.endgame {
@@ -293,7 +289,7 @@ main {
             .cb_rules {
                 background: rgba($white, 0.7);
                 border-radius: 30px 30px 0 0;
-                padding: 0 30px 13px;
+                padding: 20px;
                 @media screen and (min-width: 1024px) {
                     border-radius: 30px;
                     padding: 0 30px 20px;
@@ -306,7 +302,6 @@ main {
                 p {
                     padding-top: 0;
                     padding-bottom: 12px;
-                    &:first-of-type {padding: 13px 0 12px;}
                     margin: 0;
                     font-size: 15px;
                     @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px;}
@@ -567,7 +562,7 @@ main {
                 &:hover {color: $blue; text-decoration: none;}
                 &.game_box {
                     border-radius: 10px;
-                    background: rgba(#c9d6e1, 0.4);
+                    background: rgba(#c9d6e1, 0.8);
                     &.done {background: $white;}
                     align-items: center;
                     justify-content: center;
@@ -619,7 +614,7 @@ main {
         .plateau__movie {
             width: 75%;
             margin-top: 20px;
-            background: rgba($white, 0.7);
+            background: rgba($white, 0.5);
             border-radius: 30px 30px 0 0;
             padding: 15px 30px 13px;
             text-transform: initial;
@@ -627,13 +622,13 @@ main {
             @media screen and (orientation:landscape) and (max-width: 670px) {width: 87%; margin-top: 15px; padding: 10px 20px;}
             @media screen and (min-width: 1024px) {margin-top: 30px; border-radius: 30px; padding: 20px 30px;}
             p {
-                font-size: 16px;
-                line-height: 20px;
-                margin-bottom: 12px;
+                font-size: 14px;
+                line-height: 18px;
+                margin-bottom: 10px;
                 @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px; line-height: 17px; margin-bottom: 8px;}
                 @media screen and (min-width: 1024px) {font-size: 19px; line-height: 23px; margin-bottom: 16px;}
                 a {
-                    font-size: 14px; line-height: 18px; text-decoration: underline;
+                    font-size: 13px; line-height: 17px; text-decoration: underline;
                     @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px; line-height: 16px;}
                     @media screen and (min-width: 1024px) {font-size: 18px;}
                 }
@@ -641,16 +636,18 @@ main {
             .cta_diamond {
                 text-transform: uppercase;
                 a {
+                    font-size: 13px;
+                    height: 30px;
+                    line-height: 29px;
                     @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 13px;}
                 }
                 @media screen and (orientation:landscape) and (max-width: 670px) {margin-bottom: 4px;}
             }
             .link a {
                 color: $blue;
-                font-size: 15px;
+                font-size: 13px;
                 line-height: initial;
                 text-transform: initial;
-                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 12px;}
             }
             .link {line-height: initial;}
         }
@@ -823,11 +820,8 @@ main {
             .game_quizz_divers {
                 align-self: flex-start;
             }
-            @media screen and (orientation:landscape) and (min-width: 650px) {
-                .game_quizz_challenge {
-                    height: 70vh;
-                    .title {font-size: 16px!important;}
-                }
+            @media screen and (orientation:landscape) and (max-width: 670px) {
+                .game_quizz_challenge {padding: 10px!important}
             }
         }
         &.q2 {
@@ -1009,16 +1003,16 @@ main {
                             textarea {
                                 background: none;
                                 border: 1px solid $blue;
-                                border-radius: 10px;
+                                border-radius: 7px;
                                 resize: none;
                                 padding: 6px 10px;
-                                height: 150px;
+                                height: 170px;
                                 width: 100%;
-                                margin-bottom: 15px;
+                                margin-bottom: 10px;
                                 -webkit-appearance: none;
                                 -moz-appearance: none;
                                 appearance: none;
-                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px; margin-bottom: 10px;}
+                                @media screen and (orientation:landscape) and (max-width: 670px) {font-size: 14px; height: 150px; margin-bottom: 3px;}
                             }
                             input[type=text], input[type=number] {
                                 background: none;
@@ -1173,8 +1167,9 @@ main {
                             @media screen and (orientation:landscape) and (max-width: 670px) {margin-right: 10px;}
                             align-self: flex-start;
                             .title {
-                                text-transform: uppercase; padding-bottom: 15px;
+                                text-transform: uppercase; padding-bottom: 18px;
                                 font-weight: bold;
+                                font-size: 17px;
                                 @media screen and (orientation:landscape) and (max-width: 650px) {padding-bottom: 10px; font-size: 14px;}
                                 @media screen and (min-width: 1024px) {font-size: 17px;}
                             }
@@ -1182,7 +1177,6 @@ main {
                                 .carousel-cell {
                                     width: 100%;
                                     line-height: initial;
-                                    font-size: 15px;
                                     height: 100px;
                                     @media screen and (orientation:landscape) and (max-width: 670px) {height: auto; padding-bottom: 10px;}
                                     &::before {
