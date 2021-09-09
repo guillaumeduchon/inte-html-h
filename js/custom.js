@@ -106,11 +106,11 @@ setTimeout(() => {
           //   "2021/09/24",
           // ];
           let date_tab = [
-            "2021/09/04",
-            "2021/09/05",
-            "2021/09/06",
-            "2021/09/07",
             "2021/09/08",
+            "2021/09/09",
+            "2021/09/10",
+            "2021/09/11",
+            "2021/09/12",
           ];
           let DAY_NUM = date_tab.indexOf(date_format)
           DAY_NUM = DAY_NUM + 1
@@ -154,11 +154,11 @@ const updatePlateau = () => {
   //   { 'status': '', 'day_num': 5, 'day_date': '2021/09/24' },
   // ];
   let date_tab = [
-    { 'status': '', 'day_num': 1, 'day_date': '2021/09/04' },
-    { 'status': '', 'day_num': 2, 'day_date': '2021/09/05' },
-    { 'status': '', 'day_num': 3, 'day_date': '2021/09/06' },
-    { 'status': '', 'day_num': 4, 'day_date': '2021/09/07' },
-    { 'status': '', 'day_num': 5, 'day_date': '2021/09/08' },
+    { 'status': '', 'day_num': 1, 'day_date': '2021/09/08' },
+    { 'status': '', 'day_num': 2, 'day_date': '2021/09/09' },
+    { 'status': '', 'day_num': 3, 'day_date': '2021/09/10' },
+    { 'status': '', 'day_num': 4, 'day_date': '2021/09/11' },
+    { 'status': '', 'day_num': 5, 'day_date': '2021/09/12' },
   ];
 
   let today = new Date();
@@ -345,6 +345,7 @@ const ShowGamePlayed = () => {
                     $('.game_box:eq(' + (i + 2) + ')').attr('href', '#')
                   }
                 } else if ((i + 1) > Number(localStorage.getItem("DAY_NUM"))) {
+                  $('.game_box:eq(' + i + ')').addClass('lock');
                   $('.title_game:eq(' + i + ')').remove();
                   $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
                 } else {
@@ -358,6 +359,7 @@ const ShowGamePlayed = () => {
         if (datas.length === 0) {
           $('.game').each((i, e) => {
             if ((i + 1) > Number(localStorage.getItem('DAY_NUM')) && !plateau_has_treated) {
+              $('.game_box:eq(' + i + ')').addClass('lock');
               $('.title_game:eq(' + i + ')').remove();
               $(e).prepend('<div class="title_game"><span>Challenge <div class="number">' + (i + 1) + '</div></span></div>')
             } else {
