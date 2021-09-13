@@ -204,12 +204,12 @@ main {
             justify-content: flex-end;
             padding: 0 20px;
             .logo img {
-                width: 50%; display: inline-block; margin-bottom: 15px;
+                width: 45%; display: inline-block; margin-bottom: 10px;
                 @media screen and (orientation:landscape) and (max-width: 670px) {width: 45%;}
             }
             .connect_block {
                 width: 50%;
-                height: 90vh;
+                height: 85vh;
                 @media screen and (min-width: 1024px) {height: auto!important;}
                 .connect_form {
                     height: 100%;
@@ -1191,17 +1191,18 @@ main {
                             @media screen and (orientation:landscape) and (max-width: 670px) {margin-right: 10px;}
                             align-self: flex-start;
                             .title {
-                                text-transform: uppercase; padding-bottom: 18px;
+                                text-transform: uppercase; padding-bottom: 10px;
                                 font-weight: bold;
                                 font-size: 17px;
                                 @media screen and (orientation:landscape) and (max-width: 650px) {padding-bottom: 10px; font-size: 14px;}
                                 @media screen and (min-width: 1024px) {font-size: 17px;}
                             }
                             .carousel-citation {
+                                padding-top: 10px;
                                 .carousel-cell {
                                     width: 100%;
                                     line-height: initial;
-                                    height: 100px;
+                                    padding-bottom: 15px;
                                     @media screen and (orientation:landscape) and (max-width: 670px) {height: auto; padding-bottom: 10px;}
                                     &::before {
                                         position: absolute;
