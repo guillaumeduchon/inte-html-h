@@ -1574,13 +1574,13 @@ main {
                 text-transform: uppercase;
                 text-align: center;
             }
-            & progress {
+            progress {
                 display:block;
                 width:100%;
                 height:5px;
                 margin-top:0;
                 border:none;
-                color:$blue;
+                color: $blue;
                 background: transparent;
                 z-index: 5;
                 &[data-state="fake"] {
@@ -1600,7 +1600,7 @@ main {
                     background-color: transparent;
                 }
             }
-            & button {
+            button {
                 position: fixed;
                 top: 0%;
                 background: transparent;
