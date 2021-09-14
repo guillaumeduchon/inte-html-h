@@ -32,7 +32,7 @@ function check_date_is_paris() {
 check_date_is_paris();
 
 /* INIT DATE HERE */
-const init_date = Date.parse('2021-09-09')
+const init_date = Date.parse('2021-09-10')
 const global_date_tab = Array(5).fill(0).map((_, i) => {
   let date = new Date(init_date);
   date.setDate(date.getDate() + i);
