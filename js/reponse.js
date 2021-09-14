@@ -90,7 +90,7 @@ $('#form5').on('keyup keypress', function(e) {
   var keyCode = e.keyCode || e.which;
   if (keyCode === 13) { 
     e.preventDefault();
-    $("form").on('keypress', check_answer5);
+    $("form").on(check_answer5);
   }
 });
 
