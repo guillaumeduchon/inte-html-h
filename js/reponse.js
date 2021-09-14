@@ -86,6 +86,14 @@ $('#files-game-2').on('keyup keypress', function(e) {
   }
 });
 
+$('#form5').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 13) { 
+    e.preventDefault();
+    $("form").submit(check_answer5);
+  }
+});
+
 
 const authorized_format_file = ["image/jpeg", "image/gif",
   "image/png", "image/webp",
