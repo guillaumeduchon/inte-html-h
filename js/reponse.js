@@ -78,6 +78,14 @@ if (/game_day2|game_day4/.test(location.pathname)) {
   });
 }
 
+$('#files-game-2').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 13) { 
+    e.preventDefault();
+    return false;
+  }
+});
+
 
 const authorized_format_file = ["image/jpeg", "image/gif",
   "image/png", "image/webp",
