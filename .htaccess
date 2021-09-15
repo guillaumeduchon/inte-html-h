@@ -4,5 +4,5 @@ RewriteRule ^(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 AuthName "Page d'administration protégée"
 AuthType Basic
-AuthUserFile "/var/www/vhosts/mywaychallenge.fr/httpdocs/.htpasswd"
+AuthUserFile "/home/etnszqj/httpdocs/.htpasswd"
 Require valid-user
