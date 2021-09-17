@@ -895,9 +895,9 @@ main {
         &.q3 {
             background: url('../img/fond_q3.jpg') no-repeat right;
             background-size: cover;
-            .rules_game {font-size: 18px!important;}
+            .rules_game {font-size: 18px!important; padding-bottom: 10px!important;}
             @media screen and (orientation:landscape) and (max-width: 670px) {
-                .rules_game {font-size: 15px!important;}
+                .rules_game {font-size: 15px!important; padding-bottom: 10px!important;}
             }
         }
         &.q4 {
